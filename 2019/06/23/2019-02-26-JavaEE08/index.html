@@ -900,6 +900,19 @@ js代码
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ajax"><span class="toc-number">2.</span> <span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据请求-Get"><span class="toc-number">3.</span> <span class="toc-text">数据请求 Get</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据请求-Post"><span class="toc-number">4.</span> <span class="toc-text">数据请求 Post</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#校验用户名是否可用"><span class="toc-number">5.</span> <span class="toc-text">校验用户名是否可用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JQuery"><span class="toc-number">6.</span> <span class="toc-text">JQuery</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#load"><span class="toc-number">6.1.</span> <span class="toc-text">load</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Get"><span class="toc-number">6.2.</span> <span class="toc-text">Get</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值显示"><span class="toc-number">6.3.</span> <span class="toc-text">赋值显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#load-amp-get"><span class="toc-number">6.4.</span> <span class="toc-text">load &amp; get</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JQuery去实现校验用户名"><span class="toc-number">6.5.</span> <span class="toc-text">使用JQuery去实现校验用户名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现百度搜索提示"><span class="toc-number">7.</span> <span class="toc-text">实现百度搜索提示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建环境"><span class="toc-number">7.1.</span> <span class="toc-text">搭建环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#捕获键盘弹起"><span class="toc-number">7.2.</span> <span class="toc-text">捕获键盘弹起</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS请求"><span class="toc-number">7.3.</span> <span class="toc-text">JS请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet代码"><span class="toc-number">7.4.</span> <span class="toc-text">Servlet代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list-jsp"><span class="toc-number">7.5.</span> <span class="toc-text">list.jsp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用JQuery实现-省市联动"><span class="toc-number">8.</span> <span class="toc-text">使用JQuery实现 省市联动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境准备"><span class="toc-number">8.1.</span> <span class="toc-text">环境准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XStream的使用"><span class="toc-number">8.2.</span> <span class="toc-text">XStream的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS代码"><span class="toc-number">8.3.</span> <span class="toc-text">JS代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务器和客户端数据传输的方式"><span class="toc-number">9.</span> <span class="toc-text">服务器和客户端数据传输的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用json格式数据显示省市联动效果"><span class="toc-number">10.</span> <span class="toc-text">使用json格式数据显示省市联动效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax-1"><span class="toc-number">11.1.</span> <span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JQuery-1"><span class="toc-number">11.2.</span> <span class="toc-text">JQuery</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -941,7 +954,7 @@ js代码
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: false
@@ -1006,6 +1019,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">tree BFS Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList Math</a>
               </li>
              
@@ -1014,15 +1031,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tree BFS Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">array hash</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">hashtable twopoints string</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array hash</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1046,15 +1059,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Array Binary-Search Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">String Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1070,11 +1083,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1090,6 +1103,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
@@ -1098,11 +1115,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1114,18 +1131,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
               </li>
              
@@ -1134,15 +1139,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">html 前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css js 前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">js 前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">js 前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">css js 前端</a>
               </li>
              
               <li class="article-tag-list-item">
