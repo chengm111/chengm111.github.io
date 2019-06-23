@@ -2280,226 +2280,13 @@ clear属性: 清除浮动
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
 <li>类与对象</li>
 <li>封装</li>
 </ul>
-<h2 id="面向对象思想概述"><a href="#面向对象思想概述" class="headerlink" title="面向对象思想概述"></a>面向对象思想概述</h2><ul>
-<li>A:面向过程思想概述<ul>
-<li>第一步</li>
-<li>第二步 </li>
-</ul>
-</li>
-<li>B:面向对象思想概述<ul>
-<li>找对象(第一步,第二步) </li>
-</ul>
-</li>
-<li>D:面向对象思想特点<ul>
-<li>a:是一种更符合我们思想习惯的思想</li>
-<li>b:可以将复杂的事情简单化</li>
-<li>c:将我们从执行者变成了指挥者<ul>
-<li>角色发生了转换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>E:面向对象开发<ul>
-<li>就是不断的创建对象，使用对象，指挥对象做事情。</li>
-</ul>
-</li>
-<li>F:面向对象设计<ul>
-<li>其实就是在管理和维护对象之间的关系。</li>
-</ul>
-</li>
-<li>G:面向对象特征<ul>
-<li>封装(encapsulation)</li>
-<li>继承(inheritance)</li>
-<li>多态(polymorphism)</li>
-</ul>
-</li>
-</ul>
-<h2 id="类与对象概述"><a href="#类与对象概述" class="headerlink" title="类与对象概述"></a>类与对象概述</h2><ul>
-<li>A:我们学习编程是为了什么<ul>
-<li>为了把我们日常生活中实物用学习语言描述出来</li>
-</ul>
-</li>
-<li>B:我们如何描述现实世界事物<ul>
-<li>属性    就是该事物的描述信息(事物身上的名词)</li>
-<li>行为    就是该事物能够做什么(事物身上的动词)</li>
-</ul>
-</li>
-<li>C:Java中最基本的单位是类,Java中用class描述事物也是如此<ul>
-<li>成员变量    就是事物的属性</li>
-<li>成员方法    就是事物的行为</li>
-</ul>
-</li>
-<li>D:定义类其实就是定义类的成员(成员变量和成员方法)<ul>
-<li>a:成员变量    和以前定义变量是一样的，只不过位置发生了改变。在类中，方法外。</li>
-<li>b:成员方法    和以前定义方法是一样的，只不过把static去掉，后面在详细讲解static的作用。</li>
-</ul>
-</li>
-<li>E:类和对象的概念<ul>
-<li>a:类：是一组相关的属性和行为的集合</li>
-<li>b:对象：是该类事物的具体体现</li>
-<li>c:举例：<ul>
-<li>类     学生</li>
-<li>对象    具体的某个学生就是一个对象</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="学生类的使用"><a href="#学生类的使用" class="headerlink" title="学生类的使用"></a>学生类的使用</h2><ul>
-<li>A:文件名问题<ul>
-<li>在一个java文件中写两个类：一个基本的类，一个测试类。</li>
-<li>建议：文件名称和测试类名称一致。</li>
-</ul>
-</li>
-<li>B:如何使用对象?<ul>
-<li>创建对象并使用</li>
-<li>格式：类名 对象名 = new 类名();</li>
-</ul>
-</li>
-<li>D:如何使用成员变量呢?<ul>
-<li>对象名.变量名</li>
-</ul>
-</li>
-<li>E:如何使用成员方法呢?<ul>
-<li>对象名.方法名(…)</li>
-</ul>
-</li>
-</ul>
-<h2 id="一个对象的内存图"><a href="#一个对象的内存图" class="headerlink" title="一个对象的内存图"></a>一个对象的内存图</h2><ul>
-<li>A:画图演示<br>  <img src="https://i.imgur.com/QK3d3kg.png" alt></li>
-</ul>
-<h2 id="二个对象的内存图"><a href="#二个对象的内存图" class="headerlink" title="二个对象的内存图"></a>二个对象的内存图</h2><ul>
-<li>A:画图演示<br>  <img src="https://i.imgur.com/9UFH6P1.png" alt></li>
-<li>没有引用指向的对象会变为垃圾，Java中的垃圾回收机制会不定期对其回收</li>
-</ul>
-<h2 id="三个引用两个对象的内存图"><a href="#三个引用两个对象的内存图" class="headerlink" title="三个引用两个对象的内存图"></a>三个引用两个对象的内存图</h2><ul>
-<li>A:画图演示<ul>
-<li>三个引用，有两个对象的引用指向同一个地址<br><img src="https://i.imgur.com/glhy31c.png" alt></li>
-</ul>
-</li>
-</ul>
-<h2 id="成员变量和局部变量的区别"><a href="#成员变量和局部变量的区别" class="headerlink" title="成员变量和局部变量的区别"></a>成员变量和局部变量的区别</h2><ul>
-<li><p>A:在类中的位置不同</p>
-<ul>
-<li>成员变量：在类中方法外</li>
-<li>局部变量：在方法定义中或者方法声明上</li>
-</ul>
-</li>
-<li><p>B:在内存中的位置不同</p>
-<ul>
-<li>成员变量：在堆内存(成员变量属于对象,对象进堆内存)</li>
-<li>局部变量：在栈内存(局部变量属于方法,方法进栈内存)</li>
-</ul>
-</li>
-<li><p>C:生命周期不同</p>
-<ul>
-<li>成员变量：随着对象的创建而存在，随着对象的消失而消失</li>
-<li>局部变量：随着方法的调用而存在，随着方法的调用完毕而消失</li>
-</ul>
-</li>
-<li><p>D:初始化值不同</p>
-<ul>
-<li>成员变量：有默认初始化值</li>
-<li>局部变量：没有默认初始化值，必须定义，赋值，然后才能使用。</li>
-</ul>
-</li>
-<li><p>注意事项：</p>
-<ul>
-<li>局部变量名称可以和成员变量名称一样，在方法中使用的时候，采用的是就近原则。</li>
-<li>基本数据类型变量包括哪些:byte,short,int,long,float,double,boolean,char</li>
-<li>引用数据类型变量包括哪些:数组,类,接口,枚举</li>
-</ul>
-</li>
-</ul>
-<h2 id="方法的形式参数是类名的时候如何调用"><a href="#方法的形式参数是类名的时候如何调用" class="headerlink" title="方法的形式参数是类名的时候如何调用"></a>方法的形式参数是类名的时候如何调用</h2><ul>
-<li>A:方法的参数是类名public void print(Student s){}//print(new Student());<ul>
-<li>如果你看到了一个方法的形式参数是一个类类型(引用类型)，这里其实需要的是该类的对象。</li>
-</ul>
-</li>
-</ul>
-<h2 id="匿名对象的概述和应用"><a href="#匿名对象的概述和应用" class="headerlink" title="匿名对象的概述和应用"></a>匿名对象的概述和应用</h2><ul>
-<li>A:什么是匿名对象<ul>
-<li>没有名字的对象 </li>
-</ul>
-</li>
-<li>B:匿名对象应用场景<ul>
-<li>a:调用方法，仅仅只调用一次的时候。<ul>
-<li>那么，这种匿名调用有什么好处吗?<ul>
-<li>节省代码 </li>
-</ul>
-</li>
-<li>注意：调用多次的时候，不适合。匿名对象调用完毕就是垃圾。可以被垃圾回收器回收。</li>
-</ul>
-</li>
-<li>b:匿名对象可以作为实际参数传递</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>匿名对象应用场景</li>
-</ul>
-</li>
-</ul>
-<h2 id="封装的概述"><a href="#封装的概述" class="headerlink" title="封装的概述"></a>封装的概述</h2><ul>
-<li><p>A:封装概述</p>
-<ul>
-<li>是指隐藏对象的属性和实现细节，仅对外提供公共访问方式。</li>
-</ul>
-</li>
-<li><p>B:封装好处</p>
-<ul>
-<li>隐藏实现细节，提供公共的访问方式</li>
-<li>提高了代码的复用性</li>
-<li>提高安全性。</li>
-</ul>
-</li>
-<li><p>C:封装原则</p>
-<ul>
-<li>将不需要对外提供的内容都隐藏起来。</li>
-<li>把属性隐藏，提供公共方法对其访问。</li>
-</ul>
-</li>
-</ul>
-<h2 id="private关键字的概述和特点"><a href="#private关键字的概述和特点" class="headerlink" title="private关键字的概述和特点"></a>private关键字的概述和特点</h2><ul>
-<li>A:人类赋值年龄的问题</li>
-<li>B:private关键字特点<ul>
-<li>a:是一个权限修饰符</li>
-<li>b:可以修饰成员变量和成员方法</li>
-<li>c:被其修饰的成员只能在本类中被访问</li>
-</ul>
-</li>
-<li>C:案例演示<ul>
-<li>封装和private的应用：</li>
-<li>A:把成员变量用private修饰</li>
-<li>B:提供对应的getXxx()和setXxx()方法</li>
-<li>private仅仅是封装的一种体现形式,不能说封装就是私有</li>
-</ul>
-</li>
-</ul>
-<h2 id="this关键字的概述和应用"><a href="#this关键字的概述和应用" class="headerlink" title="this关键字的概述和应用"></a>this关键字的概述和应用</h2><ul>
-<li>A:this关键字特点<ul>
-<li>代表当前对象的引用 </li>
-</ul>
-</li>
-<li>B:案例演示<ul>
-<li>this的应用场景</li>
-<li>用来区分成员变量和局部变量重名</li>
-</ul>
-</li>
-</ul>
-<h2 id="手机类代码及其测试"><a href="#手机类代码及其测试" class="headerlink" title="手机类代码及其测试"></a>手机类代码及其测试</h2><ul>
-<li><p>请把手机类写成一个标准类，然后创建对象测试功能。</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo2_Phone</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Phone p1 = <span class="keyword">new</span> Phone();</span><br><span class="line">		p1.setBrand(<span class="string">"三星"</span>);</span><br><span class="line">		p1.setPrice(<span class="number">5288</span>);</span><br><span class="line"></span><br><span class="line">		System.out.println(p1.getBrand() + <span class="string">"..."</span> + p1.getPrice());</span><br><span class="line">		p1.call();</span><br><span class="line">		p1.sendMessage();</span><br><span class="line">		p1.playGame();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">手机类</span></span><br><span class="line"><span class="comment">	属性:品牌brand,价格price</span></span><br><span class="line"><span class="comment">	行为:打电话call,发短信sendMessage,玩游戏,playGame</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Phone</span> </span>&#123;								<span class="comment">//java bean</span></span><br><span class="line">	<span class="keyword">private</span> String brand;					<span class="comment">//品牌</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> price;						<span class="comment">//价格</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBrand</span><span class="params">(String brand)</span> </span>&#123;	<span class="comment">//设置品牌</span></span><br><span class="line">		<span class="keyword">this</span>.brand = brand;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getBrand</span><span class="params">()</span> </span>&#123;				<span class="comment">//获取品牌</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.brand;					<span class="comment">//this.可以省略,你不加系统会默认给你加</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPrice</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;		<span class="comment">//设置价格</span></span><br><span class="line">		<span class="keyword">this</span>.price = price;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;					<span class="comment">//获取价格</span></span><br><span class="line">		<span class="keyword">return</span> price;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call</span><span class="params">()</span> </span>&#123;					<span class="comment">//打电话</span></span><br><span class="line">		System.out.println(<span class="string">"打电话"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMessage</span><span class="params">()</span> </span>&#123;				<span class="comment">//发短信</span></span><br><span class="line">		System.out.println(<span class="string">"发短信"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">playGame</span><span class="params">()</span> </span>&#123;				<span class="comment">//玩游戏</span></span><br><span class="line">		System.out.println(<span class="string">"玩游戏"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2019/06/23/2018-12-30-Java笔记06/#more">more >></a>
+        
       
 
       
@@ -2583,73 +2370,12 @@ clear属性: 清除浮动
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
 <li>数组</li>
 </ul>
-<h2 id="概述和定义格式"><a href="#概述和定义格式" class="headerlink" title="概述和定义格式"></a>概述和定义格式</h2><ul>
-<li>A:存储同种数据类型的多个值</li>
-<li>B:数组概念<ul>
-<li>存储同一种数据类型多个元素的集合，可以看成容器。</li>
-<li>既可以存储基本数据类型，也可以存储引用数据类型。</li>
-</ul>
-</li>
-<li>C定义格式（动态初始化） <ul>
-<li> a:数据类型[] 数组名 =new 数据列席[数组长度]</li>
-</ul>
-</li>
-</ul>
-<h2 id="初始化值"><a href="#初始化值" class="headerlink" title="初始化值"></a>初始化值</h2><ul>
-<li>整数类型：0</li>
-<li>浮点类型：0.0</li>
-<li>布尔类型：false</li>
-<li>字符类型：char默认’\u0000’,char占两个字节，16个二进制位，每个0表示一个16进制的0，四个即表示16个二进制位</li>
-</ul>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>直接输出数组会打印数组的地址。如地址[I@19bb45c,其中[的个数即数组维数，I表示int类型，@后面的代表十六进制的地址值。</li>
-</ul>
-<h2 id="Java的内存分配以及堆和栈的区别"><a href="#Java的内存分配以及堆和栈的区别" class="headerlink" title="Java的内存分配以及堆和栈的区别"></a>Java的内存分配以及堆和栈的区别</h2><ul>
-<li>栈  <ul>
-<li>储存局部变量（定义在方法声明上和方法中的变量）</li>
-</ul>
-</li>
-<li>堆<ul>
-<li>存储new出来的数组或对象</li>
-</ul>
-</li>
-<li>方法区<ul>
-<li>代码储存区</li>
-</ul>
-</li>
-<li>本地方法区<ul>
-<li>和系统相关</li>
-</ul>
-</li>
-<li>寄存器<ul>
-<li>给CPU使用</li>
-</ul>
-</li>
-</ul>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p><code>int[] arr = new int[3];</code> 动态初始化，创建三块连续空间。在栈中储存变量arr，堆中储存new出来的3个对象。</p>
-<h2 id="多个数组的内存分配"><a href="#多个数组的内存分配" class="headerlink" title="多个数组的内存分配"></a>多个数组的内存分配</h2><ul>
-<li><p>每次新建数组就会在内存的堆和栈中分配空间给新的对象和变量。当利用一个数组定义另一个数组时：</p>
-<pre><code>int[] arr1=new int[3];
-int[] arr2=arr1;</code></pre></li>
-</ul>
-<p>arr2和arr1指向的地址相同，改变其中一个数据，另一个会随之改变。  </p>
-<p><img src="https://i.imgur.com/Whj3R84.png" alt>  </p>
-<h2 id="静态初始化"><a href="#静态初始化" class="headerlink" title="静态初始化"></a>静态初始化</h2><pre><code>1. 数据类型[] 数组名 =new 数据类型[] {元素1，元素2，...}
-2. 数据类型[] 数组名 ={元素1，元素2，...}
-第一种可以先声明后赋值，第二种必须同时声明和赋值。</code></pre><h2 id="越界和空指针"><a href="#越界和空指针" class="headerlink" title="越界和空指针"></a>越界和空指针</h2><ul>
-<li>访问数组中不存在的索引会出现索引越界异常</li>
-<li>若数组变量被重新赋值为null，再调用数组中的元素会出现空指针</li>
-</ul>
-<h2 id="传值还是传址"><a href="#传值还是传址" class="headerlink" title="传值还是传址"></a>传值还是传址</h2><ul>
-<li>Java中只有传值，地址值也是值。</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2019/06/23/2018-12-29-Java笔记05/#more">more >></a>
+        
       
 
       
@@ -2733,22 +2459,11 @@ int[] arr2=arr1;</code></pre></li>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
 <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [2, 7, 11, 15], target = 9,</span><br><span class="line"></span><br><span class="line">Because nums[0] + nums[1] = 2 + 7 = 9,</span><br><span class="line">return [0, 1].</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>brute force 两个循环嵌套容易得到结果，但是效率较低</li>
-<li>使用哈希表存储已经遍历过的值及其位置，当目标值减去本次遍历的值得到的结果可以在哈希表中找到时，输出结果。 </li>
-</ol>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] s=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=target-nums[i];</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(temp))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;map.get(temp),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/two-sum/submissions/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum/submissions/</a></p>
-
+        
+          <a class="article-more-a" href="/2019/06/23/2018-12-28-Two-Sum/#more">more >></a>
+        
       
 
       
@@ -2761,7 +2476,11 @@ int[] arr2=arr1;</code></pre></li>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">array hash</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">array</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hash</a>
         		</li>
       		
 		</ul>
@@ -2909,11 +2628,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList Math</a>
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">tree BFS Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2921,11 +2652,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">hashtable twopoints string</a>
+                <a href="javascript:void(0)" class="js-tag color5">hashtable</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array hash</a>
+                <a href="javascript:void(0)" class="js-tag color5">twopoints</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">string</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2937,11 +2680,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Two-Pointers Hash-Table Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Binary-Search Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">String Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2949,7 +2688,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String Easy</a>
+                <a href="javascript:void(0)" class="js-tag color2">Array Two-Pointers Hash-Table Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Array Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2965,15 +2708,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2985,7 +2724,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Binary-Search  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2997,11 +2736,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Array Binary-Search  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3013,15 +2760,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3029,11 +2772,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
