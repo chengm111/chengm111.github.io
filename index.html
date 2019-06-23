@@ -383,176 +383,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
 <li>自定义注解</li>
 <li>动态代理解决编码问题</li>
 </ul>
-<h2 id="设置环境"><a href="#设置环境" class="headerlink" title="设置环境"></a>设置环境</h2><p>安装操作系统,安装备份(镜像):<br>JDK: 设置环境变量<br>Eclipse:解压即可<br>   Eclipse自身解压目录不包括中文<br>   代码工作空间目录不包括中文<br>Tomcat:解压不要包含中文目录<br>MySql:安装: 选择编码utf8  </p>
-<p>设置Eclipse<br>1_关联TOMCAT<br>  开发过程中,环境发生变化(重新关联tomcat),<br>  *_删除servers窗口下的tomcat<br>  *_Project Explorer  窗口下的server<br>  *_重新关联window—&gt;preferences–&gt;servers—&gt;runtime–&gt;tomcat  </p>
-<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><ul>
-<li>什么是注解?</li>
-</ul>
-<blockquote>
-<p>注解和接口,类一样,都是属于数据类型.</p>
-</blockquote>
-<ul>
-<li><p>注解作用</p>
-<ol>
-<li>编译检查</li>
-<li>配置 (后期使用最多)</li>
-<li>生成帮助文档</li>
-</ol>
-</li>
-<li><p>注解的特点</p>
-<ol>
-<li><p>注解可以在变量,方法,类之上加载</p>
-</li>
-<li><p>注解可以有属性也可以没有属性 @Override  @Test(timeout=1000) (表示执行时间超过1秒则会报错）</p>
-</li>
-<li><p>注解有作用范围(源码,编译期间,运行期间)</p>
-<ol>
-<li><p>源码期间有效: String类之上@Author,@Since,@See </p>
-<p> 作用:使用命令javadoc命令将当前的源码生成帮助文件, 可以识别String类上的相关的注解</p>
-</li>
-<li><p>编译期间有效: @Override  @Deprecated  @Suppresswarning</p>
-<p> 作用:告诉编译器部分信息</p>
-</li>
-<li><p>运行期间有效: @Test</p>
-<p> 作用:当我们再当前代码上以Junit方式运行时,Junit会运行方法上包含@Test注解的方法</p>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li><p>回顾JDK中出现的3种注解</p>
-<p>  @Override   @Deprecated  @Suppresswarning</p>
-</li>
-<li><p>自定义注解</p>
-<p>  格式:</p>
-<pre><code>public @interface 注解名称{
-   public  属性类型  属性名称1();
-   public  属性类型  属性名称2()  default  默认值;
-}</code></pre><p>  自定义注解属性支持的类型:</p>
-<pre><code>基本数据类型(4类8种),String,Class,Annotation(注解类型),枚举类型,
-以及以上类型的一维数组类型</code></pre></li>
-<li><p>注解作用: 配置作用</p>
-<p>  配置:开发的时候部分信息不希望写死在程序中,例如数据库的用户名和密码,可以将用户名和密码存放在.txt , .properties , .xml文件中,利用程序来读取文件中的内容</p>
-</li>
-<li><p>框架:一大堆工具类组合,目的:加速项目开发<br>后期的学习中,框架部分hibernate,spring,struts2很多信息需要配置,提供了2种形式配置<br>(xml,注解)</p>
-</li>
-<li><p>什么时候用注解来做配置?</p>
-<p>  如果配置信息不会发生的修改,例如servlet路径,建议使用注解的形式<br>  如果配置信息需要发生频繁的修改,例如数据库的用户名和密码信息,</p>
-<pre><code>建议采用传统方法 (.txt , .properties , .xml)
-
-  信息有多种的时候适合xml
-  &lt;students&gt;
-    &lt;stu&gt;
-     &lt;stuNum&gt;s002&lt;/stuNun&gt;
-     &lt;stuPhone&gt;
-        &lt;stuHomePhone&gt;124324&lt;/stuHomePhone&gt;
-        &lt;stuCmpPhone&gt;12342143&lt;/stuCmpPhone&gt;
-     &lt;/stuPhone&gt;
-    &lt;/stu&gt;
-  &lt;/students&gt;</code></pre></li>
-<li><p>测试使用自定义注解</p>
-<pre><code>@MyAnno01(timeout=100,c=java.util.Date.class,strs={&quot;aaa&quot;,&quot;bbb&quot;})
-    public void test01(){
-
-    }</code></pre></li>
-</ul>
-<ul>
-<li>通过反射读取字节码上的注解信息<br>md.isAnnotationPresent(MyTest.class)</li>
-</ul>
-<h3 id="案例-模拟Junit"><a href="#案例-模拟Junit" class="headerlink" title="案例:模拟Junit"></a>案例:模拟Junit</h3><ul>
-<li><p>自定义注解@MyAnno01</p>
-<p>  通过元注解@Rentention @Target声明当前注解作用域以及目标对象,如果没有声明,在运行期间是无法获取到注解的信息</p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface MyAnno01 {
-    public long timeout() default -1;
-}</code></pre></li>
-<li><p>定义UserDao</p>
-<p>  创建4个方法addUser delUser uptUser getUser ,在前三个方法上加载注解@MyAnno01</p>
-</li>
-<li><p>定义类MyJunit, 模拟JUnit</p>
-<p>  将UserDao.class文件加载到内存<br>  获取到字节码文件上所有的方法<br>  遍历方法,判断每个方法上是否加载了@MyTest注解<br>  如果当前方法上设置@MyTest,执行当前的方法  </p>
-<pre><code>public class MyJunit {
-
-    public static void main(String[] args) throws Exception {
-        Class clazz=Class.forName(&quot;dao.UserDao&quot;);
-        Method[] methods = clazz.getMethods();
-        for (Method method : methods) {
-            if(method.isAnnotationPresent(MyAnno01.class)) {
-                method.invoke(new UserDao());
-            }
-        }        
-    }
-}</code></pre></li>
-</ul>
-<h3 id="注解要求"><a href="#注解要求" class="headerlink" title="注解要求:"></a>注解要求:</h3><pre><code>听懂,实现上课代码.
-开发中地位:类似dom4j解析XML文件. XML文件的解析程序员不会去解析,只会配置XML文件
-后期的开发中不会自定义注解,更不会反射读取注解信息.</code></pre><h2 id="使用动态代理解决网站的字符集编码问题"><a href="#使用动态代理解决网站的字符集编码问题" class="headerlink" title="使用动态代理解决网站的字符集编码问题"></a>使用动态代理解决网站的字符集编码问题</h2><ol>
-<li><p>设计模式</p>
-<p> 软件开发过程中,遇到相似问题,将问题的解决方式抽取模型(套路)<br> 单例,工厂,适配器,装饰者,动态代理</p>
-</li>
-<li><p>谷歌汽车场景</p>
-<p> java设计了汽车开发约定<br> interface ICar{ start  run  stop}<br> class GoogleCar implements ICar{}  </p>
-<blockquote>
-<p>希望在将谷歌Car接入到生态圈平台时,增强汽车启动功能</p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li><p>装饰者模式 </p>
-<p>  场景:二次开发的时候,无法获取到源码,也无法使用继承前提下,要对已经存在对象上的功能进行增强.<br>  前提: 可以获取到被装饰的对象GoogleCar实现的所有接口<br>  实现思路: 自定定义装饰类实现ICar接口,为自定义装饰类传递被装饰的对象  </p>
-<p>  弊端:如果被实现的接口中的方法过多,装饰类中的方法过多冗余</p>
-</li>
-<li><p>动态代理模式</p>
-<p>  原理:通过虚拟机在内存中创建类似MyCar.class文件 </p>
-<p>  要创建MyCar.class文件需要告诉虚拟机:</p>
-<pre><code>1_被创建的字节码文件上应该有多少方法
-2_被创建的字节码上的方法如何来实现</code></pre></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCar</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1param: 固定值: 告诉虚拟机用哪个字节码加载器加载内存中创建出的字节码文件</span></span><br><span class="line">		<span class="comment">//2param: 告诉虚拟机内存中正在被创建的字节码文件中应该有哪些方法</span></span><br><span class="line">		<span class="comment">//3param: 告诉虚拟机正在被创建的字节码上的各个方法如何处理</span></span><br><span class="line">		ICar car=(ICar)Proxy.newProxyInstance(TestCar.class.getClassLoader(), GoogleCar.class.getInterfaces(),<span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//method:代表正在执行的方法</span></span><br><span class="line">			<span class="comment">//args:代表正在执行的方法中的参数</span></span><br><span class="line">			<span class="comment">//Object:代表方法执行完毕之后的返回值</span></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">				<span class="comment">//经过测试得知:method代表当前正在执行的每个方法</span></span><br><span class="line">				<span class="comment">//System.out.println(method.getName());</span></span><br><span class="line">				<span class="comment">//执行当前的方法</span></span><br><span class="line">				<span class="comment">//method.invoke(new GoogleCar(), args);</span></span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//代表每个方法执行完毕之后返回对象</span></span><br><span class="line">				Object obj=<span class="keyword">null</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">if</span>(method.getName().equalsIgnoreCase(<span class="string">"start"</span>))&#123;</span><br><span class="line">					System.out.println(<span class="string">"检查天气是否良好"</span>);</span><br><span class="line"></span><br><span class="line">					<span class="comment">//打印args中的内容</span></span><br><span class="line">					System.out.println(Arrays.toString(args));</span><br><span class="line">					</span><br><span class="line">					obj=method.invoke(<span class="keyword">new</span> GoogleCar(), args);</span><br><span class="line">					System.out.println(<span class="string">"检查路况是否拥堵"</span>);</span><br><span class="line">					</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					obj=method.invoke(<span class="keyword">new</span> GoogleCar(), args);	</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> obj;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		String cc=car.start(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">		System.out.println(cc);</span><br><span class="line">		car.run();</span><br><span class="line">		car.stop();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>字节码加载器:</li>
-</ul>
-<blockquote>
-<p>jdk有一些程序,专门将各种字节码文件加载到内存.这类程序简称为字节码加载器</p>
-</blockquote>
-<pre><code>如何将字节码文件class文件加载到内存?  
-  底层实现过程：利用IO流技术,获取到文件中的数据加载到内存
-
-字节码加载器:3种（JavaSE最后一课讲过）  </code></pre><h2 id="案例-动态代理解决全站乱码问题"><a href="#案例-动态代理解决全站乱码问题" class="headerlink" title="案例:动态代理解决全站乱码问题"></a>案例:动态代理解决全站乱码问题</h2><ul>
-<li><p>步骤</p>
-<ol>
-<li><p>new DynamicWeb Project &gt;Index.html</p>
-<pre><code>&lt;h1&gt;post方式提交中文&lt;/h1&gt;
-&lt;form action=&quot;/day18_v3/ServletDemo&quot; method=&quot;post&quot;&gt;
-    User:&lt;input type=&quot;&quot; name=&quot;username&quot;/&gt;&lt;br/&gt;
-    &lt;input type=&quot;submit&quot;/&gt;
-&lt;/form&gt;
-
-&lt;h1&gt;get方式提交中文&lt;/h1&gt;
-&lt;form action=&quot;/day18_v3/ServletDemo&quot; method=&quot;get&quot;&gt;
-    User:&lt;input type=&quot;&quot; name=&quot;username&quot;/&gt;&lt;br/&gt;
-    &lt;input type=&quot;submit&quot;/&gt;
-&lt;/form&gt;</code></pre></li>
-<li><p>ServletDemo</p>
-<p> 无论是在post/get方法,执行以下语句不存在中文乱码问题<br> String um=request.getParameter(“username”);<br> System.out.println(um);</p>
-</li>
-<li><p>过滤器中,为request上的getParameter()功能进行增强</p>
-<p> 思路:</p>
-<p>   判断当前的请求是get/post  request.getMethod();<br>   如果是post, 设置一句话: request.setCharacterEncoding(“utf-8”); 放行<br>   如果是get,调用原先的String v=request.getParameter(name);</p>
-<pre><code>将v进行转码,放行  </code></pre></li>
-</ol>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-18-JavaEE10/#more">more >></a>
+        
       
 
       
@@ -636,487 +473,13 @@ public @interface MyAnno01 {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
 <li>Listener</li>
 <li>Filter</li>
 </ul>
-<h2 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h2><blockquote>
-<p>监听器</p>
-</blockquote>
-<ul>
-<li>能做什么事？</li>
-</ul>
-<blockquote>
-<p>监听某一个事件的发生。状态的改变。</p>
-</blockquote>
-<ul>
-<li>监听器的内部机制</li>
-</ul>
-<blockquote>
-<p>其实就是接口回调. </p>
-</blockquote>
-<h3 id="接口回调"><a href="#接口回调" class="headerlink" title="接口回调"></a>接口回调</h3><ul>
-<li>需求：</li>
-</ul>
-<blockquote>
-<p>A在执行循环，当循环到5的时候，通知B。</p>
-</blockquote>
-<blockquote>
-<p>事先先把一个对象传递给A，当A执行到5的时候，通过这个对象，来调用B中的方法。 但是注意，不是直接传递B的实例，而是传递一个接口的实例过去。</p>
-</blockquote>
-<blockquote>
-<p>这样A内部不需要知道B对象，只需要传入一个接口，B只要实现接口就可以被调用。</p>
-</blockquote>
-<p><img src="https://i.imgur.com/260tXG7.png" alt></p>
-<h3 id="Web监听器"><a href="#Web监听器" class="headerlink" title="Web监听器"></a>Web监听器</h3><blockquote>
-<p>总共有8个 划分成三种类型</p>
-</blockquote>
-<ol>
-<li><p>定义一个类，实现接口</p>
-</li>
-<li><p>注册 or 配置监听器</p>
-</li>
-</ol>
-<h3 id="监听三个作用域创建和销毁"><a href="#监听三个作用域创建和销毁" class="headerlink" title="监听三个作用域创建和销毁"></a>监听三个作用域创建和销毁</h3><p>request  —httpServletRequest</p>
-<p>session  —httpSession</p>
-<p>aapplication  — ServletContext</p>
-<ol>
-<li><p>ServletContextListener</p>
-<p> servletcontext创建：</p>
-<pre><code>1. 启动服务器的时候</code></pre><p> servletContext销毁：</p>
-<pre><code>2. 关闭服务器. 从服务器移除项目</code></pre><p> servlet创建</p>
-<pre><code>public class MyServletListener implements ServletContextListener {
-
-    @Override
-    public void contextInitialized(ServletContextEvent sce) {
-        System.out.println(&quot;初始化成功。。。&quot;);
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-    }
-
-}    </code></pre><p> listener注册（在web.xml中）</p>
-<pre><code>&lt;listener&gt;
-    &lt;listener-class&gt;webListener.MyServletListener&lt;/listener-class&gt;
-&lt;/listener&gt;</code></pre></li>
-<li><p>ServletRequestListener</p>
-<p> request创建:</p>
-<pre><code>访问服务器上的任意资源都会有请求出现。
-
-访问 html： 会
-访问 jsp:    会
-访问 servlet : 会 </code></pre></li>
-</ol>
-<pre><code>request销毁：
-
-    服务器已经对这次请求作出了响应。
-
-
-    public class MyRequestListener implements ServletRequestListener {
-            @Override
-            public void requestDestroyed(ServletRequestEvent sre) {
-                System.out.println(&quot;servletrequest 销毁了&quot;);
-            }
-
-            @Override
-            public void requestInitialized(ServletRequestEvent sre) {
-                System.out.println(&quot;servletrequest 初始化了&quot;);
-            }
-        }
-
-
-      &lt;listener&gt;
-          &lt;listener-class&gt;com.itheima.listener.MyRequestListener&lt;/listener-class&gt;
-      &lt;/listener&gt;</code></pre><ol start="3">
-<li><p>HttpSessionListener</p>
-<p> session的创建</p>
-<pre><code>只要调用getSession
-
-html:        不会
-jsp:        会      getSession();
-servlet:     会</code></pre><p> session的销毁</p>
-<pre><code>超时  30分钟
-
-非正常关闭 销毁
-
-正常关闭服务器(序列化)
-
-public class MySessionListener implements HttpSessionListener {
-
-    @Override
-    public void sessionCreated(HttpSessionEvent se) {
-        System.out.println(&quot;创建session了&quot;);
-    }
-
-    @Override
-    public void sessionDestroyed(HttpSessionEvent se) {
-        System.out.println(&quot;销毁session了&quot;);
-    }
-}</code></pre></li>
-</ol>
-<p>作用：</p>
-<pre><code>ServletContextListener
-
-    利用它来，在servletcontext创建的时候
-
-        1. 完成自己想要的初始化工作
-
-        2. 执行自定义任务调度。执行某一个任务。例如Timer  
-
-HttpSessionListener
-
-    统计在线人数.</code></pre><h3 id="监听三个作用域属性状态变更"><a href="#监听三个作用域属性状态变更" class="headerlink" title="监听三个作用域属性状态变更"></a>监听三个作用域属性状态变更</h3><blockquote>
-<p>可以监听在作用域中值的添加、替换、移除的动作。 </p>
-</blockquote>
-<ul>
-<li>servletContext — ServletContextAttributeListener</li>
-</ul>
-<p><img src="https://i.imgur.com/TKtWLyb.png" alt></p>
-<ul>
-<li>request — ServletRequestAttributeListener</li>
-</ul>
-<p><img src="https://i.imgur.com/RzTzckK.png" alt></p>
-<ul>
-<li>session — HttpSessionAttributeListener</li>
-</ul>
-<p><img src="https://i.imgur.com/YnVMefK.png" alt></p>
-<h3 id="监听httpSession里面存值的状态变更"><a href="#监听httpSession里面存值的状态变更" class="headerlink" title="监听httpSession里面存值的状态变更"></a>监听httpSession里面存值的状态变更</h3><blockquote>
-<p>这一类监听器不用注册。</p>
-</blockquote>
-<ul>
-<li>HttpSessionBindingListener</li>
-</ul>
-<blockquote>
-<p>监听对象与session 绑定和解除绑定的动作</p>
-</blockquote>
-<ul>
-<li><p>session.setAttribute();</p>
-</li>
-<li><p>session.removeAttribute();</p>
-<ol>
-<li><p>让javaBean 实现该接口即可</p>
-<pre><code>@Override
-public void valueBound(HttpSessionBindingEvent event) {
-    System.out.println(&quot;对象被绑定进来了&quot;);
-}
-
-@Override
-public void valueUnbound(HttpSessionBindingEvent event) {
-    System.out.println(&quot;对象被解除绑定&quot;);
-}</code></pre></li>
-</ol>
-</li>
-<li><p>HttpSessionActivationListener</p>
-</li>
-</ul>
-<blockquote>
-<p>用于监听现在session的值是 钝化（序列化）还是活化（反序列化）的动作</p>
-</blockquote>
-<ul>
-<li>钝化（序列化）</li>
-</ul>
-<blockquote>
-<p>把内存中的数据 存储到硬盘上</p>
-</blockquote>
-<ul>
-<li>活化（反序列化）</li>
-</ul>
-<blockquote>
-<p>把硬盘中的数据读取到内存中。</p>
-</blockquote>
-<blockquote>
-<p>应该在类中实现此listener接口和serializable接口</p>
-</blockquote>
-<pre><code>public class Bean01 implements HttpSessionActivationListener,Serializable{
-
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void sessionWillPassivate(HttpSessionEvent se) {
-        System.out.println(&quot;session中的值被钝化了&quot;);
-    }
-
-    @Override
-    public void sessionDidActivate(HttpSessionEvent se) {
-        System.out.println(&quot;session中的值被活化了&quot;);
-    }
-
-}</code></pre><ul>
-<li>session的钝化活化的用意何在</li>
-</ul>
-<blockquote>
-<p> session中的值可能会很多，并且我们有很长一段时间不使用这个内存中的值，那么可以考虑把session的值可以存储到硬盘上【钝化】，等下一次在使用的时候，在从硬盘上提取出来。 【活化】</p>
-</blockquote>
-<ul>
-<li>如何让session的在一定时间内钝化. </li>
-</ul>
-<blockquote>
-<p>做配置即可</p>
-</blockquote>
-<pre><code>1. 在tomcat里面 conf/context.xml 里面配置
-
-        对所有的运行在这个服务器的项目生效  
-
-2. 在conf/Catalina/localhost/context.xml 配置
-
-        对 localhost生效。  localhost:8080
-
-3. 在自己的web工程项目中的 META-INF/context.xml
-
-        只对当前的工程生效。
-
-    maxIdleSwap ： 1分钟不用就钝化
-    directory ：  钝化后的那个文件存放的目录位置。 
-
-        tomcat文件夹\work\Catalina\localhost\工程名\钝化文件目录
-
-    &lt;Context&gt;
-        &lt;Manager className=&quot;org.apache.catalina.session.PersistentManager&quot; maxIdleSwap=&quot;1&quot;&gt;
-            &lt;Store className=&quot;org.apache.catalina.session.FileStore&quot; directory=&quot;itheima&quot;/&gt;
-        &lt;/Manager&gt;
-    &lt;/Context&gt;</code></pre><h2 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h2><blockquote>
-<p>过滤器，其实就是对客户端发出来的请求进行过滤。浏览器发出，然后服务器派servlet处理。在中间就可以过滤，其实过滤器起到的是拦截的作用。</p>
-</blockquote>
-<ul>
-<li><p>作用</p>
-<ol>
-<li>对一些敏感词汇进行过滤</li>
-<li>统一设置编码</li>
-<li>自动登录</li>
-<li>…</li>
-</ol>
-</li>
-</ul>
-<h3 id="如何使用Filter"><a href="#如何使用Filter" class="headerlink" title="如何使用Filter"></a>如何使用Filter</h3><ol>
-<li><p>定义一个类，实现Filter（eclipse可以直接定义Filter）</p>
-<pre><code>public class FilterDemo implements Filter {
-
-    public void destroy() {
-    }
-
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println(&quot;来到过滤器了。。。&quot;);
-        chain.doFilter(request, response);
-    }
-
-    public void init(FilterConfig fConfig) throws ServletException {
-    }
-
-}</code></pre></li>
-<li><p>注册过滤器</p>
-</li>
-</ol>
-<blockquote>
-<p>在web.xml里面注册，注册的手法与servlet基本一样。</p>
-</blockquote>
-<pre><code>&lt;filter&gt;
-  &lt;display-name&gt;FilterDemo&lt;/display-name&gt;
-  &lt;filter-name&gt;FilterDemo&lt;/filter-name&gt;
-  &lt;filter-class&gt;com.itheima.filter.FilterDemo&lt;/filter-class&gt;
-&lt;/filter&gt;
-&lt;filter-mapping&gt;
-  &lt;filter-name&gt;FilterDemo&lt;/filter-name&gt;
-  &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-&lt;/filter-mapping&gt;</code></pre><h3 id="Filter的生命周期"><a href="#Filter的生命周期" class="headerlink" title="Filter的生命周期"></a>Filter的生命周期</h3><ul>
-<li>创建</li>
-</ul>
-<blockquote>
-<p>在服务器启动的时候就创建 </p>
-</blockquote>
-<ul>
-<li>销毁</li>
-</ul>
-<blockquote>
-<p>服务器停止的时候</p>
-</blockquote>
-<h3 id="Filter执行顺序"><a href="#Filter执行顺序" class="headerlink" title="Filter执行顺序"></a>Filter执行顺序</h3><ol>
-<li><p>客户端发出请求，先经过过滤器，如果过滤器放行，那么才能到servlet。</p>
-</li>
-<li><p>如果有多个过滤器，那么他们会按照 <strong>注册的映射顺序（filter mapping）</strong> 来排队。只要有一个过滤器不放行，那么后面排队的过滤器以及咱们的servlet都不会收到请求。服务器发送数据到客户端时反向经过过滤器。</p>
-</li>
-</ol>
-<h2 id="Filter细节："><a href="#Filter细节：" class="headerlink" title="Filter细节："></a>Filter细节：</h2><ol>
-<li><p>init方法的参数 FilterConfig , 可以用于获取filter在注册的名字 以及初始化参数。其实这里的设计的初衷与ServletConfig是一样的。</p>
-</li>
-<li><p>如果想放行，那么在doFilter 方法里面操作，使用参数 chain</p>
-<p> chain.doFilter(request, response); 放行，让请求到达下一个目标。</p>
-</li>
-<li><p><url-pattern>/*</url-pattern> 写法格式与servlet一样。</p>
-<ol>
-<li><p>全路径匹配  以 /  开始 </p>
-<p> /LoginServlet</p>
-</li>
-<li><p>以目录匹配 以 / 开始  以 * 结束</p>
-<p> /demo01/*  </p>
-</li>
-<li><p>以后缀名匹配 以 * 开始 以后缀名结束</p>
-<p> *.jsp  *.html *.do </p>
-</li>
-</ol>
-</li>
-<li><p>针对 dispatcher 设置（filter-mapping中设置<dispatcher>)</dispatcher></p>
-<pre><code>REQUEST ： 只要是请求过来，都拦截，默认就是REQUEST 
-FORWARD : 只要是转发都拦截。 
-ERROR ： 页面出错发生跳转 
-INCLUDE ： 包含页面的时候就拦截。</code></pre></li>
-</ol>
-<h3 id="自动登录"><a href="#自动登录" class="headerlink" title="自动登录"></a>自动登录</h3><ul>
-<li>需求分析</li>
-</ul>
-<p><img src="https://i.imgur.com/cfQmUgI.png" alt></p>
-<h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><ol>
-<li><p>搭建数据库</p>
-</li>
-<li><p>搭建页面</p>
-</li>
-</ol>
-<h3 id="登录servlet代码"><a href="#登录servlet代码" class="headerlink" title="登录servlet代码"></a>登录servlet代码</h3><pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    try {
-        String userName = request.getParameter(&quot;username&quot;);
-        String password = request.getParameter(&quot;password&quot;);
-        String autoLogin = request.getParameter(&quot;auto_login&quot;);
-        UserBean user = new UserBean();
-        user.setUsername(userName);
-        user.setPassword(password);
-
-        UserDao dao = new UserDaoImpl();
-        UserBean userBean = dao.login(user);
-
-        if(userBean != null){
-            //成功了，进入首页
-            request.getSession().setAttribute(&quot;userBean&quot;, userBean);
-            response.sendRedirect(&quot;index.jsp&quot;);
-        }else{
-            //不成功...
-            request.getRequestDispatcher(&quot;login.jsp&quot;).forward(request, response);
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-}</code></pre><h3 id="过滤器代码"><a href="#过滤器代码" class="headerlink" title="过滤器代码"></a>过滤器代码</h3><blockquote>
-<p> 过滤器的核心不是完成拦截不给，而是放行显示。它的核心是在放行之前，帮用户完成登录的功能。 </p>
-</blockquote>
-<ul>
-<li>实现思路</li>
-</ul>
-<ol>
-<li><p>先判断session是否有效， 如果有效，就不用取cookie了，直接放行。</p>
-</li>
-<li><p>如果session失效了，那么就取 cookie。</p>
-<ol>
-<li><p>没有cookie 放行 </p>
-</li>
-<li><p>有cookie </p>
-<ol>
-<li>取出来cookie的值，然后完成登录</li>
-<li>把这个用户的值存储到session中</li>
-<li>放行。</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> Filter#doFilter(ServletRequest, ServletResponse, FilterChain)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest req, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	HttpServletRequest request = (HttpServletRequest) req;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//先判断，现在session中还有没有那个userBean.</span></span><br><span class="line">	UserBean userBean = (UserBean) request.getSession().getAttribute(<span class="string">"userBean"</span>);</span><br><span class="line">	<span class="comment">//还有，有效。</span></span><br><span class="line">	<span class="keyword">if</span>(userBean != <span class="keyword">null</span>)&#123;</span><br><span class="line">		chain.doFilter(request, response);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//代表session失效了。</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 看cookie。</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1. 来请求的时候，先从请求里面取出cookie , 但是cookie有很多的key-value</span></span><br><span class="line">		Cookie[] cookies = request.getCookies();</span><br><span class="line">		<span class="comment">//2. 从一堆的cookie里面找出我们以前给浏览器发的那个cookie</span></span><br><span class="line">		Cookie cookie = CookieUtil.findCookie(cookies, <span class="string">"auto_login"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//第一次来</span></span><br><span class="line">		<span class="keyword">if</span>(cookie  == <span class="keyword">null</span>)&#123;</span><br><span class="line">			chain.doFilter(request, response);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//不是第一次。</span></span><br><span class="line">			</span><br><span class="line">			String value = cookie.getValue();</span><br><span class="line">			String username = value.split(<span class="string">"#itheima#"</span>)[<span class="number">0</span>];</span><br><span class="line">			String password = value.split(<span class="string">"#itheima#"</span>)[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">			<span class="comment">//完成登录</span></span><br><span class="line">			UserBean user = <span class="keyword">new</span> UserBean();</span><br><span class="line">			user.setUsername(username);</span><br><span class="line">			user.setPassword(password);</span><br><span class="line"></span><br><span class="line">			UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">			userBean = dao.login(user);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//使用session存这个值到域中，方便下一次未过期前还可以用。</span></span><br><span class="line">			request.getSession().setAttribute(<span class="string">"userBean"</span>, userBean);</span><br><span class="line">			</span><br><span class="line">			chain.doFilter(request, response);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		chain.doFilter(req, response);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//登录servlet</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String username=request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">			String password=request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">			String autoLogin=request.getParameter(<span class="string">"auto_login"</span>);</span><br><span class="line">			System.out.println(autoLogin);</span><br><span class="line">			UserBean user=<span class="keyword">new</span> UserBean();</span><br><span class="line">			user.setPassword(password);</span><br><span class="line">			user.setUsername(username);</span><br><span class="line">			UserDao dao=<span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">			UserBean userBean=dao.login(user);</span><br><span class="line">			<span class="keyword">if</span>(userBean!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="string">"on"</span>.equals(autoLogin)) &#123;</span><br><span class="line">					Cookie cookie=<span class="keyword">new</span> Cookie(<span class="string">"auto_login"</span>, username+<span class="string">"#"</span>+password);</span><br><span class="line">					cookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>);</span><br><span class="line">					cookie.setPath(<span class="string">"/AutoLoginDemo"</span>);</span><br><span class="line">					response.addCookie(cookie);</span><br><span class="line">				&#125;</span><br><span class="line">				request.getSession().setAttribute(<span class="string">"userBean"</span>, userBean);</span><br><span class="line">				response.sendRedirect(<span class="string">"index.jsp"</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				request.getRequestDispatcher(<span class="string">"login.jsp"</span>).forward(request, response);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="BeanUtils的使用"><a href="#BeanUtils的使用" class="headerlink" title="BeanUtils的使用"></a>BeanUtils的使用</h3><blockquote>
-<p>BeanUtils.populate(bean, map);</p>
-</blockquote>
-<blockquote>
-<p>前提：参数名称 需要和javabean的属性名称保持一致</p>
-</blockquote>
-<p>public class MyDateConverter implements Converter {</p>
-<pre><code>@Override
-// 将value 转换 c 对应类型
-// 存在Class参数目的编写通用转换器，如果转换目标类型是确定的，可以不使用c 参数
-public Object convert(Class c, Object value) {
-    String strVal = (String) value;
-    // 将String转换为Date --- 需要使用日期格式化
-    DateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-    try {
-        Date date = dateFormat.parse(strVal);
-        return date;
-    } catch (ParseException e) {
-        e.printStackTrace();
-    }
-    return null;
-}
-
-
-//注册自己的日期转换器
-ConvertUtils.register(new MyDateConverter(), Date.class);
-
-
-//转化数据
-Map map = request.getParameterMap();
-UserBean bean = new UserBean();
-
-转化map中的数据，放置到bean对象身上
-BeanUtils.populate(bean, map);    </code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="Listener-1"><a href="#Listener-1" class="headerlink" title="Listener"></a>Listener</h3><pre><code>8个 
-
-三种类型  
-    针对三个作用域的创建和销毁
-    针对三个作用域的值改变 【添加 | 替换 | 移除】
-    针对session中的值 【钝化 活化】 ， 【绑定  解绑】
-
-钝化 ( 序列化 ) 
-    内存中的对象存储到硬盘  
-
-非正常关闭服务器，钝化。正常关闭服务器 销毁
-
-设置了session，多久时间。context.xml        默认超时失效，session销毁。
-
-
-活化 (反序列化)
-    从硬盘里面读取到内存
-
-
-ServletContextListner： 应用被部署的时候，服务器加载这个项目的时候，做一些初始化工作，任务调度。
-HttpSessionListener    ： 统计在线人数
-HttpSessionActivationListener  ： 钝化活化处理</code></pre><h3 id="Filter-1"><a href="#Filter-1" class="headerlink" title="Filter"></a>Filter</h3><blockquote>
-<p>使用频率更高</p>
-</blockquote>
-<ul>
-<li>如果要写一个过滤器。</li>
-</ul>
-<blockquote>
-<ol>
-<li>定义一个类，实现接口 Filter</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>注册web.xml 与servlet相似。</li>
-</ol>
-</blockquote>
-<ul>
-<li>过滤器放行。 </li>
-</ul>
-<blockquote>
-<p>chain.doFilter(request, response);</p>
-</blockquote>
-<ul>
-<li><p>过滤器生命周期</p>
-<p>  创建： 服务器加载这个项目的时候创建实例</p>
-<p>  销毁： 关闭服务器或者从服务器中移除项目的时候。</p>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-15-JavaEE09/#more">more >></a>
+        
       
 
       
@@ -1903,14 +1266,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -1924,6 +1279,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1959,6 +1322,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -1967,7 +1334,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1979,35 +1346,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Math  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2015,11 +1354,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2031,11 +1370,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2043,11 +1382,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2063,11 +1402,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2075,7 +1410,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

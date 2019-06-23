@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】17. Letter Combinations of a Phone Number | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the teleph">
-<meta name="keywords" content="String Backtracking  Medium">
+  <meta name="description" content="问题描述Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telephone buttons) is">
+<meta name="keywords" content="Medium,String,Backtracking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】17. Letter Combinations of a Phone Number">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-Letter-Combinations-of-a-Phone-Number/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the teleph">
+<meta property="og:description" content="问题描述Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telephone buttons) is">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/rO4BjOj.png">
-<meta property="og:updated_time" content="2019-03-06T08:01:50.437Z">
+<meta property="og:updated_time" content="2019-06-23T08:19:58.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】17. Letter Combinations of a Phone Number">
-<meta name="twitter:description" content="content{:toc}  问题描述Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the teleph">
+<meta name="twitter:description" content="问题描述Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. A mapping of digit to letters (just like on the telephone buttons) is">
 <meta name="twitter:image" content="https://i.imgur.com/rO4BjOj.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
@@ -197,15 +197,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.</p>
 <p>A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
 <p><img src="https://i.imgur.com/rO4BjOj.png" alt></p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><pre><code>Input: &quot;23&quot;
 Output: [&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</code></pre><p>Note:</p>
 <p>Although the above answer is in lexicographical order, your answer could be in any order you want.</p>
+<a id="more"></a>
+
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>需要给出按下几个按键后所有可能的组合。首先使用数组将按键与其代表的字符串关联，然后使用初始值为一个空字符串的队列存储按下第一个键的可能结果（LinkedList可以作为队列使用，remove为出列，add为入列）。按下下一个按键时，将队列中的每个元素依次出列与此按键代表的所有字符进行组合，然后再入列，直到队列头部的元素长度等于此时按下按键的个数为止。每次按键都按此执行，直到所有数字输入完成。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        LinkedList&lt;String&gt; ans=<span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(digits.isEmpty())<span class="keyword">return</span> ans;</span><br><span class="line">        String[] s=&#123;<span class="string">"abc"</span>,<span class="string">"def"</span>,<span class="string">"ghi"</span>,<span class="string">"jkl"</span>,<span class="string">"mno"</span>,<span class="string">"pqrs"</span>,<span class="string">"tuv"</span>,<span class="string">"wxyz"</span>&#125;;</span><br><span class="line">        ans.add(<span class="string">""</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;digits.length();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> num=digits.charAt(i)-<span class="string">'2'</span>;</span><br><span class="line">            <span class="keyword">while</span>(ans.peek().length()==i)&#123;</span><br><span class="line">                String t=ans.remove();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">char</span> c:s[num].toCharArray()) ans.add(t+c);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -250,7 +249,15 @@ Output: [&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;b
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">String Backtracking  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Backtracking</a>
         		</li>
       		
 		</ul>
@@ -497,14 +504,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -518,6 +517,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,6 +560,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -561,7 +572,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,35 +584,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Math  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,11 +592,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,11 +608,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,11 +620,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,11 +640,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,7 +648,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

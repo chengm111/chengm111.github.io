@@ -1171,10 +1171,7 @@ Output: -1</code></pre><h2 id="思路"><a href="#思路" class="headerlink" titl
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
 <pre><code>Input: &quot;III&quot;
 Output: 3</code></pre><p>Example 2:</p>
@@ -1187,12 +1184,10 @@ Output: 58
 Explanation: L = 50, V= 5, III = 3.</code></pre><p>Example 5:</p>
 <pre><code>Input: &quot;MCMXCIV&quot;
 Output: 1994
-Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用HashMap保存罗马数字字符和对应的数字，遍历罗马数字字符串，将对应的数字加入结果中，容易理解的是，若此字符对应的数字大于前一个字符对应的数字，需要减去前一个数字的两倍。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Character,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">'I'</span>, <span class="number">1</span>);</span><br><span class="line">        map.put(<span class="string">'V'</span>, <span class="number">5</span>);</span><br><span class="line">        map.put(<span class="string">'X'</span>, <span class="number">10</span>);</span><br><span class="line">        map.put(<span class="string">'L'</span>, <span class="number">50</span>);</span><br><span class="line">        map.put(<span class="string">'C'</span>, <span class="number">100</span>);</span><br><span class="line">        map.put(<span class="string">'D'</span>, <span class="number">500</span>);</span><br><span class="line">        map.put(<span class="string">'M'</span>, <span class="number">1000</span>);</span><br><span class="line">        <span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++) &#123;</span><br><span class="line">        	<span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; map.get(s.charAt(i))&gt;map.get(s.charAt(i-<span class="number">1</span>))) &#123;</span><br><span class="line">        		re-=<span class="number">2</span>*map.get(s.charAt(i-<span class="number">1</span>));</span><br><span class="line">        	&#125;</span><br><span class="line">        	re+=map.get(s.charAt(i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/roman-to-integer/" target="_blank" rel="noopener">https://leetcode.com/problems/roman-to-integer/</a></p>
-
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-06-Roman-to-Integer/#more">more >></a>
+        
       
 
       
@@ -1205,7 +1200,11 @@ Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</code></pre><h2 id="思路"
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Math  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
         		</li>
       		
 		</ul>
@@ -1353,14 +1352,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -1374,6 +1365,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,6 +1408,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -1417,7 +1420,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,35 +1432,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Math  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1465,11 +1440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1481,11 +1456,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1493,11 +1468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1513,11 +1488,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1525,7 +1496,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

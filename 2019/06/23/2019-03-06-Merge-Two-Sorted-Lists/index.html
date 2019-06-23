@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】21. Merge Two Sorted Lists | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 举例Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4">
-<meta name="keywords" content="Linked-List  Easy">
+  <meta name="description" content="问题描述Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 举例Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4 Output: 1-&amp;gt;1-">
+<meta name="keywords" content="Easy,Linked-List">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】21. Merge Two Sorted Lists">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-Merge-Two-Sorted-Lists/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 举例Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4">
+<meta property="og:description" content="问题描述Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 举例Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4 Output: 1-&amp;gt;1-">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T09:22:42.296Z">
+<meta property="og:updated_time" content="2019-06-23T08:20:39.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】21. Merge Two Sorted Lists">
-<meta name="twitter:description" content="content{:toc}  问题描述Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 举例Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4">
+<meta name="twitter:description" content="问题描述Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists. 举例Input: 1-&amp;gt;2-&amp;gt;4, 1-&amp;gt;3-&amp;gt;4 Output: 1-&amp;gt;1-">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -195,12 +195,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><pre><code>Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4
-Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>创建两个链表，一个re用于定位起点，另一个list用于获取接下来的链表数据。将两个链表数据从头开始比较，较小的那个添加到list中，随后向后移动，直到两个链表有一个为空，最后将不为空的那个链表剩下的数据整体添加到list中</p>
+Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</code></pre><a id="more"></a>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>创建两个链表，一个re用于定位起点，另一个list用于获取接下来的链表数据。将两个链表数据从头开始比较，较小的那个添加到list中，随后向后移动，直到两个链表有一个为空，最后将不为空的那个链表剩下的数据整体添加到list中</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span>(l1==<span class="keyword">null</span>)<span class="keyword">return</span> l2;</span><br><span class="line">       <span class="keyword">if</span>(l2==<span class="keyword">null</span>)<span class="keyword">return</span> l1;</span><br><span class="line">	   ListNode re=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">	   ListNode tem=re;</span><br><span class="line">	   <span class="keyword">while</span>(l1!=<span class="keyword">null</span> &amp;&amp; l2!=<span class="keyword">null</span>) &#123;</span><br><span class="line">		   <span class="keyword">if</span>(l1.val&lt;l2.val) &#123;</span><br><span class="line">			   tem.next=l1;</span><br><span class="line">			   l1=l1.next;			   </span><br><span class="line">		   &#125;</span><br><span class="line">		   <span class="keyword">else</span> &#123;</span><br><span class="line">			   tem.next=l2;</span><br><span class="line">			   l2=l2.next;			   </span><br><span class="line">		   &#125;</span><br><span class="line">		   tem=tem.next;</span><br><span class="line">	   &#125;</span><br><span class="line">	   <span class="keyword">if</span>(l1!=<span class="keyword">null</span>)tem.next=l1;</span><br><span class="line">	   <span class="keyword">if</span>(l2!=<span class="keyword">null</span>)tem.next=l2;</span><br><span class="line">	   <span class="keyword">return</span> re.next;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>引用：</p>
@@ -244,7 +243,11 @@ Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</code></pre><h2 id="思路"><a href="#�
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linked-List  Easy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Easy</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Linked-List</a>
         		</li>
       		
 		</ul>
@@ -491,14 +494,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -512,6 +507,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,6 +550,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -555,7 +562,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,35 +574,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Math  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -603,11 +582,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +598,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -631,11 +610,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,11 +630,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,7 +638,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

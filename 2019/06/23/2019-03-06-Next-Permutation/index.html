@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】31. Next Permutation | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as th">
-<meta name="keywords" content="Array Medium">
+  <meta name="description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
+<meta name="keywords" content="Medium,Array">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】31. Next Permutation">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-Next-Permutation/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as th">
+<meta property="og:description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/cJkan70.png">
-<meta property="og:updated_time" content="2019-03-06T13:11:21.278Z">
+<meta property="og:updated_time" content="2019-06-23T08:20:55.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】31. Next Permutation">
-<meta name="twitter:description" content="content{:toc}  问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as th">
+<meta name="twitter:description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
 <meta name="twitter:image" content="https://i.imgur.com/cJkan70.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
@@ -197,16 +197,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
 <p>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).</p>
 <p>The replacement must be in-place and use only constant extra memory.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.</p>
 <pre><code>1,2,3 → 1,3,2
 3,2,1 → 1,2,3
-1,1,5 → 1,5,1</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><blockquote>
+1,1,5 → 1,5,1</code></pre><a id="more"></a>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><blockquote>
 <p>首先明白下一个排序（next permutation）的含义</p>
 </blockquote>
 <p>考虑三个字符所组成的序列{a,b,c}。这个序列有六个可能的排列组合：abc，acb，bac，bca，cab，cba。这些排列组合根据less-than操作符做字典顺序(lexicographical)的排序。也就是说，abc名列第一，因为每一个元素都小于其后的元素。acb是次一个排列组合，因为它是固定了a(序列内最小元素)之后所做的新组合。同样道理，那些固定b(序列中次小元素)而做的排列组合，在次序上将先于那些固定c而做的排列组合。以bac和bca为例，bac在bca之前，因为次序ac小于序列ca。面对bca，我们可以说其前一个排列组合是bac，而其后一个排列组合是cab。序列abc没有“前一个”排列组合，cba没有“后一个”排列组合。</p>
@@ -271,7 +270,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Array Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
         		</li>
       		
 		</ul>
@@ -518,14 +521,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -539,6 +534,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,6 +577,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -582,7 +589,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,35 +601,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Math  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,11 +609,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,11 +625,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -658,11 +637,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,11 +657,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,7 +665,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

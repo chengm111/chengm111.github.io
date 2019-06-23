@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:  String Easy author: Chen content{:toc}  问题描述Write a function to find the longest common prefix string amongst an ar">
+  <meta name="description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:    - String    - Easy author: Chen问题描述Write a function to find the longest common prefix string amongst an array of">
 <meta name="keywords" content="code_blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Blog for learning">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-Longest-Common-Prefix/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:  String Easy author: Chen content{:toc}  问题描述Write a function to find the longest common prefix string amongst an ar">
+<meta property="og:description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:    - String    - Easy author: Chen问题描述Write a function to find the longest common prefix string amongst an array of">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T06:34:48.166Z">
+<meta property="og:updated_time" content="2019-06-23T08:20:14.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Blog for learning">
-<meta name="twitter:description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:  String Easy author: Chen content{:toc}  问题描述Write a function to find the longest common prefix string amongst an ar">
+<meta name="twitter:description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:    - String    - Easy author: Chen问题描述Write a function to find the longest common prefix string amongst an array of">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -181,11 +181,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<p>layout: post<br>title:  “【LeetCode】14. Longest Common Prefix”<br>categories: leetcode<br>tags:  String Easy</p>
-<h2 id="author-Chen"><a href="#author-Chen" class="headerlink" title="author: Chen"></a>author: Chen</h2><ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>layout: post<br>title:  “【LeetCode】14. Longest Common Prefix”<br>categories: leetcode<br>tags:<br>    - String<br>    - Easy</p>
+<h2 id="author-Chen"><a href="#author-Chen" class="headerlink" title="author: Chen"></a>author: Chen</h2><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
 <p>If there is no common prefix, return an empty string “”.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
 <pre><code>Input: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
@@ -194,6 +191,8 @@ Output: &quot;fl&quot;</code></pre><p>Example 2:</p>
 Output: &quot;&quot;
 Explanation: There is no common prefix among the input strings.</code></pre><p>Note:</p>
 <p>All given inputs are in lowercase letters a-z.</p>
+<a id="more"></a>
+
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>输入的是一个字符串数组，以第一个字符串为基准，判断其余字符串相应位置的字符是否与第一个字符串相同。当存在不同时输出第一个字符串相应的子串，否则输出整个字符串。注意当字符串数组不存在或无元素时直接输出空字符串。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num=strs.length;</span><br><span class="line">        <span class="keyword">if</span>(strs==<span class="keyword">null</span> || num==<span class="number">0</span>)<span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;strs[<span class="number">0</span>].length();i++) &#123;</span><br><span class="line">        	<span class="keyword">char</span> c=strs[<span class="number">0</span>].charAt(i);</span><br><span class="line">        	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;num;j++) &#123;</span><br><span class="line">        		<span class="keyword">if</span>(i==strs[j].length() || strs[j].charAt(i)!=c) &#123;</span><br><span class="line">        			<span class="keyword">return</span> strs[<span class="number">0</span>].substring(<span class="number">0</span>, i);</span><br><span class="line">        		&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -485,14 +484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -506,6 +497,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,6 +540,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -549,7 +552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,35 +564,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Math  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Linked-List Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,11 +572,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,11 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,11 +600,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,11 +620,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -657,7 +628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
