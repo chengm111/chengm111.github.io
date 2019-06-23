@@ -196,10 +196,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
 <p>Each number in candidates may only be used once in the combination.</p>
 <p>Note:</p>
 <p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.</p>
@@ -217,12 +214,10 @@ A solution set is:
 [
   [1,2,2],
   [5]
-]</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>整体思路与39题类似，采用回溯算法递归完成搜索。其中有两点不同，第一是本题有重复元素，第二是每个元素只能使用一次，因此在递归的时候有些不同。首先是下层递归起始点是本元素的下一个，其次是同一层递归不能使用数值相同的元素，当某元素与本层第一个元素相同时直接跳过（其中层数就是目标数组的元素下标）。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum2(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(candidates);</span><br><span class="line">        backtrack(list,<span class="keyword">new</span> ArrayList&lt;&gt;(),candidates,target,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; list,List&lt;Integer&gt; sublist,<span class="keyword">int</span>[] candidates,<span class="keyword">int</span> remain,<span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(remain&lt;<span class="number">0</span>)<span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(remain==<span class="number">0</span>)list.add(<span class="keyword">new</span> ArrayList&lt;&gt;(sublist));</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=start;i&lt;candidates.length;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i&gt;start&amp;&amp;candidates[i]==candidates[i-<span class="number">1</span>])<span class="keyword">continue</span>;</span><br><span class="line">                sublist.add(candidates[i]);</span><br><span class="line">                backtrack(list,sublist,candidates,remain-candidates[i],i+<span class="number">1</span>);</span><br><span class="line">                sublist.remove(sublist.size()-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/combination-sum-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/combination-sum-ii/</a></p>
-
+]</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-13-40. Combination Sum II/#more">more >></a>
+        
       
 
       
@@ -235,7 +230,15 @@ A solution set is:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Array Backtracking  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Backtracking</a>
         		</li>
       		
 		</ul>
@@ -306,10 +309,7 @@ A solution set is:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:</p>
 <pre><code>1. Each row must contain the digits 1-9 without repetition.
 2. Each column must contain the digits 1-9 without repetition.
 3. Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.</code></pre><p>The Sudoku board could be partially filled, where empty cells are filled with the character ‘.’.</p>
@@ -348,12 +348,9 @@ modified to 8. Since there are two 8&apos;s in the top left 3x3 sub-box, it is i
 <li>The given board contain only digits 1-9 and the character ‘.’.</li>
 <li>The given board size is always 9x9.</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断一个数独题目是否成立。主要分为横竖及九宫格三次判断，而横竖两次逻辑几乎一样，可以合并在一起。首先确定需要判断的格子集合，再将其中非空的数据依次写入哈希表中，由哈希表的性质可知，若表中已存在元素，添加的时候会返回false。当有任意一种情况返回false时，判断此数组题目不成立，否则判断成立。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">8</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!isPartiallyValid(board,i,<span class="number">0</span>,i,<span class="number">8</span>))<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(!isPartiallyValid(board,<span class="number">0</span>,i,<span class="number">8</span>,i))<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">7</span>;i+=<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">7</span>;j+=<span class="number">3</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!isPartiallyValid(board,i,j,i+<span class="number">2</span>,j+<span class="number">2</span>))<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPartiallyValid</span><span class="params">(<span class="keyword">char</span>[][] board,<span class="keyword">int</span> xstart,<span class="keyword">int</span> ystart, <span class="keyword">int</span> xend,<span class="keyword">int</span> yend)</span></span>&#123;</span><br><span class="line">        HashSet&lt;Character&gt; part=<span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=xstart;i&lt;=xend;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=ystart;j&lt;=yend;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(board[i][j]!=<span class="string">'.'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!part.add(board[i][j]))<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/valid-sudoku/" target="_blank" rel="noopener">https://leetcode.com/problems/valid-sudoku/</a></p>
-
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-07-Valid-Sudoku/#more">more >></a>
+        
       
 
       
@@ -366,7 +363,11 @@ modified to 8. Since there are two 8&apos;s in the top left 3x3 sub-box, it is i
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hash-Table  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hash-Table</a>
         		</li>
       		
 		</ul>
@@ -456,12 +457,10 @@ Output: false</code></pre><p>Example 4:</p>
 <pre><code>Input: &quot;([)]&quot;
 Output: false</code></pre><p>Example 5:</p>
 <pre><code>Input: &quot;{[]}&quot;
-Output: true</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用HashMap建立左右括号的关联；遍历字符串，当出现的为左括号时，无条件将其放入栈中，当出现的为右括号时，需要栈中顶部元素与其为对应的括号，如果成立，将顶部元素弹出，继续遍历，否则返回false。若最终栈中没有元素剩余，则返回true。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span>(s==<span class="keyword">null</span>)<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">int</span> num=s.length();</span><br><span class="line">        HashMap&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();        </span><br><span class="line">        LinkedList&lt;Character&gt; list=<span class="keyword">new</span> LinkedList&lt;&gt;();      </span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">'&#125;'</span>,<span class="string">'&#123;'</span>);</span><br><span class="line">        map.put(<span class="string">']'</span>,<span class="string">'['</span>);</span><br><span class="line">        map.put(<span class="string">')'</span>,<span class="string">'('</span>);</span><br><span class="line">        <span class="keyword">if</span>(num%<span class="number">2</span>!=<span class="number">0</span>)<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; (s.charAt(i)==<span class="string">')'</span>|| s.charAt(i)==<span class="string">'&#125;'</span> || s.charAt(i)==<span class="string">']'</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i)==<span class="string">'('</span>|| s.charAt(i)==<span class="string">'['</span> || s.charAt(i)==<span class="string">'&#123;'</span>)&#123;                </span><br><span class="line">                list.addLast(s.charAt(i));               </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">            	<span class="keyword">char</span> c= list.pollLast();</span><br><span class="line">            	<span class="keyword">if</span>(c!=map.get(s.charAt(i)))<span class="keyword">return</span> <span class="keyword">false</span>;            	           	</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(list.size()==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">https://leetcode.com/problems/valid-parentheses/</a></p>
-
+Output: true</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-07-Valid-Parentheses/#more">more >></a>
+        
       
 
       
@@ -474,7 +473,15 @@ Output: true</code></pre><h2 id="思路"><a href="#思路" class="headerlink" ti
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">String Stack  Easy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Easy</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Stack</a>
         		</li>
       		
 		</ul>
@@ -545,10 +552,7 @@ Output: true</code></pre><h2 id="思路"><a href="#思路" class="headerlink" ti
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
 <p>You may assume no duplicates in the array.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
 <pre><code>Input: [1,3,5,6], 5
@@ -558,12 +562,10 @@ Output: 1</code></pre><p>Example 3:</p>
 <pre><code>Input: [1,3,5,6], 7
 Output: 4</code></pre><p>Example 4:</p>
 <pre><code>Input: [1,3,5,6], 0
-Output: 0</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>比较简单，直接遍历即可。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&gt;=target)<span class="keyword">return</span> i;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">https://leetcode.com/problems/search-insert-position/</a></p>
-
+Output: 0</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-07-Search-Insert-Position/#more">more >></a>
+        
       
 
       
@@ -576,7 +578,15 @@ Output: 0</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Array Binary-Search Easy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Binary-Search</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Easy</a>
         		</li>
       		
 		</ul>
@@ -647,10 +657,7 @@ Output: 0</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
 <p>The same repeated number may be chosen from candidates unlimited number of times.</p>
 <p>Note:</p>
 <p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.</p>
@@ -667,12 +674,10 @@ A solution set is:
   [2,2,2,2],
   [2,3,3],
   [3,5]
-]</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>经典的回溯法题目之一，使用递归的深度优先算法。首先将数组排序，以便判断时方便。每次将搜索到的数据存入list中，将target减去此数据，并从本位置开始进行下次回溯，当target小于0时说明数据总和过大，停止递归；当target等于0时说明至此地结果满足要求，将其保存；这两种情况都应该停止递归，返回上一层，弹出最末尾的值再添加下一个待搜索的数据。若target还大于0，则继续往下搜索。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">combinationSum</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; combinationSum(<span class="keyword">int</span>[] candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result=<span class="keyword">new</span> LinkedList&lt;&gt;();<span class="comment">//返回的列表</span></span><br><span class="line">        List&lt;Integer&gt; temp=<span class="keyword">new</span> LinkedList&lt;&gt;();<span class="comment">//临时列表</span></span><br><span class="line">        <span class="comment">//首先进行排序，避免重复搜索</span></span><br><span class="line">        Arrays.sort(candidates);<span class="comment">//排序</span></span><br><span class="line">        combin(candidates,target,<span class="number">0</span>,temp,result);</span><br><span class="line">        <span class="comment">//返回列表</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">combin</span><span class="params">(<span class="keyword">int</span>[] arrays,<span class="keyword">int</span> target,<span class="keyword">int</span> index,List&lt;Integer&gt; temp,List&lt;List&lt;Integer&gt;&gt; result)</span></span>&#123;</span><br><span class="line">        <span class="comment">//如果目标和的差值小于0，表示该路径出现错误</span></span><br><span class="line">        <span class="keyword">if</span> (target&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//等于表示，这是一条正确的路径，将其add到result上</span></span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (target==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="comment">//这里每次重新创建temp列表，避免与之前的列表重复</span></span><br><span class="line">            result.add(<span class="keyword">new</span> LinkedList&lt;&gt;(temp));</span><br><span class="line">        <span class="comment">//否则的话，目标和的差值大于0，继续进行深度优先搜索</span></span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//选取之后的每个数字都是一种可能性，其中index的作用是避免搜索之前搜索过的数组元素</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i=index;i&lt;arrays.length;i++)&#123;</span><br><span class="line">                temp.add(arrays[i]);</span><br><span class="line">                <span class="comment">//先加入元素，然后进行搜索，这里进行DFS搜索，如果不满足，就把temp列表里的元素去除掉</span></span><br><span class="line">                combin(arrays,target-arrays[i],i,temp,lists);</span><br><span class="line">               <span class="comment">//目标和不符合，所以将临时列表的最新值去除，然后尝试下一个元素</span></span><br><span class="line">                temp.remove(temp.size()-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/combination-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/combination-sum/</a></p>
-
+]</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-07-Combination-Sum/#more">more >></a>
+        
       
 
       
@@ -685,7 +690,15 @@ A solution set is:
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Array Backtracking  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Backtracking</a>
         		</li>
       		
 		</ul>
@@ -756,10 +769,7 @@ A solution set is:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
 <pre><code>P   A   H   N
 A P L S I I G
 Y   I   R</code></pre><p>And then read line by line: “PAHNAPLSIIGYIR”</p>
@@ -773,12 +783,10 @@ Output: &quot;PINALSIGYAHRPI&quot;</code></pre><p>Explanation:</p>
 <pre><code>P     I    N
 A   L S  I G
 Y A   H R
-P     I</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>将原字符串按照字符所在的行重新分为若干个StringBuilder，用list保存划分的StringBuilder，并遍历原字符串将字符保存到其所在的分组中，最后再组合成为新字符串。注意当行数只有1或行数大于字符串长度时可直接输出原字符串。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(numRows==<span class="number">1</span>)<span class="keyword">return</span> s;</span><br><span class="line">        List&lt;StringBuilder&gt; list=<span class="keyword">new</span> ArrayList&lt;StringBuilder&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.min(s.length(),numRows);i++)&#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> StringBuilder());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> curRow=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span> goup=<span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> c=s.charAt(i);</span><br><span class="line">            list.get(curRow).append(c);</span><br><span class="line">            curRow+=step;</span><br><span class="line">            <span class="keyword">if</span>(curRow==<span class="number">0</span>||curRow==numRows-<span class="number">1</span>)goup=!goup;</span><br><span class="line">            step=(goup?-<span class="number">1</span>:<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder re=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.min(s.length(),numRows);i++)re.append(list.get(i));</span><br><span class="line">        <span class="keyword">return</span> re.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/zigzag-conversion/" target="_blank" rel="noopener">https://leetcode.com/problems/zigzag-conversion/</a></p>
-
+P     I</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-06-ZigZag-Conversion/#more">more >></a>
+        
       
 
       
@@ -791,7 +799,11 @@ P     I</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">String  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
@@ -862,17 +874,12 @@ P     I</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given a linked list, swap every two adjacent nodes and return its head.</p>
 <p>You may not modify the values in the list’s nodes, only nodes itself may be changed.</p>
-<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><pre><code>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遍历链表，每两个元素调换一次位置，之后向后移动，继续调换位置。由于直接改变指针所在元素容易找不到之前的链表，因此将指针所在位置的下一个和下下个元素互换，再接回链表上。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode re=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        re.next=head;</span><br><span class="line">        ListNode current=re;</span><br><span class="line">        <span class="keyword">while</span>(current.next!=<span class="keyword">null</span> &amp;&amp; current.next.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode first=current.next;</span><br><span class="line">            ListNode second=current.next.next;</span><br><span class="line">            first.next=second.next;</span><br><span class="line">            second.next=first;</span><br><span class="line">            current.next=second;</span><br><span class="line">            current=current.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> re.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">https://leetcode.com/problems/swap-nodes-in-pairs/</a></p>
-
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><pre><code>Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-06-Swap-Nodes-in-Pairs/#more">more >></a>
+        
       
 
       
@@ -885,7 +892,11 @@ P     I</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Linked-List  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Linked-List</a>
         		</li>
       		
 		</ul>
@@ -956,10 +967,7 @@ P     I</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement atoi which converts a string to an integer.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement atoi which converts a string to an integer.</p>
 <p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
 <p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
 <p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
@@ -981,12 +989,10 @@ Output: 0
 Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.</code></pre><p>Example 5:</p>
 <pre><code>Input: &quot;-91283472332&quot;
 Output: -2147483648
-Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.Thefore INT_MIN (−231) is returned.</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>用trim方法先去除首位空格。Character.isDigit()方法可以用于判断字符是否为数字，遍历字符串，当结果是数字时将此字符转换为数字并加入结果中。需要注意两点：一是字符串首部有正负号时需判断并记录；二是当结果超过int类型范围时输出int的边界值，此判断需在添加个位数前进行，否则会有异常，具体做法见解答</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        str=str.trim();</span><br><span class="line">        <span class="keyword">if</span>(str.length()==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(str.charAt(<span class="number">0</span>)==<span class="string">'-'</span>||str.charAt(<span class="number">0</span>)==<span class="string">'+'</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> sig=(str.charAt(<span class="number">0</span>)==<span class="string">'+'</span>)?<span class="number">1</span>:-<span class="number">1</span>;</span><br><span class="line">            num=sig*num;</span><br><span class="line">            <span class="keyword">if</span>(str.length()==<span class="number">1</span>)<span class="keyword">return</span> re;</span><br><span class="line">            str=str.substring(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>((i&lt;str.length())&amp;&amp;(Character.isDigit(str.charAt(i))))&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=str.charAt(i)-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span>(Integer.MAX_VALUE/<span class="number">10</span>&lt;re||(Integer.MAX_VALUE/<span class="number">10</span>==re&amp;&amp;Integer.MAX_VALUE%<span class="number">10</span>&lt;temp))&#123;</span><br><span class="line">                <span class="keyword">return</span> num==-<span class="number">1</span>?Integer.MIN_VALUE:Integer.MAX_VALUE;</span><br><span class="line">            &#125;</span><br><span class="line">            re=re*<span class="number">10</span>+temp;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        re=re*num;</span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/string-to-integer-atoi/" target="_blank" rel="noopener">https://leetcode.com/problems/string-to-integer-atoi/</a></p>
-
+Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.Thefore INT_MIN (−231) is returned.</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-06-String-to-Integer-(atoi)/#more">more >></a>
+        
       
 
       
@@ -999,7 +1005,15 @@ Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math  String Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
@@ -1070,10 +1084,7 @@ Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
 <p>(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).</p>
 <p>You are given a target value to search. If found in the array return its index, otherwise return -1.</p>
 <p>You may assume no duplicate exists in the array.</p>
@@ -1082,12 +1093,10 @@ Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit
 <pre><code>Input: nums = [4,5,6,7,0,1,2], target = 0
 Output: 4</code></pre><p>Example 2:</p>
 <pre><code>Input: nums = [4,5,6,7,0,1,2], target = 3
-Output: -1</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于有序数组从中间某处截断并且截断后的两部分前后颠倒，因此首先需要判断start-middle和middle-end是不是有序的，随后判断target是否在有序数组中，通过二分法完成搜索。</p>
-<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start=<span class="number">0</span>;<span class="keyword">int</span> end=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(start&lt;=end)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[start]==target)<span class="keyword">return</span> start;</span><br><span class="line">            <span class="keyword">if</span>(nums[end]==target)<span class="keyword">return</span> end;</span><br><span class="line">            <span class="keyword">int</span> middle=(start+end)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[middle]==target)<span class="keyword">return</span> middle;</span><br><span class="line">            <span class="keyword">if</span>(nums[start]&lt;=nums[middle])&#123;</span><br><span class="line">                <span class="keyword">if</span>(target&gt;nums[start]&amp;&amp;target&lt;nums[middle])end=middle-<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> start=middle+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(nums[middle]&lt;=nums[end])&#123;</span><br><span class="line">                <span class="keyword">if</span>(target&gt;nums[middle]&amp;&amp;target&lt;nums[end])start=middle+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> end=middle-<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">https://leetcode.com/problems/search-in-rotated-sorted-array/</a></p>
-
+Output: -1</code></pre>
+        
+          <a class="article-more-a" href="/2019/06/23/2019-03-06-Search-in-Rotated-Sorted-Array/#more">more >></a>
+        
       
 
       
@@ -1100,7 +1109,15 @@ Output: -1</code></pre><h2 id="思路"><a href="#思路" class="headerlink" titl
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Array Binary-Search  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Binary-Search</a>
         		</li>
       		
 		</ul>
@@ -1408,10 +1425,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -1420,11 +1433,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,59 +1441,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Binary-Search  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hash-Table  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Stack</a>
               </li>
              
               <li class="article-tag-list-item">

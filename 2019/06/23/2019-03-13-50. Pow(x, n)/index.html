@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】50. Pow(x, n) | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Implement pow(x, n), which calculates x raised to the power n (xn). Note: -100.0 &amp;lt; x &amp;lt; 100.0n is a 32-bit signed integer, within the range [−231, 231 − 1] 举例 思路本题直接使用循环将x乘n次的">
-<meta name="keywords" content="Math Binary-Search Medium">
+  <meta name="description" content="问题描述Implement pow(x, n), which calculates x raised to the power n (xn). Note: -100.0 &amp;lt; x &amp;lt; 100.0n is a 32-bit signed integer, within the range [−231, 231 − 1] 举例">
+<meta name="keywords" content="Medium,Math,Binary-Search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】50. Pow(x, n)">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-13-50. Pow(x, n)/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Implement pow(x, n), which calculates x raised to the power n (xn). Note: -100.0 &amp;lt; x &amp;lt; 100.0n is a 32-bit signed integer, within the range [−231, 231 − 1] 举例 思路本题直接使用循环将x乘n次的">
+<meta property="og:description" content="问题描述Implement pow(x, n), which calculates x raised to the power n (xn). Note: -100.0 &amp;lt; x &amp;lt; 100.0n is a 32-bit signed integer, within the range [−231, 231 − 1] 举例">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/N85zxeN.png">
-<meta property="og:updated_time" content="2019-03-13T09:42:12.707Z">
+<meta property="og:updated_time" content="2019-06-23T08:30:35.886Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】50. Pow(x, n)">
-<meta name="twitter:description" content="content{:toc}  问题描述Implement pow(x, n), which calculates x raised to the power n (xn). Note: -100.0 &amp;lt; x &amp;lt; 100.0n is a 32-bit signed integer, within the range [−231, 231 − 1] 举例 思路本题直接使用循环将x乘n次的">
+<meta name="twitter:description" content="问题描述Implement pow(x, n), which calculates x raised to the power n (xn). Note: -100.0 &amp;lt; x &amp;lt; 100.0n is a 32-bit signed integer, within the range [−231, 231 − 1] 举例">
 <meta name="twitter:image" content="https://i.imgur.com/N85zxeN.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
@@ -197,13 +197,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement pow(x, n), which calculates x raised to the power n (x<sup>n</sup>).</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement pow(x, n), which calculates x raised to the power n (x<sup>n</sup>).</p>
 <p>Note:</p>
 <p>-100.0 &lt; x &lt; 100.0<br>n is a 32-bit signed integer, within the range [−2<sup>31</sup>, 2<sup>31</sup> − 1]</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><img src="https://i.imgur.com/N85zxeN.png" alt></p>
+<a id="more"></a>
+
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本题直接使用循环将x乘n次的话会超时。类似于折半查找，采用递归的方法，一步步将n缩小一半，将x平方，当n是奇数时注意多乘以一个x的值。当x为负数时需要特殊考虑，特别是n为最小int数时，其相反数超过int界限，需要考虑到溢出错误。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n==Integer.MIN_VALUE)&#123;</span><br><span class="line">                n++;</span><br><span class="line">                n=-n;</span><br><span class="line">                x=<span class="number">1</span>/x;</span><br><span class="line">                <span class="keyword">return</span> x*x*myPow(x*x,n/<span class="number">2</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            n=-n;</span><br><span class="line">            x=<span class="number">1</span>/x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (n%<span class="number">2</span>==<span class="number">0</span>)?(myPow(x*x,n/<span class="number">2</span>)):x*(myPow(x*x,n/<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -248,7 +247,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Math Binary-Search Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Binary-Search</a>
         		</li>
       		
 		</ul>
@@ -551,10 +558,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -563,11 +566,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,59 +574,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Binary-Search  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hash-Table  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Stack</a>
               </li>
              
               <li class="article-tag-list-item">

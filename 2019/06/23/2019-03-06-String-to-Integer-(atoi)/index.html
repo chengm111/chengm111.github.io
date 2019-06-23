@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】8. String to Integer (atoi) | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then">
-<meta name="keywords" content="Math  String Medium">
+  <meta name="description" content="问题描述Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from">
+<meta name="keywords" content="Medium,Math,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】8. String to Integer (atoi)">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-String-to-Integer-(atoi)/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then">
+<meta property="og:description" content="问题描述Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T06:01:29.741Z">
+<meta property="og:updated_time" content="2019-06-23T08:28:05.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】8. String to Integer (atoi)">
-<meta name="twitter:description" content="content{:toc}  问题描述Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then">
+<meta name="twitter:description" content="问题描述Implement atoi which converts a string to an integer. The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -195,10 +195,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement atoi which converts a string to an integer.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Implement atoi which converts a string to an integer.</p>
 <p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
 <p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
 <p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
@@ -220,7 +217,9 @@ Output: 0
 Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.</code></pre><p>Example 5:</p>
 <pre><code>Input: &quot;-91283472332&quot;
 Output: -2147483648
-Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.Thefore INT_MIN (−231) is returned.</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>用trim方法先去除首位空格。Character.isDigit()方法可以用于判断字符是否为数字，遍历字符串，当结果是数字时将此字符转换为数字并加入结果中。需要注意两点：一是字符串首部有正负号时需判断并记录；二是当结果超过int类型范围时输出int的边界值，此判断需在添加个位数前进行，否则会有异常，具体做法见解答</p>
+Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.Thefore INT_MIN (−231) is returned.</code></pre><a id="more"></a>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>用trim方法先去除首位空格。Character.isDigit()方法可以用于判断字符是否为数字，遍历字符串，当结果是数字时将此字符转换为数字并加入结果中。需要注意两点：一是字符串首部有正负号时需判断并记录；二是当结果超过int类型范围时输出int的边界值，此判断需在添加个位数前进行，否则会有异常，具体做法见解答</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        str=str.trim();</span><br><span class="line">        <span class="keyword">if</span>(str.length()==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> re=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(str.charAt(<span class="number">0</span>)==<span class="string">'-'</span>||str.charAt(<span class="number">0</span>)==<span class="string">'+'</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> sig=(str.charAt(<span class="number">0</span>)==<span class="string">'+'</span>)?<span class="number">1</span>:-<span class="number">1</span>;</span><br><span class="line">            num=sig*num;</span><br><span class="line">            <span class="keyword">if</span>(str.length()==<span class="number">1</span>)<span class="keyword">return</span> re;</span><br><span class="line">            str=str.substring(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>((i&lt;str.length())&amp;&amp;(Character.isDigit(str.charAt(i))))&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=str.charAt(i)-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span>(Integer.MAX_VALUE/<span class="number">10</span>&lt;re||(Integer.MAX_VALUE/<span class="number">10</span>==re&amp;&amp;Integer.MAX_VALUE%<span class="number">10</span>&lt;temp))&#123;</span><br><span class="line">                <span class="keyword">return</span> num==-<span class="number">1</span>?Integer.MIN_VALUE:Integer.MAX_VALUE;</span><br><span class="line">            &#125;</span><br><span class="line">            re=re*<span class="number">10</span>+temp;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        re=re*num;</span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>引用：</p>
@@ -264,7 +263,15 @@ Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math  String Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
@@ -567,10 +574,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -579,11 +582,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,59 +590,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Binary-Search  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hash-Table  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Stack</a>
               </li>
              
               <li class="article-tag-list-item">

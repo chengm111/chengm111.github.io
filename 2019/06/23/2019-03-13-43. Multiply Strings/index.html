@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】43. Multiply Strings | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string. 举例Example 1: Input: num1 = &amp;quot;2&amp;quot;, n">
-<meta name="keywords" content="Math String  Medium">
+  <meta name="description" content="问题描述Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string. 举例Example 1: Input: num1 = &amp;quot;2&amp;quot;, num2 = &amp;quot;3&amp;qu">
+<meta name="keywords" content="Medium,Math,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】43. Multiply Strings">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-13-43. Multiply Strings/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string. 举例Example 1: Input: num1 = &amp;quot;2&amp;quot;, n">
+<meta property="og:description" content="问题描述Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string. 举例Example 1: Input: num1 = &amp;quot;2&amp;quot;, num2 = &amp;quot;3&amp;qu">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-13T07:15:36.008Z">
+<meta property="og:updated_time" content="2019-06-23T08:29:22.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】43. Multiply Strings">
-<meta name="twitter:description" content="content{:toc}  问题描述Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string. 举例Example 1: Input: num1 = &amp;quot;2&amp;quot;, n">
+<meta name="twitter:description" content="问题描述Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string. 举例Example 1: Input: num1 = &amp;quot;2&amp;quot;, num2 = &amp;quot;3&amp;qu">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -195,16 +195,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
 <pre><code>Input: num1 = &quot;2&quot;, num2 = &quot;3&quot;
 Output: &quot;6&quot;</code></pre><p>Example 2:</p>
 <pre><code>Input: num1 = &quot;123&quot;, num2 = &quot;456&quot;
 Output: &quot;56088&quot;</code></pre><p>Note:</p>
 <p>The length of both num1 and num2 is &lt; 110.<br>Both num1 and num2 contain only digits 0-9.<br>Both num1 and num2 do not contain any leading zero, except the number 0 itself.<br>You must not use any built-in BigInteger library or convert the inputs to integer directly.</p>
+<a id="more"></a>
+
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本题限制不能直接转换为BigInteger类型进行计算，所以只能拆分每一位并组装。首先应该知道两数相乘得到的结果位数最大是两数的位数之和。以此最大位为零位，当第一个数的i位和第二个数的j位相乘时，得到的结果加在结果数的i+j+1位。第一次两轮循环从尾部遍历两个数并得到结果的每一位原始数据，第二次循环将原始数据余数保留，商传递到上一位，最终得到结果。注意最后头部零的去除。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">multiply</span><span class="params">(String num1, String num2)</span> </span>&#123;</span><br><span class="line">        StringBuilder sb=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> n1=num1.length();<span class="keyword">int</span> n2=num2.length();</span><br><span class="line">        <span class="keyword">int</span>[] collection=<span class="keyword">new</span> <span class="keyword">int</span>[n1+n2];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n1-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=n2-<span class="number">1</span>;j&gt;=<span class="number">0</span>;j--)&#123;</span><br><span class="line">                <span class="keyword">int</span> a1=num1.charAt(i)-<span class="string">'0'</span>;</span><br><span class="line">                <span class="keyword">int</span> a2=num2.charAt(j)-<span class="string">'0'</span>;</span><br><span class="line">                collection[i+j+<span class="number">1</span>]+=a1*a2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> carry=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=collection.length-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=(collection[i]+carry)%<span class="number">10</span>;</span><br><span class="line">            carry=(collection[i]+carry)/<span class="number">10</span>;</span><br><span class="line">            collection[i]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:collection)sb.append(num);</span><br><span class="line">        <span class="keyword">while</span>(sb.length()!=<span class="number">0</span>&amp;&amp;sb.charAt(<span class="number">0</span>)==<span class="string">'0'</span>)sb.deleteCharAt(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> sb.length()==<span class="number">0</span>?<span class="string">"0"</span>:sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -249,7 +248,15 @@ Output: &quot;56088&quot;</code></pre><p>Note:</p>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math String  Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
         		</li>
       		
 		</ul>
@@ -552,10 +559,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
@@ -564,11 +567,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,59 +575,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Linked-List</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Array Binary-Search  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">String Stack  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Hash-Table  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Stack</a>
               </li>
              
               <li class="article-tag-list-item">
