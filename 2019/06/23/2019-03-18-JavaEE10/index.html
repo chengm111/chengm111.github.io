@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 自定义注解 动态代理解决编码问题">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:23:18.696Z">
+<meta property="og:updated_time" content="2019-06-23T08:55:11.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】基础加强">
 <meta name="twitter:description" content="摘要 自定义注解 动态代理解决编码问题">
@@ -243,90 +243,74 @@
 <p>  @Override   @Deprecated  @Suppresswarning</p>
 </li>
 <li><p>自定义注解</p>
-<p>  格式:</p>
-<pre><code>public @interface 注解名称{
-   public  属性类型  属性名称1();
-   public  属性类型  属性名称2()  default  默认值;
-}</code></pre><p>  自定义注解属性支持的类型:</p>
-<pre><code>基本数据类型(4类8种),String,Class,Annotation(注解类型),枚举类型,
-以及以上类型的一维数组类型</code></pre></li>
+<ul>
+<li><p>格式:</p>
+<p>  public @interface 注解名称{<br>   public  属性类型  属性名称1();<br>   public  属性类型  属性名称2()  default  默认值;<br>  }</p>
+</li>
+<li><p>自定义注解属性支持的类型:</p>
+<p>  基本数据类型(4类8种),String,Class,Annotation(注解类型),枚举类型,以及以上类型的一维数组类型</p>
+</li>
+</ul>
+</li>
 <li><p>注解作用: 配置作用</p>
 <p>  配置:开发的时候部分信息不希望写死在程序中,例如数据库的用户名和密码,可以将用户名和密码存放在.txt , .properties , .xml文件中,利用程序来读取文件中的内容</p>
 </li>
 <li><p>框架:一大堆工具类组合,目的:加速项目开发<br>后期的学习中,框架部分hibernate,spring,struts2很多信息需要配置,提供了2种形式配置<br>(xml,注解)</p>
 </li>
 <li><p>什么时候用注解来做配置?</p>
-<p>  如果配置信息不会发生的修改,例如servlet路径,建议使用注解的形式<br>  如果配置信息需要发生频繁的修改,例如数据库的用户名和密码信息,</p>
-<pre><code>建议采用传统方法 (.txt , .properties , .xml)
-
-  信息有多种的时候适合xml
-  &lt;students&gt;
-    &lt;stu&gt;
-     &lt;stuNum&gt;s002&lt;/stuNun&gt;
-     &lt;stuPhone&gt;
-        &lt;stuHomePhone&gt;124324&lt;/stuHomePhone&gt;
-        &lt;stuCmpPhone&gt;12342143&lt;/stuCmpPhone&gt;
-     &lt;/stuPhone&gt;
-    &lt;/stu&gt;
-  &lt;/students&gt;</code></pre></li>
-<li><p>测试使用自定义注解</p>
-<pre><code>@MyAnno01(timeout=100,c=java.util.Date.class,strs={&quot;aaa&quot;,&quot;bbb&quot;})
-    public void test01(){
-
-    }</code></pre></li>
+<p>  如果配置信息不会发生的修改,例如servlet路径,建议使用注解的形式<br>  如果配置信息需要发生频繁的修改,例如数据库的用户名和密码信息,建议采用传统方法(.txt , .properties , .xml)</p>
+<p>  信息有多种的时候适合xml</p>
+</li>
 </ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">students</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">stu</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">stuNum</span>&gt;</span>s002<span class="tag">&lt;/<span class="name">stuNun</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">stuPhone</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stuHomePhone</span>&gt;</span>124324<span class="tag">&lt;/<span class="name">stuHomePhone</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stuCmpPhone</span>&gt;</span>12342143<span class="tag">&lt;/<span class="name">stuCmpPhone</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">stuPhone</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">stu</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">students</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>通过反射读取字节码上的注解信息<br>md.isAnnotationPresent(MyTest.class)</li>
+<li>测试使用自定义注解</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MyAnno</span>01(timeout=<span class="number">100</span>,c=java.util.Date.class,strs=&#123;<span class="string">"aaa"</span>,<span class="string">"bbb"</span>&#125;)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test01</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过反射读取字节码上的注解信息<br><code>md.isAnnotationPresent(MyTest.class)</code></li>
 </ul>
 <h3 id="案例-模拟Junit"><a href="#案例-模拟Junit" class="headerlink" title="案例:模拟Junit"></a>案例:模拟Junit</h3><ul>
 <li><p>自定义注解@MyAnno01</p>
 <p>  通过元注解@Rentention @Target声明当前注解作用域以及目标对象,如果没有声明,在运行期间是无法获取到注解的信息</p>
-<pre><code>@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface MyAnno01 {
-    public long timeout() default -1;
-}</code></pre></li>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyAnno01 &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">timeout</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li><p>定义UserDao</p>
 <p>  创建4个方法addUser delUser uptUser getUser ,在前三个方法上加载注解@MyAnno01</p>
 </li>
 <li><p>定义类MyJunit, 模拟JUnit</p>
 <p>  将UserDao.class文件加载到内存<br>  获取到字节码文件上所有的方法<br>  遍历方法,判断每个方法上是否加载了@MyTest注解<br>  如果当前方法上设置@MyTest,执行当前的方法  </p>
-<pre><code>public class MyJunit {
-
-    public static void main(String[] args) throws Exception {
-        Class clazz=Class.forName(&quot;dao.UserDao&quot;);
-        Method[] methods = clazz.getMethods();
-        for (Method method : methods) {
-            if(method.isAnnotationPresent(MyAnno01.class)) {
-                method.invoke(new UserDao());
-            }
-        }        
-    }
-}</code></pre></li>
+</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyJunit</span> </span>&#123;		</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Class clazz=Class.forName(<span class="string">"dao.UserDao"</span>);</span><br><span class="line">		Method[] methods = clazz.getMethods();</span><br><span class="line">		<span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">			<span class="keyword">if</span>(method.isAnnotationPresent(MyAnno01.class)) &#123;</span><br><span class="line">				method.invoke(<span class="keyword">new</span> UserDao());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="注解要求"><a href="#注解要求" class="headerlink" title="注解要求:"></a>注解要求:</h3><pre><code>听懂,实现上课代码.
 开发中地位:类似dom4j解析XML文件. XML文件的解析程序员不会去解析,只会配置XML文件
-后期的开发中不会自定义注解,更不会反射读取注解信息.</code></pre><h2 id="使用动态代理解决网站的字符集编码问题"><a href="#使用动态代理解决网站的字符集编码问题" class="headerlink" title="使用动态代理解决网站的字符集编码问题"></a>使用动态代理解决网站的字符集编码问题</h2><ol>
-<li><p>设计模式</p>
-<p> 软件开发过程中,遇到相似问题,将问题的解决方式抽取模型(套路)<br> 单例,工厂,适配器,装饰者,动态代理</p>
-</li>
-<li><p>谷歌汽车场景</p>
-<p> java设计了汽车开发约定<br> interface ICar{ start  run  stop}<br> class GoogleCar implements ICar{}  </p>
-<blockquote>
+后期的开发中不会自定义注解,更不会反射读取注解信息.</code></pre><h2 id="使用动态代理解决网站的字符集编码问题"><a href="#使用动态代理解决网站的字符集编码问题" class="headerlink" title="使用动态代理解决网站的字符集编码问题"></a>使用动态代理解决网站的字符集编码问题</h2><p>1.设计模式</p>
+<pre><code>软件开发过程中,遇到相似问题,将问题的解决方式抽取模型(套路)  
+单例,工厂,适配器,装饰者,动态代理</code></pre><p>2.谷歌汽车场景</p>
+<pre><code>java设计了汽车开发约定  
+interface ICar{ start  run  stop}  
+class GoogleCar implements ICar{}  </code></pre><blockquote>
 <p>希望在将谷歌Car接入到生态圈平台时,增强汽车启动功能</p>
 </blockquote>
-</li>
-</ol>
 <ul>
 <li><p>装饰者模式 </p>
 <p>  场景:二次开发的时候,无法获取到源码,也无法使用继承前提下,要对已经存在对象上的功能进行增强.<br>  前提: 可以获取到被装饰的对象GoogleCar实现的所有接口<br>  实现思路: 自定定义装饰类实现ICar接口,为自定义装饰类传递被装饰的对象  </p>
 <p>  弊端:如果被实现的接口中的方法过多,装饰类中的方法过多冗余</p>
 </li>
 <li><p>动态代理模式</p>
-<p>  原理:通过虚拟机在内存中创建类似MyCar.class文件 </p>
-<p>  要创建MyCar.class文件需要告诉虚拟机:</p>
-<pre><code>1_被创建的字节码文件上应该有多少方法
-2_被创建的字节码上的方法如何来实现</code></pre></li>
+<p>  原理:通过虚拟机在内存中创建类似MyCar.class文件<br>  要创建MyCar.class文件需要告诉虚拟机:</p>
+<ol>
+<li>被创建的字节码文件上应该有多少方法</li>
+<li>被创建的字节码上的方法如何来实现</li>
+</ol>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCar</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1param: 固定值: 告诉虚拟机用哪个字节码加载器加载内存中创建出的字节码文件</span></span><br><span class="line">		<span class="comment">//2param: 告诉虚拟机内存中正在被创建的字节码文件中应该有哪些方法</span></span><br><span class="line">		<span class="comment">//3param: 告诉虚拟机正在被创建的字节码上的各个方法如何处理</span></span><br><span class="line">		ICar car=(ICar)Proxy.newProxyInstance(TestCar.class.getClassLoader(), GoogleCar.class.getInterfaces(),<span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//method:代表正在执行的方法</span></span><br><span class="line">			<span class="comment">//args:代表正在执行的方法中的参数</span></span><br><span class="line">			<span class="comment">//Object:代表方法执行完毕之后的返回值</span></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">				<span class="comment">//经过测试得知:method代表当前正在执行的每个方法</span></span><br><span class="line">				<span class="comment">//System.out.println(method.getName());</span></span><br><span class="line">				<span class="comment">//执行当前的方法</span></span><br><span class="line">				<span class="comment">//method.invoke(new GoogleCar(), args);</span></span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//代表每个方法执行完毕之后返回对象</span></span><br><span class="line">				Object obj=<span class="keyword">null</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">if</span>(method.getName().equalsIgnoreCase(<span class="string">"start"</span>))&#123;</span><br><span class="line">					System.out.println(<span class="string">"检查天气是否良好"</span>);</span><br><span class="line"></span><br><span class="line">					<span class="comment">//打印args中的内容</span></span><br><span class="line">					System.out.println(Arrays.toString(args));</span><br><span class="line">					</span><br><span class="line">					obj=method.invoke(<span class="keyword">new</span> GoogleCar(), args);</span><br><span class="line">					System.out.println(<span class="string">"检查路况是否拥堵"</span>);</span><br><span class="line">					</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					obj=method.invoke(<span class="keyword">new</span> GoogleCar(), args);	</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> obj;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		</span><br><span class="line">		String cc=car.start(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line">		System.out.println(cc);</span><br><span class="line">		car.run();</span><br><span class="line">		car.stop();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -343,24 +327,13 @@ public @interface MyAnno01 {
 <li><p>步骤</p>
 <ol>
 <li><p>new DynamicWeb Project &gt;Index.html</p>
-<pre><code>&lt;h1&gt;post方式提交中文&lt;/h1&gt;
-&lt;form action=&quot;/day18_v3/ServletDemo&quot; method=&quot;post&quot;&gt;
-    User:&lt;input type=&quot;&quot; name=&quot;username&quot;/&gt;&lt;br/&gt;
-    &lt;input type=&quot;submit&quot;/&gt;
-&lt;/form&gt;
-
-&lt;h1&gt;get方式提交中文&lt;/h1&gt;
-&lt;form action=&quot;/day18_v3/ServletDemo&quot; method=&quot;get&quot;&gt;
-    User:&lt;input type=&quot;&quot; name=&quot;username&quot;/&gt;&lt;br/&gt;
-    &lt;input type=&quot;submit&quot;/&gt;
-&lt;/form&gt;</code></pre></li>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>post方式提交中文<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/day18_v3/ServletDemo"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">	User:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">"username"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>get方式提交中文<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/day18_v3/ServletDemo"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">	User:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">""</span> <span class="attr">name</span>=<span class="string">"username"</span>/&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>ServletDemo</p>
 <p> 无论是在post/get方法,执行以下语句不存在中文乱码问题<br> String um=request.getParameter(“username”);<br> System.out.println(um);</p>
 </li>
-<li><p>过滤器中,为request上的getParameter()功能进行增强</p>
-<p> 思路:</p>
-<p>   判断当前的请求是get/post  request.getMethod();<br>   如果是post, 设置一句话: request.setCharacterEncoding(“utf-8”); 放行<br>   如果是get,调用原先的String v=request.getParameter(name);</p>
-<pre><code>将v进行转码,放行  </code></pre></li>
+<li><p>过滤器中,为request上的getParameter()功能进行增强<br> 思路:<br>   判断当前的请求是get/post  request.getMethod();<br>   如果是post, 设置一句话: request.setCharacterEncoding(“utf-8”); 放行<br>   如果是get,调用原先的String v=request.getParameter(name);<br>   将v进行转码,放行  </p>
+</li>
 </ol>
 </li>
 </ul>
@@ -662,15 +635,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -718,11 +691,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">

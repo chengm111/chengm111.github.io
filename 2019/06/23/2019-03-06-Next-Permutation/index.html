@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/cJkan70.png">
-<meta property="og:updated_time" content="2019-06-23T08:20:55.592Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/LeetCode/3.png">
+<meta property="og:updated_time" content="2019-06-23T09:15:57.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】31. Next Permutation">
 <meta name="twitter:description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
-<meta name="twitter:image" content="https://i.imgur.com/cJkan70.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/LeetCode/3.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -209,7 +209,7 @@
 <p>首先明白下一个排序（next permutation）的含义</p>
 </blockquote>
 <p>考虑三个字符所组成的序列{a,b,c}。这个序列有六个可能的排列组合：abc，acb，bac，bca，cab，cba。这些排列组合根据less-than操作符做字典顺序(lexicographical)的排序。也就是说，abc名列第一，因为每一个元素都小于其后的元素。acb是次一个排列组合，因为它是固定了a(序列内最小元素)之后所做的新组合。同样道理，那些固定b(序列中次小元素)而做的排列组合，在次序上将先于那些固定c而做的排列组合。以bac和bca为例，bac在bca之前，因为次序ac小于序列ca。面对bca，我们可以说其前一个排列组合是bac，而其后一个排列组合是cab。序列abc没有“前一个”排列组合，cba没有“后一个”排列组合。</p>
-<p><img src="https://i.imgur.com/cJkan70.png" alt></p>
+<p><img src="/assets/img/LeetCode/3.png" alt></p>
 <p>具体方法为：</p>
 <ol>
 <li><p>从后向前查找第一个相邻元素对(i,j)，并且满足A[i] &lt; A[j]。</p>
@@ -533,15 +533,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,11 +589,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
