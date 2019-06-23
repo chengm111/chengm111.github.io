@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【JavaEE】事务&amp;数据库连接池&amp;DBUtils | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  摘要 事务 数据库连接池 DBUtils  事务 Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。所有的数据都回归到最初的状态(回滚)   为什么要有事务?   为了确保逻辑的成功。例子：银行的转账。   使用命令行方式演示事务。 开启事务   start transaction;  提交或者回滚事务">
+  <meta name="description" content="摘要 事务 数据库连接池 DBUtils">
 <meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【JavaEE】事务&amp;数据库连接池&amp;DBUtils">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-02-25-JavaEE06/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  摘要 事务 数据库连接池 DBUtils  事务 Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。所有的数据都回归到最初的状态(回滚)   为什么要有事务?   为了确保逻辑的成功。例子：银行的转账。   使用命令行方式演示事务。 开启事务   start transaction;  提交或者回滚事务">
+<meta property="og:description" content="摘要 事务 数据库连接池 DBUtils">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/zIlufbq.png">
 <meta property="og:image" content="https://i.imgur.com/N8n8OLw.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://i.imgur.com/EzO7Pjb.png">
 <meta property="og:image" content="https://i.imgur.com/fDfF8CJ.png">
 <meta property="og:image" content="https://i.imgur.com/QfC791N.png">
-<meta property="og:updated_time" content="2019-02-26T05:16:17.338Z">
+<meta property="og:updated_time" content="2019-06-23T08:08:40.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】事务&amp;数据库连接池&amp;DBUtils">
-<meta name="twitter:description" content="content{:toc}  摘要 事务 数据库连接池 DBUtils  事务 Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。所有的数据都回归到最初的状态(回滚)   为什么要有事务?   为了确保逻辑的成功。例子：银行的转账。   使用命令行方式演示事务。 开启事务   start transaction;  提交或者回滚事务">
+<meta name="twitter:description" content="摘要 事务 数据库连接池 DBUtils">
 <meta name="twitter:image" content="https://i.imgur.com/zIlufbq.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
@@ -73,7 +73,15 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/Java基础/">Java</a></li>
+				<li><a href="/categories/JavaSE/">JavaSE</a></li>
+	        
+				<li><a href="/categories/JavaEE/">JavaEE</a></li>
+	        
+				<li><a href="/categories/leetcode/">LeetCode</a></li>
+	        
+				<li><a href="/categories/前端基础/">前端</a></li>
+	        
+				<li><a href="/categories/数据库/">数据库</a></li>
 	        
 			</ul>
 		</nav>
@@ -129,6 +137,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -144,12 +160,20 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/Java基础/">Java</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/JavaSE/">JavaSE</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/JavaEE/">JavaEE</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/leetcode/">LeetCode</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/前端基础/">前端</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/数据库/">数据库</a></li>
 		        
 				</ul>
 			</nav>
@@ -184,14 +208,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
+        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><ul>
 <li>事务</li>
 <li>数据库连接池</li>
 <li>DBUtils</li>
 </ul>
+<a id="more"></a>
+
+
+
+
+
+
 <h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><blockquote>
 <p>Transaction  其实指的一组操作，里面包含许多个单一的逻辑。只要有一个逻辑没有执行成功，那么都算失败。所有的数据都回归到最初的状态(回滚)</p>
 </blockquote>
@@ -998,11 +1026,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1015,10 +1039,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1042,35 +1062,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String Dynamic-Programming</a>
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String Easy</a>
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array  Two-Points Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Dynamic-Programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Two-Pointers Hash-Table Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Binary-Search Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String Two-Pointers  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1078,11 +1090,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1094,15 +1126,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1110,7 +1134,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1118,7 +1142,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1134,15 +1166,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1150,27 +1174,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">html 前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css js 前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">js 前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据库 MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库 JDBC</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java基础 排序</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1178,7 +1214,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jQuery 前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
             
             <div class="clearfix"></div>

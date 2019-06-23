@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>【LeetCode】34. Find First and Last Position of Element in Sorted Array | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="content{:toc}  问题描述Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order o">
-<meta name="keywords" content="Array Binary-Search Medium">
+  <meta name="description" content="问题描述Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n). If t">
+<meta name="keywords" content="Medium,Array,Binary-Search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【LeetCode】34. Find First and Last Position of Element in Sorted Array">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-Find-First-and-Last-Position-of-Element-in-Sorted-Array/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="content{:toc}  问题描述Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order o">
+<meta property="og:description" content="问题描述Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n). If t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-06T14:00:11.762Z">
+<meta property="og:updated_time" content="2019-06-23T08:10:48.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】34. Find First and Last Position of Element in Sorted Array">
-<meta name="twitter:description" content="content{:toc}  问题描述Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order o">
+<meta name="twitter:description" content="问题描述Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n). If t">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -60,7 +60,15 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/Java基础/">Java</a></li>
+				<li><a href="/categories/JavaSE/">JavaSE</a></li>
+	        
+				<li><a href="/categories/JavaEE/">JavaEE</a></li>
+	        
+				<li><a href="/categories/leetcode/">LeetCode</a></li>
+	        
+				<li><a href="/categories/前端基础/">前端</a></li>
+	        
+				<li><a href="/categories/数据库/">数据库</a></li>
 	        
 			</ul>
 		</nav>
@@ -116,6 +124,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -131,12 +147,20 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/Java基础/">Java</a></li>
+					<li style="width: 16.666666666666668%"><a href="/categories/JavaSE/">JavaSE</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/JavaEE/">JavaEE</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/leetcode/">LeetCode</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/前端基础/">前端</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/categories/数据库/">数据库</a></li>
 		        
 				</ul>
 			</nav>
@@ -171,17 +195,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p>
 <p>Your algorithm’s runtime complexity must be in the order of O(log n).</p>
 <p>If the target is not found in the array, return [-1, -1].</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
 <pre><code>Input: nums = [5,7,7,8,8,10], target = 8
 Output: [3,4]</code></pre><p>Example 2:</p>
 <pre><code>Input: nums = [5,7,7,8,8,10], target = 6
-Output: [-1,-1]</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>主要难点在于需要时间复杂度为O(log n)，因此不能遍历整个数组求两个值。此时需要用两次二分法分别求得两个下标。注意左右的判别不能相同，否则只会有一个下标结果。当判断最小下标时，当mid的值等于target时，end也向前移动；当判断最大下标时，只有mid的值大于target，end才向前移动，此时得到的下标是最后一个下标+1.综上两次二分法即可得到结果。</p>
+Output: [-1,-1]</code></pre><a id="more"></a>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>主要难点在于需要时间复杂度为O(log n)，因此不能遍历整个数组求两个值。此时需要用两次二分法分别求得两个下标。注意左右的判别不能相同，否则只会有一个下标结果。当判断最小下标时，当mid的值等于target时，end也向前移动；当判断最大下标时，只有mid的值大于target，end才向前移动，此时得到的下标是最后一个下标+1.综上两次二分法即可得到结果。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] searchRange(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] re=&#123;-<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> left=getindex(nums,target,<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">if</span>(left==nums.length||nums[left]!=target)<span class="keyword">return</span> re;</span><br><span class="line">        re[<span class="number">0</span>]=left;</span><br><span class="line">        <span class="keyword">int</span> right=getindex(nums,target,<span class="keyword">false</span>)-<span class="number">1</span>;</span><br><span class="line">        re[<span class="number">1</span>]=right;</span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getindex</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> target,<span class="keyword">boolean</span> left)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start=<span class="number">0</span>,end=nums.length;</span><br><span class="line">        <span class="keyword">while</span>(start&lt;end)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid=(start+end)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt;target||(left&amp;&amp;nums[mid]==target))end=mid;</span><br><span class="line">            <span class="keyword">else</span> start=mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>引用：</p>
@@ -225,7 +248,15 @@ Output: [-1,-1]</code></pre><h2 id="思路"><a href="#思路" class="headerlink"
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Array Binary-Search Medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Medium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Array</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Binary-Search</a>
         		</li>
       		
 		</ul>
@@ -472,11 +503,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,10 +516,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,35 +539,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String Dynamic-Programming</a>
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Two-Pointers  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">String Easy</a>
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array  Two-Points Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Dynamic-Programming</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Two-Pointers Hash-Table Medium</a>
+                <a href="javascript:void(0)" class="js-tag color1">Array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Array Binary-Search Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String Two-Pointers  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color3">Two-Pointers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +567,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">String Backtracking  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Linked-List  Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Math  Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,15 +603,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Array Two-Pointers  Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math  String Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,7 +611,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linked-List  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +619,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">String  Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Array Binary-Search Easy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,15 +643,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math String  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Array  Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,27 +651,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">html 前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">Math Binary-Search Medium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css js 前端</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">js 前端</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据库 MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库 JDBC</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java基础 排序</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,7 +691,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">jQuery 前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
             
             <div class="clearfix"></div>
