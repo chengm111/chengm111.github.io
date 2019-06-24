@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 循环结构 方法和重载">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T07:49:17.494Z">
+<meta property="og:updated_time" content="2019-06-24T09:01:20.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础4">
 <meta name="twitter:description" content="摘要 循环结构 方法和重载">
@@ -201,14 +201,18 @@
 </ul>
 <a id="more"></a>
 <h2 id="循环结构概述和for语句的格式及其使用"><a href="#循环结构概述和for语句的格式及其使用" class="headerlink" title="循环结构概述和for语句的格式及其使用"></a>循环结构概述和for语句的格式及其使用</h2><ul>
-<li>A:循环结构的分类<ul>
+<li><p>A:循环结构的分类</p>
+<ul>
 <li>for,while,do…while </li>
 </ul>
 </li>
-<li>B:循环结构for语句的格式：</li>
-<li><pre><code>for(初始化表达式;条件表达式;循环后的操作表达式) {
-    循环体;
-}</code></pre></li>
+<li><p>B:循环结构for语句的格式：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(初始化表达式;条件表达式;循环后的操作表达式) &#123;</span><br><span class="line">    循环体;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
 <li>C执行流程：<ul>
 <li>a:执行初始化语句</li>
 <li>b:执行判断条件语句,看其返回值是true还是false<ul>
@@ -224,10 +228,7 @@
 </ul>
 <h2 id="循环结构while语句的格式和基本使用"><a href="#循环结构while语句的格式和基本使用" class="headerlink" title="循环结构while语句的格式和基本使用"></a>循环结构while语句的格式和基本使用</h2><ul>
 <li><p>A:循环结构while语句的格式：</p>
-</li>
-<li><p>while循环的基本格式：<br>while(判断条件语句) {<br>  循环体语句;<br>}</p>
-<p>完整格式：</p>
-<p>初始化语句;<br>while(判断条件语句) {<br>   循环体语句;<br>   控制条件语句;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while循环的基本格式：</span><br><span class="line">while(判断条件语句) &#123;</span><br><span class="line">	循环体语句;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">完整格式：</span><br><span class="line"></span><br><span class="line">初始化语句;</span><br><span class="line">while(判断条件语句) &#123;</span><br><span class="line">	 循环体语句;</span><br><span class="line">	 控制条件语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>B:执行流程：</p>
 <ul>
@@ -245,17 +246,8 @@
 </ul>
 <h2 id="循环结构do…while语句的格式和基本使用"><a href="#循环结构do…while语句的格式和基本使用" class="headerlink" title="循环结构do…while语句的格式和基本使用"></a>循环结构do…while语句的格式和基本使用</h2><ul>
 <li><p>A:循环结构do…while语句的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">	循环体语句;</span><br><span class="line">&#125;while(判断条件语句);</span><br><span class="line"></span><br><span class="line">完整格式；</span><br><span class="line">初始化语句;</span><br><span class="line">do &#123;</span><br><span class="line">	循环体语句;</span><br><span class="line">	控制条件语句;</span><br><span class="line">&#125;while(判断条件语句);</span><br></pre></td></tr></table></figure>
 </li>
-<li><pre><code>do {
-    循环体语句;
-}while(判断条件语句);
-
-完整格式；
-初始化语句;
-do {
-    循环体语句;
-    控制条件语句;
-}while(判断条件语句);</code></pre></li>
 <li><p>B:执行流程：</p>
 <ul>
 <li>a:执行初始化语句</li>
@@ -300,15 +292,10 @@ do {
 </ul>
 </li>
 <li><p>B:代码优化</p>
-</li>
-<li><pre><code>注意：
-&apos;\x&apos; x表示任意，\是转义符号,这种做法叫转移字符。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">注意：</span><br><span class="line">&apos;\x&apos; x表示任意，\是转义符号,这种做法叫转移字符。</span><br><span class="line"></span><br><span class="line">&apos;\t&apos;	tab键的位置</span><br><span class="line">&apos;\r&apos;	回车</span><br><span class="line">&apos;\n&apos;	换行</span><br><span class="line">&apos;\&quot;&apos;转义双引号（用于打印等）</span><br><span class="line">&apos;\&apos;&apos;同上</span><br></pre></td></tr></table></figure>
 
-&apos;\t&apos;    tab键的位置
-&apos;\r&apos;    回车
-&apos;\n&apos;    换行
-&apos;\&quot;&apos;转义双引号（用于打印等）
-&apos;\&apos;&apos;同上</code></pre></li>
+
+</li>
 </ul>
 <h2 id="控制跳转语句break语句"><a href="#控制跳转语句break语句" class="headerlink" title="控制跳转语句break语句"></a>控制跳转语句break语句</h2><ul>
 <li>A:break的使用场景<ul>
@@ -324,11 +311,9 @@ do {
 </ul>
 <h2 id="控制跳转语句标号"><a href="#控制跳转语句标号" class="headerlink" title="控制跳转语句标号"></a>控制跳转语句标号</h2><ul>
 <li>标号:标记某个循环对其控制</li>
-<li>标号组成规则:其实就是合法的标识符</li>
-<li><pre><code>a: for(;;){
-      break a;
-   }
-http://www.baidu.com 此处为一个标号加一个单行注释，可以在代码中出现但无意义。</code></pre></li>
+<li>标号组成规则:其实就是合法的标识符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a: for(;;)&#123;</span><br><span class="line">      break a;</span><br><span class="line">   &#125;</span><br><span class="line">http://www.baidu.com 此处为一个标号加一个单行注释，可以在代码中出现但无意义。</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
 <h2 id="控制跳转语句return语句"><a href="#控制跳转语句return语句" class="headerlink" title="控制跳转语句return语句"></a>控制跳转语句return语句</h2><ul>
 <li>A:return的作用<ul>
@@ -344,20 +329,21 @@ http://www.baidu.com 此处为一个标号加一个单行注释，可以在代�
 </li>
 </ul>
 <h2 id="方法概述和格式说明"><a href="#方法概述和格式说明" class="headerlink" title="方法概述和格式说明"></a>方法概述和格式说明</h2><ul>
-<li>A:为什么要有方法<ul>
+<li><p>A:为什么要有方法</p>
+<ul>
 <li>提高代码的复用性 </li>
 </ul>
 </li>
-<li>B:什么是方法<ul>
+<li><p>B:什么是方法</p>
+<ul>
 <li>完成特定功能的代码块。 </li>
 </ul>
 </li>
-<li>C:方法的格式</li>
-<li><pre><code>修饰符 返回值类型 方法名(参数类型 参数名1,参数类型 参数名2...) {
-    方法体语句;
-    return 返回值; 
-} </code></pre></li>
-<li>D:方法的格式说明<ul>
+<li><p>C:方法的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(参数类型 参数名1,参数类型 参数名2...) &#123;</span><br><span class="line">	方法体语句;</span><br><span class="line">	return 返回值; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>D:方法的格式说明</p>
+<ul>
 <li>修饰符：目前就用 public static。后面我们再详细的讲解其他的修饰符。</li>
 <li>返回值类型：就是功能结果的数据类型。</li>
 <li>方法名：符合命名规则即可。方便我们的调用。</li>
@@ -713,10 +699,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -734,6 +716,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">string</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -773,11 +759,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -797,11 +783,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

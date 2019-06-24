@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 数组">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/Whj3R84.png">
-<meta property="og:updated_time" content="2019-06-23T07:50:31.990Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/29.png">
+<meta property="og:updated_time" content="2019-06-24T08:55:59.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础5">
 <meta name="twitter:description" content="摘要 数组">
-<meta name="twitter:image" content="https://i.imgur.com/Whj3R84.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/29.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -213,6 +213,7 @@
 </ul>
 </li>
 </ul>
+<p>​    </p>
 <h2 id="初始化值"><a href="#初始化值" class="headerlink" title="初始化值"></a>初始化值</h2><ul>
 <li>整数类型：0</li>
 <li>浮点类型：0.0</li>
@@ -246,12 +247,12 @@
 </ul>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p><code>int[] arr = new int[3];</code> 动态初始化，创建三块连续空间。在栈中储存变量arr，堆中储存new出来的3个对象。</p>
 <h2 id="多个数组的内存分配"><a href="#多个数组的内存分配" class="headerlink" title="多个数组的内存分配"></a>多个数组的内存分配</h2><ul>
-<li><p>每次新建数组就会在内存的堆和栈中分配空间给新的对象和变量。当利用一个数组定义另一个数组时：</p>
-<pre><code>int[] arr1=new int[3];
-int[] arr2=arr1;</code></pre></li>
+<li>每次新建数组就会在内存的堆和栈中分配空间给新的对象和变量。当利用一个数组定义另一个数组时：</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int[] arr1=new int[3];</span><br><span class="line">int[] arr2=arr1;</span><br></pre></td></tr></table></figure>
+
 <p>arr2和arr1指向的地址相同，改变其中一个数据，另一个会随之改变。  </p>
-<p><img src="https://i.imgur.com/Whj3R84.png" alt>  </p>
+<p><img src="/assets/img/SE/29.png" alt>  </p>
 <h2 id="静态初始化"><a href="#静态初始化" class="headerlink" title="静态初始化"></a>静态初始化</h2><pre><code>1. 数据类型[] 数组名 =new 数据类型[] {元素1，元素2，...}
 2. 数据类型[] 数组名 ={元素1，元素2，...}
 第一种可以先声明后赋值，第二种必须同时声明和赋值。</code></pre><h2 id="越界和空指针"><a href="#越界和空指针" class="headerlink" title="越界和空指针"></a>越界和空指针</h2><ul>
@@ -559,10 +560,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -580,6 +577,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">string</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,11 +620,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,11 +644,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
