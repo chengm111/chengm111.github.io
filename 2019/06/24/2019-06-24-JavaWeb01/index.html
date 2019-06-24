@@ -16,12 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 通用servlet编写 环境搭建 注册功能 邮箱功能">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/assets/img/web/02.png">
 <meta property="og:image" content="http://yoursite.com/assets/img/web/01.png">
-<meta property="og:updated_time" content="2019-06-24T12:12:52.053Z">
+<meta property="og:updated_time" content="2019-06-24T12:18:13.683Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【Web项目】1">
 <meta name="twitter:description" content="摘要 通用servlet编写 环境搭建 注册功能 邮箱功能">
-<meta name="twitter:image" content="http://yoursite.com/assets/img/web/01.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/web/02.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -230,6 +231,7 @@
 <p>开发约定<br>为了项目管理方便,不会从客户端直接发起请求到JSP页面.<br>先请求到Servlet,在由Servlet转发到JSP页面.</p>
 </blockquote>
 <p>1    页面路径跳转<br>/jsp/index.jsp  修改连接<br>  <code>&lt;a href=&quot;${pageContext.request.contextPath}/UserServlet?method=registUI&quot;&gt;注册&lt;/a&gt;</code><br>2_UserServlet__&gt;registUI<br>  return “/jsp/regist.jsp”;</p>
+<h3 id="检验用户名是否可用"><a href="#检验用户名是否可用" class="headerlink" title="检验用户名是否可用"></a>检验用户名是否可用</h3><p><img src="/assets/img/web/02.png" alt></p>
 <h3 id="注册功能原理分析"><a href="#注册功能原理分析" class="headerlink" title="注册功能原理分析"></a>注册功能原理分析</h3><p><img src="/assets/img/web/01.png" alt></p>
 <h3 id="开发步骤约定-普通MVC功能"><a href="#开发步骤约定-普通MVC功能" class="headerlink" title="开发步骤约定(普通MVC功能)"></a>开发步骤约定(普通MVC功能)</h3><p>1_准备工作(表单属性设置,链接拼接,Ajax编写)<br>  准备工作实现完毕之后,可以从客户端向服务端发起请求</p>
 <p>2_Servlet<br>  明确要实现的功能,中文注释,代码</p>
@@ -264,11 +266,6 @@
                 <span class="tooltip-inner">
                   <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
                     
                     
                     <div class="reward-box-item">
@@ -403,7 +400,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目简介"><span class="toc-number">2.</span> <span class="toc-text">项目简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用Servlet的编写"><span class="toc-number">3.</span> <span class="toc-text">通用Servlet的编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建项目环境"><span class="toc-number">4.</span> <span class="toc-text">搭建项目环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现用户注册功能"><span class="toc-number">5.</span> <span class="toc-text">实现用户注册功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册功能原理分析"><span class="toc-number">5.1.</span> <span class="toc-text">注册功能原理分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发步骤约定-普通MVC功能"><span class="toc-number">5.2.</span> <span class="toc-text">开发步骤约定(普通MVC功能)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤实现"><span class="toc-number">6.</span> <span class="toc-text">步骤实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#电子邮箱"><span class="toc-number">7.</span> <span class="toc-text">电子邮箱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">7.1.</span> <span class="toc-text">概念:</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目简介"><span class="toc-number">2.</span> <span class="toc-text">项目简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用Servlet的编写"><span class="toc-number">3.</span> <span class="toc-text">通用Servlet的编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建项目环境"><span class="toc-number">4.</span> <span class="toc-text">搭建项目环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现用户注册功能"><span class="toc-number">5.</span> <span class="toc-text">实现用户注册功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#检验用户名是否可用"><span class="toc-number">5.1.</span> <span class="toc-text">检验用户名是否可用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册功能原理分析"><span class="toc-number">5.2.</span> <span class="toc-text">注册功能原理分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发步骤约定-普通MVC功能"><span class="toc-number">5.3.</span> <span class="toc-text">开发步骤约定(普通MVC功能)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤实现"><span class="toc-number">6.</span> <span class="toc-text">步骤实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#电子邮箱"><span class="toc-number">7.</span> <span class="toc-text">电子邮箱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">7.1.</span> <span class="toc-text">概念:</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -599,11 +596,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,15 +632,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
