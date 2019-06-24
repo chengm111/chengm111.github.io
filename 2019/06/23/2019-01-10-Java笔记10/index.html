@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 package关键字 权限修饰符 匿名内部类">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:05:09.262Z">
+<meta property="og:updated_time" content="2019-06-24T06:48:57.254Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础10">
 <meta name="twitter:description" content="摘要 package关键字 权限修饰符 匿名内部类">
@@ -203,45 +203,16 @@
 <a id="more"></a>
 
 <h2 id="package关键字的概述及作用"><a href="#package关键字的概述及作用" class="headerlink" title="package关键字的概述及作用"></a>package关键字的概述及作用</h2><ul>
-<li><p>A:为什么要有包</p>
-<ul>
+<li>A:为什么要有包<ul>
 <li>将字节码(.class)进行分类存放 </li>
 <li>包其实就是文件夹</li>
 </ul>
 </li>
-<li><p>B:包的概述</p>
-</li>
-<li><p>  举例：</p>
-<pre><code>学生：增加，删除，修改，查询
-老师：增加，删除，修改，查询
-...
-
-方案1：按照功能分
-    com.heima.add
-        AddStudent
-        AddTeacher
-    com.heima.delete
-        DeleteStudent
-        DeleteTeacher
-    com.heima.update
-        UpdateStudent
-        UpdateTeacher
-    com.heima.find
-        FindStudent
-        FindTeacher
-
-方案2：按照模块分
-    com.heima.teacher
-        AddTeacher
-        DeleteTeacher
-        UpdateTeacher
-        FindTeacher
-    com.heima.student
-        AddStudent
-        DeleteStudent
-        UpdateStudent
-        FindStudent</code></pre></li>
+<li>B:包的概述</li>
 </ul>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">学生：增加，删除，修改，查询</span><br><span class="line">老师：增加，删除，修改，查询</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">方案1：按照功能分</span><br><span class="line">	com.heima.add</span><br><span class="line">		AddStudent</span><br><span class="line">		AddTeacher</span><br><span class="line">	com.heima.delete</span><br><span class="line">		DeleteStudent</span><br><span class="line">		DeleteTeacher</span><br><span class="line">	com.heima.update</span><br><span class="line">		UpdateStudent</span><br><span class="line">		UpdateTeacher</span><br><span class="line">	com.heima.find</span><br><span class="line">		FindStudent</span><br><span class="line">		FindTeacher</span><br><span class="line"></span><br><span class="line">方案2：按照模块分</span><br><span class="line">	com.heima.teacher</span><br><span class="line">		AddTeacher</span><br><span class="line">		DeleteTeacher</span><br><span class="line">		UpdateTeacher</span><br><span class="line">		FindTeacher</span><br><span class="line">	com.heima.student</span><br><span class="line">		AddStudent</span><br><span class="line">		DeleteStudent</span><br><span class="line">		UpdateStudent</span><br><span class="line">		FindStudent</span><br></pre></td></tr></table></figure>
+
 <h2 id="包的定义及注意事项"><a href="#包的定义及注意事项" class="headerlink" title="包的定义及注意事项"></a>包的定义及注意事项</h2><ul>
 <li>A:定义包的格式<ul>
 <li>package 包名;</li>
@@ -298,18 +269,51 @@
 <li>C:package,import,class有没有顺序关系(面试题)有，从前到后</li>
 </ul>
 <h2 id="四种权限修饰符的测试"><a href="#四种权限修饰符的测试" class="headerlink" title="四种权限修饰符的测试"></a>四种权限修饰符的测试</h2><ul>
-<li><p>A:案例演示</p>
-<ul>
+<li>A:案例演示<ul>
 <li>四种权限修饰符</li>
 </ul>
 </li>
-<li><p>B:结论</p>
-<pre><code>            本类     同一个包下(子类和无关类)    不同包下(子类)    不同包下(无关类)
-private     Y        
-默认            Y            Y
-protected    Y            Y                        Y
-public        Y            Y                        Y            Y</code></pre></li>
+<li>B:结论</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>本类</th>
+<th>同一个包下(子类和无关类)</th>
+<th>不同包下(子类)</th>
+<th>不同包下(无关类)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>默认</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody></table>
 <h2 id="类及其组成所使用的常见修饰符"><a href="#类及其组成所使用的常见修饰符" class="headerlink" title="类及其组成所使用的常见修饰符"></a>类及其组成所使用的常见修饰符</h2><ul>
 <li><p>A:修饰符：</p>
 <ul>
@@ -431,9 +435,10 @@ public        Y            Y                        Y            Y</code></pre><
 </ul>
 </li>
 <li>C:格式：</li>
-<li><pre><code>new 类名或者接口名(){
-    重写方法;
-}</code></pre></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new 类名或者接口名()&#123;</span><br><span class="line">	重写方法;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>D:本质是什么呢?<ul>
 <li>是一个继承了该类或者实现了该接口的子类匿名对象。</li>
 </ul>
@@ -749,15 +754,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,18 +798,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -809,11 +814,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,11 +842,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -850,14 +863,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

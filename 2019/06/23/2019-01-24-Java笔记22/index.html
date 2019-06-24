@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 IO（序列流） IO（内存输出流） IO（随机访问流） IO（对象操作流） IO（数据输入输出流） IO（打印流） IO（标准输入输出流） IO（Properties）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:07:19.507Z">
+<meta property="og:updated_time" content="2019-06-24T06:09:00.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础22">
 <meta name="twitter:description" content="摘要 IO（序列流） IO（内存输出流） IO（随机访问流） IO（对象操作流） IO（数据输入输出流） IO（打印流） IO（标准输入输出流） IO（Properties）">
@@ -241,9 +241,9 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = new FileInputStream(&quot;a.txt&quot;);</span><br><span class="line">ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">int b;</span><br><span class="line">while((b = fis.read()) != -1) &#123;</span><br><span class="line">	baos.write(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//byte[] newArr = baos.toByteArray();	//将内存缓冲区中所有的字节存储在newArr中</span><br><span class="line">//System.out.println(new String(newArr));</span><br><span class="line">System.out.println(baos);</span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"a.txt"</span>);</span><br><span class="line">ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">while</span>((b = fis.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">	baos.write(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//byte[] newArr = baos.toByteArray();	//将内存缓冲区中所有的字节存储在newArr中</span></span><br><span class="line"><span class="comment">//System.out.println(new String(newArr));</span></span><br><span class="line">System.out.println(baos);</span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
 
-<h2 id="内存输出流之黑马面试题"><a href="#内存输出流之黑马面试题" class="headerlink" title="内存输出流之黑马面试题"></a>内存输出流之黑马面试题</h2><ul>
+<h2 id="内存输出流面试题"><a href="#内存输出流面试题" class="headerlink" title="内存输出流面试题"></a>内存输出流面试题</h2><ul>
 <li>定义一个文件输入流,调用read(byte[] b)方法,将a.txt文件中的内容打印出来(byte数组大小限制为5)</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"a.txt"</span>);	<span class="comment">//创建字节输入流,关联a.txt</span></span><br><span class="line">ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();	<span class="comment">//创建内存输出流</span></span><br><span class="line"><span class="keyword">byte</span>[] arr = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">5</span>];			<span class="comment">//创建字节数组,大小为5</span></span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">while</span>((len = fis.read(arr)) != -<span class="number">1</span>) &#123;		<span class="comment">//将文件上的数据读到字节数组中</span></span><br><span class="line">	baos.write(arr, <span class="number">0</span>, len);		<span class="comment">//将字节数组的数据写到内存缓冲区中</span></span><br><span class="line">&#125;</span><br><span class="line">System.out.println(baos);		<span class="comment">//将内存缓冲区的内容转换为字符串打印</span></span><br><span class="line">fis.close();</span><br></pre></td></tr></table></figure>
@@ -296,21 +296,23 @@
 </li>
 </ul>
 <h2 id="数据输入输出流-了解"><a href="#数据输入输出流-了解" class="headerlink" title="数据输入输出流 (了解)"></a>数据输入输出流 (了解)</h2><ul>
-<li>1.什么是数据输入输出流<ul>
+<li><p>1.什么是数据输入输出流</p>
+<ul>
 <li>DataInputStream, DataOutputStream可以按照基本数据类型大小读写数据</li>
 <li>例如按Long大小写出一个数字, 写出时该数据占8字节. 读取的时候也可以按照Long类型读取, 一次读取8个字节.</li>
 </ul>
 </li>
-<li>2.使用方式<ul>
-<li>DataOutputStream(OutputStream), writeInt(), writeLong() </li>
+<li><p>2.使用方式</p>
+<ul>
+<li><p>DataOutputStream(OutputStream), writeInt(), writeLong() </p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DataOutputStream dos = <span class="keyword">new</span> DataOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"b.txt"</span>));</span><br><span class="line">dos.writeInt(<span class="number">997</span>);</span><br><span class="line">dos.writeInt(<span class="number">998</span>);</span><br><span class="line">dos.writeInt(<span class="number">999</span>);</span><br><span class="line"><span class="comment">//输出时和序列化类似，都会因为编码问题变成乱码，但是输入时仍然可以正常使用</span></span><br><span class="line">dos.close();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DataInputStream(InputStream), readInt(), readLong()</p>
+</li>
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DataOutputStream dos = <span class="keyword">new</span> DataOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"b.txt"</span>));</span><br><span class="line">dos.writeInt(<span class="number">997</span>);</span><br><span class="line">dos.writeInt(<span class="number">998</span>);</span><br><span class="line">dos.writeInt(<span class="number">999</span>);</span><br><span class="line"><span class="comment">//输出时和序列化类似，都会因为编码问题变成乱码，但是输入时仍然可以正常使用</span></span><br><span class="line">dos.close();</span><br></pre></td></tr></table></figure>
-
-<pre><code>* DataInputStream(InputStream), readInt(), readLong()</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DataInputStream dis = <span class="keyword">new</span> DataInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"b.txt"</span>));</span><br><span class="line"><span class="keyword">int</span> x = dis.readInt();</span><br><span class="line"><span class="keyword">int</span> y = dis.readInt();</span><br><span class="line"><span class="keyword">int</span> z = dis.readInt();</span><br><span class="line">System.out.println(x);</span><br><span class="line">System.out.println(y);</span><br><span class="line">System.out.println(z);</span><br><span class="line">dis.close();</span><br></pre></td></tr></table></figure>
-
-<h2 id="打印流的概述和特点-掌握"><a href="#打印流的概述和特点-掌握" class="headerlink" title="打印流的概述和特点 (掌握)"></a>打印流的概述和特点 (掌握)</h2><ul>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DataInputStream dis = <span class="keyword">new</span> DataInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"b.txt"</span>));</span><br><span class="line"><span class="keyword">int</span> x = dis.readInt();</span><br><span class="line"><span class="keyword">int</span> y = dis.readInt();</span><br><span class="line"><span class="keyword">int</span> z = dis.readInt();</span><br><span class="line">System.out.println(x);</span><br><span class="line">System.out.println(y);</span><br><span class="line">System.out.println(z);</span><br><span class="line">dis.close();</span><br></pre></td></tr></table></figure></code></pre><h2 id="打印流的概述和特点-掌握"><a href="#打印流的概述和特点-掌握" class="headerlink" title="打印流的概述和特点 (掌握)"></a>打印流的概述和特点 (掌握)</h2><ul>
 <li>1.什么是打印流<ul>
 <li>该流可以很方便的将对象的toString()结果输出, 并且自动加上换行, 而且可以使用自动刷出的模式</li>
 <li>System.out就是一个PrintStream, 其默认向控制台输出信息</li>
@@ -369,7 +371,21 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">		Properties prop=<span class="keyword">new</span> Properties();</span><br><span class="line">		prop.put(<span class="string">"zhangsan"</span>,<span class="string">"23"</span>);</span><br><span class="line">		System.out.println(prop);<span class="comment">//&#123;zhangsan=23&#125;</span></span><br><span class="line">```	</span><br><span class="line">## Properties的特殊功能使用 (了解)</span><br><span class="line">* A:Properties的特殊功能</span><br><span class="line">	* <span class="function"><span class="keyword">public</span> Object <span class="title">setProperty</span><span class="params">(String key,String value)</span></span></span><br><span class="line"><span class="function">	* <span class="keyword">public</span> String <span class="title">getProperty</span><span class="params">(String key)</span></span></span><br><span class="line"><span class="function">	* <span class="keyword">public</span> Enumeration&lt;String&gt; <span class="title">stringPropertyNames</span><span class="params">()</span></span></span><br><span class="line"><span class="function">* B:案例演示</span></span><br><span class="line"><span class="function">	* Properties的特殊功能</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">```java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class Test </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException</span>&#123;</span><br><span class="line">		Properties prop=<span class="keyword">new</span> Properties();</span><br><span class="line">		prop.put(<span class="string">"name"</span>,<span class="string">"zhangsan"</span>);</span><br><span class="line">		prop.put(<span class="string">"tel"</span>, <span class="string">"123456"</span>);</span><br><span class="line">		Enumeration&lt;String&gt; en=(Enumeration&lt;String&gt;) prop.propertyNames();</span><br><span class="line">		<span class="keyword">while</span>(en.hasMoreElements()) &#123;</span><br><span class="line">			String key=en.nextElement();</span><br><span class="line">			String value=prop.getProperty(key);</span><br><span class="line">			System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>Properties prop=new Properties();
+prop.put(&quot;zhangsan&quot;,&quot;23&quot;);
+System.out.println(prop);//{zhangsan=23}</code></pre><h2 id="Properties的特殊功能使用-了解"><a href="#Properties的特殊功能使用-了解" class="headerlink" title="Properties的特殊功能使用 (了解)"></a>Properties的特殊功能使用 (了解)</h2><ul>
+<li>A:Properties的特殊功能<ul>
+<li>public Object setProperty(String key,String value)</li>
+<li>public String getProperty(String key)</li>
+<li>public Enumeration<string> stringPropertyNames()</string></li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>Properties的特殊功能</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException</span>&#123;</span><br><span class="line">		Properties prop=<span class="keyword">new</span> Properties();</span><br><span class="line">		prop.put(<span class="string">"name"</span>,<span class="string">"zhangsan"</span>);</span><br><span class="line">		prop.put(<span class="string">"tel"</span>, <span class="string">"123456"</span>);</span><br><span class="line">		Enumeration&lt;String&gt; en=(Enumeration&lt;String&gt;) prop.propertyNames();</span><br><span class="line">		<span class="keyword">while</span>(en.hasMoreElements()) &#123;</span><br><span class="line">			String key=en.nextElement();</span><br><span class="line">			String value=prop.getProperty(key);</span><br><span class="line">			System.out.println(key+<span class="string">"="</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="Properties的load-和store-功能-了解"><a href="#Properties的load-和store-功能-了解" class="headerlink" title="Properties的load()和store()功能 (了解)"></a>Properties的load()和store()功能 (了解)</h2><ul>
@@ -379,14 +395,25 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException</span>&#123;</span><br><span class="line">		Properties prop=<span class="keyword">new</span> Properties();</span><br><span class="line">		prop.load(<span class="keyword">new</span> FileInputStream(<span class="string">"config.properties"</span>));</span><br><span class="line">		prop.setProperty(<span class="string">"tel"</span>, <span class="string">"18988889999"</span>);</span><br><span class="line">		System.out.println(prop);<span class="comment">//&#123;qq=12545555, tel=18988889999, name=zhangsan&#125; 哈希算法存取不一致</span></span><br><span class="line">		prop.store(<span class="keyword">new</span> FileOutputStream(<span class="string">"config.properties"</span>), <span class="string">"xxx"</span>);<span class="comment">//第二个参数是描述文件列表的，不描述可以穿null</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line">config.properties文件内容</span><br><span class="line"></span><br><span class="line">修改前</span><br></pre></td></tr></table></figure>
-
-<p>name=zhangsan<br>tel=18988889999<br>qq=12545555</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改后</span><br></pre></td></tr></table></figure>
-
-<p>#xxx</p>
-<p>#Sat Jan 26 01:11:31 CST 2019<br>qq=12545555<br>tel=18988889999<br>name=zhangsan</p>
-<pre><code></code></pre>
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException</span>{
+        Properties prop=<span class="keyword">new</span> Properties();
+        prop.load(<span class="keyword">new</span> FileInputStream(<span class="string">"config.properties"</span>));
+        prop.setProperty(<span class="string">"tel"</span>, <span class="string">"18988889999"</span>);
+        System.out.println(prop);<span class="comment">//{qq=12545555, tel=18988889999, name=zhangsan} 哈希算法存取不一致</span>
+        prop.store(<span class="keyword">new</span> FileOutputStream(<span class="string">"config.properties"</span>), <span class="string">"xxx"</span>);<span class="comment">//第二个参数是描述文件列表的，不描述可以穿null</span>
+    }
+}</code></pre>
+<p>config.properties文件内容</p>
+<p>修改前</p>
+<pre><code>name=zhangsan
+tel=18988889999
+qq=12545555</code></pre><p>修改后</p>
+<pre><code>#xxx
+#Sat Jan 26 01:11:31 CST 2019
+qq=12545555
+tel=18988889999
+name=zhangsan</code></pre>
       
 
       
@@ -544,7 +571,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#序列流"><span class="toc-number">2.</span> <span class="toc-text">序列流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#序列流整合多个"><span class="toc-number">3.</span> <span class="toc-text">序列流整合多个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存输出流"><span class="toc-number">4.</span> <span class="toc-text">内存输出流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存输出流之黑马面试题"><span class="toc-number">5.</span> <span class="toc-text">内存输出流之黑马面试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机访问流概述和读写数据"><span class="toc-number">6.</span> <span class="toc-text">随机访问流概述和读写数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作流ObjecOutputStream"><span class="toc-number">7.</span> <span class="toc-text">对象操作流ObjecOutputStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作流ObjectInputStream"><span class="toc-number">8.</span> <span class="toc-text">对象操作流ObjectInputStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作流优化-了解"><span class="toc-number">9.</span> <span class="toc-text">对象操作流优化 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加上id号"><span class="toc-number">10.</span> <span class="toc-text">加上id号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据输入输出流-了解"><span class="toc-number">11.</span> <span class="toc-text">数据输入输出流 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打印流的概述和特点-掌握"><span class="toc-number">12.</span> <span class="toc-text">打印流的概述和特点 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准输入输出流概述和输出语句"><span class="toc-number">13.</span> <span class="toc-text">标准输入输出流概述和输出语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改标准输入输出流拷贝图片-了解"><span class="toc-number">14.</span> <span class="toc-text">修改标准输入输出流拷贝图片 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种方式实现键盘录入-了解"><span class="toc-number">15.</span> <span class="toc-text">两种方式实现键盘录入 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties的概述和作为Map集合的使用-了解"><span class="toc-number">16.</span> <span class="toc-text">Properties的概述和作为Map集合的使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties的load-和store-功能-了解"><span class="toc-number">17.</span> <span class="toc-text">Properties的load()和store()功能 (了解)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#序列流"><span class="toc-number">2.</span> <span class="toc-text">序列流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#序列流整合多个"><span class="toc-number">3.</span> <span class="toc-text">序列流整合多个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存输出流"><span class="toc-number">4.</span> <span class="toc-text">内存输出流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存输出流面试题"><span class="toc-number">5.</span> <span class="toc-text">内存输出流面试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#随机访问流概述和读写数据"><span class="toc-number">6.</span> <span class="toc-text">随机访问流概述和读写数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作流ObjecOutputStream"><span class="toc-number">7.</span> <span class="toc-text">对象操作流ObjecOutputStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作流ObjectInputStream"><span class="toc-number">8.</span> <span class="toc-text">对象操作流ObjectInputStream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象操作流优化-了解"><span class="toc-number">9.</span> <span class="toc-text">对象操作流优化 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加上id号"><span class="toc-number">10.</span> <span class="toc-text">加上id号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据输入输出流-了解"><span class="toc-number">11.</span> <span class="toc-text">数据输入输出流 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打印流的概述和特点-掌握"><span class="toc-number">12.</span> <span class="toc-text">打印流的概述和特点 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准输入输出流概述和输出语句"><span class="toc-number">13.</span> <span class="toc-text">标准输入输出流概述和输出语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改标准输入输出流拷贝图片-了解"><span class="toc-number">14.</span> <span class="toc-text">修改标准输入输出流拷贝图片 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种方式实现键盘录入-了解"><span class="toc-number">15.</span> <span class="toc-text">两种方式实现键盘录入 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties的概述和作为Map集合的使用-了解"><span class="toc-number">16.</span> <span class="toc-text">Properties的概述和作为Map集合的使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties的特殊功能使用-了解"><span class="toc-number">17.</span> <span class="toc-text">Properties的特殊功能使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Properties的load-和store-功能-了解"><span class="toc-number">18.</span> <span class="toc-text">Properties的load()和store()功能 (了解)</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -672,15 +699,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -704,18 +743,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -732,11 +759,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,11 +787,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -773,14 +808,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

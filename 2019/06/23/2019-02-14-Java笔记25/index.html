@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 多线程（下） GUI">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/aiHTQTi.png">
-<meta property="og:updated_time" content="2019-06-23T08:07:19.510Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/2.png">
+<meta property="og:updated_time" content="2019-06-24T06:00:32.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础25">
 <meta name="twitter:description" content="摘要 多线程（下） GUI">
-<meta name="twitter:image" content="https://i.imgur.com/aiHTQTi.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/2.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -322,7 +322,7 @@
 
 <h2 id="线程的五种状态-掌握"><a href="#线程的五种状态-掌握" class="headerlink" title="线程的五种状态 (掌握)"></a>线程的五种状态 (掌握)</h2><ul>
 <li>看图说话<ul>
-<li><img src="https://i.imgur.com/aiHTQTi.png" alt></li>
+<li><img src="/assets/img/SE/2.png" alt></li>
 </ul>
 </li>
 <li>新建,就绪,运行,阻塞,死亡</li>
@@ -419,7 +419,20 @@
 </li>
 <li>D:案例演示</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">	动物抽象类：public abstract Animal &#123; public abstract void eat(); &#125;</span><br><span class="line">	工厂接口：public interface Factory &#123;public abstract Animal createAnimal();&#125;</span><br><span class="line">	具体狗类：public class Dog extends Animal &#123;&#125;</span><br><span class="line">	具体猫类：public class Cat extends Animal &#123;&#125;</span><br><span class="line">	开始，在测试类中每个具体的内容自己创建对象，但是，创建对象的工作如果比较麻烦，就需要有人专门做这个事情，所以就知道了一个专门的类来创建对象。发现每次修改代码太麻烦，用工厂方法改进，针对每一个具体的实现提供一个具体工厂。</span><br><span class="line">	狗工厂：public class DogFactory implements Factory &#123;</span><br><span class="line">		public Animal createAnimal() &#123;…&#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	猫工厂：public class CatFactory implements Factory &#123;</span><br><span class="line">		public Animal createAnimal() &#123;…&#125;</span><br><span class="line">	        &#125; </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## 如何创建一个窗口并显示</span><br><span class="line">* Graphical User Interface(图形用户接口)。</span><br><span class="line">* </span><br><span class="line">```java</span><br><span class="line">Frame  f = new Frame(“my window”);</span><br><span class="line">f.setLayout(new FlowLayout());//设置布局管理器</span><br><span class="line">f.setSize(500,400);//设置窗体大小</span><br><span class="line">f.setLocation(300,200);//设置窗体出现在屏幕的位置</span><br><span class="line">f.setIconImage(Toolkit.getDefaultToolkit().createImage(&quot;qq.png&quot;));</span><br><span class="line">f.setVisible(true);//设置窗体可见</span><br></pre></td></tr></table></figure>
+<pre><code>动物抽象类：public abstract Animal { public abstract void eat(); }
+工厂接口：public interface Factory {public abstract Animal createAnimal();}
+具体狗类：public class Dog extends Animal {}
+具体猫类：public class Cat extends Animal {}
+开始，在测试类中每个具体的内容自己创建对象，但是，创建对象的工作如果比较麻烦，就需要有人专门做这个事情，所以就知道了一个专门的类来创建对象。发现每次修改代码太麻烦，用工厂方法改进，针对每一个具体的实现提供一个具体工厂。
+狗工厂：public class DogFactory implements Factory {
+    public Animal createAnimal() {…}
+        }
+猫工厂：public class CatFactory implements Factory {
+    public Animal createAnimal() {…}
+        } </code></pre><h2 id="如何创建一个窗口并显示"><a href="#如何创建一个窗口并显示" class="headerlink" title="如何创建一个窗口并显示"></a>如何创建一个窗口并显示</h2><ul>
+<li>Graphical User Interface(图形用户接口)。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Frame  f = <span class="keyword">new</span> Frame(“my window”);</span><br><span class="line">f.setLayout(<span class="keyword">new</span> FlowLayout());<span class="comment">//设置布局管理器</span></span><br><span class="line">f.setSize(<span class="number">500</span>,<span class="number">400</span>);<span class="comment">//设置窗体大小</span></span><br><span class="line">f.setLocation(<span class="number">300</span>,<span class="number">200</span>);<span class="comment">//设置窗体出现在屏幕的位置</span></span><br><span class="line">f.setIconImage(Toolkit.getDefaultToolkit().createImage(<span class="string">"qq.png"</span>));</span><br><span class="line">f.setVisible(<span class="keyword">true</span>);<span class="comment">//设置窗体可见</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h2><ul>
 <li>FlowLayout（流式布局管理器）<ul>
@@ -633,7 +646,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例设计模式-掌握"><span class="toc-number">2.</span> <span class="toc-text">单例设计模式 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runtime类"><span class="toc-number">3.</span> <span class="toc-text">Runtime类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Timer类-掌握"><span class="toc-number">4.</span> <span class="toc-text">Timer类 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个线程间的通信-掌握"><span class="toc-number">5.</span> <span class="toc-text">两个线程间的通信 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个或三个以上间的线程通信"><span class="toc-number">6.</span> <span class="toc-text">三个或三个以上间的线程通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK1-5的新特性互斥锁-掌握"><span class="toc-number">7.</span> <span class="toc-text">JDK1.5的新特性互斥锁 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程组的概述和使用-了解"><span class="toc-number">8.</span> <span class="toc-text">线程组的概述和使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程的五种状态-掌握"><span class="toc-number">9.</span> <span class="toc-text">线程的五种状态 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程程序实现的第三种方式-了解"><span class="toc-number">10.</span> <span class="toc-text">多线程程序实现的第三种方式 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单工厂模式概述和使用-了解"><span class="toc-number">11.</span> <span class="toc-text">简单工厂模式概述和使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式的概述和使用-了解"><span class="toc-number">12.</span> <span class="toc-text">工厂方法模式的概述和使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局管理器"><span class="toc-number">13.</span> <span class="toc-text">布局管理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#窗体监听"><span class="toc-number">14.</span> <span class="toc-text">窗体监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标监听"><span class="toc-number">15.</span> <span class="toc-text">鼠标监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#键盘监听和键盘事件"><span class="toc-number">16.</span> <span class="toc-text">键盘监听和键盘事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动作监听"><span class="toc-number">17.</span> <span class="toc-text">动作监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适配器设计模式-掌握"><span class="toc-number">18.</span> <span class="toc-text">适配器设计模式 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GUI需要知道的"><span class="toc-number">19.</span> <span class="toc-text">GUI需要知道的</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例设计模式-掌握"><span class="toc-number">2.</span> <span class="toc-text">单例设计模式 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Runtime类"><span class="toc-number">3.</span> <span class="toc-text">Runtime类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Timer类-掌握"><span class="toc-number">4.</span> <span class="toc-text">Timer类 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两个线程间的通信-掌握"><span class="toc-number">5.</span> <span class="toc-text">两个线程间的通信 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个或三个以上间的线程通信"><span class="toc-number">6.</span> <span class="toc-text">三个或三个以上间的线程通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK1-5的新特性互斥锁-掌握"><span class="toc-number">7.</span> <span class="toc-text">JDK1.5的新特性互斥锁 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程组的概述和使用-了解"><span class="toc-number">8.</span> <span class="toc-text">线程组的概述和使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程的五种状态-掌握"><span class="toc-number">9.</span> <span class="toc-text">线程的五种状态 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程程序实现的第三种方式-了解"><span class="toc-number">10.</span> <span class="toc-text">多线程程序实现的第三种方式 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单工厂模式概述和使用-了解"><span class="toc-number">11.</span> <span class="toc-text">简单工厂模式概述和使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式的概述和使用-了解"><span class="toc-number">12.</span> <span class="toc-text">工厂方法模式的概述和使用 (了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何创建一个窗口并显示"><span class="toc-number">13.</span> <span class="toc-text">如何创建一个窗口并显示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布局管理器"><span class="toc-number">14.</span> <span class="toc-text">布局管理器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#窗体监听"><span class="toc-number">15.</span> <span class="toc-text">窗体监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标监听"><span class="toc-number">16.</span> <span class="toc-text">鼠标监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#键盘监听和键盘事件"><span class="toc-number">17.</span> <span class="toc-text">键盘监听和键盘事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动作监听"><span class="toc-number">18.</span> <span class="toc-text">动作监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#适配器设计模式-掌握"><span class="toc-number">19.</span> <span class="toc-text">适配器设计模式 (掌握)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GUI需要知道的"><span class="toc-number">20.</span> <span class="toc-text">GUI需要知道的</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -761,15 +774,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -793,18 +818,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -821,11 +834,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -849,11 +862,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -862,14 +883,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

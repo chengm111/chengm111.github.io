@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="JDBC JDBC简介   JAVA Database Connectivity java 数据库连接   为什么会出现JDBC   SUN公司提供的一种数据库访问规则、规范, 由于数据库种类较多，并且java语言使用比较广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问规则。 我们的java程序只要使用sun公司提供的jdbc驱动即可。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:04:05.380Z">
+<meta property="og:updated_time" content="2019-06-24T06:57:44.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据库】数据库基础3">
 <meta name="twitter:description" content="JDBC JDBC简介   JAVA Database Connectivity java 数据库连接   为什么会出现JDBC   SUN公司提供的一种数据库访问规则、规范, 由于数据库种类较多，并且java语言使用比较广泛，sun公司就提供了一种规范，让其他的数据库提供商去实现底层的访问规则。 我们的java程序只要使用sun公司提供的jdbc驱动即可。">
@@ -209,21 +209,16 @@
 </blockquote>
 <a id="more"></a>
 
-<h2 id="使用JDBC的基本步骤"><a href="#使用JDBC的基本步骤" class="headerlink" title="使用JDBC的基本步骤"></a>使用JDBC的基本步骤</h2><ol>
-<li><p>注册驱动</p>
-<pre><code>DriverManager.registerDriver(new com.mysql.jdbc.Driver());</code></pre></li>
-<li><p>建立连接</p>
+<h2 id="使用JDBC的基本步骤"><a href="#使用JDBC的基本步骤" class="headerlink" title="使用JDBC的基本步骤"></a>使用JDBC的基本步骤</h2><p>1.注册驱动</p>
+<pre><code>DriverManager.registerDriver(new com.mysql.jdbc.Driver());</code></pre><p>2.建立连接</p>
 <pre><code>//DriverManager.getConnection(&quot;jdbc:mysql://localhost/test?user=monty&amp;password=greatsqldb&quot;);
     //2. 建立连接 参数一： 协议 + 访问的数据库 ， 参数二： 用户名 ， 参数三： 密码。
-    conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost/student&quot;, &quot;root&quot;, &quot;root&quot;);</code></pre></li>
-<li><p>创建statement</p>
+    conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost/student&quot;, &quot;root&quot;, &quot;root&quot;);</code></pre><p>3.创建statement</p>
 <pre><code>//3. 创建statement ， 跟数据库打交道，一定需要这个对象
-st = conn.createStatement();</code></pre></li>
-<li><p>执行sql ，得到ResultSet</p>
+st = conn.createStatement();</code></pre><p>4.执行sql ，得到ResultSet</p>
 <pre><code>//4. 执行查询 ， 得到结果集
     String sql = &quot;select * from t_stu&quot;;
-    rs = st.executeQuery(sql);</code></pre></li>
-<li><p>遍历结果集</p>
+    rs = st.executeQuery(sql);</code></pre><p>5.遍历结果集</p>
 <pre><code>//5. 遍历查询每一条记录
     while(rs.next()){
         int id = rs.getInt(&quot;id&quot;);
@@ -231,19 +226,14 @@ st = conn.createStatement();</code></pre></li>
         int age = rs.getInt(&quot;age&quot;);
         System.out.println(&quot;id=&quot;+id + &quot;===name=&quot;+name+&quot;==age=&quot;+age);
 
-    }</code></pre></li>
-<li><p>释放资源</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (rs != null) &#123;</span><br><span class="line">	try &#123;</span><br><span class="line">		rs.close();</span><br><span class="line">	&#125; catch (SQLException sqlEx) &#123; &#125; // ignore </span><br><span class="line">	rs = null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="JDBC-工具类构建"><a href="#JDBC-工具类构建" class="headerlink" title="JDBC 工具类构建"></a>JDBC 工具类构建</h2><ol>
-<li><p>资源释放工作的整合</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtil</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(ResultSet rs,Statement st,Connection con)</span> </span>&#123;</span><br><span class="line">		closeRs(rs);</span><br><span class="line">		closeSt(st);</span><br><span class="line">		closeCon(con);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeRs</span><span class="params">(ResultSet rs)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(rs!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			rs=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeSt</span><span class="params">(Statement st)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(st!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			st=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeCon</span><span class="params">(Connection con)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(con!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				con.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			con=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>驱动防二次注册</p>
-</li>
-</ol>
+    }</code></pre><p>6.释放资源</p>
+<pre><code>if (rs != null) {
+    try {
+        rs.close();
+    } catch (SQLException sqlEx) { } // ignore 
+    rs = null;
+}</code></pre><h2 id="JDBC-工具类构建"><a href="#JDBC-工具类构建" class="headerlink" title="JDBC 工具类构建"></a>JDBC 工具类构建</h2><p>1.资源释放工作的整合</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtil</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(ResultSet rs,Statement st,Connection con)</span> </span>&#123;</span><br><span class="line">		closeRs(rs);</span><br><span class="line">		closeSt(st);</span><br><span class="line">		closeCon(con);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeRs</span><span class="params">(ResultSet rs)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(rs!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			rs=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeSt</span><span class="params">(Statement st)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(st!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			st=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeCon</span><span class="params">(Connection con)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(con!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				con.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">catch</span>(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			con=<span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>2.驱动防二次注册</p>
 <pre><code>   DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
    Driver 这个类里面有静态代码块，一上来就执行了，所以等同于我们注册了两次驱动。 其实没这个必要的。
@@ -252,42 +242,17 @@ st = conn.createStatement();</code></pre></li>
 
 最后形成以下代码即可。
 
-Class.forName(&quot;com.mysql.jdbc.Driver&quot;);    </code></pre><ol start="3">
-<li><p>使用properties配置文件</p>
-<ol>
-<li><p>在src底下声明一个文件 xxx.properties ，里面的内容吐下：</p>
-<pre><code>driverClass=com.mysql.jdbc.Driver
-url=jdbc:mysql://localhost/student
-name=root
-password=root</code></pre></li>
-<li><p>在工具类里面，使用静态代码块，读取属性</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>static{
-    try {
-        //1. 创建一个属性配置对象
-        Properties properties = new Properties();
-        InputStream is = new FileInputStream(&quot;jdbc.properties&quot;); //对应文件位于工程根目录
+Class.forName(&quot;com.mysql.jdbc.Driver&quot;);    </code></pre><p>3.使用properties配置文件</p>
+<pre><code>1.在src底下声明一个文件 xxx.properties ，里面的内容如下：
 
-        //使用类加载器，去读取src底下的资源文件。 后面在servlet  //对应文件位于src目录底下
-        //InputStream is = JDBCUtil.class.getClassLoader().getResourceAsStream(&quot;jdbc.properties&quot;);
-        //导入输入流。
-        properties.load(is);
+      driverClass=com.mysql.jdbc.Driver
+      url=jdbc:mysql://localhost/student
+      name=root
+      password=root
 
-        //读取属性
-        driverClass = properties.getProperty(&quot;driverClass&quot;);
-        url = properties.getProperty(&quot;url&quot;);
-        name = properties.getProperty(&quot;name&quot;);
-        password = properties.getProperty(&quot;password&quot;);
+2.在工具类里面，使用静态代码块，读取属性
 
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}</code></pre><ol start="4">
-<li>驱动注册的细节<br>​    JDBC4之后可以不用写注册驱动的代码；</li>
-</ol>
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//1. 创建一个属性配置对象</span></span><br><span class="line">		Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">		InputStream is = <span class="keyword">new</span> FileInputStream(<span class="string">"jdbc.properties"</span>); <span class="comment">//对应文件位于工程根目录</span></span><br><span class="line">		 </span><br><span class="line">		<span class="comment">//使用类加载器，去读取src底下的资源文件。 后面在servlet  //对应文件位于src目录底下</span></span><br><span class="line">		<span class="comment">//InputStream is = JDBCUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");</span></span><br><span class="line">		<span class="comment">//导入输入流。</span></span><br><span class="line">		properties.load(is);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//读取属性</span></span><br><span class="line">		driverClass = properties.getProperty(<span class="string">"driverClass"</span>);</span><br><span class="line">		url = properties.getProperty(<span class="string">"url"</span>);</span><br><span class="line">		name = properties.getProperty(<span class="string">"name"</span>);</span><br><span class="line">		password = properties.getProperty(<span class="string">"password"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>4.驱动注册的细节<br>​    JDBC4之后可以不用写注册驱动的代码；</p>
 <h2 id="数据库的CRUD-sql"><a href="#数据库的CRUD-sql" class="headerlink" title="数据库的CRUD sql"></a>数据库的CRUD sql</h2><ul>
 <li><p>insert</p>
 <p>  INSERT INTO t_stu (NAME , age) VALUES (‘wangqiang’,28)</p>
@@ -297,42 +262,36 @@ password=root</code></pre></li>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">conn = JDBCUtil.getConn();</span><br><span class="line"><span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">st = conn.createStatement();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 执行添加</span></span><br><span class="line">String sql = <span class="string">"insert into t_stu values(null , 'aobama' , 59)"</span>;</span><br><span class="line"><span class="comment">//影响的行数， ，如果大于0 表明操作成功。 否则失败</span></span><br><span class="line"><span class="keyword">int</span> result = st.executeUpdate(sql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(result &gt;<span class="number">0</span> )&#123;</span><br><span class="line">	System.out.println(<span class="string">"添加成功"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"添加失败"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><p>delete</p>
-<pre><code>DELETE FROM t_stu WHERE id = 6</code></pre></li>
+<li>delete</li>
 </ul>
+<p>DELETE FROM t_stu WHERE id = 6</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">conn = JDBCUtil.getConn();</span><br><span class="line"><span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">st = conn.createStatement();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 执行添加</span></span><br><span class="line">String sql = <span class="string">"delete from t_stu where name='aobama'"</span>;</span><br><span class="line"><span class="comment">//影响的行数， ，如果大于0 表明操作成功。 否则失败</span></span><br><span class="line"><span class="keyword">int</span> result = st.executeUpdate(sql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(result &gt;<span class="number">0</span> )&#123;</span><br><span class="line">	System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"删除失败"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>query</p>
-<pre><code>SELECT * FROM t_stu</code></pre></li>
+<p>  SELECT * FROM t_stu</p>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">conn = JDBCUtil.getConn();</span><br><span class="line"><span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">st = conn.createStatement();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 执行sql语句，返回ResultSet</span></span><br><span class="line">String sql = <span class="string">"select * from t_stu"</span>;</span><br><span class="line">rs = st.executeQuery(sql);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 遍历结果集</span></span><br><span class="line"><span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">	String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">	<span class="keyword">int</span> age = rs.getInt(<span class="string">"age"</span>);</span><br><span class="line"></span><br><span class="line">	System.out.println(name + <span class="string">"   "</span> + age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>update</p>
-<pre><code>UPDATE t_stu SET age = 38 WHERE id = 1;</code></pre></li>
+<p>  UPDATE t_stu SET age = 38 WHERE id = 1;</p>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 获取连接对象</span></span><br><span class="line">conn = JDBCUtil.getConn();</span><br><span class="line"><span class="comment">// 2. 根据连接对象，得到statement</span></span><br><span class="line">st = conn.createStatement();</span><br><span class="line"></span><br><span class="line"><span class="comment">//3. 执行添加</span></span><br><span class="line">String sql = <span class="string">"update t_stu set age = 26 where name ='qyq'"</span>;</span><br><span class="line"><span class="comment">//影响的行数， ，如果大于0 表明操作成功。 否则失败</span></span><br><span class="line"><span class="keyword">int</span> result = st.executeUpdate(sql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(result &gt;<span class="number">0</span> )&#123;</span><br><span class="line">	System.out.println(<span class="string">"更新成功"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"更新失败"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="使用单元测试，测试代码"><a href="#使用单元测试，测试代码" class="headerlink" title="使用单元测试，测试代码"></a>使用单元测试，测试代码</h2><ol>
-<li><p>定义一个类， TestXXX , 里面定义方法 testXXX.</p>
-</li>
-<li><p>添加junit的支持。 </p>
-<pre><code>右键工程 --- add Library --- Junit --- Junit4</code></pre></li>
-<li><p>在方法的上面加上注解 ， 其实就是一个标记。</p>
+<h2 id="使用单元测试，测试代码"><a href="#使用单元测试，测试代码" class="headerlink" title="使用单元测试，测试代码"></a>使用单元测试，测试代码</h2><p>1.定义一个类， TestXXX , 里面定义方法 testXXX.</p>
+<p>2.添加junit的支持。 </p>
+<pre><code>右键工程 --- add Library --- Junit --- Junit4</code></pre><p>3.在方法的上面加上注解 ， 其实就是一个标记。</p>
 <pre><code>@Test
 public void testQuery() {
     ...
-}</code></pre></li>
-<li><p>光标选中方法名字，然后右键执行单元测试。  或者是打开outline视图， 然后选择方法右键执行。</p>
-</li>
-</ol>
+}</code></pre><p>4.光标选中方法名字，然后右键执行单元测试。  或者是打开outline视图， 然后选择方法右键执行。</p>
 <h2 id="Dao模式"><a href="#Dao模式" class="headerlink" title="Dao模式"></a>Dao模式</h2><blockquote>
 <p>Data Access Object 数据访问对象</p>
 </blockquote>
-<ol>
-<li>新建一个dao的接口， 里面声明数据库访问规则</li>
-</ol>
+<p>1.新建一个dao的接口， 里面声明数据库访问规则</p>
 <pre><code>/**
  * 定义操作数据库的方法
  */
@@ -342,47 +301,15 @@ public interface UserDao {
      * 查询所有
      */
     void findAll();
-}</code></pre><ol start="2">
-<li>新建一个dao的实现类，具体实现早前定义的规则</li>
-</ol>
-<pre><code>    public class UserDaoImpl implements UserDao{
+}</code></pre><p>2.新建一个dao的实现类，具体实现早前定义的规则</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		Statement st = <span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1. 获取连接对象</span></span><br><span class="line">			conn = JDBCUtil.getConn();</span><br><span class="line">			<span class="comment">//2. 创建statement对象</span></span><br><span class="line">			st = conn.createStatement();</span><br><span class="line">			String sql = <span class="string">"select * from t_user"</span>;</span><br><span class="line">			rs = st.executeQuery(sql);</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">				String userName = rs.getString(<span class="string">"username"</span>);</span><br><span class="line">				String password = rs.getString(<span class="string">"password"</span>);</span><br><span class="line">				</span><br><span class="line">				System.out.println(userName+<span class="string">"="</span>+password);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtil.release(conn, st, rs);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    @Override
-    public void findAll() {
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
-        try {
-            //1. 获取连接对象
-            conn = JDBCUtil.getConn();
-            //2. 创建statement对象
-            st = conn.createStatement();
-            String sql = &quot;select * from t_user&quot;;
-            rs = st.executeQuery(sql);
-
-            while(rs.next()){
-                String userName = rs.getString(&quot;username&quot;);
-                String password = rs.getString(&quot;password&quot;);
-
-                System.out.println(userName+&quot;=&quot;+password);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.release(conn, st, rs);
-        }
-    }
-
-}</code></pre><ol start="3">
-<li><p>直接使用实现</p>
+<p>3.直接使用实现</p>
 <pre><code>@Test
 public void testFindAll(){
     UserDao dao = new UserDaoImpl();
     dao.findAll();
-}</code></pre></li>
-</ol>
-<h2 id="Statement安全问题"><a href="#Statement安全问题" class="headerlink" title="Statement安全问题"></a>Statement安全问题</h2><ol>
+}</code></pre><h2 id="Statement安全问题"><a href="#Statement安全问题" class="headerlink" title="Statement安全问题"></a>Statement安全问题</h2><ol>
 <li>Statement执行 ，其实是拼接sql语句的。  先拼接sql语句，然后在一起执行。 </li>
 </ol>
 <pre><code>String sql = &quot;select * from t_user where username=&apos;&quot;+ username  +&quot;&apos; and password=&apos;&quot;+ password +&quot;&apos;&quot;;
@@ -405,32 +332,23 @@ rs = st.executeQuery(sql);</code></pre><h2 id="PrepareStatement"><a href="#Prepa
  //给占位符赋值 从左到右数过来，1 代表第一个问号， 永远是1开始。
  ps.setString(1, userName);
  ps.setString(2, password);</code></pre><p>​    </p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
-<li><p>JDBC入门</p>
-</li>
-<li><p>抽取工具类  ###</p>
-</li>
-<li><p>Statement CRUD ###</p>
-<pre><code>演练crud</code></pre></li>
-<li><p>Dao模式  ###</p>
-<pre><code>声明与实现分开</code></pre></li>
-<li><p>PrepareStament CRUD ###</p>
-<pre><code>预处理sql语句，解决上面statement出现的问题</code></pre></li>
-</ol>
-<h2 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h2><pre><code>1. dao里面声明 增删查改， 以及登录的方法
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>1.JDBC入门</p>
+<p>2.抽取工具类  ###</p>
+<p>3.Statement CRUD ###</p>
+<pre><code>演练crud</code></pre><p>4.Dao模式  ###</p>
+<pre><code>声明与实现分开</code></pre><p>5.PrepareStament CRUD ###</p>
+<pre><code>预处理sql语句，解决上面statement出现的问题</code></pre><h2 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h2><p>1.dao里面声明 增删查改， 以及登录的方法</p>
+<pre><code>登录方法 ：
 
+    要求，成功后返回该用户的所有信息。 字段不限。
 
-    登录方法 ：
+查询：
 
-        要求，成功后返回该用户的所有信息。 字段不限。
+    如果是findAll. 肯定是返回一个集合  List&lt;User&gt;
 
-    查询：
+增加 &amp; 删除 &amp; 更新
 
-        如果是findAll. 肯定是返回一个集合  List&lt;User&gt;
-
-    增加 &amp; 删除 &amp; 更新
-
-        返回影响的行数即可  int类型</code></pre>
+    返回影响的行数即可  int类型</code></pre>
       
 
       
@@ -720,15 +638,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -752,18 +682,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -780,11 +698,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,11 +726,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -821,14 +747,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

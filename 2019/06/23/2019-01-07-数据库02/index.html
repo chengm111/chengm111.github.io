@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="今日任务 完成对MYSQL数据库的多表查询及建表的操作">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/2EQMqxU.png">
-<meta property="og:image" content="https://i.imgur.com/9XUt71K.png">
-<meta property="og:updated_time" content="2019-06-23T08:02:56.975Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/19.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/20.png">
+<meta property="og:updated_time" content="2019-06-24T07:21:20.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【数据库】数据库基础2">
 <meta name="twitter:description" content="今日任务 完成对MYSQL数据库的多表查询及建表的操作">
-<meta name="twitter:image" content="https://i.imgur.com/2EQMqxU.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/19.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -203,8 +203,13 @@
 </ul>
 <a id="more"></a>
 
-<h3 id="教学目标"><a href="#教学目标" class="headerlink" title="教学目标"></a>教学目标</h3><h4 id="掌握MYSQL中多表的创建及多表的查询"><a href="#掌握MYSQL中多表的创建及多表的查询" class="headerlink" title="掌握MYSQL中多表的创建及多表的查询"></a>掌握MYSQL中多表的创建及多表的查询</h4><h4 id="掌握MYSQL中的表关系分析并能正确建表"><a href="#掌握MYSQL中的表关系分析并能正确建表" class="headerlink" title="掌握MYSQL中的表关系分析并能正确建表"></a>掌握MYSQL中的表关系分析并能正确建表</h4><p>昨天内容回顾:</p>
-<p>​    数据库的创建 : create database 数据库的名 character set 字符集  collate 校对规则</p>
+<h3 id="教学目标"><a href="#教学目标" class="headerlink" title="教学目标"></a>教学目标</h3><ul>
+<li><p>掌握MYSQL中多表的创建及多表的查询</p>
+</li>
+<li><p>掌握MYSQL中的表关系分析并能正确建表</p>
+</li>
+</ul>
+<h2 id="昨天内容回顾"><a href="#昨天内容回顾" class="headerlink" title="昨天内容回顾:"></a>昨天内容回顾:</h2><p>​    数据库的创建 : create database 数据库的名 character set 字符集  collate 校对规则</p>
 <p>​    数据库的删除: drop database 数据库名</p>
 <p>​    修改: alter database 数据库 character set 字符集(utf8)</p>
 <p>​    查询:  show databases;</p>
@@ -213,50 +218,13 @@
 <p>​    切换数据库 :</p>
 <p>​            use 数据库的名字;</p>
 <p>​    </p>
-<p>​    表结构的操作:</p>
-<p>​        创建:  create table 表名(    </p>
-<p>​                列名 列的类型  列的约束,</p>
-<p>​                列名 列的类型  列的约</p>
-<p>​            )</p>
-<p>​            列的类型: char / varchar   </p>
-<p>​            列的约束: </p>
-<p>​                    primary key 主键约束</p>
-<p>​                    unique : 唯一约束</p>
-<p>​                    not null 非空约束</p>
-<p>​              自动增长 : auto_increment</p>
-<p>​         删除 :  drop table 表名</p>
-<p>​        修改:   alter table 表名 (add, modify, change , drop)</p>
-<p>​            rename table 旧表名  to 新表名</p>
-<p>​            alter table 表名 character set 字符集</p>
-<p>​       查询表结构:</p>
-<p>​            show tables; 查询出所有的表</p>
-<p>​            show create table 表名: 表的创建语句, 表的定义</p>
-<p>​            desc 表名:　表的结构</p>
-<p>​    表中数据的操作</p>
-<p>​        插入：　 insert into 表名(列名,列名) values(值1,值2);</p>
-<p>​        删除:        delete from 表名 [where 条件]</p>
-<p>​        修改:        update 表名 set 列名=’值’ ,列名=’值’ [where 条件];</p>
-<p>​        查询:    select [distinct]  * [列名1,列名2] from 表名 [where 条件]</p>
-<p>​              as关键字: 别名</p>
-<p>​               where条件后面:</p>
-<p>​        </p>
-<p>​                    关系运算符:  &gt; &gt;= &lt; &lt;= !=  &lt;&gt;</p>
-<p>​                        –判断某一列是否为空:  is null    is not null</p>
-<p>​                        in 在某范围内</p>
-<p>​                        between…and</p>
-<p>​                    逻辑运算符: and or not</p>
-<p>​                    模糊查询:  like    </p>
-<p>​                            _ : 代表单个字符</p>
-<p>​                            %: 代表的是多个字符</p>
-<p>​                    分组: group by </p>
-<p>​                    分组之后条件过滤:  having</p>
-<p>​                    聚合函数: sum()  ,avg() , count()  ,max(), min()</p>
-<p>​                    排序: order by  (asc 升序, desc 降序)</p>
+<p>​表结构的操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">​创建:  create table 表名(	</span><br><span class="line"></span><br><span class="line">​	列名 列的类型  列的约束,</span><br><span class="line"></span><br><span class="line">​	列名 列的类型  列的约</span><br><span class="line"></span><br><span class="line">​	)</span><br><span class="line"></span><br><span class="line">​	列的类型: char / varchar   </span><br><span class="line"></span><br><span class="line">​	列的约束: </span><br><span class="line"></span><br><span class="line">​		primary key 主键约束</span><br><span class="line"></span><br><span class="line">​		unique : 唯一约束</span><br><span class="line"></span><br><span class="line">​		not null 非空约束</span><br><span class="line"></span><br><span class="line">​		自动增长 : auto_increment</span><br><span class="line"></span><br><span class="line">​删除 :  drop table 表名</span><br><span class="line"></span><br><span class="line">​修改:   alter table 表名 (add, modify, change , drop)</span><br><span class="line"></span><br><span class="line">​		rename table 旧表名  to 新表名</span><br><span class="line"></span><br><span class="line">​		alter table 表名 character set 字符集</span><br><span class="line"></span><br><span class="line">​查询表结构:</span><br><span class="line"></span><br><span class="line">​		show tables; 查询出所有的表</span><br><span class="line"></span><br><span class="line">​		show create table 表名: 表的创建语句, 表的定义</span><br><span class="line"></span><br><span class="line">​		desc 表名:　表的结构</span><br></pre></td></tr></table></figure>
+
+<p>​表中数据的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">插入：　 insert into 表名(列名,列名) values(值1,值2);</span><br><span class="line">删除:        delete from 表名 [where 条件]</span><br><span class="line">修改:        update 表名 set 列名=&apos;值&apos; ,列名=&apos;值&apos; [where 条件];</span><br><span class="line">查询:    select [distinct]  * [列名1,列名2] from 表名 [where 条件]</span><br><span class="line">	as关键字: 别名</span><br><span class="line">	where条件后面:	</span><br><span class="line">	关系运算符:  &gt; &gt;= &lt; &lt;= !=  &lt;&gt;</span><br><span class="line">	--判断某一列是否为空:  is null    is not null</span><br><span class="line">	in 在某范围内</span><br><span class="line">	between...and</span><br><span class="line">	逻辑运算符: and or not</span><br><span class="line">	模糊查询:  like    </span><br><span class="line">	_ : 代表单个字符</span><br><span class="line">	%: 代表的是多个字符</span><br><span class="line">	分组: group by </span><br><span class="line">	分组之后条件过滤:  having</span><br><span class="line">	聚合函数: sum()  ,avg() , count()  ,max(), min()</span><br><span class="line">	排序: order by  (asc 升序, desc 降序)</span><br></pre></td></tr></table></figure>
+
 <p>​                            </p>
-<p>​                    </p>
-<p>​                    </p>
-<p>​    </p>
-<p>​        </p>
 <h2 id="SQL会创建多表及多表的关系"><a href="#SQL会创建多表及多表的关系" class="headerlink" title="SQL会创建多表及多表的关系"></a>SQL会创建多表及多表的关系</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求:"></a>需求:</h3><p>分类表和商品表之间是不是有关系? 如果有关系,在数据库中如何表示这种关系</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">  cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  cname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  cdesc <span class="built_in">varchar</span>(<span class="number">31</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品,黑马生产'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂倾情打造'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼,茅台,二锅头'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'娃哈哈,蒙牛酸酸乳'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'馋嘴零食'</span>,<span class="string">'瓜子花生,八宝粥,辣条'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">category</span>;</span><br><span class="line"><span class="keyword">select</span> cname,cdesc <span class="keyword">from</span> <span class="keyword">category</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--所有商品</span></span><br><span class="line">1.商品ID</span><br><span class="line">2.商品名称</span><br><span class="line">3.商品的价格</span><br><span class="line">4.生产日期</span><br><span class="line">5.商品分类ID</span><br><span class="line"></span><br><span class="line">商品和商品分类 : 所属关系</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  	price <span class="keyword">double</span>,</span><br><span class="line">  	pdate <span class="built_in">timestamp</span>,</span><br><span class="line">  	cno <span class="built_in">int</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小米mix4'</span>,<span class="number">998</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'锤子'</span>,<span class="number">2888</span>,<span class="literal">null</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'阿迪王'</span>,<span class="number">99</span>,<span class="literal">null</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'老村长'</span>,<span class="number">88</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'劲酒'</span>,<span class="number">35</span>,<span class="literal">null</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小熊饼干'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'卫龙辣条'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'旺旺大饼'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">//插入数据会失败</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'充气的'</span>,<span class="number">1</span>,<span class="literal">null</span>,<span class="number">12</span>);</span><br></pre></td></tr></table></figure>
 
@@ -286,14 +254,11 @@
 <ul>
 <li><p>一对多 : 商品和分类</p>
 <ul>
-<li><p>建表原则: 在多的一方添加一个外键,指向一的一方的主键</p>
-<p>​</p>
-</li>
+<li>建表原则: 在多的一方添加一个外键,指向一的一方的主键<br>​</li>
 </ul>
 </li>
 <li><p>多对多: 老师和学生, 学生和课程</p>
 <p>建表原则: 建立一张中间表,将多对多的关系,拆分成一对多的关系,中间表至少要有两个外键,分别指向原来的那两张表</p>
-<p>​</p>
 </li>
 <li><p>一对一: 班级和班长, 公民和身份证, 国家和国旗</p>
 <ul>
@@ -316,12 +281,10 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/2EQMqxU.png" alt>     ​</p>
 </li>
 </ul>
-<p>​</p>
-<h2 id="网上商城表实例的分析-用户购物流程"><a href="#网上商城表实例的分析-用户购物流程" class="headerlink" title="网上商城表实例的分析:  用户购物流程"></a>网上商城表实例的分析:  用户购物流程</h2><p>  ​</p>
-<ul>
+<p><img src="/assets/img/SE/19.png" alt> ​</p>
+<h2 id="网上商城表实例的分析-用户购物流程"><a href="#网上商城表实例的分析-用户购物流程" class="headerlink" title="网上商城表实例的分析:  用户购物流程"></a>网上商城表实例的分析:  用户购物流程</h2><ul>
 <li><p>用户表 (用户的ID,用户名,密码,手机)</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(</span><br><span class="line">	uid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  	username <span class="built_in">varchar</span>(<span class="number">31</span>),</span><br><span class="line">  	<span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">31</span>),</span><br><span class="line">  	phone  <span class="built_in">varchar</span>(<span class="number">11</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'zhangsan'</span>,<span class="string">'123'</span>,<span class="string">'13811118888'</span>);</span><br></pre></td></tr></table></figure>
 </li>
@@ -333,24 +296,19 @@
 <ul>
 <li><p>商品表 (商品ID, 商品名称,商品价格,外键cno)</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> product(</span><br><span class="line">	pid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  	pname <span class="built_in">varchar</span>(<span class="number">10</span>),</span><br><span class="line">  	price <span class="keyword">double</span>,</span><br><span class="line">  	cno <span class="built_in">int</span>,</span><br><span class="line">  	<span class="keyword">foreign</span> <span class="keyword">key</span>(cno) <span class="keyword">references</span> <span class="keyword">category</span>(cid)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小米mix4'</span>,<span class="number">998</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'锤子'</span>,<span class="number">2888</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'阿迪王'</span>,<span class="number">99</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'老村长'</span>,<span class="number">88</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'劲酒'</span>,<span class="number">35</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'小熊饼干'</span>,<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'卫龙辣条'</span>,<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> product <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'旺旺大饼'</span>,<span class="number">1</span>,<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
-
-<p>  ​</p>
 </li>
-</ul>
-<ul>
-<li>订单项: 中间表(订单ID,商品ID,商品数量,订单项总价)</li>
+<li><p>订单项: 中间表(订单ID,商品ID,商品数量,订单项总价)</p>
+</li>
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> orderitem(</span><br><span class="line">	ono <span class="built_in">int</span>,</span><br><span class="line">  	pno <span class="built_in">int</span>,</span><br><span class="line">  	<span class="keyword">foreign</span> <span class="keyword">key</span>(ono) <span class="keyword">references</span> orders(<span class="keyword">oid</span>),</span><br><span class="line">  	<span class="keyword">foreign</span> <span class="keyword">key</span>(pno) <span class="keyword">references</span> product(pid),</span><br><span class="line">  	ocount <span class="built_in">int</span>,</span><br><span class="line">  	subsum <span class="keyword">double</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">--给1号订单添加商品 200块钱的商品</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">7</span>,<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">1</span>,<span class="number">8</span>,<span class="number">101</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">--给2号订单添加商品 250块钱的商品 ()</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">35</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> orderitem <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">99</span>);</span><br></pre></td></tr></table></figure>
 
-<p>  ​</p>
-<p>  ​</p>
 <ul>
 <li><p>商品分类表(分类ID,分类名称,分类描述)</p>
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">category</span>(</span><br><span class="line">	cid <span class="built_in">int</span> primary <span class="keyword">key</span> auto_increment,</span><br><span class="line">  	cname <span class="built_in">varchar</span>(<span class="number">15</span>),</span><br><span class="line">  	cdesc <span class="built_in">varchar</span>(<span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'手机数码'</span>,<span class="string">'电子产品,黑马生产'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'鞋靴箱包'</span>,<span class="string">'江南皮鞋厂倾情打造'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'香烟酒水'</span>,<span class="string">'黄鹤楼,茅台,二锅头'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'酸奶饼干'</span>,<span class="string">'娃哈哈,蒙牛酸酸乳'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">category</span> <span class="keyword">values</span>(<span class="literal">null</span>,<span class="string">'馋嘴零食'</span>,<span class="string">'瓜子花生,八宝粥,辣条'</span>);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<p><img src="https://i.imgur.com/9XUt71K.png" alt></p>
+<p><img src="/assets/img/SE/20.png" alt></p>
 <ul>
 <li>多表之间的关系如何维护: 外键约束 :   foreign key</li>
 <li>添加一个外键: alter table product add foreign key(cno)  references category(cid);<ul>
@@ -601,7 +559,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#今日任务"><span class="toc-number">1.</span> <span class="toc-text">今日任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#教学目标"><span class="toc-number">1.1.</span> <span class="toc-text">教学目标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握MYSQL中多表的创建及多表的查询"><span class="toc-number">1.1.1.</span> <span class="toc-text">掌握MYSQL中多表的创建及多表的查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#掌握MYSQL中的表关系分析并能正确建表"><span class="toc-number">1.1.2.</span> <span class="toc-text">掌握MYSQL中的表关系分析并能正确建表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL会创建多表及多表的关系"><span class="toc-number">2.</span> <span class="toc-text">SQL会创建多表及多表的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">2.1.</span> <span class="toc-text">需求:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#技术分析"><span class="toc-number">2.1.1.</span> <span class="toc-text">技术分析:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网上商城表实例的分析-用户购物流程"><span class="toc-number">3.</span> <span class="toc-text">网上商城表实例的分析:  用户购物流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用商城表完成对商品信息的多表查询"><span class="toc-number">3.1.</span> <span class="toc-text">使用商城表完成对商品信息的多表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需求分析"><span class="toc-number">3.1.1.</span> <span class="toc-text">需求分析:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#技术分析-1"><span class="toc-number">3.1.2.</span> <span class="toc-text">技术分析:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多表查询"><span class="toc-number">3.1.3.</span> <span class="toc-text">多表查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多表查询练习数据"><span class="toc-number">3.1.4.</span> <span class="toc-text">多表查询练习数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面试题"><span class="toc-number">3.1.5.</span> <span class="toc-text">面试题</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#今日任务"><span class="toc-number">1.</span> <span class="toc-text">今日任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#教学目标"><span class="toc-number">1.1.</span> <span class="toc-text">教学目标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#昨天内容回顾"><span class="toc-number">2.</span> <span class="toc-text">昨天内容回顾:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL会创建多表及多表的关系"><span class="toc-number">3.</span> <span class="toc-text">SQL会创建多表及多表的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求"><span class="toc-number">3.1.</span> <span class="toc-text">需求:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#技术分析"><span class="toc-number">3.1.1.</span> <span class="toc-text">技术分析:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网上商城表实例的分析-用户购物流程"><span class="toc-number">4.</span> <span class="toc-text">网上商城表实例的分析:  用户购物流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用商城表完成对商品信息的多表查询"><span class="toc-number">4.1.</span> <span class="toc-text">使用商城表完成对商品信息的多表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需求分析"><span class="toc-number">4.1.1.</span> <span class="toc-text">需求分析:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#技术分析-1"><span class="toc-number">4.1.2.</span> <span class="toc-text">技术分析:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多表查询"><span class="toc-number">4.1.3.</span> <span class="toc-text">多表查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多表查询练习数据"><span class="toc-number">4.1.4.</span> <span class="toc-text">多表查询练习数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#面试题"><span class="toc-number">4.1.5.</span> <span class="toc-text">面试题</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -729,15 +687,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -761,18 +731,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -789,11 +747,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,11 +775,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -830,14 +796,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 继承 成员函数 final">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:05:09.260Z">
+<meta property="og:updated_time" content="2019-06-24T06:58:46.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础8">
 <meta name="twitter:description" content="摘要 继承 成员函数 final">
@@ -297,8 +297,7 @@
 </li>
 </ul>
 <h2 id="继承的注意事项和什么时候使用继承"><a href="#继承的注意事项和什么时候使用继承" class="headerlink" title="继承的注意事项和什么时候使用继承"></a>继承的注意事项和什么时候使用继承</h2><ul>
-<li><p>A:继承的注意事项</p>
-<ul>
+<li>A:继承的注意事项<ul>
 <li>a:子类只能继承父类所有非私有的成员(成员方法和成员变量)</li>
 <li>b:子类不能继承父类的构造方法，但是可以通过super(马上讲)关键字去访问父类构造方法。</li>
 <li>c:不要为了部分功能而去继承</li>
@@ -306,19 +305,16 @@
 <li>程序员    姓名 工号 工资</li>
 </ul>
 </li>
-<li><p>B:什么时候使用继承</p>
-<ul>
-<li><p>继承其实体现的是一种关系：”is a”。<br>  Person</p>
-<pre><code>Student
-Teacher</code></pre><p>  水果</p>
-<pre><code>苹果
-香蕉
-橘子</code></pre><p>采用假设法。<br>  如果有两个类A,B。只有他们符合A是B的一种，或者B是A的一种，就可以考虑使用继承。</p>
+<li>B:什么时候使用继承<ul>
+<li>继承其实体现的是一种关系：”is a”。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person</span><br><span class="line">	Student</span><br><span class="line">	Teacher</span><br><span class="line">水果</span><br><span class="line">	苹果</span><br><span class="line">	香蕉</span><br><span class="line">	橘子</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="继承中成员变量的关系"><a href="#继承中成员变量的关系" class="headerlink" title="继承中成员变量的关系"></a>继承中成员变量的关系</h2><ul>
+<pre><code>采用假设法。
+    如果有两个类A,B。只有他们符合A是B的一种，或者B是A的一种，就可以考虑使用继承。</code></pre><h2 id="继承中成员变量的关系"><a href="#继承中成员变量的关系" class="headerlink" title="继承中成员变量的关系"></a>继承中成员变量的关系</h2><ul>
 <li>A:案例演示<ul>
 <li>a:不同名的变量 不互相影响</li>
 <li>b:同名的变量 就近原则，子类有的就不用父类的。开发中不出现这种情况。<h2 id="this和super的区别和应用"><a href="#this和super的区别和应用" class="headerlink" title="this和super的区别和应用"></a>this和super的区别和应用</h2></li>
@@ -791,15 +787,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,18 +831,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -851,11 +847,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -879,11 +875,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -892,14 +896,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

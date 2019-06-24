@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 List集合">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:06:32.799Z">
+<meta property="og:updated_time" content="2019-06-24T06:18:56.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础16">
 <meta name="twitter:description" content="摘要 List集合">
@@ -355,10 +355,7 @@
 </ul>
 </li>
 <li><p>B:格式：</p>
-</li>
-<li><pre><code>for(元素数据类型 变量 : 数组或者Collection集合) {
-    使用变量即可，该变量就是元素
-}</code></pre></li>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(元素数据类型 变量 : 数组或者Collection集合) &#123;</span><br><span class="line">	使用变量即可，该变量就是元素</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre></li>
 <li><p>C:案例演示</p>
 <ul>
 <li>数组，集合存储元素用增强for遍历</li>
@@ -371,22 +368,13 @@
 </li>
 </ul>
 <h2 id="ArrayList存储字符串和自定义对象并遍历增强for版"><a href="#ArrayList存储字符串和自定义对象并遍历增强for版" class="headerlink" title="ArrayList存储字符串和自定义对象并遍历增强for版"></a>ArrayList存储字符串和自定义对象并遍历增强for版</h2><ul>
-<li><p>A:案例演示</p>
-<ul>
-<li><p>ArrayList存储字符串并遍历增强for版</p>
+<li>A:案例演示<ul>
+<li>ArrayList存储字符串并遍历增强for版</li>
+</ul>
 </li>
-<li><pre><code>ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
-list.add(&quot;a&quot;);
-list.add(&quot;b&quot;);
-list.add(&quot;c&quot;);
-list.add(&quot;d&quot;);
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">list.add(&quot;a&quot;);</span><br><span class="line">list.add(&quot;b&quot;);</span><br><span class="line">list.add(&quot;c&quot;);</span><br><span class="line">list.add(&quot;d&quot;);</span><br><span class="line"></span><br><span class="line">for(String s : list) &#123;</span><br><span class="line">	System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-for(String s : list) {
-    System.out.println(s);
-}</code></pre></li>
-</ul>
-</li>
-</ul>
 <h2 id="三种迭代的能否删除"><a href="#三种迭代的能否删除" class="headerlink" title="三种迭代的能否删除"></a>三种迭代的能否删除</h2><ul>
 <li>普通for循环,可以删除,但是索引要–</li>
 <li>迭代器,可以删除,但是必须使用迭代器自身的remove方法,否则会出现并发修改异常</li>
@@ -722,15 +710,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,18 +754,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -782,11 +770,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -810,11 +798,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -823,14 +819,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

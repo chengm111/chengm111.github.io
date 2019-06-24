@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 Collection集合 List集合">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/aPfpLyT.png">
-<meta property="og:image" content="https://i.imgur.com/x0zvv4V.png">
-<meta property="og:updated_time" content="2019-06-23T08:06:32.794Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/12.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/13.png">
+<meta property="og:updated_time" content="2019-06-24T06:29:41.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础15">
 <meta name="twitter:description" content="摘要 Collection集合 List集合">
-<meta name="twitter:image" content="https://i.imgur.com/aPfpLyT.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/12.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -220,13 +220,15 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/aPfpLyT.png" alt></p>
+<p><img src="/assets/img/SE/12.png" alt></p>
 <h2 id="集合的由来及集合继承体系图"><a href="#集合的由来及集合继承体系图" class="headerlink" title="集合的由来及集合继承体系图"></a>集合的由来及集合继承体系图</h2><ul>
-<li>A:集合的由来<ul>
+<li><p>A:集合的由来</p>
+<ul>
 <li>数组长度是固定,当添加的元素超过了数组的长度时需要对数组重新定义,太麻烦,java内部给我们提供了集合类,能存储任意对象,长度是可以改变的,随着元素的增加而增加,随着元素的减少而减少 </li>
 </ul>
 </li>
-<li>B:数组和集合的区别<ul>
+<li><p>B:数组和集合的区别</p>
+<ul>
 <li>区别1 : <ul>
 <li>数组既可以存储基本数据类型,又可以存储引用数据类型,基本数据类型存储的是值,引用数据类型存储的是地址值</li>
 <li>集合只能存储引用数据类型(对象)集合中也可以存储基本数据类型,但是在存储的时候会自动装箱变成对象</li>
@@ -239,114 +241,69 @@
 </li>
 </ul>
 </li>
-<li>C:数组和集合什么时候用<pre><code>* 1,如果元素个数是固定的推荐用数组
-* 2,如果元素个数不是固定的推荐用集合</code></pre></li>
-<li>D:集合继承体系图</li>
+<li><p>C:数组和集合什么时候用</p>
+<ul>
+<li>如果元素个数是固定的推荐用数组</li>
+<li>如果元素个数不是固定的推荐用集合</li>
 </ul>
-<p><img src="https://i.imgur.com/x0zvv4V.png" alt></p>
+</li>
+<li><p>D:集合继承体系图</p>
+</li>
+</ul>
+<p><img src="/assets/img/SE/13.png" alt></p>
 <h2 id="Collection集合的基本功能测试"><a href="#Collection集合的基本功能测试" class="headerlink" title="Collection集合的基本功能测试"></a>Collection集合的基本功能测试</h2><ul>
 <li><p>A:案例演示    </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">基本功能演示</span><br><span class="line"></span><br><span class="line">boolean add(E e) //添加Object对象，继承了Object的任意类的对象都可以</span><br><span class="line">boolean remove(Object o)		//删除指定元素</span><br><span class="line">void clear()				//清空集合</span><br><span class="line">boolean contains(Object o)	//判断是否存在元素</span><br><span class="line">boolean isEmpty()		//判断是否为空</span><br><span class="line">int size()			//集合元素个数</span><br></pre></td></tr></table></figure>
 </li>
-<li><pre><code>基本功能演示
-
-boolean add(E e) //添加Object对象，继承了Object的任意类的对象都可以
-boolean remove(Object o)        //删除指定元素
-void clear()                //清空集合
-boolean contains(Object o)    //判断是否存在元素
-boolean isEmpty()        //判断是否为空
-int size()            //集合元素个数</code></pre></li>
 <li><p>B:注意:</p>
 </li>
-<li><pre><code>collectionXxx.java使用了未经检查或不安全的操作.
-注意:要了解详细信息,请使用 -Xlint:unchecked重新编译.
-java编译器认为该程序存在安全隐患
-温馨提示:这不是编译失败,所以先不用理会,等学了泛型你就知道了</code></pre></li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">collectionXxx.java使用了未经检查或不安全的操作.</span><br><span class="line">注意:要了解详细信息,请使用 -Xlint:unchecked重新编译.</span><br><span class="line">java编译器认为该程序存在安全隐患</span><br><span class="line">温馨提示:这不是编译失败,所以先不用理会,等学了泛型你就知道了</span><br></pre></td></tr></table></figure>
+
+
 <h2 id="集合的遍历之集合转数组遍历"><a href="#集合的遍历之集合转数组遍历" class="headerlink" title="集合的遍历之集合转数组遍历"></a>集合的遍历之集合转数组遍历</h2><ul>
-<li><p>A:集合的遍历</p>
-<ul>
+<li>A:集合的遍历<ul>
 <li>其实就是依次获取集合中的每一个元素。</li>
 </ul>
 </li>
-<li><p>B:案例演示</p>
-<ul>
-<li><p>把集合转成数组，可以实现集合的遍历</p>
+<li>B:案例演示<ul>
+<li>把集合转成数组，可以实现集合的遍历</li>
+<li>toArray()</li>
+</ul>
 </li>
-<li><p>toArray()</p>
-</li>
-<li><pre><code>Collection coll = new ArrayList();
-coll.add(new Student(&quot;张三&quot;,23));        //Object obj = new Student(&quot;张三&quot;,23);
-coll.add(new Student(&quot;李四&quot;,24));
-coll.add(new Student(&quot;王五&quot;,25));
-coll.add(new Student(&quot;赵六&quot;,26));
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">coll.add(<span class="keyword">new</span> Student(<span class="string">"张三"</span>,<span class="number">23</span>));		<span class="comment">//Object obj = new Student("张三",23);</span></span><br><span class="line">coll.add(<span class="keyword">new</span> Student(<span class="string">"李四"</span>,<span class="number">24</span>));</span><br><span class="line">coll.add(<span class="keyword">new</span> Student(<span class="string">"王五"</span>,<span class="number">25</span>));</span><br><span class="line">coll.add(<span class="keyword">new</span> Student(<span class="string">"赵六"</span>,<span class="number">26</span>));</span><br><span class="line"></span><br><span class="line">Object[] arr = coll.toArray();				<span class="comment">//将集合转换成数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">	Student s = (Student)arr[i];			<span class="comment">//强转成Student</span></span><br><span class="line">	System.out.println(s.getName() + <span class="string">","</span> + s.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-Object[] arr = coll.toArray();                //将集合转换成数组
-for (int i = 0; i &lt; arr.length; i++) {
-    Student s = (Student)arr[i];            //强转成Student
-    System.out.println(s.getName() + &quot;,&quot; + s.getAge());
-}</code></pre></li>
-</ul>
-</li>
-</ul>
 <h2 id="Collection集合的带All功能测试"><a href="#Collection集合的带All功能测试" class="headerlink" title="Collection集合的带All功能测试"></a>Collection集合的带All功能测试</h2><ul>
-<li><p>A:案例演示</p>
-</li>
-<li><pre><code>带All的功能演示
-
-boolean addAll(Collection c) //将集合c中的所有元素添加到本集合，不加All的是直接把集合c当作元素添加到本集合
-boolean removeAll(Collection c)  //删除集合中与集合c的交集，无交集时返回false
-boolean containsAll(Collection c) //判断集合c是否为本集合的子集
-boolean retainAll(Collection c)    //取交集，如果调用的集合改变就返回true，不改变返回false</code></pre></li>
+<li>A:案例演示</li>
 </ul>
+<p>带All的功能演示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">addAll</span><span class="params">(Collection c)</span> <span class="comment">//将集合c中的所有元素添加到本集合，不加All的是直接把集合c当作元素添加到本集合</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection c)</span>  <span class="comment">//删除集合中与集合c的交集，无交集时返回false</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">containsAll</span><span class="params">(Collection c)</span> <span class="comment">//判断集合c是否为本集合的子集</span></span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection c)</span>	<span class="comment">//取交集，如果调用的集合改变就返回true，不改变返回false</span></span></span><br></pre></td></tr></table></figure>
+
 <h2 id="集合的遍历之迭代器遍历"><a href="#集合的遍历之迭代器遍历" class="headerlink" title="集合的遍历之迭代器遍历"></a>集合的遍历之迭代器遍历</h2><ul>
-<li><p>A:迭代器概述</p>
-<ul>
+<li>A:迭代器概述<ul>
 <li>集合是用来存储元素,存储的元素需要查看,那么就需要迭代(遍历) </li>
 </ul>
 </li>
-<li><p>B:案例演示</p>
-<ul>
-<li><p>迭代器的使用</p>
-<pre><code>Collection c = new ArrayList();
-c.add(&quot;a&quot;);
-c.add(&quot;b&quot;);
-c.add(&quot;c&quot;);
-c.add(&quot;d&quot;);
-
-Iterator it = c.iterator();                        //获取迭代器的引用
-while(it.hasNext()) {                            //集合中的迭代方法(遍历)
-    System.out.println(it.next());
-}</code></pre></li>
+<li>B:案例演示<ul>
+<li>迭代器的使用</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Collection c = <span class="keyword">new</span> ArrayList();</span><br><span class="line">c.add(<span class="string">"a"</span>);</span><br><span class="line">c.add(<span class="string">"b"</span>);</span><br><span class="line">c.add(<span class="string">"c"</span>);</span><br><span class="line">c.add(<span class="string">"d"</span>);</span><br><span class="line"></span><br><span class="line">Iterator it = c.iterator();						<span class="comment">//获取迭代器的引用</span></span><br><span class="line"><span class="keyword">while</span>(it.hasNext()) &#123;							<span class="comment">//集合中的迭代方法(遍历)</span></span><br><span class="line">	System.out.println(it.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Collection存储自定义对象并遍历"><a href="#Collection存储自定义对象并遍历" class="headerlink" title="Collection存储自定义对象并遍历"></a>Collection存储自定义对象并遍历</h2><ul>
-<li><p>A:案例演示</p>
-<ul>
-<li><p>Collection存储自定义对象并用迭代器遍历</p>
-</li>
-<li><pre><code>Collection c = new ArrayList();
-
-c.add(new Student(&quot;张三&quot;,23));
-c.add(new Student(&quot;李四&quot;,24));
-c.add(new Student(&quot;王五&quot;,25));
-c.add(new Student(&quot;赵六&quot;,26));
-c.add(new Student(&quot;赵六&quot;,26));
-
-for(Iterator it = c.iterator();it.hasNext();) {
-    Student s = (Student)it.next();                        //向下转型
-    System.out.println(s.getName() + &quot;,&quot; + s.getAge());    //获取对象中的姓名和年龄
-}
-System.out.println(&quot;------------------------------&quot;);
-Iterator it = c.iterator();                                //获取迭代器
-while(it.hasNext()) {                                    //判断集合中是否有元素
-    //System.out.println(((Student)(it.next())).getName() + &quot;,&quot; + ((Student)(it.next())).getAge());
-    Student s = (Student)it.next();                        //向下转型
-    System.out.println(s.getName() + &quot;,&quot; + s.getAge());    //获取对象中的姓名和年龄
-}</code></pre></li>
+<li>A:案例演示<ul>
+<li>Collection存储自定义对象并用迭代器遍历</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Collection c = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">c.add(<span class="keyword">new</span> Student(<span class="string">"张三"</span>,<span class="number">23</span>));</span><br><span class="line">c.add(<span class="keyword">new</span> Student(<span class="string">"李四"</span>,<span class="number">24</span>));</span><br><span class="line">c.add(<span class="keyword">new</span> Student(<span class="string">"王五"</span>,<span class="number">25</span>));</span><br><span class="line">c.add(<span class="keyword">new</span> Student(<span class="string">"赵六"</span>,<span class="number">26</span>));</span><br><span class="line">c.add(<span class="keyword">new</span> Student(<span class="string">"赵六"</span>,<span class="number">26</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Iterator it = c.iterator();it.hasNext();) &#123;</span><br><span class="line">	Student s = (Student)it.next();						<span class="comment">//向下转型</span></span><br><span class="line">	System.out.println(s.getName() + <span class="string">","</span> + s.getAge());	<span class="comment">//获取对象中的姓名和年龄</span></span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"------------------------------"</span>);</span><br><span class="line">Iterator it = c.iterator();								<span class="comment">//获取迭代器</span></span><br><span class="line"><span class="keyword">while</span>(it.hasNext()) &#123;									<span class="comment">//判断集合中是否有元素</span></span><br><span class="line">	<span class="comment">//System.out.println(((Student)(it.next())).getName() + "," + ((Student)(it.next())).getAge());</span></span><br><span class="line">	Student s = (Student)it.next();						<span class="comment">//向下转型</span></span><br><span class="line">	System.out.println(s.getName() + <span class="string">","</span> + s.getAge());	<span class="comment">//获取对象中的姓名和年龄</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="迭代器的原理及源码解析"><a href="#迭代器的原理及源码解析" class="headerlink" title="迭代器的原理及源码解析"></a>迭代器的原理及源码解析</h2><ul>
 <li>A:迭代器原理<ul>
 <li>迭代器原理:迭代器是对集合进行遍历,而每一个集合内部的存储结构都是不同的,所以每一个集合存和取都是不一样,那么就需要在每一个类中定义hasNext()和next()方法,这样做是可以的,但是会让整个集合体系过于臃肿,迭代器是将这样的方法向上抽取出接口,然后在每个类的内部,定义自己迭代方式,这样做的好处有二,第一规定了整个集合体系的遍历方式都是hasNext()和next()方法,第二,代码有底层内部实现,使用者不用管怎么实现的,会用即可 </li>
@@ -370,43 +327,23 @@ while(it.hasNext()) {                                    //判断集合中是否
 </li>
 </ul>
 <h2 id="List集合存储学生对象并遍历"><a href="#List集合存储学生对象并遍历" class="headerlink" title="List集合存储学生对象并遍历"></a>List集合存储学生对象并遍历</h2><ul>
-<li><p>A:案例演示</p>
-<ul>
-<li><p>通过size()和get()方法结合使用遍历。</p>
-<pre><code>List list = new ArrayList();
-list.add(new Student(&quot;张三&quot;, 18));
-list.add(new Student(&quot;李四&quot;, 18));
-list.add(new Student(&quot;王五&quot;, 18));
-list.add(new Student(&quot;赵六&quot;, 18));
-
-for(int i = 0; i &lt; list.size(); i++) {
-    Student s = (Student)list.get(i);
-    System.out.println(s.getName() + &quot;,&quot; + s.getAge());
-}</code></pre></li>
+<li>A:案例演示<ul>
+<li>通过size()和get()方法结合使用遍历。</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.add(<span class="keyword">new</span> Student(<span class="string">"张三"</span>, <span class="number">18</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> Student(<span class="string">"李四"</span>, <span class="number">18</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> Student(<span class="string">"王五"</span>, <span class="number">18</span>));</span><br><span class="line">list.add(<span class="keyword">new</span> Student(<span class="string">"赵六"</span>, <span class="number">18</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">	Student s = (Student)list.get(i);</span><br><span class="line">	System.out.println(s.getName() + <span class="string">","</span> + s.getAge());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="并发修改异常产生的原因及解决方案"><a href="#并发修改异常产生的原因及解决方案" class="headerlink" title="并发修改异常产生的原因及解决方案"></a>并发修改异常产生的原因及解决方案</h2><ul>
-<li><p>A:案例演示</p>
-<ul>
-<li><p>需求：我有一个集合，请问，我想判断里面有没有”world”这个元素，如果有，我就添加一个”javaee”元素，请写代码实现。</p>
-<pre><code>List list = new ArrayList();
-list.add(&quot;a&quot;);
-list.add(&quot;b&quot;);
-list.add(&quot;world&quot;);
-list.add(&quot;d&quot;);
-list.add(&quot;e&quot;);
-
-/*Iterator it = list.iterator();
-while(it.hasNext()) {
-    String str = (String)it.next();
-    if(str.equals(&quot;world&quot;)) {
-        list.add(&quot;javaee&quot;);            //这里会抛出ConcurrentModificationException并发修改异常
-    }
-}*/</code></pre></li>
+<li>A:案例演示<ul>
+<li>需求：我有一个集合，请问，我想判断里面有没有”world”这个元素，如果有，我就添加一个”javaee”元素，请写代码实现。</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.add(<span class="string">"a"</span>);</span><br><span class="line">list.add(<span class="string">"b"</span>);</span><br><span class="line">list.add(<span class="string">"world"</span>);</span><br><span class="line">list.add(<span class="string">"d"</span>);</span><br><span class="line">list.add(<span class="string">"e"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Iterator it = list.iterator();</span></span><br><span class="line"><span class="comment">while(it.hasNext()) &#123;</span></span><br><span class="line"><span class="comment">	String str = (String)it.next();</span></span><br><span class="line"><span class="comment">	if(str.equals("world")) &#123;</span></span><br><span class="line"><span class="comment">		list.add("javaee");			//这里会抛出ConcurrentModificationException并发修改异常</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure>
+
+
+
 <ul>
 <li>B:ConcurrentModificationException出现<ul>
 <li>迭代器遍历，集合修改集合</li>
@@ -427,32 +364,20 @@ while(it.hasNext()) {
 <li>Object previous();返回上一个元素</li>
 </ul>
 <h2 id="Vector的特有功能"><a href="#Vector的特有功能" class="headerlink" title="Vector的特有功能"></a>Vector的特有功能</h2><ul>
-<li><p>A:Vector类概述</p>
-</li>
-<li><p>B:Vector类特有功能</p>
-<ul>
+<li>A:Vector类概述</li>
+<li>B:Vector类特有功能<ul>
 <li>public void addElement(E obj)</li>
 <li>public E elementAt(int index)</li>
 <li>public Enumeration elements()</li>
 </ul>
 </li>
-<li><p>C:案例演示    </p>
-<ul>
-<li><p>Vector的迭代</p>
-<pre><code>Vector v = new Vector();                //创建集合对象,List的子类
-v.addElement(&quot;a&quot;);
-v.addElement(&quot;b&quot;);
-v.addElement(&quot;c&quot;);
-v.addElement(&quot;d&quot;);
-
-//Vector迭代
-Enumeration en = v.elements();            //获取枚举
-while(en.hasMoreElements()) {            //判断集合中是否有元素
-    System.out.println(en.nextElement());//获取集合中的元素
-}</code></pre></li>
+<li>C:案例演示    <ul>
+<li>Vector的迭代</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Vector v = <span class="keyword">new</span> Vector();				<span class="comment">//创建集合对象,List的子类</span></span><br><span class="line">v.addElement(<span class="string">"a"</span>);</span><br><span class="line">v.addElement(<span class="string">"b"</span>);</span><br><span class="line">v.addElement(<span class="string">"c"</span>);</span><br><span class="line">v.addElement(<span class="string">"d"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Vector迭代</span></span><br><span class="line">Enumeration en = v.elements();			<span class="comment">//获取枚举</span></span><br><span class="line"><span class="keyword">while</span>(en.hasMoreElements()) &#123;			<span class="comment">//判断集合中是否有元素</span></span><br><span class="line">	System.out.println(en.nextElement());<span class="comment">//获取集合中的元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="数据结构之数组和链表"><a href="#数据结构之数组和链表" class="headerlink" title="数据结构之数组和链表"></a>数据结构之数组和链表</h2><ul>
 <li>A:数组<ul>
 <li>查询快修改也快</li>
@@ -466,33 +391,26 @@ while(en.hasMoreElements()) {            //判断集合中是否有元素
 </li>
 </ul>
 <h2 id="List的三个子类的特点"><a href="#List的三个子类的特点" class="headerlink" title="List的三个子类的特点"></a>List的三个子类的特点</h2><ul>
-<li><p>A:List的三个子类的特点</p>
-</li>
-<li><pre><code>ArrayList:
-    底层数据结构是数组，查询快，增删慢。
-    线程不安全，效率高。
-Vector:
-    底层数据结构是数组，查询快，增删慢。
-    线程安全，效率低。
-Vector相对ArrayList查询慢(线程安全的)
-Vector相对LinkedList增删慢(数组结构)
-LinkedList:
-    底层数据结构是链表，查询慢，增删快。
-    线程不安全，效率高。
+<li>A:List的三个子类的特点</li>
+</ul>
+<p>ArrayList:</p>
+<pre><code>底层数据结构是数组，查询快，增删慢。
+线程不安全，效率高。</code></pre><p>Vector:</p>
+<pre><code>底层数据结构是数组，查询快，增删慢。
+线程安全，效率低。</code></pre><p>Vector相对ArrayList查询慢(线程安全的)<br>Vector相对LinkedList增删慢(数组结构)</p>
+<p>LinkedList:</p>
+<pre><code>底层数据结构是链表，查询慢，增删快。
+线程不安全，效率高。</code></pre><p>Vector和ArrayList的区别</p>
+<pre><code>Vector是线程安全的,效率低
+ArrayList是线程不安全的,效率高</code></pre><p>共同点:都是数组实现的</p>
+<p>ArrayList和LinkedList的区别</p>
+<pre><code>ArrayList底层是数组结果,查询和修改快
+LinkedList底层是链表结构的,增和删比较快,查询和修改比较慢
 
-Vector和ArrayList的区别
-    Vector是线程安全的,效率低
-    ArrayList是线程不安全的,效率高
-共同点:都是数组实现的
-ArrayList和LinkedList的区别
-    ArrayList底层是数组结果,查询和修改快
-    LinkedList底层是链表结构的,增和删比较快,查询和修改比较慢
-共同点:都是线程不安全的</code></pre></li>
+共同点:都是线程不安全的</code></pre><ul>
 <li><p>B:List有三个儿子，我们到底使用谁呢?</p>
+<p>  查询多用ArrayList<br>  增删多用LinkedList<br>  如果都多ArrayList</p>
 </li>
-<li><pre><code>查询多用ArrayList
-增删多用LinkedList
-如果都多ArrayList</code></pre></li>
 </ul>
 
       
@@ -780,15 +698,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,18 +742,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -840,11 +758,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -868,11 +786,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -881,14 +807,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

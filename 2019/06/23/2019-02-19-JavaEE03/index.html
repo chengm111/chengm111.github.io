@@ -16,23 +16,23 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 HttpServletRequest和 HttpServletResponse">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/bEKJCnt.png">
-<meta property="og:image" content="https://i.imgur.com/SGZj8WY.png">
-<meta property="og:image" content="https://i.imgur.com/n53mN7l.png">
-<meta property="og:image" content="https://i.imgur.com/GYylS6M.png">
-<meta property="og:image" content="https://i.imgur.com/KvRtT4y.png">
-<meta property="og:image" content="https://i.imgur.com/5xCIiXf.png">
-<meta property="og:image" content="https://i.imgur.com/JKTACl8.png">
-<meta property="og:image" content="https://i.imgur.com/AmIo0kj.png">
-<meta property="og:image" content="https://i.imgur.com/XOlgLWP.png">
-<meta property="og:image" content="https://i.imgur.com/F53Ayfq.png">
-<meta property="og:image" content="https://i.imgur.com/15JuSp0.png">
-<meta property="og:image" content="https://i.imgur.com/kflr4B9.png">
-<meta property="og:updated_time" content="2019-06-23T08:08:40.819Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/28.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/29.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/30.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/31.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/32.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/33.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/34.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/35.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/36.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/37.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/38.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/39.png">
+<meta property="og:updated_time" content="2019-06-24T05:34:02.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】HttpServletRequest和 HttpServletResponse">
 <meta name="twitter:description" content="摘要 HttpServletRequest和 HttpServletResponse">
-<meta name="twitter:image" content="https://i.imgur.com/bEKJCnt.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/EE/28.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -267,82 +267,45 @@
 <h4 id="可以获取全局配置参数"><a href="#可以获取全局配置参数" class="headerlink" title="可以获取全局配置参数"></a>可以获取全局配置参数</h4><blockquote>
 <p>定义在根标签</p>
 </blockquote>
-<p><img src="https://i.imgur.com/bEKJCnt.png" alt></p>
+<p><img src="/assets/img/EE/28.png" alt></p>
 <p>获取全局参数</p>
-<p><img src="https://i.imgur.com/SGZj8WY.png" alt></p>
-<h4 id="可以获取Web应用中的资源"><a href="#可以获取Web应用中的资源" class="headerlink" title="可以获取Web应用中的资源"></a>可以获取Web应用中的资源</h4><pre><code>1. 如果想获取web工程下的资源，用普通的FileInputStream写法不行，因为路径不对，这里的相对路径是根据jre确定的，web工程中的jre由tomcat管理，所以真正的相对路径是tomcat里的bin目录
+<p><img src="/assets/img/EE/29.png" alt></p>
+<h4 id="可以获取Web应用中的资源"><a href="#可以获取Web应用中的资源" class="headerlink" title="可以获取Web应用中的资源"></a>可以获取Web应用中的资源</h4><p>1.如果想获取web工程下的资源，用普通的FileInputStream写法不行，因为路径不对，这里的相对路径是根据jre确定的，web工程中的jre由tomcat管理，所以真正的相对路径是tomcat里的bin目录</p>
+<p>2.获取资源在tomcat里面的绝对路径</p>
+<p>先得到路径，然后自己new InpuStream</p>
+<pre><code>context.getRealPath(&quot;&quot;) //这里得到的是项目在tomcat里面的根目录。
 
-2. 获取资源在tomcat里面的绝对路径
+D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\
 
-    先得到路径，然后自己new InpuStream
+ String path = context.getRealPath(&quot;file/config.properties&quot;);
 
-        context.getRealPath(&quot;&quot;) //这里得到的是项目在tomcat里面的根目录。
-
-        D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\
-
-         String path = context.getRealPath(&quot;file/config.properties&quot;);
-
-        D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\file\config.properties
-
-    代码如下
-
-        public class Demo03 extends HttpServlet {
-
-            protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                // 获取ServletContext对象
-                ServletContext context = getServletContext();
-                //获取给定的文件在服务器上面的绝对路径。
-                String path = context.getRealPath(&quot;file/config.properties&quot;);
-                System.out.println(&quot;path=&quot;+path);
-
-                // 1. 创建属性对象
-                Properties properties = new Properties();
-                InputStream is = new FileInputStream(path);
-                properties.load(is);
-
-                // 3. 获取name属性的值
-                String name = properties.getProperty(&quot;name&quot;);
-
-                System.out.println(&quot;name=&quot; + name);
-            }
-
-            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                doGet(request, response);
-            }
-
-        }
+D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\file\config.properties</code></pre><p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo03</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="comment">// 获取ServletContext对象</span></span><br><span class="line">		ServletContext context = getServletContext();</span><br><span class="line">		<span class="comment">//获取给定的文件在服务器上面的绝对路径。</span></span><br><span class="line">		String path = context.getRealPath(<span class="string">"file/config.properties"</span>);</span><br><span class="line">		System.out.println(<span class="string">"path="</span>+path);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 1. 创建属性对象</span></span><br><span class="line">		Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">		InputStream is = <span class="keyword">new</span> FileInputStream(path);</span><br><span class="line">		properties.load(is);</span><br><span class="line">	</span><br><span class="line">		<span class="comment">// 3. 获取name属性的值</span></span><br><span class="line">		String name = properties.getProperty(<span class="string">"name"</span>);</span><br><span class="line">	</span><br><span class="line">		System.out.println(<span class="string">"name="</span> + name);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		doGet(request, response);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-3. getResourceAsStream 获取资源流对象
 
-    直接给相对的路径，然后获取流对象。
+<p>3.getResourceAsStream 获取资源流对象</p>
+<p>直接给相对的路径，然后获取流对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	ServletContext context=getServletContext();</span><br><span class="line">	Properties properties=<span class="keyword">new</span> Properties();</span><br><span class="line">	InputStream is=context.getResourceAsStream(<span class="string">"file/config.properties"</span>);</span><br><span class="line">	properties.load(is);</span><br><span class="line">	String name=properties.getProperty(<span class="string">"name"</span>);</span><br><span class="line">	System.out.println(<span class="string">"name="</span>+name);</span><br><span class="line">	is.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletContext context=getServletContext();
-        Properties properties=new Properties();
-        InputStream is=context.getResourceAsStream(&quot;file/config.properties&quot;);
-        properties.load(is);
-        String name=properties.getProperty(&quot;name&quot;);
-        System.out.println(&quot;name=&quot;+name);
-        is.close();
-    }</code></pre><p><img src="https://i.imgur.com/n53mN7l.png" alt></p>
-<h3 id="通过classloader去获取web工程下的资源"><a href="#通过classloader去获取web工程下的资源" class="headerlink" title="通过classloader去获取web工程下的资源"></a>通过classloader去获取web工程下的资源</h3><p><img src="https://i.imgur.com/GYylS6M.png" alt></p>
+<p><img src="/assets/img/EE/30.png" alt></p>
+<h3 id="通过classloader去获取web工程下的资源"><a href="#通过classloader去获取web工程下的资源" class="headerlink" title="通过classloader去获取web工程下的资源"></a>通过classloader去获取web工程下的资源</h3><p><img src="/assets/img/EE/31.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">test03</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">// 1. 创建属性对象</span></span><br><span class="line">			Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//获取该java文件的class ，然后获取到加载这个class到虚拟机中的那个类加载器对象。</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">/*</span></span><br><span class="line"><span class="comment">			 * ServletContext</span></span><br><span class="line"><span class="comment">			 * a路径--工程在tomcat里面的目录</span></span><br><span class="line"><span class="comment">			 * 			D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03</span></span><br><span class="line"><span class="comment">			 * </span></span><br><span class="line"><span class="comment">			 * ClassLoader </span></span><br><span class="line"><span class="comment">			 * </span></span><br><span class="line"><span class="comment">			 * a路径： D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\WEB-INF\classes</span></span><br><span class="line"><span class="comment">			 * </span></span><br><span class="line"><span class="comment">			 * 默认的lcassloader 的路径是上面这个路径，我们必须得回到Demo03这个目录下，才能进入file目录。如何回到上一级目录呢？</span></span><br><span class="line"><span class="comment">			 *  ../../  ---  D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03</span></span><br><span class="line"><span class="comment">			 * ../../file/config.properties  --- D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\file\config.properties</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			 * b路径： D:\tomcat\apache-tomcat-7.0.52\apache-tomcat-7.0.52\wtpwebapps\Demo03\file\config.properties</span></span><br><span class="line"><span class="comment">			 */</span></span><br><span class="line"><span class="comment">//			System.out.println(getClass().getClassLoader());</span></span><br><span class="line">			InputStream is = <span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"../../file/config.properties"</span>);</span><br><span class="line">			properties.load(is);</span><br><span class="line">			<span class="comment">// 3. 获取name属性的值</span></span><br><span class="line">			String name = properties.getProperty(<span class="string">"name"</span>);</span><br><span class="line">			System.out.println(<span class="string">"name333333="</span> + name);</span><br><span class="line">			is.close();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用ServletContext存取数据。"><a href="#使用ServletContext存取数据。" class="headerlink" title="使用ServletContext存取数据。"></a>使用ServletContext存取数据。</h3><p><img src="https://i.imgur.com/KvRtT4y.png" alt></p>
+<h3 id="使用ServletContext存取数据。"><a href="#使用ServletContext存取数据。" class="headerlink" title="使用ServletContext存取数据。"></a>使用ServletContext存取数据。</h3><p><img src="/assets/img/EE/32.png" alt></p>
 <ol>
 <li>定义一个登陆的html页面， 定义一个form表单</li>
 </ol>
-<p><img src="https://i.imgur.com/5xCIiXf.png" alt></p>
+<p><img src="/assets/img/EE/33.png" alt></p>
 <ol start="2">
 <li>定义一个Servlet，名为LoginServlet</li>
 </ol>
-<p><img src="https://i.imgur.com/JKTACl8.png" alt></p>
+<p><img src="/assets/img/EE/34.png" alt></p>
 <ol start="3">
 <li>针对成功或者失败，进行判断，然后跳转到不一样的网页</li>
 </ol>
-<p><img src="https://i.imgur.com/AmIo0kj.png" alt></p>
-<h3 id="ServletContext存取值分析"><a href="#ServletContext存取值分析" class="headerlink" title="ServletContext存取值分析"></a>ServletContext存取值分析</h3><p><img src="https://i.imgur.com/XOlgLWP.png" alt></p>
+<p><img src="/assets/img/EE/35.png" alt></p>
+<h3 id="ServletContext存取值分析"><a href="#ServletContext存取值分析" class="headerlink" title="ServletContext存取值分析"></a>ServletContext存取值分析</h3><p><img src="/assets/img/EE/36.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//整体代码</span></span><br><span class="line"><span class="comment">//servlet.java</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		String username=request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">		String password=request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">		System.out.println(username+<span class="string">" "</span>+password);</span><br><span class="line">		</span><br><span class="line">		PrintWriter pw=response.getWriter();</span><br><span class="line">		<span class="keyword">if</span>(<span class="string">"admin"</span>.equals(username) &amp;&amp; <span class="string">"123"</span>.equals(password)) &#123;</span><br><span class="line">			Object obj=getServletContext().getAttribute(<span class="string">"count"</span>);</span><br><span class="line">			<span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(obj!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				count=(<span class="keyword">int</span>) obj;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"已知登录成功的次数是："</span>+count);</span><br><span class="line">			getServletContext().setAttribute(<span class="string">"count"</span>, count+<span class="number">1</span>);;</span><br><span class="line">			response.setStatus(<span class="number">302</span>);</span><br><span class="line">			response.setHeader(<span class="string">"Location"</span>, <span class="string">"login_success.html"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			pw.write(<span class="string">"login failed"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//CountServlet.java</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count=(<span class="keyword">int</span>) getServletContext().getAttribute(<span class="string">"count"</span>);</span><br><span class="line">		response.getWriter().write(<span class="string">"login success count:"</span>+count);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//login.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span>请输入内容，完成登录<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"servlet"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">		账号：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">		密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"password"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"login"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">login_success.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span>登录成功了<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"CountServlet"</span> &gt;</span>获取网站成功总数<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -370,41 +333,13 @@ B路径： 当前这个html的路径：
 <h2 id="HttpServletRequest"><a href="#HttpServletRequest" class="headerlink" title="HttpServletRequest"></a>HttpServletRequest</h2><blockquote>
 <p>这个对象封装了客户端提交过来的一切数据。 </p>
 </blockquote>
-<ol>
-<li><p>可以获取客户端请求头信息</p>
-<pre><code>//得到一个枚举集合  
-Enumeration&lt;String&gt; headerNames = request.getHeaderNames();
-while (headerNames.hasMoreElements()) {
-    String name = (String) headerNames.nextElement();
-    String value = request.getHeader(name);
-    System.out.println(name+&quot;=&quot;+value);
+<p>1.可以获取客户端请求头信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//得到一个枚举集合  </span></span><br><span class="line">Enumeration&lt;String&gt; headerNames = request.getHeaderNames();</span><br><span class="line"><span class="keyword">while</span> (headerNames.hasMoreElements()) &#123;</span><br><span class="line">	String name = (String) headerNames.nextElement();</span><br><span class="line">	String value = request.getHeader(name);</span><br><span class="line">	System.out.println(name+<span class="string">"="</span>+value);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-}</code></pre></li>
-<li><p>获取客户端提交过来的数据</p>
-</li>
-</ol>
-<pre><code>String name = request.getParameter(&quot;name&quot;);
-String address = request.getParameter(&quot;address&quot;);
-System.out.println(&quot;name=&quot;+name);
-System.out.println(&quot;address=&quot;+address);
+<p>2.获取客户端提交过来的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">String address = request.getParameter(<span class="string">"address"</span>);</span><br><span class="line">System.out.println(<span class="string">"name="</span>+name);</span><br><span class="line">System.out.println(<span class="string">"address="</span>+address);</span><br><span class="line"></span><br><span class="line">-------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">//name=zhangsan&amp;name=lisi&amp;name=wangwu 一个key可以对应多个值。</span></span><br><span class="line"></span><br><span class="line">Map&lt;String, String[]&gt; map = request.getParameterMap();</span><br><span class="line"></span><br><span class="line">Set&lt;String&gt; keySet = map.keySet();</span><br><span class="line">Iterator&lt;String&gt; iterator = keySet.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">	String key = (String) iterator.next();</span><br><span class="line">	System.out.println(<span class="string">"key="</span>+key + <span class="string">"--的值总数有："</span>+map.get(key).length);</span><br><span class="line">	String value = map.get(key)[<span class="number">0</span>];</span><br><span class="line">	String value1 = map.get(key)[<span class="number">1</span>];</span><br><span class="line">	String value2 = map.get(key)[<span class="number">2</span>];</span><br><span class="line">	</span><br><span class="line">	System.out.println(key+<span class="string">" ======= "</span>+ value + <span class="string">"="</span> + value1 + <span class="string">"="</span>+ value2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
--------------------------------------------------
-
-//name=zhangsan&amp;name=lisi&amp;name=wangwu 一个key可以对应多个值。
-
-Map&lt;String, String[]&gt; map = request.getParameterMap();
-
-Set&lt;String&gt; keySet = map.keySet();
-Iterator&lt;String&gt; iterator = keySet.iterator();
-while (iterator.hasNext()) {
-    String key = (String) iterator.next();
-    System.out.println(&quot;key=&quot;+key + &quot;--的值总数有：&quot;+map.get(key).length);
-    String value = map.get(key)[0];
-    String value1 = map.get(key)[1];
-    String value2 = map.get(key)[2];
-
-    System.out.println(key+&quot; ======= &quot;+ value + &quot;=&quot; + value1 + &quot;=&quot;+ value2);
-}</code></pre><ol start="3">
+<ol start="3">
 <li>获取中文数据</li>
 </ol>
 <blockquote>
@@ -412,33 +347,14 @@ while (iterator.hasNext()) {
 </blockquote>
 <ul>
 <li><p>如果是GET方式</p>
-<ol>
-<li><p>代码转码</p>
-<pre><code>String username = request.getParameter(&quot;username&quot;);
-String password = request.getParameter(&quot;password&quot;);
-
-System.out.println(&quot;userName=&quot;+username+&quot;==password=&quot;+password);
-
-//get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码，
-//tomcat收到了这批数据，getParameter默认使用ISO-8859-1去解码
-
-//先让文字回到ISO-8859-1对应的字节数组，然后再按utf-8组拼字符串
-username = new String(username.getBytes(&quot;ISO-8859-1&quot;) , &quot;UTF-8&quot;);
-System.out.println(&quot;userName=&quot;+username+&quot;==password=&quot;+password);
-
-直接在tomcat里面做配置，以后get请求过来的数据永远都是用UTF-8编码。 </code></pre></li>
-</ol>
+<p>  1.代码转码</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String username = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">String password = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"userName="</span>+username+<span class="string">"==password="</span>+password);</span><br><span class="line"></span><br><span class="line"><span class="comment">//get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码，</span></span><br><span class="line"><span class="comment">//tomcat收到了这批数据，getParameter默认使用ISO-8859-1去解码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//先让文字回到ISO-8859-1对应的字节数组，然后再按utf-8组拼字符串</span></span><br><span class="line">username = <span class="keyword">new</span> String(username.getBytes(<span class="string">"ISO-8859-1"</span>) , <span class="string">"UTF-8"</span>);</span><br><span class="line">System.out.println(<span class="string">"userName="</span>+username+<span class="string">"==password="</span>+password);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">直接在tomcat里面做配置，以后get请求过来的数据永远都是用UTF-<span class="number">8</span>编码。</span><br></pre></td></tr></table></figure></code></pre><p>  2.可以在tomcat里面做设置处理 conf/server.xml 加上URIEncoding=”utf-8”</p>
+<pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector connectionTimeout=<span class="string">"20000"</span> port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span> redirectPort=<span class="string">"8443"</span> URIEncoding=<span class="string">"UTF-8"</span>/&gt;</span><br></pre></td></tr></table></figure></code></pre></li>
+<li><p>如果是POST方式</p>
 </li>
 </ul>
-<pre><code>2. 可以在tomcat里面做设置处理 conf/server.xml 加上URIEncoding=&quot;utf-8&quot;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个说的是设置请求体里面的文字编码。get方式，用这行，有用吗？ ---&gt; 没用</span><br><span class="line">request.setCharacterEncoding(&quot;UTF-8&quot;);</span><br><span class="line"></span><br><span class="line">这行设置一定要写在getParameter之前。</span><br></pre></td></tr></table></figure>
 
-      &lt;Connector connectionTimeout=&quot;20000&quot; port=&quot;8080&quot; protocol=&quot;HTTP/1.1&quot; redirectPort=&quot;8443&quot; URIEncoding=&quot;UTF-8&quot;/&gt;</code></pre><ul>
-<li><p>如果是POST方式</p>
-<pre><code>这个说的是设置请求体里面的文字编码。get方式，用这行，有用吗？ ---&gt; 没用
-request.setCharacterEncoding(&quot;UTF-8&quot;);
-
-这行设置一定要写在getParameter之前。</code></pre></li>
-</ul>
 <h2 id="HttpServletResponse"><a href="#HttpServletResponse" class="headerlink" title="HttpServletResponse"></a>HttpServletResponse</h2><blockquote>
 <p>负责返回数据给客户端。 </p>
 </blockquote>
@@ -485,42 +401,33 @@ response.getOutputStream().write(&quot;你好..&quot;.getBytes(&quot;UTF-8&quot;
 &lt;a href=&quot;download/cc.rar&quot;&gt;cc.rar&lt;/a&gt;&lt;br&gt;</code></pre><blockquote>
 <p>原因是tomcat里面有一个默认的Servlet – DefaultServlet。这个DefaultServlet专门用于处理放在tomcat服务器上的静态资源。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/F53Ayfq.png" alt></p>
-<p><img src="https://i.imgur.com/15JuSp0.png" alt></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li><p>Servlet注册方式 </p>
-</li>
-<li><p>ServletContext【重点】</p>
-<pre><code>作用：
+<p><img src="/assets/img/EE/37.png" alt></p>
+<p><img src="/assets/img/EE/38.png" alt></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.Servlet注册方式 </p>
+<p>2.ServletContext【重点】</p>
+<pre><code>    作用：
 
-    1. 获取全局参数
+        1.获取全局参数
 
-    2. 获取工程里面的资源。
+        2.获取工程里面的资源。
 
-    3. 资源共享。ServletContext 域对象
+        3.资源共享。ServletContext 域对象
 
-有几个 一个 
+    有几个 一个 
 
-什么时候创建 ？ 什么时候销毁
+    什么时候创建 ？ 什么时候销毁
 
-服务器启动的时候给每一个应用都创建一个ServletContext对象， 服务器关闭的时候销毁</code></pre><p> 简单登录</p>
-</li>
-<li><p>HttpServletRequest【重点】</p>
+    服务器启动的时候给每一个应用都创建一个ServletContext对象， 服务器关闭的时候销毁
+
+简单登录</code></pre><p>3.HttpServletRequest【重点】</p>
 <pre><code>1. 获取请求头
 
-2. 获取提交过来的数据</code></pre></li>
-</ol>
-<ol start="4">
-<li><p>HttpServletResponse【重点】</p>
-<pre><code>负责输出数据到客户端，其实就是对之前的请求作出响应</code></pre></li>
-<li><p>中文乱码问题。【重点】</p>
-</li>
-<li><p>下载</p>
-</li>
-</ol>
+2. 获取提交过来的数据</code></pre><p>4.HttpServletResponse【重点】</p>
+<pre><code>负责输出数据到客户端，其实就是对之前的请求作出响应</code></pre><p>5.中文乱码问题。【重点】</p>
+<p>6.下载</p>
 <h3 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h3><pre><code>1. 完成注册 
 
-2. 完成登录</code></pre><p><img src="https://i.imgur.com/kflr4B9.png" alt></p>
+2. 完成登录</code></pre><p><img src="/assets/img/EE/39.png" alt></p>
 <hr>
 <p>V1.1 最好配合上数据库，完成注册和登录的功能。 </p>
 
@@ -809,15 +716,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -841,18 +760,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -869,11 +776,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -897,11 +804,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -910,14 +825,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

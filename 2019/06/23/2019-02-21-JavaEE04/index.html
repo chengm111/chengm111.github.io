@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 Cookie和Session">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/ndVAQTL.png">
-<meta property="og:image" content="https://i.imgur.com/9ldZMrb.png">
-<meta property="og:image" content="https://i.imgur.com/G1SJJYZ.png">
-<meta property="og:image" content="https://i.imgur.com/RfnZVyl.png">
-<meta property="og:image" content="https://i.imgur.com/2Kzceum.png">
-<meta property="og:image" content="https://i.imgur.com/TvdDNd9.png">
-<meta property="og:updated_time" content="2019-06-23T08:08:40.820Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/22.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/23.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/24.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/25.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/26.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/27.png">
+<meta property="og:updated_time" content="2019-06-24T05:22:56.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】Cookie和Session">
 <meta name="twitter:description" content="摘要 Cookie和Session">
-<meta name="twitter:image" content="https://i.imgur.com/ndVAQTL.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/EE/22.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -210,52 +210,22 @@
 <h2 id="中文文件下载"><a href="#中文文件下载" class="headerlink" title="中文文件下载"></a>中文文件下载</h2><blockquote>
 <p>针对浏览器类型，对文件名字做编码处理 Firefox (Base64), IE、Chrome … 使用的是URLEncoder</p>
 </blockquote>
-<pre><code>/*
- * 如果文件的名字带有中文，那么需要对这个文件名进行编码处理
- * 如果是IE或者Chrome（谷歌浏览器），使用URLEncoding编码
- * 如果是Firefox，使用Base64编码
- */
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 如果文件的名字带有中文，那么需要对这个文件名进行编码处理</span></span><br><span class="line"><span class="comment"> * 如果是IE或者Chrome（谷歌浏览器），使用URLEncoding编码</span></span><br><span class="line"><span class="comment"> * 如果是Firefox，使用Base64编码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//get请求中文乱码解决</span></span><br><span class="line">filename=<span class="keyword">new</span> String(filename.getBytes(<span class="string">"ISO-8859-1"</span>),<span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取来访的客户端类型</span></span><br><span class="line">String clientType = request.getHeader(<span class="string">"User-Agent"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(clientType.contains(<span class="string">"Firefox"</span>))&#123;</span><br><span class="line">	fileName = DownLoadUtil.base64EncodeFileName(fileName);<span class="comment">//自己写的工具类</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="comment">//IE或者Chrome（谷歌浏览器，</span></span><br><span class="line">	<span class="comment">//对中文的名字进行编码处理，保证浏览器</span></span><br><span class="line">	fileName = URLEncoder.encode(fileName,<span class="string">"UTF-8"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-//get请求中文乱码解决
-filename=new String(filename.getBytes(&quot;ISO-8859-1&quot;),&quot;utf-8&quot;);
+<h2 id="请求转发和重定向"><a href="#请求转发和重定向" class="headerlink" title="请求转发和重定向"></a>请求转发和重定向</h2><h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">之前的写法</span></span><br><span class="line"><span class="comment">response.setStatus(302);</span></span><br><span class="line"><span class="comment">response.setHeader("Location", "login_success.html");*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//重定向写法： 重新定位方向 参数即跳转的位置</span></span><br><span class="line">response.sendRedirect(<span class="string">"login_success.html"</span>);</span><br></pre></td></tr></table></figure>
 
-//获取来访的客户端类型
-String clientType = request.getHeader(&quot;User-Agent&quot;);
-
-if(clientType.contains(&quot;Firefox&quot;)){
-    fileName = DownLoadUtil.base64EncodeFileName(fileName);//自己写的工具类
-}else{
-    //IE或者Chrome（谷歌浏览器，
-    //对中文的名字进行编码处理，保证浏览器
-    fileName = URLEncoder.encode(fileName,&quot;UTF-8&quot;);
-}</code></pre><h2 id="请求转发和重定向"><a href="#请求转发和重定向" class="headerlink" title="请求转发和重定向"></a>请求转发和重定向</h2><h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><pre><code>    /*
-    之前的写法
-    response.setStatus(302);
-    response.setHeader(&quot;Location&quot;, &quot;login_success.html&quot;);*/
-
-    //重定向写法： 重新定位方向 参数即跳转的位置
-    response.sendRedirect(&quot;login_success.html&quot;);
-
-1. 地址上显示的是最后的那个资源的路径地址（login_success.html) 返回302
-
-2. 请求次数最少有两次，服务器在第一次请求后，会返回302以及一个地址，浏览器在根据这个地址，执行第二次访问。
-
-3. 可以跳转到任意路径。不是自己的工程也可以跳。
-
-4. 效率稍微低一点，执行两次请求。 
-
-5. 后续的请求，没法使用上一次的request存储的数据，或者没法使用上一次的request对象，因为这是两次不同的请求。</code></pre><h3 id="请求转发"><a href="#请求转发" class="headerlink" title="请求转发"></a>请求转发</h3><pre><code>//请求转发的写法：参数即跳转的位置
-request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, response);
-
-1. 地址上显示的是请求servlet的地址(http://localhost:8080/Demo05/redirection?username=admin&amp;password=123)。返回200 ok
-
-2. 请求次数只有一次， 因为是服务器内部帮客户端执行了后续的工作。 
-
-3. 只能跳转自己项目的资源路径 。  
-
-4. 效率上稍微高一点，因为只执行一次请求。 
-
-5. 可以使用上一次的request对象。 </code></pre><p><img src="https://i.imgur.com/ndVAQTL.png" alt></p>
+<p>1.地址上显示的是最后的那个资源的路径地址（login_success.html) 返回302</p>
+<p>2.请求次数最少有两次，服务器在第一次请求后，会返回302以及一个地址，浏览器在根据这个地址，执行第二次访问。</p>
+<p>3.可以跳转到任意路径。不是自己的工程也可以跳。</p>
+<p>4.效率稍微低一点，执行两次请求。 </p>
+<p>5.后续的请求，没法使用上一次的request存储的数据，或者没法使用上一次的request对象，因为这是两次不同的请求。</p>
+<h3 id="请求转发"><a href="#请求转发" class="headerlink" title="请求转发"></a>请求转发</h3><p>//请求转发的写法：参数即跳转的位置<br><code>request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, response)</code>;</p>
+<p>1.地址上显示的是请求servlet的地址(<a href="http://localhost:8080/Demo05/redirection?username=admin&amp;password=123)。返回200" target="_blank" rel="noopener">http://localhost:8080/Demo05/redirection?username=admin&amp;password=123)。返回200</a> ok</p>
+<p>2.请求次数只有一次， 因为是服务器内部帮客户端执行了后续的工作。 </p>
+<p>3.只能跳转自己项目的资源路径 。  </p>
+<p>4.效率上稍微高一点，因为只执行一次请求。 </p>
+<p>5.可以使用上一次的request对象。 </p>
+<p><img src="/assets/img/EE/22.png" alt></p>
 <h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><blockquote>
 <p>饼干. 其实是一份小数据，是服务器给客户端，并且存储在客户端上的一份小数据</p>
 </blockquote>
@@ -267,9 +237,7 @@ request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, re
 </blockquote>
 <h3 id="Cookie怎么用"><a href="#Cookie怎么用" class="headerlink" title="Cookie怎么用"></a>Cookie怎么用</h3><h4 id="简单使用："><a href="#简单使用：" class="headerlink" title="简单使用："></a>简单使用：</h4><ul>
 <li><p>添加Cookie给客户端</p>
-<ol>
-<li>在响应的时候，添加cookie</li>
-</ol>
+<p>  1.在响应的时候，添加cookie</p>
 </li>
 </ul>
 <pre><code>        Cookie cookie = new Cookie(&quot;aa&quot;, &quot;bb&quot;);
@@ -278,90 +246,29 @@ request.getRequestDispatcher(&quot;login_success.html&quot;).forward(request, re
         response.addCookie(cookie);
 
 
-2. 客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</code></pre><p><img src="https://i.imgur.com/9ldZMrb.png" alt></p>
+2.客户端收到的信息里面，响应头中多了一个字段 Set-Cookie</code></pre><p><img src="/assets/img/EE/23.png" alt></p>
 <ul>
-<li><p>获取客户端带过来的Cookie</p>
-<pre><code>//获取客户端带过来的cookie
-Cookie[] cookies = request.getCookies();
-if(cookies != null){        //初始值为null
-    for (Cookie c : cookies) {
-        String cookieName = c.getName();
-        String cookieValue = c.getValue();
-        System.out.println(cookieName + &quot; = &quot;+ cookieValue);
-    }
-}</code></pre></li>
+<li>获取客户端带过来的Cookie</li>
 </ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取客户端带过来的cookie</span></span><br><span class="line">Cookie[] cookies = request.getCookies();</span><br><span class="line"><span class="keyword">if</span>(cookies != <span class="keyword">null</span>)&#123;		<span class="comment">//初始值为null</span></span><br><span class="line">	<span class="keyword">for</span> (Cookie c : cookies) &#123;</span><br><span class="line">		String cookieName = c.getName();</span><br><span class="line">		String cookieValue = c.getValue();</span><br><span class="line">		System.out.println(cookieName + <span class="string">" = "</span>+ cookieValue);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><p>常用方法</p>
-<pre><code>//关闭浏览器后，cookie就没有了。 ---&gt; 针对没有设置cookie的有效期。
-//    expiry： 有效 以秒计算。
-//正值： 表示在这个数字过后，cookie将会失效。
-//负值： 关闭浏览器，那么cookie就失效，默认值是 -1
-cookie.setMaxAge(60 * 60 * 24 * 7);    //需要在addcookie之前设置
-
-//赋值新的值
-//cookie.setValue(newValue);
-
-//用于指定只有请求了指定的域名，才会带上该cookie
-cookie.setDomain(&quot;.itheima.com&quot;);
-
-//只有访问该域名下的cookieDemo的这个路径地址才会带cookie
-cookie.setPath(&quot;/CookieDemo&quot;);</code></pre></li>
+<li>常用方法</li>
 </ul>
-<h2 id="例子一-显示最近访问的时间。"><a href="#例子一-显示最近访问的时间。" class="headerlink" title="例子一 显示最近访问的时间。"></a>例子一 显示最近访问的时间。</h2><ol>
-<li><p>判断账号是否正确</p>
-</li>
-<li><p>如果正确，则获取cookie。 但是得到的cookie是一个数组， 我们要从数组里面找到我们想要的对象。</p>
-</li>
-<li><p>如果找到的对象为空，表明是第一次登录。那么要添加cookie</p>
-</li>
-<li><p>如果找到的对象不为空， 表明不是第一次登录。 </p>
-</li>
-</ol>
-<pre><code>if(&quot;admin&quot;.equals(userName) &amp;&amp; &quot;123&quot;.equals(password)){
-    //获取cookie last-name --- &gt;
-    Cookie [] cookies = request.getCookies();
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//关闭浏览器后，cookie就没有了。 ---&gt; 针对没有设置cookie的有效期。</span></span><br><span class="line"><span class="comment">//	expiry： 有效 以秒计算。</span></span><br><span class="line"><span class="comment">//正值： 表示在这个数字过后，cookie将会失效。</span></span><br><span class="line"><span class="comment">//负值： 关闭浏览器，那么cookie就失效，默认值是 -1</span></span><br><span class="line">cookie.setMaxAge(<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>);	<span class="comment">//需要在addcookie之前设置</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//赋值新的值</span></span><br><span class="line"><span class="comment">//cookie.setValue(newValue);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//用于指定只有请求了指定的域名，才会带上该cookie</span></span><br><span class="line">cookie.setDomain(<span class="string">".itheima.com"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//只有访问该域名下的cookieDemo的这个路径地址才会带cookie</span></span><br><span class="line">cookie.setPath(<span class="string">"/CookieDemo"</span>);</span><br></pre></td></tr></table></figure>
 
-    //从数组里面找出我们想要的cookie
-    Cookie cookie = CookieUtil.findCookie(cookies, &quot;last&quot;);//自己写的寻找cookie的类
+<h2 id="例子一-显示最近访问的时间。"><a href="#例子一-显示最近访问的时间。" class="headerlink" title="例子一 显示最近访问的时间。"></a>例子一 显示最近访问的时间。</h2><p>1.判断账号是否正确</p>
+<p>2.如果正确，则获取cookie。 但是得到的cookie是一个数组， 我们要从数组里面找到我们想要的对象。</p>
+<p>3.如果找到的对象为空，表明是第一次登录。那么要添加cookie</p>
+<p>4.如果找到的对象不为空， 表明不是第一次登录。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="string">"admin"</span>.equals(userName) &amp;&amp; <span class="string">"123"</span>.equals(password))&#123;</span><br><span class="line">	<span class="comment">//获取cookie last-name --- &gt;</span></span><br><span class="line">	Cookie [] cookies = request.getCookies();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//从数组里面找出我们想要的cookie</span></span><br><span class="line">	Cookie cookie = CookieUtil.findCookie(cookies, <span class="string">"last"</span>);<span class="comment">//自己写的寻找cookie的类</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//是第一次登录，没有cookie</span></span><br><span class="line">	<span class="keyword">if</span>(cookie == <span class="keyword">null</span>)&#123;</span><br><span class="line">		</span><br><span class="line">		Cookie c = <span class="keyword">new</span> Cookie(<span class="string">"last"</span>, System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">		c.setMaxAge(<span class="number">60</span>*<span class="number">60</span>); <span class="comment">//一个小时</span></span><br><span class="line">		response.addCookie(c);</span><br><span class="line">		</span><br><span class="line">		response.getWriter().write(<span class="string">"欢迎您, "</span>+userName);</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//1. 去以前的cookie第二次登录，有cookie</span></span><br><span class="line">		<span class="keyword">long</span> lastVisitTime = Long.parseLong(cookie.getValue());</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 输出到界面，</span></span><br><span class="line">		response.getWriter().write(<span class="string">"欢迎您, "</span>+userName +<span class="string">",上次来访时间是："</span>+<span class="keyword">new</span> Date(lastVisitTime));</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//3. 重置登录的时间</span></span><br><span class="line">		cookie.setValue(System.currentTimeMillis()+<span class="string">""</span>);</span><br><span class="line">		response.addCookie(cookie);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	response.getWriter().write(<span class="string">"登陆失败 "</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    //是第一次登录，没有cookie
-    if(cookie == null){
-
-        Cookie c = new Cookie(&quot;last&quot;, System.currentTimeMillis()+&quot;&quot;);
-        c.setMaxAge(60*60); //一个小时
-        response.addCookie(c);
-
-        response.getWriter().write(&quot;欢迎您, &quot;+userName);
-
-    }else{
-        //1. 去以前的cookie第二次登录，有cookie
-        long lastVisitTime = Long.parseLong(cookie.getValue());
-
-        //2. 输出到界面，
-        response.getWriter().write(&quot;欢迎您, &quot;+userName +&quot;,上次来访时间是：&quot;+new Date(lastVisitTime));
-
-
-        //3. 重置登录的时间
-        cookie.setValue(System.currentTimeMillis()+&quot;&quot;);
-        response.addCookie(cookie);
-    }
-}else{
-    response.getWriter().write(&quot;登陆失败 &quot;);
-}</code></pre><h2 id="例子二：-显示商品浏览记录。"><a href="#例子二：-显示商品浏览记录。" class="headerlink" title="例子二： 显示商品浏览记录。"></a>例子二： 显示商品浏览记录。</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
-<li><p>拷贝web基础课第一天的html原型文件，到工程的WebContent里面。</p>
-</li>
-<li><p>在WebContent目录下新建一个jsp文件， product_list.jsp, 然后拷贝原来product_list.html的内容到jsp里面。 建好之后，jsp里面的所有ISO-8859-1 改成 UTF-8</p>
-<p> 拷贝html标签的所有内容。 替换jsp的html标签即可</p>
-</li>
-<li><p>修改product_info.htm里面的手机数码超链接地址</p>
-<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</code></pre></li>
-<li><p>修改首页(index.html)顶部的手机数码跳转的位置为 product_list.jsp</p>
-<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</code></pre></li>
-<li><p>修改product_list.jsp中产品链接指向FroductInfo这个servlet，并添加产品id以修改和传输cookie（<code>&lt;a href=&quot;ProductInfo?id=1&quot;&gt;</code>）</p>
-</li>
-</ol>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><img src="https://i.imgur.com/G1SJJYZ.png" alt></p>
+<h2 id="例子二：-显示商品浏览记录。"><a href="#例子二：-显示商品浏览记录。" class="headerlink" title="例子二： 显示商品浏览记录。"></a>例子二： 显示商品浏览记录。</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>1.拷贝web基础课第一天的html原型文件，到工程的WebContent里面。</p>
+<p>2.在WebContent目录下新建一个jsp文件， product_list.jsp, 然后拷贝原来product_list.html的内容到jsp里面。 建好之后，jsp里面的所有ISO-8859-1 改成 UTF-8</p>
+<pre><code>拷贝html标签的所有内容。 替换jsp的html标签即可</code></pre><p>3.修改product_info.htm里面的手机数码超链接地址</p>
+<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</code></pre><p>4.修改首页(index.html)顶部的手机数码跳转的位置为 product_list.jsp</p>
+<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;product_list.jsp&quot;&gt;手机数码&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</code></pre><p>5.修改product_list.jsp中产品链接指向FroductInfo这个servlet，并添加产品id以修改和传输cookie（<code>&lt;a href=&quot;ProductInfo?id=1&quot;&gt;</code>）</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p><img src="/assets/img/EE/24.png" alt></p>
 <h3 id="Jsp里面使用Java代码"><a href="#Jsp里面使用Java代码" class="headerlink" title="Jsp里面使用Java代码"></a>Jsp里面使用Java代码</h3><ul>
 <li>jsp</li>
 </ul>
@@ -379,8 +286,8 @@ cookie.setPath(&quot;/CookieDemo&quot;);</code></pre></li>
 <p>  &lt;%=a %&gt;<br>  &lt;%=b %&gt;</p>
 </li>
 </ul>
-<h3 id="jsp显示浏览记录"><a href="#jsp显示浏览记录" class="headerlink" title="jsp显示浏览记录"></a>jsp显示浏览记录</h3><p><img src="https://i.imgur.com/RfnZVyl.png" alt></p>
-<p><img src="https://i.imgur.com/2Kzceum.png" alt></p>
+<h3 id="jsp显示浏览记录"><a href="#jsp显示浏览记录" class="headerlink" title="jsp显示浏览记录"></a>jsp显示浏览记录</h3><p><img src="/assets/img/EE/25.png" alt></p>
+<p><img src="/assets/img/EE/26.png" alt></p>
 <h3 id="清除浏览记录"><a href="#清除浏览记录" class="headerlink" title="清除浏览记录"></a>清除浏览记录</h3><blockquote>
 <p>其实就是清除Cookie， 删除cookie是没有什么delete方法的。只有设置maxAge为0。新建一个url指向另一个servlet，清除cookie后重定向回此网页</p>
 </blockquote>
@@ -388,24 +295,21 @@ cookie.setPath(&quot;/CookieDemo&quot;);</code></pre></li>
 cookie.setMaxAge(0); //设置立即删除
 cookie.setPath(&quot;/CookieDemo02&quot;);
 response.addCookie(cookie);
-response.sendRedirect(&quot;product_list.jsp&quot;);</code></pre><h3 id="Cookie总结"><a href="#Cookie总结" class="headerlink" title="Cookie总结"></a>Cookie总结</h3><ol>
-<li><p>服务器给客户端发送过来的一小份数据，并且存放在客户端上。</p>
-</li>
-<li><p>获取cookie，添加cookie</p>
-<p> request.getCookie();</p>
-<p> response.addCookie();</p>
-</li>
-<li><p>Cookie分类</p>
-<p> 会话Cookie</p>
-<pre><code>默认情况下，关闭了浏览器，那么cookie就会消失。</code></pre><p> 持久Cookie</p>
-<pre><code>在一定时间内，都有效，并且会保存在客户端上。 
+response.sendRedirect(&quot;product_list.jsp&quot;);</code></pre><h3 id="Cookie总结"><a href="#Cookie总结" class="headerlink" title="Cookie总结"></a>Cookie总结</h3><p>1.服务器给客户端发送过来的一小份数据，并且存放在客户端上。</p>
+<p>2.获取cookie，添加cookie</p>
+<pre><code>request.getCookie();
 
-cookie.setMaxAge(0); //设置立即删除
+response.addCookie();</code></pre><p>3.Cookie分类</p>
+<pre><code>会话Cookie
+    默认情况下，关闭了浏览器，那么cookie就会消失。
 
-cookie.setMaxAge(100); //100 秒</code></pre></li>
-<li><p>Cookie的安全问题。</p>
-</li>
-</ol>
+持久Cookie
+
+    在一定时间内，都有效，并且会保存在客户端上。 
+
+    cookie.setMaxAge(0); //设置立即删除
+
+    cookie.setMaxAge(100); //100 秒</code></pre><p>4.Cookie的安全问题。</p>
 <blockquote>
 <p>由于Cookie会保存在客户端上，所以有安全隐患问题。还有一个问题，Cookie的大小与个数有限制，共300个每个4kb。为了解决这个问题 —&gt; Session.</p>
 </blockquote>
@@ -450,37 +354,38 @@ session.removeAttribute(name);</code></pre><ul>
 <li>session会话时间过期。有效期过了，tomcat默认有效期：30分钟。</li>
 </ol>
 </blockquote>
-<h2 id="例子三：简单购物车"><a href="#例子三：简单购物车" class="headerlink" title="例子三：简单购物车"></a>例子三：简单购物车</h2><p><img src="https://i.imgur.com/TvdDNd9.png" alt></p>
-<h3 id="CartServlet代码"><a href="#CartServlet代码" class="headerlink" title="CartServlet代码"></a>CartServlet代码</h3><pre><code>response.setContentType(&quot;text/html;charset=utf-8&quot;);
+<h2 id="例子三：简单购物车"><a href="#例子三：简单购物车" class="headerlink" title="例子三：简单购物车"></a>例子三：简单购物车</h2><p><img src="/assets/img/EE/27.png" alt></p>
+<h3 id="CartServlet代码"><a href="#CartServlet代码" class="headerlink" title="CartServlet代码"></a>CartServlet代码</h3><pre><code class="java">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);
 
-//1. 获取要添加到购物车的商品id
-int id = Integer.parseInt(request.getParameter(&quot;id&quot;)); // 0 - 1- 2 -3 -4 
-String[] names = {&quot;Iphone7&quot;,&quot;小米6&quot;,&quot;三星Note8&quot;,&quot;魅族7&quot; , &quot;华为9&quot;};
-//取到id对应的商品名称
+<span class="comment">//1. 获取要添加到购物车的商品id</span>
+<span class="keyword">int</span> id = Integer.parseInt(request.getParameter(<span class="string">"id"</span>)); <span class="comment">// 0 - 1- 2 -3 -4 </span>
+String[] names = {<span class="string">"Iphone7"</span>,<span class="string">"小米6"</span>,<span class="string">"三星Note8"</span>,<span class="string">"魅族7"</span> , <span class="string">"华为9"</span>};
+<span class="comment">//取到id对应的商品名称</span>
 String name = names[id];
 
-//2. 获取购物车存放东西的session  Map&lt;String , Integer&gt;  iphone7 3
-//把一个map对象存放到session里面去，并且保证只存一次。 
-Map&lt;String, Integer&gt; map = (Map&lt;String, Integer&gt;) request.getSession().getAttribute(&quot;cart&quot;);
-//session里面没有存放过任何东西。
-if(map == null){
-    map = new LinkedHashMap&lt;String , Integer&gt;();
-    request.getSession().setAttribute(&quot;cart&quot;, map);
+<span class="comment">//2. 获取购物车存放东西的session  Map&lt;String , Integer&gt;  iphone7 3</span>
+<span class="comment">//把一个map对象存放到session里面去，并且保证只存一次。 </span>
+Map&lt;String, Integer&gt; map = (Map&lt;String, Integer&gt;) request.getSession().getAttribute(<span class="string">"cart"</span>);
+<span class="comment">//session里面没有存放过任何东西。</span>
+<span class="keyword">if</span>(map == <span class="keyword">null</span>){
+    map = <span class="keyword">new</span> LinkedHashMap&lt;String , Integer&gt;();
+    request.getSession().setAttribute(<span class="string">"cart"</span>, map);
 }
 
 
-//3. 判断购物车里面有没有该商品
-if(map.containsKey(name)){
-    //在原来的值基础上  + 1 
-    map.put(name, map.get(name) + 1 );
-}else{
-    //没有购买过该商品，当前数量为1 。
-    map.put(name, 1);
+<span class="comment">//3. 判断购物车里面有没有该商品</span>
+<span class="keyword">if</span>(map.containsKey(name)){
+    <span class="comment">//在原来的值基础上  + 1 </span>
+    map.put(name, map.get(name) + <span class="number">1</span> );
+}<span class="keyword">else</span>{
+    <span class="comment">//没有购买过该商品，当前数量为1 。</span>
+    map.put(name, <span class="number">1</span>);
 }
 
-//4. 输出界面。（跳转）
-response.getWriter().write(&quot;&lt;a href=&apos;product_list.jsp&apos;&gt;&lt;h3&gt;继续购物&lt;/h3&gt;&lt;/a&gt;&lt;br&gt;&quot;);
-response.getWriter().write(&quot;&lt;a href=&apos;cart.jsp&apos;&gt;&lt;h3&gt;去购物车结算&lt;/h3&gt;&lt;/a&gt;&quot;);</code></pre><h2 id="移除Session中的元素"><a href="#移除Session中的元素" class="headerlink" title="移除Session中的元素"></a>移除Session中的元素</h2><pre><code>//两种办法        
+<span class="comment">//4. 输出界面。（跳转）</span>
+response.getWriter().write(<span class="string">"&lt;a href='product_list.jsp'&gt;&lt;h3&gt;继续购物&lt;/h3&gt;&lt;/a&gt;&lt;br&gt;"</span>);
+response.getWriter().write(<span class="string">"&lt;a href='cart.jsp'&gt;&lt;h3&gt;去购物车结算&lt;/h3&gt;&lt;/a&gt;"</span>);</code></pre>
+<h2 id="移除Session中的元素"><a href="#移除Session中的元素" class="headerlink" title="移除Session中的元素"></a>移除Session中的元素</h2><pre><code>//两种办法        
 //1. 强制干掉会话，里面存放的任何数据就都没有了。
 session.invalidate();
 
@@ -489,48 +394,40 @@ session.removeAttribute(&quot;cart&quot;);</code></pre><h2 id="总结："><a hre
 <li>请求转发和重定向（面试经常问）</li>
 </ul>
 <ul>
-<li><p>Cookie</p>
-<p>  服务器给客户端发送一小份数据， 存放在客户端上。</p>
-<p>  基本用法：</p>
+<li>Cookie</li>
+</ul>
+<p>服务器给客户端发送一小份数据， 存放在客户端上。</p>
+<p>基本用法：</p>
 <pre><code>添加cookie
 
-获取cookie。</code></pre><p>  演练例子：</p>
-<pre><code>1. 获取上一次访问时间
+获取cookie。</code></pre><p>演练例子：</p>
+<pre><code>1.获取上一次访问时间
 
-2. 获取商品浏览记录。</code></pre></li>
+2.获取商品浏览记录。</code></pre><ul>
 <li><p>什么时候有cookie</p>
 <p>  response.addCookie(new Cookie())</p>
 </li>
 <li><p>Cookie分类</p>
-<pre><code>会话Cookie
-
-    关闭浏览器，就失效
-
-持久cookie
-
-    存放在客户端上。在指定的期限内有效。 
-
-    setMaxAge();</code></pre></li>
+</li>
 </ul>
-<ul>
+<p>会话Cookie</p>
+<pre><code>关闭浏览器，就失效</code></pre><p>持久cookie</p>
+<pre><code>存放在客户端上。在指定的期限内有效。 
+
+setMaxAge();</code></pre><ul>
 <li><p>Session</p>
-<pre><code>也是基于cookie的一种会话技术，数据存放存放在服务器端
-
-会在cookie里面添加一个字段JSESSIONID。是tomcat服务器生成。 
-
-setAttribute 存数据
-
-getAttribute 取数据
-
-removeAttribute  移除数据
-
-getSessionId();  获取会话id
-
-invalidate() 强制让会话失效。</code></pre></li>
+<p>  也是基于cookie的一种会话技术，数据存放存放在服务器端</p>
+<p>  会在cookie里面添加一个字段JSESSIONID。是tomcat服务器生成。 </p>
+<p>  setAttribute 存数据</p>
+<p>  getAttribute 取数据</p>
+<p>  removeAttribute  移除数据</p>
+<p>  getSessionId();  获取会话id</p>
+<p>  invalidate() 强制让会话失效。</p>
+</li>
 <li><p>创建和销毁</p>
-<pre><code>调用request.getSesion创建 
-
- 服务器关闭，会话超时（30分）</code></pre></li>
+<p>  调用request.getSesion创建 </p>
+<p>  服务器关闭，会话超时（30分）</p>
+</li>
 </ul>
 <p>setAttribute存放的值，在浏览器关闭后，还有没有。有！存放于服务器。</p>
 
@@ -657,7 +554,7 @@ invalidate() 强制让会话失效。</code></pre></li>
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          【JavaEE】Cookie&amp;Session
+          【JavaEE】* JSP&amp;EL&amp;JSTL
         
       </div>
     </a>
@@ -819,15 +716,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,18 +760,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -879,11 +776,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -907,11 +804,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -920,14 +825,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

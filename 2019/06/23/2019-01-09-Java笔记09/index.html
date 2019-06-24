@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 多态 抽象类 接口">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/mhK1Lop.png">
-<meta property="og:image" content="https://i.imgur.com/FTytede.png">
-<meta property="og:updated_time" content="2019-06-23T08:05:09.261Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/17.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/18.png">
+<meta property="og:updated_time" content="2019-06-24T06:51:47.070Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础9">
 <meta name="twitter:description" content="摘要 多态 抽象类 接口">
-<meta name="twitter:image" content="https://i.imgur.com/mhK1Lop.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/17.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -225,12 +225,12 @@
 <h2 id="多态中的成员访问特点"><a href="#多态中的成员访问特点" class="headerlink" title="多态中的成员访问特点"></a>多态中的成员访问特点</h2><ul>
 <li>成员变量<ul>
 <li>编译看左边(父类)，运行看左边(父类)。</li>
-<li><img src="https://i.imgur.com/mhK1Lop.png" alt></li>
+<li><img src="/assets/img/SE/17.png" alt></li>
 </ul>
 </li>
 <li>成员方法<ul>
 <li>编译看左边(父类)，运行看右边(子类)。(动态绑定)</li>
-<li><img src="https://i.imgur.com/FTytede.png" alt></li>
+<li><img src="/assets/img/SE/18.png" alt></li>
 </ul>
 </li>
 <li>静态方法static<ul>
@@ -278,12 +278,10 @@
 </ul>
 <h2 id="多态中的题目分析题"><a href="#多态中的题目分析题" class="headerlink" title="多态中的题目分析题"></a>多态中的题目分析题</h2><ul>
 <li><p>A:看下面程序是否有问题，如果没有，说出结果</p>
-</li>
-<li>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu show"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi show"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test1Demo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Fu f = <span class="keyword">new</span> Zi();</span><br><span class="line">		f.method();</span><br><span class="line">		f.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fu</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"fu show"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zi</span> <span class="keyword">extends</span> <span class="title">Fu</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi show"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"zi method"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test1Demo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Fu f = <span class="keyword">new</span> Zi();</span><br><span class="line">		f.method();</span><br><span class="line">		f.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>B:看下面程序是否有问题，如果没有，说出结果</p>
-</li>
-<li>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		show2();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"爱"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.show();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"你"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2DuoTai</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		A a = <span class="keyword">new</span> B();</span><br><span class="line">		a.show();</span><br><span class="line">		</span><br><span class="line">		B b = <span class="keyword">new</span> C();</span><br><span class="line">		b.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//爱</span></span><br><span class="line"><span class="comment">//你</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		show2();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"我"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"爱"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.show();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"你"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2DuoTai</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		A a = <span class="keyword">new</span> B();</span><br><span class="line">		a.show();</span><br><span class="line">		</span><br><span class="line">		B b = <span class="keyword">new</span> C();</span><br><span class="line">		b.show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//爱</span></span><br><span class="line"><span class="comment">//你</span></span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -406,11 +404,17 @@
 </ul>
 <h2 id="接口的成员特点"><a href="#接口的成员特点" class="headerlink" title="接口的成员特点"></a>接口的成员特点</h2><ul>
 <li>A:接口成员特点<ul>
-<li>成员变量；只能是常量，并且是静态的并公共的。<pre><code>* 默认修饰符：public static final
-* 建议：自己手动给出。</code></pre></li>
+<li>成员变量；只能是常量，并且是静态的并公共的。<ul>
+<li>默认修饰符：public static final</li>
+<li>建议：自己手动给出。</li>
+</ul>
+</li>
 <li>构造方法：接口没有构造方法。</li>
-<li>成员方法：只能是抽象方法。<pre><code>* 默认修饰符：public abstract  //重写接口类时成员方法需定义为public
-* 建议：自己手动给出。</code></pre></li>
+<li>成员方法：只能是抽象方法。<ul>
+<li>默认修饰符：public abstract  //重写接口类时成员方法需定义为public</li>
+<li>建议：自己手动给出。</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>B:案例演示</li>
@@ -478,8 +482,7 @@
 </ul>
 </li>
 </ul>
-<p>###09.20_面向对象(猫狗案例加入跳高功能分析及其代码实现)</p>
-<ul>
+<h3 id="猫狗案例加入跳高功能分析及其代码实现"><a href="#猫狗案例加入跳高功能分析及其代码实现" class="headerlink" title="猫狗案例加入跳高功能分析及其代码实现"></a>猫狗案例加入跳高功能分析及其代码实现</h3><ul>
 <li>A:案例演示<ul>
 <li>动物类：姓名，年龄，吃饭，睡觉。</li>
 <li>猫和狗</li>
@@ -645,7 +648,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态的概述及其代码体现"><span class="toc-number">2.</span> <span class="toc-text">多态的概述及其代码体现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态中的成员访问特点"><span class="toc-number">3.</span> <span class="toc-text">多态中的成员访问特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态中向上转型和向下转型"><span class="toc-number">4.</span> <span class="toc-text">多态中向上转型和向下转型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态的好处和弊端"><span class="toc-number">5.</span> <span class="toc-text">多态的好处和弊端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态中的题目分析题"><span class="toc-number">6.</span> <span class="toc-text">多态中的题目分析题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类的概述及其特点"><span class="toc-number">7.</span> <span class="toc-text">抽象类的概述及其特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类的成员特点"><span class="toc-number">8.</span> <span class="toc-text">抽象类的成员特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类练习猫狗案例"><span class="toc-number">9.</span> <span class="toc-text">抽象类练习猫狗案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类练习员工案例"><span class="toc-number">10.</span> <span class="toc-text">抽象类练习员工案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类中的面试题"><span class="toc-number">11.</span> <span class="toc-text">抽象类中的面试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的概述及其特点"><span class="toc-number">12.</span> <span class="toc-text">接口的概述及其特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的成员特点"><span class="toc-number">13.</span> <span class="toc-text">接口的成员特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类与类-类与接口-接口与接口的关系"><span class="toc-number">14.</span> <span class="toc-text">类与类,类与接口,接口与接口的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类和接口的区别"><span class="toc-number">15.</span> <span class="toc-text">抽象类和接口的区别</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态的概述及其代码体现"><span class="toc-number">2.</span> <span class="toc-text">多态的概述及其代码体现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态中的成员访问特点"><span class="toc-number">3.</span> <span class="toc-text">多态中的成员访问特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态中向上转型和向下转型"><span class="toc-number">4.</span> <span class="toc-text">多态中向上转型和向下转型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态的好处和弊端"><span class="toc-number">5.</span> <span class="toc-text">多态的好处和弊端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多态中的题目分析题"><span class="toc-number">6.</span> <span class="toc-text">多态中的题目分析题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类的概述及其特点"><span class="toc-number">7.</span> <span class="toc-text">抽象类的概述及其特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类的成员特点"><span class="toc-number">8.</span> <span class="toc-text">抽象类的成员特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类练习猫狗案例"><span class="toc-number">9.</span> <span class="toc-text">抽象类练习猫狗案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类练习员工案例"><span class="toc-number">10.</span> <span class="toc-text">抽象类练习员工案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类中的面试题"><span class="toc-number">11.</span> <span class="toc-text">抽象类中的面试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的概述及其特点"><span class="toc-number">12.</span> <span class="toc-text">接口的概述及其特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口的成员特点"><span class="toc-number">13.</span> <span class="toc-text">接口的成员特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类与类-类与接口-接口与接口的关系"><span class="toc-number">14.</span> <span class="toc-text">类与类,类与接口,接口与接口的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象类和接口的区别"><span class="toc-number">15.</span> <span class="toc-text">抽象类和接口的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#猫狗案例加入跳高功能分析及其代码实现"><span class="toc-number">15.1.</span> <span class="toc-text">猫狗案例加入跳高功能分析及其代码实现</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -773,15 +776,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,18 +820,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -833,11 +836,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -861,11 +864,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -874,14 +885,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 IO（字节流）">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/9qEcCkf.png">
-<meta property="og:image" content="https://i.imgur.com/wO5mLKz.png">
-<meta property="og:updated_time" content="2019-06-23T08:06:32.803Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/5.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/6.png">
+<meta property="og:updated_time" content="2019-06-24T06:12:11.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础20">
 <meta name="twitter:description" content="摘要 IO（字节流）">
-<meta name="twitter:image" content="https://i.imgur.com/9qEcCkf.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/5.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -243,9 +243,11 @@
 
 <h2 id="read-方法返回值为什么是int"><a href="#read-方法返回值为什么是int" class="headerlink" title="read()方法返回值为什么是int"></a>read()方法返回值为什么是int</h2><ul>
 <li>read()方法读取的是一个字节,为什么返回是int,而不是byte<ul>
-<li>因为字节输入流可以操作任意类型的文件,比如图片音频等,这些文件底层都是以二进制形式的存储的,如果每次读取都返回byte,有可能在读到中间的时候遇到111111111那么这11111111是byte类型的-1（补码）,我们的程序是遇到-1就会停止不读了,后面的数据就读不到了,所以在读取的时候用int类型接收,如果11111111会在其前面补上24个0凑足4个字节,那么byte类型的-1就变成int类型的255了这样可以保证整个数据读完,而结束标记的-1就是int类型<h2 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h2></li>
+<li>因为字节输入流可以操作任意类型的文件,比如图片音频等,这些文件底层都是以二进制形式的存储的,如果每次读取都返回byte,有可能在读到中间的时候遇到111111111那么这11111111是byte类型的-1（补码）,我们的程序是遇到-1就会停止不读了,后面的数据就读不到了,所以在读取的时候用int类型接收,如果11111111会在其前面补上24个0凑足4个字节,那么byte类型的-1就变成int类型的255了这样可以保证整个数据读完,而结束标记的-1就是int类型</li>
 </ul>
 </li>
+</ul>
+<h2 id="FileOutputStream"><a href="#FileOutputStream" class="headerlink" title="FileOutputStream"></a>FileOutputStream</h2><ul>
 <li>void write()一次写出一个字节</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"bbb.txt"</span>);	<span class="comment">//如果没有bbb.txt,会创建出一个，有的话会先将文件清空</span></span><br><span class="line"><span class="comment">//fos.write(97);	//虽然写出的是一个int数,但是在写出的时候会将前面的24个0去掉,所以写出的是一个byte</span></span><br><span class="line">fos.write(<span class="number">98</span>);</span><br><span class="line">fos.write(<span class="number">99</span>);</span><br><span class="line">fos.close();</span><br></pre></td></tr></table></figure>
@@ -273,7 +275,7 @@
 </li>
 <li>弊端:效率太低</li>
 </ul>
-<p><img src="https://i.imgur.com/9qEcCkf.png" alt></p>
+<p><img src="/assets/img/SE/5.png" alt></p>
 <h2 id="字节数组拷贝之available-方法"><a href="#字节数组拷贝之available-方法" class="headerlink" title="字节数组拷贝之available()方法"></a>字节数组拷贝之available()方法</h2><ul>
 <li>A:案例演示<ul>
 <li>int read(byte[] b):一次读取一个字节数组</li>
@@ -321,7 +323,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"致青春.mp3"</span>);	<span class="comment">//创建文件输入流对象,关联致青春.mp3</span></span><br><span class="line">BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(fis);	<span class="comment">//创建缓冲区对fis装饰</span></span><br><span class="line">FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">"copy.mp3"</span>);	<span class="comment">//创建输出流对象,关联copy.mp3</span></span><br><span class="line">BufferedOutputStream bos = <span class="keyword">new</span> BufferedOutputStream(fos);<span class="comment">//创建缓冲区对fos装饰</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> b;</span><br><span class="line"><span class="keyword">while</span>((b = bis.read()) != -<span class="number">1</span>) &#123;		</span><br><span class="line">	bos.write(b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bis.close();						<span class="comment">//只关装饰后的对象即可</span></span><br><span class="line">bos.close();</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://i.imgur.com/wO5mLKz.png" alt></p>
+<p><img src="/assets/img/SE/6.png" alt></p>
 <ul>
 <li>E.小数组的读写和带Buffered的读取哪个更快?<ul>
 <li>定义小数组如果是8192个字节大小和Buffered比较的话定义小数组会略胜一筹,因为读和写操作的是同一个数组而Buffered操作的是两个数组</li>
@@ -667,15 +669,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -699,18 +713,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -727,11 +729,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -755,11 +757,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -768,14 +778,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

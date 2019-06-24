@@ -16,15 +16,15 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 Set集合">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/pbaFRSO.jpg">
-<meta property="og:image" content="https://i.imgur.com/0FiV6ed.jpg">
-<meta property="og:image" content="https://i.imgur.com/ApdWs2R.jpg">
-<meta property="og:image" content="https://i.imgur.com/yrhCWnr.jpg">
-<meta property="og:updated_time" content="2019-06-23T08:06:32.800Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/8.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/9.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/10.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/img/SE/11.jpg">
+<meta property="og:updated_time" content="2019-06-24T06:16:23.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础17">
 <meta name="twitter:description" content="摘要 Set集合">
-<meta name="twitter:image" content="https://i.imgur.com/pbaFRSO.jpg">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/SE/8.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -309,14 +309,14 @@
 <h2 id="TreeSet保证元素唯一和自然排序的原理和图解"><a href="#TreeSet保证元素唯一和自然排序的原理和图解" class="headerlink" title="TreeSet保证元素唯一和自然排序的原理和图解"></a>TreeSet保证元素唯一和自然排序的原理和图解</h2><ul>
 <li>A:画图演示<br>TreeSet保证元素唯一和自然排序的原理和图解,小的放左侧,大的放右侧<br>图解: </li>
 </ul>
-<p><img src="https://i.imgur.com/pbaFRSO.jpg" alt><br><img src="https://i.imgur.com/0FiV6ed.jpg" alt></p>
+<p><img src="/assets/img/SE/8.jpg" alt><br><img src="/assets/img/SE/9.jpg" alt></p>
 <ul>
 <li>案例:(按照Person类的年龄排序的话,Person类改写为) </li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意使用此类时要生成空参有参构造,set和get方法,hashCode和equals方法</span></span><br><span class="line"><span class="keyword">package</span> com.heiam.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Comparable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;    </span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="comment">//按照年龄排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Person o)</span> </span>&#123;</span><br><span class="line">	    <span class="keyword">return</span> <span class="keyword">this</span>.age - o.age;                <span class="comment">//按照年龄比较，结果正数即在右子树</span></span><br><span class="line">	    <span class="comment">//return num == 0 ? this.name.compareTo(o.name) : num;//姓名是比较的次要条件</span></span><br><span class="line">	&#125;   </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>按照年龄排序的图解: </p>
-<p><img src="https://i.imgur.com/ApdWs2R.jpg" alt></p>
+<p><img src="/assets/img/SE/10.jpg" alt></p>
 <h2 id="TreeSet存储自定义对象并遍历练习1"><a href="#TreeSet存储自定义对象并遍历练习1" class="headerlink" title="TreeSet存储自定义对象并遍历练习1"></a>TreeSet存储自定义对象并遍历练习1</h2><ul>
 <li>A:案例演示 <ul>
 <li>TreeSet存储自定义对象并遍历练习1(按照姓名排序) </li>
@@ -344,7 +344,7 @@
 <h2 id="TreeSet保证元素唯一和比较器排序的原理及代码实现"><a href="#TreeSet保证元素唯一和比较器排序的原理及代码实现" class="headerlink" title="TreeSet保证元素唯一和比较器排序的原理及代码实现"></a>TreeSet保证元素唯一和比较器排序的原理及代码实现</h2><ul>
 <li>定义比较器是实现Comparator接口,重写compare方法和equals方法,但是由于所有的类默认继承Object,而Object中有equals方法, 所以自定义比较器类时,不用重写equals方法,只需要重写compare方法<br>字符串长度比较器图解: </li>
 </ul>
-<p><img src="https://i.imgur.com/yrhCWnr.jpg" alt></p>
+<p><img src="/assets/img/SE/11.jpg" alt></p>
 <p>案例:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.heima.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.heiam.bean.Person;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo3_TreeSet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    <span class="comment">//demo1();</span></span><br><span class="line">	    demo2();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">demo2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="comment">// 需求:将字符串按照长度排序,利用匿名内部类对象,长度从大到小,长度相同按照字母倒序</span></span><br><span class="line">	    TreeSet&lt;String&gt; ts = <span class="keyword">new</span> TreeSet&lt;&gt;(<span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</span><br><span class="line">	        <span class="meta">@Override</span></span><br><span class="line">	        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">	            <span class="keyword">int</span> num = s2.length() - s1.length(); <span class="comment">// 长度为主要条件</span></span><br><span class="line">	            <span class="keyword">return</span> num == <span class="number">0</span> ? s2.compareTo(s1) : num; <span class="comment">// 内容为次要条件</span></span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;); </span><br><span class="line">	    ts.add(<span class="string">"aaaaaaaa"</span>);</span><br><span class="line">	    ts.add(<span class="string">"z"</span>);</span><br><span class="line">	    ts.add(<span class="string">"wc"</span>);</span><br><span class="line">	    ts.add(<span class="string">"nba"</span>);</span><br><span class="line">	    ts.add(<span class="string">"cba"</span>);</span><br><span class="line">	    System.out.println(ts);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">demo1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    <span class="comment">// 需求:将字符串按照长度排序</span></span><br><span class="line">	    TreeSet&lt;String&gt; ts = <span class="keyword">new</span> TreeSet&lt;&gt;(<span class="keyword">new</span> CompareByLen()); <span class="comment">// Comparator c = new CompareByLen();</span></span><br><span class="line">	    ts.add(<span class="string">"aaaaaaaa"</span>);</span><br><span class="line">	    ts.add(<span class="string">"z"</span>);</span><br><span class="line">	    ts.add(<span class="string">"wc"</span>);</span><br><span class="line">	    ts.add(<span class="string">"nba"</span>);</span><br><span class="line">	    ts.add(<span class="string">"cba"</span>);</span><br><span class="line">	    System.out.println(ts);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CompareByLen</span> /* <span class="keyword">extends</span> <span class="title">Object</span> */<span class="keyword">implements</span> <span class="title">Comparator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123; <span class="comment">// 按照字符串的长度比较</span></span><br><span class="line">	    <span class="keyword">int</span> num = s1.length() - s2.length(); <span class="comment">// 长度为主要条件</span></span><br><span class="line">	    <span class="keyword">return</span> num == <span class="number">0</span> ? s1.compareTo(s2) : num; <span class="comment">// 内容为次要条件</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -699,15 +699,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -731,18 +743,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -759,11 +759,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -787,11 +787,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -800,14 +808,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

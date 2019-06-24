@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 Xml &amp;amp; Tomcat">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/PCdx9Et.png">
-<meta property="og:image" content="https://i.imgur.com/NSsU3PC.png">
-<meta property="og:updated_time" content="2019-06-23T08:07:19.512Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/46.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/47.png">
+<meta property="og:updated_time" content="2019-06-24T05:55:19.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】Xml &amp; Tomcat">
 <meta name="twitter:description" content="摘要 Xml &amp;amp; Tomcat">
-<meta name="twitter:image" content="https://i.imgur.com/PCdx9Et.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/EE/46.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -206,15 +206,10 @@
 <h2 id="Xml"><a href="#Xml" class="headerlink" title="Xml"></a>Xml</h2><blockquote>
 <p>eXtendsible  markup language  可扩展的标记语言</p>
 </blockquote>
-<h3 id="XML有什么用"><a href="#XML有什么用" class="headerlink" title="XML有什么用?"></a>XML有什么用?</h3><ol>
-<li><p>可以用来保存数据</p>
-</li>
-<li><p>可以用来做配置文件</p>
-</li>
-<li><p>数据传输载体</p>
-</li>
-</ol>
-<p><img src="https://i.imgur.com/PCdx9Et.png" alt></p>
+<h3 id="XML有什么用"><a href="#XML有什么用" class="headerlink" title="XML有什么用?"></a>XML有什么用?</h3><p>1.可以用来保存数据</p>
+<p>2.可以用来做配置文件</p>
+<p>3.数据传输载体</p>
+<p><img src="/assets/img/EE/46.png" alt></p>
 <h2 id="定义xml"><a href="#定义xml" class="headerlink" title="定义xml"></a>定义xml</h2><blockquote>
 <p>其实就是一个文件，文件的后缀为 .xml</p>
 </blockquote>
@@ -233,23 +228,14 @@ standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个�
 <p>默认文件保存的时候，使用的是GBK的编码保存。 </p>
 </blockquote>
 <p>所以要想让我们的xml能够正常的显示中文，有两种解决办法</p>
-<ol>
-<li><p>让encoding也是GBK 或者 gb2312 . </p>
-</li>
-<li><p>如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8</p>
-</li>
-<li><p>保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</p>
-</li>
-</ol>
+<p>1.让encoding也是GBK 或者 gb2312 . </p>
+<p>2.如果encoding是 utf-8 ， 那么保存文件的时候也必须使用utf-8</p>
+<p>3.保存的时候见到的ANSI 对应的其实是我们的本地编码 GBK。</p>
 <p>为了通用，建议使用UTF-8编码保存，以及encoding 都是 utf-8</p>
-<h3 id="元素定义（标签）"><a href="#元素定义（标签）" class="headerlink" title="元素定义（标签）"></a>元素定义（标签）</h3><ol>
-<li><p>其实就是里面的标签，&lt;&gt;括起来的都叫元素。成对出现。如下： </p>
-<pre><code>&lt;stu&gt; &lt;/stu&gt;</code></pre></li>
-<li><p>文档声明下来的第一个元素叫做根元素 (根标签)，根标签只能有一个</p>
-</li>
-<li><p>标签里面可以嵌套标签</p>
-</li>
-<li><p>空标签</p>
+<h3 id="元素定义（标签）"><a href="#元素定义（标签）" class="headerlink" title="元素定义（标签）"></a>元素定义（标签）</h3><p>1.其实就是里面的标签，&lt;&gt;括起来的都叫元素。成对出现。如下： </p>
+<pre><code>&lt;stu&gt; &lt;/stu&gt;</code></pre><p>2.文档声明下来的第一个元素叫做根元素 (根标签)，根标签只能有一个</p>
+<p>3.标签里面可以嵌套标签</p>
+<p>4.空标签</p>
 <pre><code>既是开始也是结束。 一般配合属性来用。
 
 &lt;age/&gt;
@@ -257,21 +243,13 @@ standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个�
 &lt;stu&gt;
     &lt;name&gt;张三&lt;/name&gt;
     &lt;age/&gt;
-&lt;/stu&gt;</code></pre></li>
-<li><p>标签可以自定义。 </p>
-<ul>
-<li>XML 命名规则<ul>
-<li>名称可以含字母、数字以及其他的字符     </li>
-<li>名称不能以数字或者标点符号开始 </li>
-<li>名称不能以字符 “xml”（或者 XML、Xml）开始 </li>
-<li>名称不能包含空格 </li>
-<li>命名尽量简单，做到见名知义</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="简单元素-amp-复杂元素"><a href="#简单元素-amp-复杂元素" class="headerlink" title="简单元素 &amp; 复杂元素"></a>简单元素 &amp; 复杂元素</h3><ul>
+&lt;/stu&gt;</code></pre><p>5.标签可以自定义。 </p>
+<pre><code>* XML 命名规则
+    * 名称可以含字母、数字以及其他的字符     
+    * 名称不能以数字或者标点符号开始 
+    * 名称不能以字符 “xml”（或者 XML、Xml）开始 
+    * 名称不能包含空格 
+    * 命名尽量简单，做到见名知义</code></pre><h3 id="简单元素-amp-复杂元素"><a href="#简单元素-amp-复杂元素" class="headerlink" title="简单元素 &amp; 复杂元素"></a>简单元素 &amp; 复杂元素</h3><ul>
 <li>简单元素 </li>
 </ul>
 <blockquote>
@@ -310,12 +288,11 @@ standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个�
 <p>xml的注释，不允许放置在文档的第一行。 必须在文档声明的下面。</p>
 </blockquote>
 <h2 id="CDATA区"><a href="#CDATA区" class="headerlink" title="CDATA区"></a>CDATA区</h2><ul>
-<li><p>非法字符</p>
-<p>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。 </p>
-<p>&lt;   &lt;<br>&amp;   &amp;</p>
-</li>
+<li>非法字符</li>
 </ul>
-<p>如果某段字符串里面有过多的字符，并且里面包含了类似标签或者关键字的这种文字，不想让xml的解析器去解析。 那么可以使用CDATA来包装。不过这个CDATA一般比较少看到。通常在服务器给客户端返回数据的时候。</p>
+<p>严格地讲，在 XML 中仅有字符 “&lt;”和”&amp;” 是非法的。省略号、引号和大于号是合法的，但是把它们替换为实体引用是个好的习惯。 </p>
+<pre><code>&lt;   &amp;lt;
+&amp;   &amp;amp;</code></pre><p>如果某段字符串里面有过多的字符，并且里面包含了类似标签或者关键字的这种文字，不想让xml的解析器去解析。 那么可以使用CDATA来包装。不过这个CDATA一般比较少看到。通常在服务器给客户端返回数据的时候。</p>
 <pre><code>&lt;![CDATA[&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;]]&gt;</code></pre><h2 id="XML解析"><a href="#XML解析" class="headerlink" title="XML解析"></a>XML解析</h2><blockquote>
 <p>其实就是获取元素里面的字符数据或者属性数据。</p>
 </blockquote>
@@ -328,51 +305,33 @@ standalone  : no - 该文档会依赖关联其他文档 ，  yes-- 这是一个�
 <li><p>SAX</p>
 </li>
 </ul>
-<p><img src="https://i.imgur.com/NSsU3PC.png" alt></p>
+<p><img src="/assets/img/EE/47.png" alt></p>
 <h3 id="针对这两种解析方式的API"><a href="#针对这两种解析方式的API" class="headerlink" title="针对这两种解析方式的API"></a>针对这两种解析方式的API</h3><blockquote>
 <p>一些组织或者公司， 针对以上两种解析方式， 给出的解决方案有哪些？</p>
 </blockquote>
 <pre><code>jaxp  sun公司。比较繁琐
 jdom
 dom4j  使用比较广泛</code></pre><h3 id="Dom4j基本用法"><a href="#Dom4j基本用法" class="headerlink" title="Dom4j基本用法"></a>Dom4j基本用法</h3><pre><code>element.element(&quot;stu&quot;) : 返回该元素下的第一个stu元素
-element.elements(); 返回该元素下的所有子元素。 </code></pre><ol>
-<li><p>创建SaxReader对象</p>
-</li>
-<li><p>指定解析的xml</p>
-</li>
-<li><p>获取根元素。</p>
-</li>
-<li><p>根据根元素获取子元素或者下面的子孙元素</p>
-</li>
-</ol>
+element.elements(); 返回该元素下的所有子元素。 </code></pre><p>1.创建SaxReader对象</p>
+<p>2.指定解析的xml</p>
+<p>3.获取根元素。</p>
+<p>4.根据根元素获取子元素或者下面的子孙元素</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="comment">//1. 创建sax读取对象</span></span><br><span class="line">	SAXReader reader = <span class="keyword">new</span> SAXReader(); <span class="comment">//jdbc -- classloader</span></span><br><span class="line">	<span class="comment">//2. 指定解析的xml源</span></span><br><span class="line">	Document  document  = reader.read(<span class="keyword">new</span> File(<span class="string">"src/xml/stus.xml"</span>));</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//3. 得到元素</span></span><br><span class="line">	<span class="comment">//得到根元素</span></span><br><span class="line">	Element rootElement= document.getRootElement();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取根元素下面的子元素 age</span></span><br><span class="line">	<span class="comment">//rootElement.element("age") </span></span><br><span class="line">	<span class="comment">//System.out.println(rootElement.element("stu").element("age").getText());</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//获取根元素下面的所有子元素 。 stu元素</span></span><br><span class="line">	List&lt;Element&gt; elements = rootElement.elements();</span><br><span class="line">	<span class="comment">//遍历所有的stu元素</span></span><br><span class="line">	<span class="keyword">for</span> (Element element : elements) &#123;</span><br><span class="line">		<span class="comment">//获取stu元素下面的name元素</span></span><br><span class="line">		String name = element.element(<span class="string">"name"</span>).getText();</span><br><span class="line">		String age = element.element(<span class="string">"age"</span>).getText();</span><br><span class="line">		String address = element.element(<span class="string">"address"</span>).getText();</span><br><span class="line">		System.out.println(<span class="string">"name="</span>+name+<span class="string">"==age+"</span>+age+<span class="string">"==address="</span>+address);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>SaxReader 创建好对象 </p>
 <p>Document<br>Element</p>
-<ol>
-<li><p>看文档</p>
-</li>
-<li><p>记住关键字 。</p>
-</li>
-<li><p>有对象先点一下。</p>
-</li>
-<li><p>看一下方法的返回值。 </p>
-</li>
-<li><p>根据平时的积累。  getXXX setXXX </p>
-</li>
-</ol>
+<p>1.看文档</p>
+<p>2.记住关键字 。</p>
+<p>3.有对象先点一下。</p>
+<p>4.看一下方法的返回值。 </p>
+<p>5.根据平时的积累。  getXXX setXXX </p>
 <h3 id="Dom4j的Xpath使用"><a href="#Dom4j的Xpath使用" class="headerlink" title="Dom4j的Xpath使用"></a>Dom4j的Xpath使用</h3><blockquote>
 <p> dom4j里面支持Xpath的写法。 xpath其实是xml的路径语言，支持我们在解析xml的时候，能够快速的定位到具体的某一个元素。</p>
 </blockquote>
-<ol>
-<li><p>添加jar包依赖 </p>
-<p>jaxen-1.1-beta-6.jar</p>
-</li>
-<li><p>在查找指定节点的时候，根据XPath语法规则来查找</p>
-</li>
-<li><p>后续的代码与以前的解析代码一样。</p>
-</li>
-</ol>
+<p>1.添加jar包依赖 </p>
+<p>   jaxen-1.1-beta-6.jar</p>
+<p>2.在查找指定节点的时候，根据XPath语法规则来查找</p>
+<p>3.后续的代码与以前的解析代码一样。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要想使用Xpath， 还得添加支持的jar 获取的是第一个 只返回一个。 </span></span><br><span class="line">Element nameElement = (Element) rootElement.selectSingleNode(<span class="string">"//name"</span>);</span><br><span class="line">System.out.println(nameElement.getText());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取文档里面的所有name元素，//表示不考虑层级 </span></span><br><span class="line">List&lt;Element&gt; list = rootElement.selectNodes(<span class="string">"//name"</span>);</span><br><span class="line"><span class="keyword">for</span> (Element element : list) &#123;</span><br><span class="line">	System.out.println(element.getText());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="XML约束【了解】"><a href="#XML约束【了解】" class="headerlink" title="XML约束【了解】"></a>XML约束【了解】</h2><p>如下的文档，属性的ID值是一样的。这在生活中是不可能出现的。并且第二个学生的姓名有好几个。一般也很少。那么怎么规定ID的值唯一，或者是元素只能出现一次，不能出现多次？甚至是规定里面只能出现具体的元素名字。 </p>
@@ -392,36 +351,21 @@ element.elements(); 返回该元素下的所有子元素。 </code></pre><ol>
 &lt;/stus&gt;</code></pre><h3 id="DTD"><a href="#DTD" class="headerlink" title="DTD"></a>DTD</h3><blockquote>
 <p>语法自成一派，早起就出现的。可读性比较差。 </p>
 </blockquote>
-<ol>
-<li>引入网络上的DTD</li>
-</ol>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 引入dtd 来约束这个xml --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    文档类型  根标签名字 网络上的dtd   dtd的名称   dtd的路径</span><br><span class="line">&lt;!DOCTYPE stus PUBLIC &quot;//UNKNOWN/&quot; &quot;unknown.dtd&quot;&gt; --&gt;</span><br></pre></td></tr></table></figure></code></pre><ol start="2">
-<li><p>引入本地的DTD</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 引入本地的DTD  ： 根标签名字 引入本地的DTD  dtd的位置 --&gt;</span><br><span class="line">&lt;!-- &lt;!DOCTYPE stus SYSTEM &quot;stus.dtd&quot;&gt; --&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>直接在XML里面嵌入DTD的约束规则</p>
-</li>
-</ol>
+<p>1.引入网络上的DTD</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 引入dtd 来约束这个xml --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--    文档类型  根标签名字 网络上的dtd   dtd的名称   dtd的路径</span><br><span class="line">&lt;!DOCTYPE stus PUBLIC &quot;//UNKNOWN/&quot; &quot;unknown.dtd&quot;&gt; --&gt;</span><br></pre></td></tr></table></figure></code></pre><p>2.引入本地的DTD</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 引入本地的DTD  ： 根标签名字 引入本地的DTD  dtd的位置 --&gt;</span><br><span class="line">&lt;!-- &lt;!DOCTYPE stus SYSTEM &quot;stus.dtd&quot;&gt; --&gt;</span><br></pre></td></tr></table></figure></code></pre><p>3.直接在XML里面嵌入DTD的约束规则</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- xml文档里面直接嵌入DTD的约束法则 --&gt;</span><br><span class="line">&lt;!DOCTYPE stus [</span><br><span class="line">	&lt;!ELEMENT stus (stu)&gt;</span><br><span class="line">	&lt;!ELEMENT stu (name,age)&gt;</span><br><span class="line">	&lt;!ELEMENT name (#PCDATA)&gt;</span><br><span class="line">	&lt;!ELEMENT age (#PCDATA)&gt;</span><br><span class="line">]&gt;</span><br><span class="line"></span><br><span class="line">&lt;stus&gt;</span><br><span class="line">	&lt;stu&gt;</span><br><span class="line">		&lt;name&gt;张三&lt;/name&gt;</span><br><span class="line">		&lt;age&gt;18&lt;/age&gt;</span><br><span class="line">	&lt;/stu&gt;</span><br><span class="line">&lt;/stus&gt;</span><br></pre></td></tr></table></figure>
 
-    &lt;!ELEMENT stus (stu)&gt;  : stus下面有一个元素stu，但是只有一个
-    &lt;!ELEMENT stu (name , age)&gt;  stu下面有两个元素name,age顺序必须name-age
-    &lt;!ELEMENT name (#PCDATA)&gt; 
-    &lt;!ELEMENT age (#PCDATA)&gt;
-    &lt;!ATTLIST stu id CDATA #IMPLIED&gt; stu有一个属性 文本类型 默认值(此属性可有可无）
+&lt;!ELEMENT stus (stu)&gt;  : stus下面有一个元素stu，但是只有一个
+&lt;!ELEMENT stu (name , age)&gt;  stu下面有两个元素name,age顺序必须name-age
+&lt;!ELEMENT name (#PCDATA)&gt; 
+&lt;!ELEMENT age (#PCDATA)&gt;
+&lt;!ATTLIST stu id CDATA #IMPLIED&gt; stu有一个属性 文本类型 默认值(此属性可有可无）</code></pre><p>元素的个数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">＋　一个或多个</span><br><span class="line">*   零个或多个</span><br><span class="line">?   零个或一个</span><br></pre></td></tr></table></figure>
 
-
-元素的个数：
-
-    ＋　一个或多个
-    *   零个或多个
-    ?   零个或一个
-
-属性的类型定义 
-
-    CDATA : 属性是普通文字
-    ID : 属性的值必须唯一
-
+<p>属性的类型定义 </p>
+<pre><code>CDATA : 属性是普通文字
+ID : 属性的值必须唯一
 
 &lt;!ELEMENT stu (name , age)&gt;        按照顺序来 
 
@@ -504,17 +448,10 @@ xsi:schemaLocation : 有两段： 前半段是名称空间，也是目标空间�
 <pre><code>Tomcat  apache
 WebLogic BEA
 Websphere IBM  
-IIS   微软</code></pre><h3 id="Tomcat安装"><a href="#Tomcat安装" class="headerlink" title="Tomcat安装"></a>Tomcat安装</h3><ol>
-<li><p>直接解压，然后找到bin/startup.bat</p>
-</li>
-<li><p>可以安装</p>
-<p> 启动之后，如果能够正常看到黑窗口，表明已经成功安装。为了确保万无一失，最好在浏览器的地址栏上输入： <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a>, 如果有看到内容 就表明成功了。</p>
-</li>
-<li><p>如果双击了startup.bat, 看到一闪而过的情形，一般都是JDK的环境变量没有配置。</p>
-<p> 环境变量JAVA_HOME 值：jdk的安装目录</p>
-</li>
-</ol>
-<h3 id="Tomcat目录介绍"><a href="#Tomcat目录介绍" class="headerlink" title="Tomcat目录介绍"></a>Tomcat目录介绍</h3><ul>
+IIS   微软</code></pre><h3 id="Tomcat安装"><a href="#Tomcat安装" class="headerlink" title="Tomcat安装"></a>Tomcat安装</h3><p>1.直接解压，然后找到bin/startup.bat</p>
+<p>2.可以安装</p>
+<pre><code>启动之后，如果能够正常看到黑窗口，表明已经成功安装。为了确保万无一失，最好在浏览器的地址栏上输入： http://localhost:8080, 如果有看到内容 就表明成功了。</code></pre><p>3.如果双击了startup.bat, 看到一闪而过的情形，一般都是JDK的环境变量没有配置。</p>
+<pre><code>环境变量JAVA_HOME 值：jdk的安装目录</code></pre><h3 id="Tomcat目录介绍"><a href="#Tomcat目录介绍" class="headerlink" title="Tomcat目录介绍"></a>Tomcat目录介绍</h3><ul>
 <li><p>bin</p>
 <ul>
 <li>包含了一些jar, bat文件。startup.bat</li>
@@ -554,9 +491,7 @@ IIS   微软</code></pre><h3 id="Tomcat安装"><a href="#Tomcat安装" class="he
 <h3 id="如何把一个项目发布到tomcat中"><a href="#如何把一个项目发布到tomcat中" class="headerlink" title="如何把一个项目发布到tomcat中"></a>如何把一个项目发布到tomcat中</h3><blockquote>
 <p>需求： 如何能让其他的电脑访问我这台电脑上的资源，如stu.xml</p>
 </blockquote>
-<pre><code>localhost: 本机地址</code></pre><ol>
-<li>拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问：</li>
-</ol>
+<pre><code>localhost: 本机地址</code></pre><p>1.拷贝这个文件到webapps/ROOT底下， 在浏览器里面访问：</p>
 <pre><code>http://localhost:8080/stu.xml
 
 在webaps下面新建一个文件夹xml  , 然后拷贝文件放置到这个文件夹中
@@ -567,61 +502,43 @@ http://localhost:8080/xml/ : 对应是 webapps/xml
 
 使用IP地址访问：
 
-http://192.168.37.48:8080/xml/stu.xml</code></pre><ol start="2">
-<li>配置虚拟路径</li>
-</ol>
+http://192.168.37.48:8080/xml/stu.xml</code></pre><p>2.配置虚拟路径</p>
 <pre><code>使用localhost：8080 打开tomcat首页，在左侧找到tomcat的文档入口configuration，点击进去后，在左侧接着找到 Context入口，点击进入。
 
 http://localhost:8080/docs/config/context.html
 
-1. 在conf/server.xml 找到host元素节点。
+1.在conf/server.xml 找到host元素节点。
 
-2. 加入以下内容。
+2.加入以下内容。
 
            &lt;!-- docBase ：  项目的路径地址 如： D:\xml02\person.xml
            path : 对应的虚拟路径 一定要以/打头。
            对应的访问方式为： http://localhost:8080/a/person.xml --&gt;
            &lt;Context docBase=&quot;D:\xml02&quot; path=&quot;/a&quot;&gt;&lt;/Context&gt;
 
-3. 在浏览器地址栏上输入： http://localhost:8080/a/person.xml</code></pre><ol start="3">
-<li><p>配置虚拟路径</p>
-<ol>
-<li><p>在tomcat/conf/catalina/localhost/ 文件夹下新建一个xml文件，名字可以自己定义。a.xml</p>
-</li>
-<li><p>在这个文件里面写入以下内容</p>
-<pre><code>&lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos;?&gt;
-&lt;Context docBase=&quot;D:\xml02&quot;&gt;&lt;/Context&gt;</code></pre></li>
-<li><p>在浏览器上面访问<a href="http://localhost:8080/a/person.xml的名字即可" target="_blank" rel="noopener">http://localhost:8080/a/person.xml的名字即可</a></p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="给Eclipse配置Tomcat"><a href="#给Eclipse配置Tomcat" class="headerlink" title="给Eclipse配置Tomcat"></a>给Eclipse配置Tomcat</h3><ol>
-<li><p>在server里面右键新建一个服务器，选择到apache分类，找到对应的tomcat版本，接着一步一步配置即可。</p>
-</li>
-<li><p>配置完毕后，在server里面，右键刚才的服务器，然后open，找到上面的Server Location, 选择中间的Use Tomcat installation…</p>
-</li>
-<li><p>创建web工程，在WebContent下定义html文件，右键工程，run as server </p>
-</li>
-</ol>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre><code>xml
+3.在浏览器地址栏上输入： http://localhost:8080/a/person.xml</code></pre><p>3.配置虚拟路径</p>
+<pre><code>1. 在tomcat/conf/catalina/localhost/ 文件夹下新建一个xml文件，名字可以自己定义。a.xml
 
-    1. 会定义xml
+2. 在这个文件里面写入以下内容
 
-    2. 会解析xml
+       &lt;?xml version=&apos;1.0&apos; encoding=&apos;utf-8&apos;?&gt;
+       &lt;Context docBase=&quot;D:\xml02&quot;&gt;&lt;/Context&gt;
 
-        dom4j  基本解析
+3. 在浏览器上面访问http://localhost:8080/a/person.xml的名字即可</code></pre><h3 id="给Eclipse配置Tomcat"><a href="#给Eclipse配置Tomcat" class="headerlink" title="给Eclipse配置Tomcat"></a>给Eclipse配置Tomcat</h3><p>1.在server里面右键新建一个服务器，选择到apache分类，找到对应的tomcat版本，接着一步一步配置即可。<br>2.配置完毕后，在server里面，右键刚才的服务器，然后open，找到上面的Server Location, 选择中间的Use Tomcat installation…</p>
+<p>3.创建web工程，在WebContent下定义html文件，右键工程，run as server </p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>xml</p>
+<pre><code>1.会定义xml
 
-        Xpath手法
+2.会解析xml
 
+    dom4j  基本解析
 
-tomcat
+    Xpath手法</code></pre><p>tomcat</p>
+<pre><code>1.会安装，会启动，会访问。
 
-    1. 会安装，会启动，会访问。
+2.会设置虚拟路径
 
-    2. 会设置虚拟路径
-
-    3. 给eclipse配置tomcat</code></pre><p>​    </p>
+3.给eclipse配置tomcat</code></pre><p>​    </p>
 
       
 
@@ -908,15 +825,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -940,18 +869,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -968,11 +885,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -996,11 +913,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1009,14 +934,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
