@@ -6,21 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>【JavaEE】* JSP&amp;EL&amp;JSTL | Blog for learning</title>
+  <title>【JavaEE】JSP&amp;EL&amp;JSTL | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="摘要 JSP EL JSTL">
 <meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【JavaEE】* JSP&amp;EL&amp;JSTL">
+<meta property="og:title" content="【JavaEE】JSP&amp;EL&amp;JSTL">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-02-23-JavaEE05/index.html">
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 JSP EL JSTL">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/assets/img/EE/20.png">
 <meta property="og:image" content="http://yoursite.com/assets/img/EE/21.png">
-<meta property="og:updated_time" content="2019-06-24T05:13:00.186Z">
+<meta property="og:updated_time" content="2019-06-24T11:23:16.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【JavaEE】* JSP&amp;EL&amp;JSTL">
+<meta name="twitter:title" content="【JavaEE】JSP&amp;EL&amp;JSTL">
 <meta name="twitter:description" content="摘要 JSP EL JSTL">
 <meta name="twitter:image" content="http://yoursite.com/assets/img/EE/20.png">
   
@@ -185,7 +185,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      【JavaEE】* JSP&amp;EL&amp;JSTL
+      【JavaEE】JSP&amp;EL&amp;JSTL
     </h1>
   
 
@@ -310,12 +310,9 @@ prefix : 标签库的别名  </code></pre><h2 id="JSP动作标签"><a href="#JSP
     &lt;jsp:param value=&quot;beijing&quot; name=&quot;address&quot;/&gt;
 &lt;/jsp:forward&gt;
 
-在other02.jsp中获取参数
-
-
-&lt;br&gt;收到的参数是：&lt;br&gt;
-
-&lt;%= request.getParameter(&quot;address&quot;)%&gt;</code></pre><h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><blockquote>
+在other02.jsp中获取参数</code></pre><p>​    
+    <br>收到的参数是：<br></p>
+<pre><code>&lt;%= request.getParameter(&quot;address&quot;)%&gt;</code></pre><h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><blockquote>
 <p>所谓内置对象，就是我们可以直接在jsp页面中使用这些对象。 不用创建。</p>
 </blockquote>
 <ul>
@@ -439,14 +436,9 @@ ${li[0] } , ${li[1] },${li[2] },${li[3] }</code></pre><p>4.取出Map集合的值
     map.put(&quot;age&quot;,18);
     map.put(&quot;address&quot;,&quot;北京..&quot;);
 
-    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
-
-
-    pageContext.setAttribute(&quot;map&quot;, map);
-%&gt;
-使用EL表达式取出作用域中Map的值&lt;br&gt;
-
-${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><p>1.从域中取值。得先存值。</p>
+    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);</code></pre><p>​            
+            pageContext.setAttribute(“map”, map);<br>        %&gt;<br>        使用EL表达式取出作用域中Map的值<br></p>
+<pre><code>${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><p>1.从域中取值。得先存值。</p>
 <pre><code>&lt;%
 
     //pageContext.setAttribute(&quot;name&quot;, &quot;zhangsan&quot;);
@@ -454,13 +446,9 @@ ${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }<
 %&gt;
 
 &lt;br&gt;直接指定说了，到这个作用域里面去找这个name&lt;br&gt;
-${ pageScope.name } 
-
-
-&lt;br&gt;//先从page里面找，没有去request找，去session，去application &lt;br&gt;
-${ name }
-
-&lt;br&gt;指定从session中取值&lt;br&gt;
+${ pageScope.name } </code></pre><p>​        
+        <br>//先从page里面找，没有去request找，去session，去application <br><br>        ${ name }</p>
+<pre><code>&lt;br&gt;指定从session中取值&lt;br&gt;
 ${ sessionScope.name }  </code></pre><p>2.取值方式</p>
 <pre><code>如果这份值是有下标的，那么直接使用[]
 
@@ -593,7 +581,7 @@ var: 遍历出来的每一个元素用user 去接收。 --&gt;
 
 3.跳转到stu_list.jsp
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//提交的数据有可能有中文， 怎么处理。</span></span><br><span class="line">	request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">	response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1. 获取客户端提交的信息</span></span><br><span class="line">	String userName = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">	String password = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//2. 去访问dao ， 看看是否满足登录。</span></span><br><span class="line">	UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">	<span class="keyword">boolean</span> isSuccess = dao.login(userName, password);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//3. 针对dao的返回结果，做出响应</span></span><br><span class="line">	<span class="keyword">if</span>(isSuccess)&#123;</span><br><span class="line">		<span class="comment">//response.getWriter().write("登录成功.");</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1. 查询出来所有的学生信息。</span></span><br><span class="line">		StuDao stuDao = <span class="keyword">new</span> StuDaoImpl();</span><br><span class="line">		List&lt;Student&gt; list = stuDao.findAll();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 先把这个集合存到作用域中。</span></span><br><span class="line">		request.getSession().setAttribute(<span class="string">"list"</span>, list);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 重定向</span></span><br><span class="line">		response.sendRedirect(<span class="string">"stu_list.jsp"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		response.getWriter().write(<span class="string">"用户名或者密码错误！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>11.在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//提交的数据有可能有中文， 怎么处理。</span></span><br><span class="line">	request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">	response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1. 获取客户端提交的信息</span></span><br><span class="line">	String userName = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">	String password = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//2. 去访问dao ， 看看是否满足登录。</span></span><br><span class="line">	UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">	<span class="keyword">boolean</span> isSuccess = dao.login(userName, password);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//3. 针对dao的返回结果，做出响应</span></span><br><span class="line">	<span class="keyword">if</span>(isSuccess)&#123;</span><br><span class="line">		<span class="comment">//response.getWriter().write("登录成功.");</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1. 查询出来所有的学生信息。</span></span><br><span class="line">		StuDao stuDao = <span class="keyword">new</span> StuDaoImpl();</span><br><span class="line">		List&lt;Student&gt; list = stuDao.findAll();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 先把这个集合存到作用域中。</span></span><br><span class="line">		request.getSession().setAttribute(<span class="string">"list"</span>, list);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 重定向</span></span><br><span class="line">		response.sendRedirect(<span class="string">"stu_list.jsp"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		response.getWriter().write(<span class="string">"用户名或者密码错误！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>11.在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"700"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>编号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>住址<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">items</span>=<span class="string">"$&#123;list &#125;"</span> <span class="attr">var</span>=<span class="string">"stu"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.id &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.name &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.age &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.gender &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.address &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>更新<span class="tag">&lt;/<span class="name">a</span>&gt;</span>   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
@@ -671,6 +659,11 @@ initParam</code></pre><ul>
                       <span class="reward-type">支付宝</span>
                     </div>
                     
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
                     
                   </div>
                 </span>
@@ -956,6 +949,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hashtable</a>
               </li>
              
@@ -965,10 +962,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">string</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1004,15 +997,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Easy</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1024,19 +1017,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1048,15 +1041,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
              
               <li class="article-tag-list-item">
