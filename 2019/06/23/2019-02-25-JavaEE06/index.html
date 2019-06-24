@@ -16,23 +16,23 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 事务 数据库连接池 DBUtils">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/zIlufbq.png">
-<meta property="og:image" content="https://i.imgur.com/N8n8OLw.png">
-<meta property="og:image" content="https://i.imgur.com/lRrYHuY.png">
-<meta property="og:image" content="https://i.imgur.com/yNRdbuA.png">
-<meta property="og:image" content="https://i.imgur.com/TBHHMB0.png">
-<meta property="og:image" content="https://i.imgur.com/mQQlKCz.png">
-<meta property="og:image" content="https://i.imgur.com/mObgG1R.png">
-<meta property="og:image" content="https://i.imgur.com/ojHkOv5.png">
-<meta property="og:image" content="https://i.imgur.com/oVybaGY.png">
-<meta property="og:image" content="https://i.imgur.com/EzO7Pjb.png">
-<meta property="og:image" content="https://i.imgur.com/fDfF8CJ.png">
-<meta property="og:image" content="https://i.imgur.com/QfC791N.png">
-<meta property="og:updated_time" content="2019-06-23T08:08:40.821Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/8.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/9.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/10.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/11.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/12.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/13.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/14.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/15.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/16.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/17.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/18.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/19.png">
+<meta property="og:updated_time" content="2019-06-24T04:59:53.833Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】事务&amp;数据库连接池&amp;DBUtils">
 <meta name="twitter:description" content="摘要 事务 数据库连接池 DBUtils">
-<meta name="twitter:image" content="https://i.imgur.com/zIlufbq.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/EE/8.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -240,71 +240,26 @@
 <ol>
 <li>关闭自动提交功能。</li>
 </ol>
-<p><img src="https://i.imgur.com/zIlufbq.png" alt></p>
+<p><img src="/assets/img/EE/8.png" alt></p>
 <ol start="2">
 <li>演示事务</li>
 </ol>
-<p><img src="https://i.imgur.com/N8n8OLw.png" alt></p>
+<p><img src="/assets/img/EE/9.png" alt></p>
 <h3 id="使用代码方式演示事务"><a href="#使用代码方式演示事务" class="headerlink" title="使用代码方式演示事务"></a>使用代码方式演示事务</h3><blockquote>
 <p>代码里面的事务，主要是针对连接来的。 </p>
-<ol>
-<li>通过conn.setAutoCommit（false ）来关闭自动提交的设置。</li>
-</ol>
 </blockquote>
 <blockquote>
-<ol start="2">
-<li>提交事务  conn.commit();</li>
-</ol>
+<p>   1.通过conn.setAutoCommit（false ）来关闭自动提交的设置。</p>
 </blockquote>
 <blockquote>
-<ol start="3">
-<li>回滚事务 conn.rollback();</li>
-</ol>
+<p>   2.提交事务  conn.commit();</p>
 </blockquote>
-<pre><code>@Test
-public void testTransaction(){
+<blockquote>
+<p>   3.回滚事务 conn.rollback();</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testTransaction</span><span class="params">()</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">	ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		conn = JDBCUtil.getConn();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//连接，事务默认就是自动提交的。 关闭自动提交。</span></span><br><span class="line">		conn.setAutoCommit(<span class="keyword">false</span>);</span><br><span class="line">		</span><br><span class="line">		String sql = <span class="string">"update account set money = money - ? where id = ?"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//扣钱， 扣ID为1 的100块钱</span></span><br><span class="line">		ps.setInt(<span class="number">1</span>, <span class="number">100</span>);</span><br><span class="line">		ps.setInt(<span class="number">2</span>, <span class="number">1</span>);</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">10</span> /<span class="number">0</span> ;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//加钱， 给ID为2 加100块钱</span></span><br><span class="line">		ps.setInt(<span class="number">1</span>, -<span class="number">100</span>);</span><br><span class="line">		ps.setInt(<span class="number">2</span>, <span class="number">2</span>);</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//成功： 提交事务。</span></span><br><span class="line">		conn.commit();</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//事变： 回滚事务</span></span><br><span class="line">			conn.rollback();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">		JDBCUtil.release(conn, ps, rs);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    Connection conn = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
-    try {
-        conn = JDBCUtil.getConn();
-
-        //连接，事务默认就是自动提交的。 关闭自动提交。
-        conn.setAutoCommit(false);
-
-        String sql = &quot;update account set money = money - ? where id = ?&quot;;
-        ps = conn.prepareStatement(sql);
-
-        //扣钱， 扣ID为1 的100块钱
-        ps.setInt(1, 100);
-        ps.setInt(2, 1);
-        ps.executeUpdate();
-
-
-        int a = 10 /0 ;
-
-        //加钱， 给ID为2 加100块钱
-        ps.setInt(1, -100);
-        ps.setInt(2, 2);
-        ps.executeUpdate();
-
-        //成功： 提交事务。
-        conn.commit();
-
-    } catch (SQLException e) {
-        try {
-            //事变： 回滚事务
-            conn.rollback();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
-        e.printStackTrace();
-
-    }finally {
-        JDBCUtil.release(conn, ps, rs);
-    }
-}</code></pre><h3 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h3><ul>
+<h3 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h3><ul>
 <li>原子性atom</li>
 </ul>
 <blockquote>
@@ -353,24 +308,24 @@ public void testTransaction(){
 <ol>
 <li>设置A窗口的隔离级别为 读未提交 </li>
 </ol>
-<p><img src="https://i.imgur.com/lRrYHuY.png" alt></p>
+<p><img src="/assets/img/EE/10.png" alt></p>
 <ol start="2">
 <li>两个窗口都分别开启事务</li>
 </ol>
-<p><img src="https://i.imgur.com/yNRdbuA.png" alt></p>
+<p><img src="/assets/img/EE/11.png" alt></p>
 <h4 id="读已提交-read-committed"><a href="#读已提交-read-committed" class="headerlink" title="读已提交(read committed)"></a>读已提交(read committed)</h4><p>set session transaction isolation level read committed;</p>
 <ol>
 <li>设置A窗口的隔离级别为 读已提交</li>
 </ol>
-<p><img src="https://i.imgur.com/TBHHMB0.png" alt></p>
+<p><img src="/assets/img/EE/12.png" alt></p>
 <ol start="2">
 <li>A B 两个窗口都开启事务， 在B窗口执行更新操作。</li>
 </ol>
-<p><img src="https://i.imgur.com/mQQlKCz.png" alt></p>
+<p><img src="/assets/img/EE/13.png" alt></p>
 <ol start="3">
 <li>在A窗口执行的查询结果不一致。一次是在B窗口提交事务之前，一次是在B窗口提交事务之后。</li>
 </ol>
-<p><img src="https://i.imgur.com/mObgG1R.png" alt></p>
+<p><img src="/assets/img/EE/14.png" alt></p>
 <blockquote>
 <p>这个隔离级别能够屏蔽 脏读 的现象，但是引发了另一个问题，不可重复读。</p>
 </blockquote>
@@ -392,18 +347,13 @@ public void testTransaction(){
 <blockquote>
 <p>可串行化 &gt; 可重复读 &gt; 读已提交 &gt; 读未提交</p>
 </blockquote>
-<h2 id="事务总结"><a href="#事务总结" class="headerlink" title="事务总结"></a>事务总结</h2><h3 id="需要掌握的"><a href="#需要掌握的" class="headerlink" title="需要掌握的"></a>需要掌握的</h3><ol>
-<li><p>在代码里面会使用事务 </p>
+<h2 id="事务总结"><a href="#事务总结" class="headerlink" title="事务总结"></a>事务总结</h2><h3 id="需要掌握的"><a href="#需要掌握的" class="headerlink" title="需要掌握的"></a>需要掌握的</h3><p>1.在代码里面会使用事务 </p>
 <pre><code>conn.setAutoCommit(false);
 
 conn.commit();
 
-conn.rollback();</code></pre></li>
-<li><p>事务只是针对连接连接对象，如果再开一个连接对象，那么那是默认的提交。</p>
-</li>
-<li><p>事务是会自动提交的（默认情况）。 </p>
-</li>
-</ol>
+conn.rollback();</code></pre><p>2.事务只是针对连接连接对象，如果再开一个连接对象，那么那是默认的提交。</p>
+<p>3.事务是会自动提交的（默认情况）。 </p>
 <h3 id="需要了解的"><a href="#需要了解的" class="headerlink" title="需要了解的"></a>需要了解的</h3><h4 id="安全隐患"><a href="#安全隐患" class="headerlink" title="安全隐患"></a>安全隐患</h4><pre><code>读
     脏读
         一个事务读到了另一个事务未提交的数据
@@ -413,8 +363,7 @@ conn.rollback();</code></pre></li>
         一个事务读到了另一个事务insert的数据 ，造成前后查询结果不一致 。
 
 写
-    丢失更新。</code></pre><p>####隔离级别</p>
-<p>读未提交</p>
+    丢失更新。</code></pre><h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h4><p>读未提交</p>
 <blockquote>
 <p>引发问题： 脏读 </p>
 </blockquote>
@@ -432,77 +381,44 @@ conn.rollback();</code></pre></li>
 </blockquote>
 <p>mySql 默认的隔离级别是 可重复读</p>
 <p>Oracle 默认的隔离级别是  读已提交</p>
-<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="https://i.imgur.com/ojHkOv5.png" alt></p>
+<h3 id="丢失更新"><a href="#丢失更新" class="headerlink" title="丢失更新"></a>丢失更新</h3><p><img src="/assets/img/EE/15.png" alt></p>
 <h3 id="解决丢失更新"><a href="#解决丢失更新" class="headerlink" title="解决丢失更新"></a>解决丢失更新</h3><ul>
 <li>悲观锁</li>
 </ul>
 <blockquote>
 <p>可以在查询的时候，加入 for update</p>
 </blockquote>
-<p><img src="https://i.imgur.com/oVybaGY.png" alt></p>
+<p><img src="/assets/img/EE/16.png" alt></p>
 <ul>
 <li>乐观锁</li>
 </ul>
 <blockquote>
 <p>要求程序员自己控制。 </p>
 </blockquote>
-<p><img src="https://i.imgur.com/EzO7Pjb.png" alt></p>
+<p><img src="/assets/img/EE/17.png" alt></p>
 <h2 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h2><blockquote>
-<ol>
-<li>数据库的连接对象创建工作，比较消耗性能。 </li>
-</ol>
+<p>1.数据库的连接对象创建工作，比较消耗性能。 </p>
 </blockquote>
 <blockquote>
-<ol start="2">
-<li>一开始现在内存中开辟一块空间（集合），一开始先往池子里面放置多个连接对象。后面需要连接的话，直接从池子里面去。不要去自己创建连接了。使用完毕，要记得归还连接。确保连接对象能循环利用。</li>
-</ol>
+<p>2.一开始现在内存中开辟一块空间（集合），一开始先往池子里面放置多个连接对象。后面需要连接的话，直接从池子里面去。不要去自己创建连接了。使用完毕，要记得归还连接。确保连接对象能循环利用。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/fDfF8CJ.png" alt></p>
+<p><img src="/assets/img/EE/18.png" alt></p>
 <h3 id="自定义数据库连接池"><a href="#自定义数据库连接池" class="headerlink" title="自定义数据库连接池"></a>自定义数据库连接池</h3><ul>
-<li><p>代码实现</p>
-<pre><code>public class MyDataSource implements DataSource{
-    List&lt;Connection&gt; list=new ArrayList&lt;Connection&gt;();
-    public MyDataSource() {
-        for(int i=0;i&lt;10;i++) {
-            Connection con=JDBCUtil.getCon();
-            list.add(con);
-        }
-    }
+<li>代码实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDataSource</span> <span class="keyword">implements</span> <span class="title">DataSource</span></span>&#123;</span><br><span class="line">	List&lt;Connection&gt; list=<span class="keyword">new</span> ArrayList&lt;Connection&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++) &#123;</span><br><span class="line">			Connection con=JDBCUtil.getCon();</span><br><span class="line">			list.add(con);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(list.size()==<span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</span><br><span class="line">				Connection con=JDBCUtil.getCon();</span><br><span class="line">				list.add(con);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Connection con=list.remove(<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> con;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addBack</span><span class="params">(Connection con)</span> </span>&#123;</span><br><span class="line">		list.add(con);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-    @Override
-    public Connection getConnection() throws SQLException {
-        if(list.size()==0) {
-            for(int i=0;i&lt;5;i++) {
-                Connection con=JDBCUtil.getCon();
-                list.add(con);
-            }
-        }
-        Connection con=list.remove(0);
-        return con;
-    }
-
-    public void addBack(Connection con) {
-        list.add(con);
-    }</code></pre></li>
+<ul>
 <li><p>出现的问题：</p>
-<ol>
-<li><p>需要额外记住 addBack方法</p>
-<ol start="2">
-<li><p>可以做成单例。</p>
-</li>
-<li><p>无法面向接口编程。 </p>
-<p>UserDao dao = new UserDaoImpl();<br>dao.insert();</p>
-<p>DataSource dataSource = new MyDataSource();</p>
-<p>因为接口里面没有定义addBack方法。 </p>
-</li>
-<li><p>怎么解决? 以addBack 为切入点。</p>
-</li>
-</ol>
-</li>
-</ol>
+<p>  1.需要额外记住 addBack方法</p>
+<p>  2.可以做成单例。</p>
+<p>  3.无法面向接口编程。 </p>
 </li>
 </ul>
-<h3 id="解决自定义数据库连接池出现的问题。"><a href="#解决自定义数据库连接池出现的问题。" class="headerlink" title="解决自定义数据库连接池出现的问题。"></a>解决自定义数据库连接池出现的问题。</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UserDao dao = new UserDaoImpl();</span><br><span class="line">dao.insert();</span><br><span class="line"></span><br><span class="line">DataSource dataSource = new MyDataSource();</span><br><span class="line"></span><br><span class="line">因为接口里面没有定义addBack方法。</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>4.怎么解决? 以addBack 为切入点。</code></pre><h3 id="解决自定义数据库连接池出现的问题。"><a href="#解决自定义数据库连接池出现的问题。" class="headerlink" title="解决自定义数据库连接池出现的问题。"></a>解决自定义数据库连接池出现的问题。</h3><blockquote>
 <p>由于多了一个addBack 方法，所以使用这个连接池的地方，需要额外记住这个方法，并且还不能面向接口编程。</p>
 </blockquote>
 <blockquote>
@@ -514,191 +430,44 @@ conn.rollback();</code></pre></li>
 <h3 id="如何扩展某一个方法"><a href="#如何扩展某一个方法" class="headerlink" title="如何扩展某一个方法?"></a>如何扩展某一个方法?</h3><blockquote>
 <p>原有的方法逻辑，不是我们想要的。想修改自己的逻辑</p>
 </blockquote>
-<ol>
-<li><p>直接改源码 无法实现。</p>
-</li>
-<li><p>继承，必须得知道这个接口的具体实现是谁。 </p>
-</li>
-<li><p>使用装饰者模式。 </p>
-</li>
-</ol>
-<p><img src="https://i.imgur.com/QfC791N.png" alt></p>
+<p>1.直接改源码 无法实现。</p>
+<p>2.继承，必须得知道这个接口的具体实现是谁。 </p>
+<p>3.使用装饰者模式。 </p>
+<p><img src="/assets/img/EE/19.png" alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//整体代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//1.JDBC配置文件，在src目录下</span></span><br><span class="line">driverClass=com.mysql.jdbc.Driver</span><br><span class="line">url=jdbc:mysql:<span class="comment">//localhost/bank</span></span><br><span class="line">name=root</span><br><span class="line">password=root</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.JDBCUtil，建立JDBC连接使用</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtil</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> String driverClass = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">static</span> String url = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">static</span> String name = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">static</span> String password= <span class="keyword">null</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1. 创建一个属性配置对象</span></span><br><span class="line">			Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">			InputStream is = <span class="keyword">new</span> FileInputStream(<span class="string">"jdbc.properties"</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//使用类加载器，去读取src底下的资源文件。 后面在servlet</span></span><br><span class="line"><span class="comment">//			InputStream is = JDBCUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");</span></span><br><span class="line">			<span class="comment">//导入输入流。</span></span><br><span class="line">			properties.load(is);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//读取属性</span></span><br><span class="line">			driverClass = properties.getProperty(<span class="string">"driverClass"</span>);</span><br><span class="line">			url = properties.getProperty(<span class="string">"url"</span>);</span><br><span class="line">			name = properties.getProperty(<span class="string">"name"</span>);</span><br><span class="line">			password = properties.getProperty(<span class="string">"password"</span>);</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 获取连接对象</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConn</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(driverClass);</span><br><span class="line">			<span class="comment">//静态代码块 ---&gt; 类加载了，就执行。 java.sql.DriverManager.registerDriver(new Driver());</span></span><br><span class="line">			<span class="comment">//DriverManager.registerDriver(new com.mysql.jdbc.Driver());</span></span><br><span class="line">			<span class="comment">//DriverManager.getConnection("jdbc:mysql://localhost/test?user=monty&amp;password=greatsqldb");</span></span><br><span class="line">			<span class="comment">//2. 建立连接 参数一： 协议 + 访问的数据库 ， 参数二： 用户名 ， 参数三： 密码。</span></span><br><span class="line">			conn = DriverManager.getConnection(url, name, password);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 释放资源</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> conn</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> st</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> rs</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(Connection conn , Statement st , ResultSet rs)</span></span>&#123;</span><br><span class="line">		closeRs(rs);</span><br><span class="line">		closeSt(st);</span><br><span class="line">		closeConn(conn);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">(Connection conn , Statement st)</span></span>&#123;</span><br><span class="line">		closeSt(st);</span><br><span class="line">		closeConn(conn);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeRs</span><span class="params">(ResultSet rs)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(rs != <span class="keyword">null</span>)&#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			rs = <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeSt</span><span class="params">(Statement st)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(st != <span class="keyword">null</span>)&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			st = <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeConn</span><span class="params">(Connection conn)</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(conn != <span class="keyword">null</span>)&#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			conn = <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库连接池的实现</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDataSource</span> <span class="keyword">implements</span> <span class="title">DataSource</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	List &lt;Connection&gt; list = <span class="keyword">new</span> ArrayList&lt;Connection&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="title">MyDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Connection conn = JDBCUtil.getConn();</span><br><span class="line">			list.add(conn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//该连接池对外公布的获取连接的方法</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		<span class="comment">//来拿连接的时候，先看看，池子里面还有没有。</span></span><br><span class="line">		<span class="keyword">if</span>(list.size() == <span class="number">0</span> )&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">				Connection conn = JDBCUtil.getConn();</span><br><span class="line">				list.add(conn);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//remove(0) ---&gt; 移除第一个。 移除的是集合中的第一个。  移除的是开始的那个元素</span></span><br><span class="line">		Connection conn = list.remove(<span class="number">0</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//在把这个对象抛出去的时候， 对这个对象进行包装。</span></span><br><span class="line">		Connection connection = <span class="keyword">new</span> ConnectionWrap(conn, list);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> connection;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 用完之后，记得归还。</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> conn</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addBack</span><span class="params">(Connection conn)</span></span>&#123;</span><br><span class="line">		list.add(conn);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//装饰者模式（实现Connection接口）</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionWrap</span>  <span class="keyword">implements</span> <span class="title">Connection</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	Connection connection = <span class="keyword">null</span>;</span><br><span class="line">	List &lt;Connection&gt; list ;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ConnectionWrap</span><span class="params">(Connection connection , List &lt;Connection&gt; list)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.connection = connection;</span><br><span class="line">		<span class="keyword">this</span>.list = list;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		<span class="comment">//connection.close();</span></span><br><span class="line">		System.out.println(<span class="string">"有人来归还连接对象了。 归还之前，池子里面是："</span>+list.size());</span><br><span class="line">		list.add(connection);</span><br><span class="line">		System.out.println(<span class="string">"有人来归还连接对象了。 归还之后...，池子里面是："</span>+list.size());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> PreparedStatement <span class="title">prepareStatement</span><span class="params">(String sql)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> connection.prepareStatement(sql);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPool</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testPool</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">		MyDataSource dataSource = <span class="keyword">new</span> MyDataSource();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			conn =  dataSource.getConnection();</span><br><span class="line">			</span><br><span class="line">			String sql = <span class="string">"insert into account values (null , 'xilali' , 10)"</span>;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//归还连接</span></span><br><span class="line">			<span class="comment">//conn.close();</span></span><br><span class="line">			<span class="comment">//dataSource.addBack(conn);</span></span><br><span class="line">			</span><br><span class="line">			JDBCUtil.release(conn, ps);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="开源连接池"><a href="#开源连接池" class="headerlink" title="开源连接池"></a>开源连接池</h3><h4 id="DBCP"><a href="#DBCP" class="headerlink" title="DBCP"></a>DBCP</h4><blockquote>
 <p>导入jar文件</p>
 </blockquote>
-<ol>
-<li>不使用配置文件：</li>
-</ol>
-<pre><code>public void testDBCP01(){
+<p>1.不使用配置文件：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testDBCP01</span><span class="params">()</span></span>&#123;</span><br><span class="line">			</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1. 构建数据源对象</span></span><br><span class="line">		BasicDataSource dataSource = <span class="keyword">new</span> BasicDataSource();</span><br><span class="line">		<span class="comment">//连的是什么类型的数据库， 访问的是哪个数据库 ， 用户名， 密码。。</span></span><br><span class="line">		<span class="comment">//jdbc:mysql://localhost/bank 主协议：子协议 ://本地/数据库</span></span><br><span class="line">		dataSource.setDriverClassName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		dataSource.setUrl(<span class="string">"jdbc:mysql://localhost/bank"</span>);</span><br><span class="line">		dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">		dataSource.setPassword(<span class="string">"root"</span>);</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 得到连接对象</span></span><br><span class="line">		conn = dataSource.getConnection();</span><br><span class="line">		String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		ps.setString(<span class="number">1</span>, <span class="string">"admin"</span>);</span><br><span class="line">		ps.setInt(<span class="number">2</span>, <span class="number">1000</span>);</span><br><span class="line">		</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">		JDBCUtil.release(conn, ps);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    Connection conn = null;
-    PreparedStatement ps = null;
-    try {
-
-        //1. 构建数据源对象
-        BasicDataSource dataSource = new BasicDataSource();
-        //连的是什么类型的数据库， 访问的是哪个数据库 ， 用户名， 密码。。
-        //jdbc:mysql://localhost/bank 主协议：子协议 ://本地/数据库
-        dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
-        dataSource.setUrl(&quot;jdbc:mysql://localhost/bank&quot;);
-        dataSource.setUsername(&quot;root&quot;);
-        dataSource.setPassword(&quot;root&quot;);
+<p>2.使用配置文件方式(src根目录）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = <span class="keyword">null</span>;</span><br><span class="line">PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	BasicDataSourceFactory factory = <span class="keyword">new</span> BasicDataSourceFactory();</span><br><span class="line">	Properties properties = <span class="keyword">new</span> Properties();</span><br><span class="line">	InputStream is = <span class="keyword">new</span> FileInputStream(<span class="string">"src//dbcpconfig.properties"</span>);</span><br><span class="line">	properties.load(is);</span><br><span class="line">	DataSource dataSource = factory.createDataSource(properties);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//2. 得到连接对象</span></span><br><span class="line">	conn = dataSource.getConnection();</span><br><span class="line">	String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;</span><br><span class="line">	ps = conn.prepareStatement(sql);</span><br><span class="line">	ps.setString(<span class="number">1</span>, <span class="string">"liangchaowei"</span>);</span><br><span class="line">	ps.setInt(<span class="number">2</span>, <span class="number">100</span>);</span><br><span class="line">	</span><br><span class="line">	ps.executeUpdate();</span><br><span class="line">	</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">	JDBCUtil.release(conn, ps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-        //2. 得到连接对象
-        conn = dataSource.getConnection();
-        String sql = &quot;insert into account values(null , ? , ?)&quot;;
-        ps = conn.prepareStatement(sql);
-        ps.setString(1, &quot;admin&quot;);
-        ps.setInt(2, 1000);
 
-        ps.executeUpdate();
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }finally {
-        JDBCUtil.release(conn, ps);
-    }
-
-}</code></pre><ol start="2">
-<li>使用配置文件方式(src根目录）：</li>
-</ol>
-<pre><code>Connection conn = null;
-PreparedStatement ps = null;
-try {
-    BasicDataSourceFactory factory = new BasicDataSourceFactory();
-    Properties properties = new Properties();
-    InputStream is = new FileInputStream(&quot;src//dbcpconfig.properties&quot;);
-    properties.load(is);
-    DataSource dataSource = factory.createDataSource(properties);
-
-    //2. 得到连接对象
-    conn = dataSource.getConnection();
-    String sql = &quot;insert into account values(null , ? , ?)&quot;;
-    ps = conn.prepareStatement(sql);
-    ps.setString(1, &quot;liangchaowei&quot;);
-    ps.setInt(2, 100);
-
-    ps.executeUpdate();
-
-} catch (Exception e) {
-    e.printStackTrace();
-}finally {
-    JDBCUtil.release(conn, ps);
-}</code></pre><h4 id="C3P0"><a href="#C3P0" class="headerlink" title="C3P0"></a>C3P0</h4><blockquote>
+<h4 id="C3P0"><a href="#C3P0" class="headerlink" title="C3P0"></a>C3P0</h4><blockquote>
 <p>拷贝jar文件 到 lib目录</p>
 </blockquote>
-<ol>
-<li>不使用配置文件方式</li>
-</ol>
-<pre><code>Connection conn = null;
-PreparedStatement ps = null;
-try {
-    //1. 创建datasource
-    ComboPooledDataSource dataSource = new ComboPooledDataSource();
-    //2. 设置连接数据的信息
-    dataSource.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);
+<p>1.不使用配置文件方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = <span class="keyword">null</span>;</span><br><span class="line">PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="comment">//1. 创建datasource</span></span><br><span class="line">	ComboPooledDataSource dataSource = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line">	<span class="comment">//2. 设置连接数据的信息</span></span><br><span class="line">	dataSource.setDriverClass(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档</span></span><br><span class="line">	dataSource.setJdbcUrl(<span class="string">"jdbc:mysql://localhost/bank"</span>);</span><br><span class="line">	dataSource.setUser(<span class="string">"root"</span>);</span><br><span class="line">	dataSource.setPassword(<span class="string">"root"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//2. 得到连接对象</span></span><br><span class="line">	conn = dataSource.getConnection();</span><br><span class="line">	String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;</span><br><span class="line">	ps = conn.prepareStatement(sql);</span><br><span class="line">	ps.setString(<span class="number">1</span>, <span class="string">"admi234n"</span>);</span><br><span class="line">	ps.setInt(<span class="number">2</span>, <span class="number">103200</span>);</span><br><span class="line">	</span><br><span class="line">	ps.executeUpdate();</span><br><span class="line">	</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">	JDBCUtil.release(conn, ps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    //忘记了---&gt; 去以前的代码 ---&gt; jdbc的文档
-    dataSource.setJdbcUrl(&quot;jdbc:mysql://localhost/bank&quot;);
-    dataSource.setUser(&quot;root&quot;);
-    dataSource.setPassword(&quot;root&quot;);
+<p>2.使用配置文件方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//src根目录下写配置文件c3p0-config.xml</span></span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;c3p0-config&gt;</span><br><span class="line">  &lt;<span class="keyword">default</span>-config&gt;</span><br><span class="line">    &lt;property name="driverClass"&gt;com.mysql.jdbc.Driver&lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">"jdbcUrl"</span>&gt;jdbc:mysql:<span class="comment">//localhost/bank&lt;/property&gt;</span></span><br><span class="line">    &lt;property name="user"&gt;root&lt;/property&gt;</span><br><span class="line">    &lt;property name="password"&gt;root&lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;property name="initialPoolSize"&gt;10&lt;/property&gt;</span><br><span class="line">    &lt;property name="maxIdleTime"&gt;30&lt;/property&gt;</span><br><span class="line">    &lt;property name="maxPoolSize"&gt;100&lt;/property&gt;</span><br><span class="line">    &lt;property name="minPoolSize"&gt;10&lt;/property&gt;</span><br><span class="line">    &lt;property name="maxStatements"&gt;200&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/default-config&gt;</span><br><span class="line">&lt;/c3p0-config&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//1. 默认会找 此名字的 xml 中的 default-config 分支。 </span></span><br><span class="line">ComboPooledDataSource dataSource = <span class="keyword">new</span> ComboPooledDataSource();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//2. 得到连接对象</span></span><br><span class="line">conn = dataSource.getConnection();</span><br><span class="line">String sql = <span class="string">"insert into account values(null , ? , ?)"</span>;</span><br><span class="line">ps = conn.prepareStatement(sql);</span><br><span class="line">ps.setString(<span class="number">1</span>, <span class="string">"admi234n"</span>);</span><br><span class="line">ps.setInt(<span class="number">2</span>, <span class="number">103200</span>);</span><br><span class="line">ps.executeUpdate();</span><br></pre></td></tr></table></figure>
 
-    //2. 得到连接对象
-    conn = dataSource.getConnection();
-    String sql = &quot;insert into account values(null , ? , ?)&quot;;
-    ps = conn.prepareStatement(sql);
-    ps.setString(1, &quot;admi234n&quot;);
-    ps.setInt(2, 103200);
+<h2 id="DBUtils"><a href="#DBUtils" class="headerlink" title="DBUtils"></a>DBUtils</h2><h3 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//DBUtils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。不在他的考虑范围</span></span><br><span class="line">QueryRunner queryRunner = <span class="keyword">new</span> QueryRunner(<span class="keyword">new</span> ComboPooledDataSource());</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"><span class="comment">//增加</span></span><br><span class="line"><span class="comment">//queryRunner.update("insert into account values (null , ? , ? )", "aa" ,1000);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="comment">//queryRunner.update("delete from account where id = ?", 5);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//更新</span></span><br><span class="line"><span class="comment">//queryRunner.update("update account set money = ? where id = ?", 10000000 , 6);</span></span><br></pre></td></tr></table></figure>
 
-    ps.executeUpdate();
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>1.直接new接口的匿名实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">QueryRunner queryRunner = <span class="keyword">new</span> QueryRunner(<span class="keyword">new</span> ComboPooledDataSource());</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">Account  account =  queryRunner.query(<span class="string">"select * from account where id = ?"</span>, <span class="keyword">new</span> ResultSetHandler&lt;Account&gt;()&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Account <span class="title">handle</span><span class="params">(ResultSet rs)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		Account account  =  <span class="keyword">new</span> Account();</span><br><span class="line">		<span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">			String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">			<span class="keyword">int</span> money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">			</span><br><span class="line">			account.setName(name);</span><br><span class="line">			account.setMoney(money);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> account;</span><br><span class="line">	&#125;</span><br><span class="line">	 </span><br><span class="line"> &#125;, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(account.toString());</span><br></pre></td></tr></table></figure>
 
-} catch (Exception e) {
-    e.printStackTrace();
-}finally {
-    JDBCUtil.release(conn, ps);
-}</code></pre><ol start="2">
-<li><p>使用配置文件方式</p>
-<pre><code>//src根目录下写配置文件c3p0-config.xml
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;c3p0-config&gt;
-  &lt;default-config&gt;
-    &lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;
-    &lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost/bank&lt;/property&gt;
-    &lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;
-    &lt;property name=&quot;password&quot;&gt;root&lt;/property&gt;
-
-    &lt;property name=&quot;initialPoolSize&quot;&gt;10&lt;/property&gt;
-    &lt;property name=&quot;maxIdleTime&quot;&gt;30&lt;/property&gt;
-    &lt;property name=&quot;maxPoolSize&quot;&gt;100&lt;/property&gt;
-    &lt;property name=&quot;minPoolSize&quot;&gt;10&lt;/property&gt;
-    &lt;property name=&quot;maxStatements&quot;&gt;200&lt;/property&gt;
-
-  &lt;/default-config&gt;
-&lt;/c3p0-config&gt;</code></pre></li>
-</ol>
-<pre><code>//1. 默认会找 此名字的 xml 中的 default-config 分支。 
-ComboPooledDataSource dataSource = new ComboPooledDataSource();
-
-
-//2. 得到连接对象
-conn = dataSource.getConnection();
-String sql = &quot;insert into account values(null , ? , ?)&quot;;
-ps = conn.prepareStatement(sql);
-ps.setString(1, &quot;admi234n&quot;);
-ps.setInt(2, 103200);
-ps.executeUpdate();</code></pre><h2 id="DBUtils"><a href="#DBUtils" class="headerlink" title="DBUtils"></a>DBUtils</h2><h3 id="增删改"><a href="#增删改" class="headerlink" title="增删改"></a>增删改</h3><pre><code>//DBUtils 只是帮我们简化了CRUD 的代码， 但是连接的创建以及获取工作。不在他的考虑范围
-QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-
-
-//增加
-//queryRunner.update(&quot;insert into account values (null , ? , ? )&quot;, &quot;aa&quot; ,1000);
-
-//删除
-//queryRunner.update(&quot;delete from account where id = ?&quot;, 5);
-
-//更新
-//queryRunner.update(&quot;update account set money = ? where id = ?&quot;, 10000000 , 6);</code></pre><h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ol>
-<li>直接new接口的匿名实现类</li>
-</ol>
-<pre><code>QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-
-
-Account  account =  queryRunner.query(&quot;select * from account where id = ?&quot;, new ResultSetHandler&lt;Account&gt;(){
-
-    @Override
-    public Account handle(ResultSet rs) throws SQLException {
-        Account account  =  new Account();
-        while(rs.next()){
-            String name = rs.getString(&quot;name&quot;);
-            int money = rs.getInt(&quot;money&quot;);
-
-            account.setName(name);
-            account.setMoney(money);
-        }
-        return account;
-    }
-
- }, 6);
-
-System.out.println(account.toString());</code></pre><ol start="2">
-<li>直接使用框架已经写好的实现类。</li>
-</ol>
+<p>2.直接使用框架已经写好的实现类。</p>
 <pre><code>* 查询单个对象
-
-    QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-    //查询单个对象
-    Account account = queryRunner.query(&quot;select * from account where id = ?&quot;, 
-            new BeanHandler&lt;Account&gt;(Account.class), 8);
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QueryRunner queryRunner = <span class="keyword">new</span> QueryRunner(<span class="keyword">new</span> ComboPooledDataSource());</span><br><span class="line"><span class="comment">//查询单个对象</span></span><br><span class="line">Account account = queryRunner.query(<span class="string">"select * from account where id = ?"</span>, </span><br><span class="line">		<span class="keyword">new</span> BeanHandler&lt;Account&gt;(Account.class), <span class="number">8</span>);</span><br></pre></td></tr></table></figure>
 
 
 * 查询多个对象
-
-    QueryRunner queryRunner = new QueryRunner(new ComboPooledDataSource());
-    List&lt;Account&gt; list = queryRunner.query(&quot;select * from account &quot;,
-            new BeanListHandler&lt;Account&gt;(Account.class));</code></pre><h3 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h3><p>以下两个是使用频率最高的</p>
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QueryRunner queryRunner = <span class="keyword">new</span> QueryRunner(<span class="keyword">new</span> ComboPooledDataSource());</span><br><span class="line">List&lt;Account&gt; list = queryRunner.query(<span class="string">"select * from account "</span>,</span><br><span class="line">		<span class="keyword">new</span> BeanListHandler&lt;Account&gt;(Account.class));</span><br></pre></td></tr></table></figure></code></pre><h3 id="ResultSetHandler-常用的实现类"><a href="#ResultSetHandler-常用的实现类" class="headerlink" title="ResultSetHandler 常用的实现类"></a>ResultSetHandler 常用的实现类</h3><p>以下两个是使用频率最高的</p>
 <pre><code>BeanHandler,  查询到的单个数据封装成一个对象
 BeanListHandler, 查询到的多个数据封装 成一个List&lt;对象&gt;</code></pre><hr>
 <pre><code>ArrayHandler,  查询到的单个数据封装成一个数组
@@ -898,7 +667,7 @@ queryRunner.query();</code></pre>
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-number">2.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用命令行方式演示事务。"><span class="toc-number">2.1.</span> <span class="toc-text">使用命令行方式演示事务。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用代码方式演示事务"><span class="toc-number">2.2.</span> <span class="toc-text">使用代码方式演示事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的特性"><span class="toc-number">2.3.</span> <span class="toc-text">事务的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的安全隐患"><span class="toc-number">2.4.</span> <span class="toc-text">事务的安全隐患</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读未提交（read-uncommitted"><span class="toc-number">2.4.1.</span> <span class="toc-text">读未提交（read uncommitted)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#读已提交-read-committed"><span class="toc-number">2.4.2.</span> <span class="toc-text">读已提交(read committed)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重复读-repeatable-read-MySQL默认"><span class="toc-number">2.4.3.</span> <span class="toc-text">重复读(repeatable read)MySQL默认</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#串行化-serializable"><span class="toc-number">2.4.4.</span> <span class="toc-text">串行化(serializable)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务总结"><span class="toc-number">3.</span> <span class="toc-text">事务总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需要掌握的"><span class="toc-number">3.1.</span> <span class="toc-text">需要掌握的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要了解的"><span class="toc-number">3.2.</span> <span class="toc-text">需要了解的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安全隐患"><span class="toc-number">3.2.1.</span> <span class="toc-text">安全隐患</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丢失更新"><span class="toc-number">3.3.</span> <span class="toc-text">丢失更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决丢失更新"><span class="toc-number">3.4.</span> <span class="toc-text">解决丢失更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库连接池"><span class="toc-number">4.</span> <span class="toc-text">数据库连接池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义数据库连接池"><span class="toc-number">4.1.</span> <span class="toc-text">自定义数据库连接池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决自定义数据库连接池出现的问题。"><span class="toc-number">4.2.</span> <span class="toc-text">解决自定义数据库连接池出现的问题。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何扩展某一个方法"><span class="toc-number">4.3.</span> <span class="toc-text">如何扩展某一个方法?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开源连接池"><span class="toc-number">4.4.</span> <span class="toc-text">开源连接池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DBCP"><span class="toc-number">4.4.1.</span> <span class="toc-text">DBCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C3P0"><span class="toc-number">4.4.2.</span> <span class="toc-text">C3P0</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBUtils"><span class="toc-number">5.</span> <span class="toc-text">DBUtils</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增删改"><span class="toc-number">5.1.</span> <span class="toc-text">增删改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询"><span class="toc-number">5.2.</span> <span class="toc-text">查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ResultSetHandler-常用的实现类"><span class="toc-number">5.3.</span> <span class="toc-text">ResultSetHandler 常用的实现类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事务-1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据连接池"><span class="toc-number">2.</span> <span class="toc-text">数据连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBUtils-1"><span class="toc-number">3.</span> <span class="toc-text">DBUtils</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-number">2.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用命令行方式演示事务。"><span class="toc-number">2.1.</span> <span class="toc-text">使用命令行方式演示事务。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用代码方式演示事务"><span class="toc-number">2.2.</span> <span class="toc-text">使用代码方式演示事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的特性"><span class="toc-number">2.3.</span> <span class="toc-text">事务的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务的安全隐患"><span class="toc-number">2.4.</span> <span class="toc-text">事务的安全隐患</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读未提交（read-uncommitted"><span class="toc-number">2.4.1.</span> <span class="toc-text">读未提交（read uncommitted)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#读已提交-read-committed"><span class="toc-number">2.4.2.</span> <span class="toc-text">读已提交(read committed)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重复读-repeatable-read-MySQL默认"><span class="toc-number">2.4.3.</span> <span class="toc-text">重复读(repeatable read)MySQL默认</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#串行化-serializable"><span class="toc-number">2.4.4.</span> <span class="toc-text">串行化(serializable)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务总结"><span class="toc-number">3.</span> <span class="toc-text">事务总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#需要掌握的"><span class="toc-number">3.1.</span> <span class="toc-text">需要掌握的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要了解的"><span class="toc-number">3.2.</span> <span class="toc-text">需要了解的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安全隐患"><span class="toc-number">3.2.1.</span> <span class="toc-text">安全隐患</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#隔离级别"><span class="toc-number">3.2.2.</span> <span class="toc-text">隔离级别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丢失更新"><span class="toc-number">3.3.</span> <span class="toc-text">丢失更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决丢失更新"><span class="toc-number">3.4.</span> <span class="toc-text">解决丢失更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库连接池"><span class="toc-number">4.</span> <span class="toc-text">数据库连接池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义数据库连接池"><span class="toc-number">4.1.</span> <span class="toc-text">自定义数据库连接池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决自定义数据库连接池出现的问题。"><span class="toc-number">4.2.</span> <span class="toc-text">解决自定义数据库连接池出现的问题。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何扩展某一个方法"><span class="toc-number">4.3.</span> <span class="toc-text">如何扩展某一个方法?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开源连接池"><span class="toc-number">4.4.</span> <span class="toc-text">开源连接池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DBCP"><span class="toc-number">4.4.1.</span> <span class="toc-text">DBCP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C3P0"><span class="toc-number">4.4.2.</span> <span class="toc-text">C3P0</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBUtils"><span class="toc-number">5.</span> <span class="toc-text">DBUtils</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#增删改"><span class="toc-number">5.1.</span> <span class="toc-text">增删改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询"><span class="toc-number">5.2.</span> <span class="toc-text">查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ResultSetHandler-常用的实现类"><span class="toc-number">5.3.</span> <span class="toc-text">ResultSetHandler 常用的实现类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#事务-1"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据连接池"><span class="toc-number">2.</span> <span class="toc-text">数据连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DBUtils-1"><span class="toc-number">3.</span> <span class="toc-text">DBUtils</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -1026,18 +795,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -1070,6 +827,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -1086,11 +855,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1114,19 +883,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1135,6 +896,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

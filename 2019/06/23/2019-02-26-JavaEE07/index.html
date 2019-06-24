@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 通用的增删改查功能设计 MVC设计模式">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/DrbYPCo.png">
-<meta property="og:image" content="https://i.imgur.com/4gE1f5C.png">
-<meta property="og:updated_time" content="2019-06-23T08:08:40.822Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/6.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/6.png">
+<meta property="og:updated_time" content="2019-06-24T04:45:01.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】MVC设计模式">
 <meta name="twitter:description" content="摘要 通用的增删改查功能设计 MVC设计模式">
-<meta name="twitter:image" content="https://i.imgur.com/DrbYPCo.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/EE/6.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -206,7 +206,7 @@
 
 
 
-<h2 id="通用的增删改功能"><a href="#通用的增删改功能" class="headerlink" title="通用的增删改功能"></a>通用的增删改功能</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 以参数个数为准</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sql 需要操作的sql语句</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args  可变参数， 有几个占位符，就写几个参数进来。</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String sql ,Object ... args)</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement ps=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			conn = JDBCUtil02.getConn();</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">				<span class="comment">//因为不知道是什么类型的数据，所以都使用setObject来对待。</span></span><br><span class="line">				ps.setObject(i+<span class="number">1</span>, args[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtil.release(conn, ps);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="通用的增删改功能"><a href="#通用的增删改功能" class="headerlink" title="通用的增删改功能"></a>通用的增删改功能</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以参数个数为准</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> sql 需要操作的sql语句</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> args  可变参数， 有几个占位符，就写几个参数进来。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String sql ,Object ... args)</span> </span>&#123;</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	PreparedStatement ps=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		conn = JDBCUtil02.getConn();</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.length; i++) &#123;</span><br><span class="line">			<span class="comment">//因为不知道是什么类型的数据，所以都使用setObject来对待。</span></span><br><span class="line">			ps.setObject(i+<span class="number">1</span>, args[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">		JDBCUtil.release(conn, ps);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="元数据-Meta-data"><a href="#元数据-Meta-data" class="headerlink" title="元数据 Meta data"></a>元数据 Meta data</h2><blockquote>
 <p>描述数据的数据 String sql , 描述这份sql字符串的数据叫做元数据</p>
@@ -215,288 +215,78 @@
 <blockquote>
 <p>使用参数元数据完成通用的增删改功能</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 打算以问号个数为准</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> sql 需要操作的sql语句</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args  可变参数， 有几个占位符，就写几个参数进来。</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update02</span><span class="params">(String sql ,Object ... args)</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement ps=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			conn = JDBCUtil02.getConn();</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			<span class="comment">//元数据</span></span><br><span class="line">			<span class="comment">//获取到有几个问号，占位符</span></span><br><span class="line">			ParameterMetaData metaData  = ps.getParameterMetaData();</span><br><span class="line">			<span class="keyword">int</span> count = metaData.getParameterCount();</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">				<span class="comment">//因为不知道是什么类型的数据，所以都使用setObject来对待。</span></span><br><span class="line">				ps.setObject(i+<span class="number">1</span>, args[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			ps.executeUpdate();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtil.release(conn, ps);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 打算以问号个数为准</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> sql 需要操作的sql语句</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> args  可变参数， 有几个占位符，就写几个参数进来。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update02</span><span class="params">(String sql ,Object ... args)</span> </span>&#123;</span><br><span class="line">	Connection conn = <span class="keyword">null</span>;</span><br><span class="line">	PreparedStatement ps=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		conn = JDBCUtil02.getConn();</span><br><span class="line">		ps = conn.prepareStatement(sql);</span><br><span class="line">		<span class="comment">//元数据</span></span><br><span class="line">		<span class="comment">//获取到有几个问号，占位符</span></span><br><span class="line">		ParameterMetaData metaData  = ps.getParameterMetaData();</span><br><span class="line">		<span class="keyword">int</span> count = metaData.getParameterCount();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">			<span class="comment">//因为不知道是什么类型的数据，所以都使用setObject来对待。</span></span><br><span class="line">			ps.setObject(i+<span class="number">1</span>, args[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		ps.executeUpdate();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">		JDBCUtil.release(conn, ps);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="通用的查询功能"><a href="#通用的查询功能" class="headerlink" title="通用的查询功能"></a>通用的查询功能</h2><blockquote>
 <p>主要思想：让调用者执行查询后的数据处理</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//ResultSetHandler是一个接口，在方法中使用匿名类实现接口，以执行查询处理</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Account account=query(<span class="string">"select * from account where id=?"</span>,<span class="keyword">new</span> ResultSetHandler&lt;Account&gt;() &#123;</span><br><span class="line"></span><br><span class="line">		<span class="meta">@Override</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> Account <span class="title">handle</span><span class="params">(ResultSet rs)</span> </span>&#123;				</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				Account account=<span class="keyword">new</span> Account();</span><br><span class="line">				<span class="keyword">if</span>(rs.next())&#123;</span><br><span class="line">					String name = rs.getString(<span class="string">"name"</span>);</span><br><span class="line">					<span class="keyword">int</span> money = rs.getInt(<span class="string">"money"</span>);</span><br><span class="line">					account.setName(name);</span><br><span class="line">					account.setMoney(money);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">return</span> account;</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">	&#125;,<span class="number">9</span>);</span><br><span class="line">	System.out.println(account);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//通用查询方法，返回值为泛型T，此处在方法上定义泛型，接口也使用泛型接收数据，实现时使用具体的类对象</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">query</span><span class="params">(String sql ,ResultSetHandler&lt;T&gt; handler,Object ... args)</span> </span>&#123;</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement ps=<span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs=<span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			conn = JDBCUtil02.getCon();</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ParameterMetaData metaData = ps.getParameterMetaData();</span><br><span class="line">			<span class="keyword">int</span> count=metaData.getParameterCount();</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;count;i++) &#123;</span><br><span class="line">				ps.setObject(i+<span class="number">1</span>, args[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			rs= ps.executeQuery();</span><br><span class="line">			T t=(T) handler.handle(rs);</span><br><span class="line">			<span class="keyword">return</span> t;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtil02.release(rs,ps,conn);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h2><h3 id="JSP的开发模式"><a href="#JSP的开发模式" class="headerlink" title="JSP的开发模式"></a>JSP的开发模式</h3><p><img src="https://i.imgur.com/DrbYPCo.png" alt></p>
-<h3 id="三层架构-amp-MVC练习"><a href="#三层架构-amp-MVC练习" class="headerlink" title="三层架构&amp;MVC练习"></a>三层架构&amp;MVC练习</h3><p><img src="https://i.imgur.com/4gE1f5C.png" alt></p>
-<h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><h3 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h3><pre><code>CREATE DATABASE stus;
-USE stus;
-CREATE TABLE stu (
-    sid INT PRIMARY KEY  AUTO_INCREMENT,
-    sname VARCHAR (20),
-    gender VARCHAR (5),
-    phone VARCHAR (20),
-    birthday DATE,
-    hobby VARCHAR(50),
-    info VARCHAR(200)
-);</code></pre><h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ol>
-<li><p>先写一个JSP页面，里面放一个超链接。 </p>
-<pre><code>&lt;a href=&quot;StudentListServlet&quot;&gt; 学生列表显示&lt;/a&gt;</code></pre></li>
-<li><p>写Servlet，接收请求，去调用 Service, 由service去调用dao</p>
-</li>
-<li><p>先写Dao, 做Dao实现。</p>
-<pre><code>    public interface StudentDao {
+<h2 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h2><h3 id="JSP的开发模式"><a href="#JSP的开发模式" class="headerlink" title="JSP的开发模式"></a>JSP的开发模式</h3><p><img src="/assets/img/EE/6.png" alt></p>
+<h3 id="三层架构-amp-MVC练习"><a href="#三层架构-amp-MVC练习" class="headerlink" title="三层架构&amp;MVC练习"></a>三层架构&amp;MVC练习</h3><p><img src="/assets/img/EE/6.png" alt></p>
+<h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><h3 id="数据库准备"><a href="#数据库准备" class="headerlink" title="数据库准备"></a>数据库准备</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> stus;</span><br><span class="line"><span class="keyword">USE</span> stus;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> stu (</span><br><span class="line">	<span class="keyword">sid</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span>  AUTO_INCREMENT,</span><br><span class="line">	sname <span class="built_in">VARCHAR</span> (<span class="number">20</span>),</span><br><span class="line">	gender <span class="built_in">VARCHAR</span> (<span class="number">5</span>),</span><br><span class="line">	phone <span class="built_in">VARCHAR</span> (<span class="number">20</span>),</span><br><span class="line">	birthday <span class="built_in">DATE</span>,</span><br><span class="line">	hobby <span class="built_in">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">	info <span class="built_in">VARCHAR</span>(<span class="number">200</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-​        
-        /**
-        *查询所有学生
-    * @return  List&lt;Student&gt;
-       */
-      List&lt;Student&gt; findAll()  throws SQLException ;
-      }
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>1.先写一个JSP页面，里面放一个超链接。 </p>
+<p><code>&lt;a href=&quot;StudentListServlet&quot;&gt; 学生列表显示&lt;/a&gt;</code></p>
+<p>2.写Servlet，接收请求，去调用 Service, 由service去调用dao</p>
+<p>3.先写Dao, 做Dao实现。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentDao</span> </span>&#123;</span><br><span class="line">​		</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	*查询所有学生</span></span><br><span class="line"><span class="comment">	* <span class="doctag">@return</span>  List&lt;Student&gt;</span></span><br><span class="line"><span class="comment"> 	*/</span></span><br><span class="line"><span class="function">List&lt;Student&gt; <span class="title">findAll</span><span class="params">()</span>  <span class="keyword">throws</span> SQLException </span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  ---------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentDaoImpl</span> <span class="keyword">implements</span> <span class="title">StudentDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">​		</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有学生</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> SQLException </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findAll</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		QueryRunner runner = <span class="keyword">new</span> QueryRunner(JDBCUtil02.getDataSource());</span><br><span class="line">		<span class="keyword">return</span> runner.query(<span class="string">"select * from stu"</span>, <span class="keyword">new</span> BeanListHandler&lt;Student&gt;(Student.class));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    ---------------------------------------------</code></pre></li>
-</ol>
-<pre><code>public class StudentDaoImpl implements StudentDao {
+<p>4.再Service, 做Service的实现。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//使用service的原因：Dao只针对单一的逻辑，是数据操作层面，service是业务层面，如果一个业务只做一件事，那么service没有什么作用，当处理多种事务时起作用。</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这是学生的业务处理规范</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> xiaomi</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有学生</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span>  List&lt;Student&gt;</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">List&lt;Student&gt; <span class="title">findAll</span><span class="params">()</span>  <span class="keyword">throws</span> SQLException </span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这是学生业务实现</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> xiaomi</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentServiceImpl</span> <span class="keyword">implements</span> <span class="title">StudentService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findAll</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		StudentDao dao = <span class="keyword">new</span> StudentDaoImpl();</span><br><span class="line">		<span class="keyword">return</span> dao.findAll();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-​        
-    /**
-     * 查询所有学生
-     * @throws SQLException 
-     */
-    @Override
-    public List&lt;Student&gt; findAll() throws SQLException {
-        QueryRunner runner = new QueryRunner(JDBCUtil02.getDataSource());
-        return runner.query(&quot;select * from stu&quot;, new BeanListHandler&lt;Student&gt;(Student.class));
-        }
+<p>5.在servlet存储数据，并且做出页面响应。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">​		</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="comment">//1. 查询出来所有的学生</span></span><br><span class="line">		StudentService service = <span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">		List&lt;Student&gt; list = service.findAll();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 先把数据存储到作用域中</span></span><br><span class="line">		request.setAttribute(<span class="string">"list"</span>, list);</span><br><span class="line">		<span class="comment">//3. 跳转页面</span></span><br><span class="line">		request.getRequestDispatcher(<span class="string">"list.jsp"</span>).forward(request, response);</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-}    </code></pre><ol start="4">
-<li><p>再Service, 做Service的实现。</p>
-<blockquote>
-<p>使用service的原因：Dao只针对单一的逻辑，是数据操作层面，service是业务层面，如果一个业务只做一件事，那么service没有什么作用，当处理多种事务时起作用。</p>
-</blockquote>
-<pre><code>/**
- * 这是学生的业务处理规范
- * @author xiaomi
- *
- */
-public interface StudentService {
+<p>6.在list.jsp上显示数据</p>
+<pre><code>EL + JSTL + 表格</code></pre><h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><p>1.先跳转到增加的页面，编写增加的页面</p>
+<p>2.点击添加，提交数据到AddServlet. 处理数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sname=request.getParameter(<span class="string">"sname"</span>);</span><br><span class="line">			String gender=request.getParameter(<span class="string">"gender"</span>);</span><br><span class="line">			String phone=request.getParameter(<span class="string">"phone"</span>);</span><br><span class="line">			String birthday=request.getParameter(<span class="string">"birthday"</span>);</span><br><span class="line">			</span><br><span class="line">			String info=request.getParameter(<span class="string">"info"</span>);</span><br><span class="line">			String[] h=request.getParameterValues(<span class="string">"hobby"</span>);</span><br><span class="line">			String hobby=Arrays.toString(h);</span><br><span class="line">			hobby=hobby.substring(<span class="number">1</span>,hobby.length()-<span class="number">1</span>);</span><br><span class="line">			Date date=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>).parse(birthday);</span><br><span class="line">			Student student=<span class="keyword">new</span> Student(sname, gender, phone, hobby, info, date);</span><br><span class="line">			StudentService service=<span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">			service.insert(student);</span><br><span class="line">			</span><br><span class="line">			request.getRequestDispatcher(<span class="string">"StudentListServlet"</span>).forward(request, response);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-    /**
-     * 查询所有学生
-     * @return  List&lt;Student&gt;
-     */
-    List&lt;Student&gt; findAll()  throws SQLException ;
+<p>3.调用service</p>
+<p>4.调用dao, 完成数据持久化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(Student student)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">		QueryRunner runner=<span class="keyword">new</span> QueryRunner(JDBCUtil02.getSource());</span><br><span class="line">		runner.update(<span class="string">"insert into stu values(null,?,?,?,?,?,?)"</span>,</span><br><span class="line">				student.getSname(),</span><br><span class="line">				student.getGender(),</span><br><span class="line">				student.getPhone(),</span><br><span class="line">				student.getBirthday(),</span><br><span class="line">				student.getHobby(),</span><br><span class="line">				student.getInfo());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
-}
+<p>5.完成了这些存储工作后，需要跳转到列表页面。 这里不能直接跳转到列表页面，否则没有内容显示。 应该先跳转到查询所有学生信息的那个Servlet， 由那个Servlet获取数据再去跳转到列表页面。</p>
+<p>6.爱好的value 值有多个。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">request.getParameter(<span class="string">"hobby"</span>);</span><br><span class="line">String[] hobby = request.getParameterValues(<span class="string">"hobby"</span>) ---&gt; String[] </span><br><span class="line">String value = Arrays.toString(hobby): <span class="comment">// [爱好， 篮球， 足球]</span></span><br></pre></td></tr></table></figure>
 
-------------------------------------------
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>1.点击超链接，弹出一个询问是否删除的对话框，如果点击了确定，那么就真的删除。</p>
+<pre><code>`&lt;a href=&quot;#&quot; onclick=&quot;doDelete(${stu.sid})&quot;&gt;删除&lt;/a&gt;`</code></pre><p>2.让超链接，执行一个js方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">doDelete</span>(<span class="params">sid</span>) </span>&#123;</span><br><span class="line">		<span class="comment">/* 如果这里弹出的对话框，用户点击的是确定，就马上去请求Servlet。 </span></span><br><span class="line"><span class="comment">		如何知道用户点击的是确定。</span></span><br><span class="line"><span class="comment">		如何在js的方法中请求servlet。 */</span></span><br><span class="line">		<span class="keyword">var</span> flag = confirm(<span class="string">"是否确定删除?"</span>);</span><br><span class="line">		<span class="keyword">if</span>(flag)&#123;</span><br><span class="line">			<span class="comment">//表明点了确定。 访问servlet。 在当前标签页上打开 超链接，</span></span><br><span class="line">			<span class="comment">//window.location.href="DeleteServlet?sid="+sid;</span></span><br><span class="line">			location.href=<span class="string">"DeleteServlet?sid="</span>+sid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
-/**
- * 这是学生业务实现
- * @author xiaomi
- *
- */
-public class StudentServiceImpl implements StudentService{
-
-    @Override
-    public List&lt;Student&gt; findAll() throws SQLException {
-        StudentDao dao = new StudentDaoImpl();
-        return dao.findAll();
-    }
-}</code></pre></li>
-<li><p>在servlet存储数据，并且做出页面响应。</p>
-<pre><code>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-​        
-    try {
-        //1. 查询出来所有的学生
-        StudentService service = new StudentServiceImpl();
-        List&lt;Student&gt; list = service.findAll();
-
-        //2. 先把数据存储到作用域中
-        request.setAttribute(&quot;list&quot;, list);
-        //3. 跳转页面
-        request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-}</code></pre></li>
-<li><p>在list.jsp上显示数据</p>
-<pre><code>EL + JSTL + 表格</code></pre></li>
-</ol>
-<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><ol>
-<li><p>先跳转到增加的页面，编写增加的页面</p>
-</li>
-<li><p>点击添加，提交数据到AddServlet. 处理数据。</p>
-<pre><code>protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding(&quot;utf-8&quot;);
-        try {
-            String sname=request.getParameter(&quot;sname&quot;);
-            String gender=request.getParameter(&quot;gender&quot;);
-            String phone=request.getParameter(&quot;phone&quot;);
-            String birthday=request.getParameter(&quot;birthday&quot;);
-
-            String info=request.getParameter(&quot;info&quot;);
-            String[] h=request.getParameterValues(&quot;hobby&quot;);
-            String hobby=Arrays.toString(h);
-            hobby=hobby.substring(1,hobby.length()-1);
-            Date date=new SimpleDateFormat(&quot;yyyy-MM-dd&quot;).parse(birthday);
-            Student student=new Student(sname, gender, phone, hobby, info, date);
-            StudentService service=new StudentServiceImpl();
-            service.insert(student);
-
-            request.getRequestDispatcher(&quot;StudentListServlet&quot;).forward(request, response);
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        } 
-
-    }</code></pre></li>
-<li><p>调用service</p>
-</li>
-<li><p>调用dao, 完成数据持久化。</p>
-<pre><code>public void insert(Student student) throws SQLException {
-        QueryRunner runner=new QueryRunner(JDBCUtil02.getSource());
-        runner.update(&quot;insert into stu values(null,?,?,?,?,?,?)&quot;,
-                student.getSname(),
-                student.getGender(),
-                student.getPhone(),
-                student.getBirthday(),
-                student.getHobby(),
-                student.getInfo());
-    }</code></pre></li>
-<li><p>完成了这些存储工作后，需要跳转到列表页面。 这里不能直接跳转到列表页面，否则没有内容显示。 应该先跳转到查询所有学生信息的那个Servlet， 由那个Servlet获取数据再去跳转到列表页面。</p>
-</li>
-<li><p>爱好的value 值有多个。 </p>
-<pre><code>request.getParameter(&quot;hobby&quot;);
-String[] hobby = request.getParameterValues(&quot;hobby&quot;) ---&gt; String[] 
-String value = Arrays.toString(hobby): // [爱好， 篮球， 足球]</code></pre></li>
-</ol>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ol>
-<li><p>点击超链接，弹出一个询问是否删除的对话框，如果点击了确定，那么就真的删除。</p>
-<pre><code>&lt;a href=&quot;#&quot; onclick=&quot;doDelete(${stu.sid})&quot;&gt;删除&lt;/a&gt;</code></pre></li>
-</ol>
-<ol start="2">
-<li><p>让超链接，执行一个js方法</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-
-    function doDelete(sid) {
-        /* 如果这里弹出的对话框，用户点击的是确定，就马上去请求Servlet。 
-        如何知道用户点击的是确定。
-        如何在js的方法中请求servlet。 */
-        var flag = confirm(&quot;是否确定删除?&quot;);
-        if(flag){
-            //表明点了确定。 访问servlet。 在当前标签页上打开 超链接，
-            //window.location.href=&quot;DeleteServlet?sid=&quot;+sid;
-            location.href=&quot;DeleteServlet?sid=&quot;+sid;
-        }
-    }
-&lt;/script&gt;</code></pre></li>
-<li><p>在js访问里面判断点击的选项，然后跳转到servlet。</p>
-</li>
-<li><p>servlet收到了请求，然后去调用service ， service去调用dao</p>
-</li>
-</ol>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><ol>
-<li><p>点击列表上的更新，先跳转到一个EditServlet </p>
+<p>3.在js访问里面判断点击的选项，然后跳转到servlet。</p>
+<p>4.servlet收到了请求，然后去调用service ， service去调用dao</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>1.点击列表上的更新，先跳转到一个EditServlet </p>
 <blockquote>
 <p>在这个Servlet里面，先根据ID 去查询这个学生的所有信息出来。</p>
 </blockquote>
-</li>
-<li><p>跳转到更新的页面，然后在页面上显示数据</p>
-<pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
-    pageEncoding=&quot;UTF-8&quot;%&gt;
-&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
-&lt;%@ taglib prefix=&quot;fn&quot; uri=&quot;http://java.sun.com/jsp/jstl/functions&quot; %&gt;
+<p>2.跳转到更新的页面，然后在页面上显示数据</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">page</span> <span class="attr">language</span>=<span class="string">"java"</span> <span class="attr">contentType</span>=<span class="string">"text/html; charset=UTF-8"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">pageEncoding</span>=<span class="string">"UTF-8"</span>%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">taglib</span> <span class="attr">prefix</span>=<span class="string">"c"</span> <span class="attr">uri</span>=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%@</span> <span class="attr">taglib</span> <span class="attr">prefix</span>=<span class="string">"fn"</span> <span class="attr">uri</span>=<span class="string">"http://java.sun.com/jsp/jstl/functions"</span> %&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"sname"</span> <span class="attr">value</span>=<span class="string">"$&#123;stu.sname &#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 如果性别是男的，  可以在男的性别 input标签里面， 出现checked ,</span></span><br><span class="line"><span class="comment">		如果性别是男的，  可以在女的性别 input标签里面，出现checked --&gt;</span></span><br><span class="line">		&lt;input type="radio" name="gender" value="男" &lt;c:if test="$&#123;stu.gender == '男'&#125;"&gt;checked&lt;/c:if&gt;&gt;男</span><br><span class="line">		&lt;input type="radio" name="gender" value="女" &lt;c:if test="$&#123;stu.gender == '女'&#125;"&gt;checked&lt;/c:if&gt;&gt;女</span><br><span class="line">	<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>爱好<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 爱好： 篮球 ， 足球 ， 看书 </span></span><br><span class="line"><span class="comment">		因为爱好有很多个，里面存在包含的关系 --&gt;</span></span><br><span class="line">		&lt;input type="checkbox" name="hobby" value="游泳" &lt;c:if test="$&#123;fn:contains(stu.hobby,'游泳') &#125;"&gt;checked&lt;/c:if&gt;&gt;游泳</span><br><span class="line">		&lt;input type="checkbox" name="hobby" value="篮球" &lt;c:if test="$&#123;fn:contains(stu.hobby,'篮球') &#125;"&gt;checked&lt;/c:if&gt;&gt;篮球</span><br><span class="line">		&lt;input type="checkbox" name="hobby" value="足球" &lt;c:if test="$&#123;fn:contains(stu.hobby,'足球') &#125;"&gt;checked&lt;/c:if&gt;&gt;足球</span><br><span class="line">		&lt;input type="checkbox" name="hobby" value="看书" &lt;c:if test="$&#123;fn:contains(stu.hobby,'看书') &#125;"&gt;checked&lt;/c:if&gt;&gt;看书</span><br><span class="line">		&lt;input type="checkbox" name="hobby" value="写字" &lt;c:if test="$&#123;fn:contains(stu.hobby,'写字') &#125;"&gt;checked&lt;/c:if&gt;&gt;写字</span><br><span class="line">	</span><br><span class="line">	<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
- &lt;tr&gt;
-    &lt;td&gt;姓名&lt;/td&gt;
-    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;sname&quot; value=&quot;${stu.sname }&quot;&gt;&lt;/td&gt;
-  &lt;/tr&gt;</code></pre></li>
+<ol start="3">
+<li>修改完毕后，提交数据到UpdateServlet</li>
 </ol>
-<pre><code>  &lt;tr&gt;
-   &lt;td&gt;性别&lt;/td&gt;
-   &lt;td&gt;
-       &lt;!-- 如果性别是男的，  可以在男的性别 input标签里面， 出现checked ,
-       如果性别是男的，  可以在女的性别 input标签里面，出现checked --&gt;
-       &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;男&quot; &lt;c:if test=&quot;${stu.gender == &apos;男&apos;}&quot;&gt;checked&lt;/c:if&gt;&gt;男
-       &lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;女&quot; &lt;c:if test=&quot;${stu.gender == &apos;女&apos;}&quot;&gt;checked&lt;/c:if&gt;&gt;女
-   &lt;/td&gt;
- &lt;/tr&gt;
-
-
-&lt;tr&gt;
-   &lt;td&gt;爱好&lt;/td&gt;
-
-
-   &lt;td&gt;
-       &lt;!-- 爱好： 篮球 ， 足球 ， 看书 
-       因为爱好有很多个，里面存在包含的关系 --&gt;
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;游泳&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;游泳&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;游泳
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;篮球&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;篮球&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;篮球
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;足球&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;足球&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;足球
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;看书&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;看书&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;看书
-       &lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;写字&quot; &lt;c:if test=&quot;${fn:contains(stu.hobby,&apos;写字&apos;) }&quot;&gt;checked&lt;/c:if&gt;&gt;写字
-
-   &lt;/td&gt;
- &lt;/tr&gt;</code></pre><ol start="3">
-<li><p>修改完毕后，提交数据到UpdateServlet</p>
 <blockquote>
 <p>提交上来的数据是没有带id的，所以我们要手动创建一个隐藏的输入框，在这里面给定id的值，以便提交表单时带上id。 </p>
 </blockquote>
-<pre><code>&lt;form method=&quot;post&quot; action=&quot;UpdateServlet&quot;&gt;
-    &lt;input type=&quot;hidden&quot; name=&quot;sid&quot; value=&quot;${stu.sid }&quot;&gt;
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"UpdateServlet"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"sid"</span> <span class="attr">value</span>=<span class="string">"$&#123;stu.sid &#125;"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	...</span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-    ...
-&lt;/form&gt;</code></pre></li>
-<li><p>获取数据，调用service，调用dao.</p>
-</li>
+<ol start="4">
+<li>获取数据，调用service，调用dao.</li>
 </ol>
 <h3 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h3><blockquote>
 <p>使用姓名和性别模糊查询</p>
 </blockquote>
-<ol>
-<li><p>在jsp中添加查询功能，获取姓名和性别数据并指向对应的servlet</p>
-<pre><code>按姓名查询：&lt;input type=&quot;text&quot; name=&quot;sname&quot; /&gt;
-按性别查询：&lt;select name=&quot;sgender&quot;&gt;
-                &lt;option value=&quot;&quot;&gt;--请选择--
-                &lt;option value=&quot;男&quot;&gt;男
-                &lt;option value=&quot;女&quot;&gt;女
+<p>1.在jsp中添加查询功能，获取姓名和性别数据并指向对应的servlet</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">按姓名查询：&lt;input type=<span class="string">"text"</span> name=<span class="string">"sname"</span> /&gt;</span><br><span class="line">按性别查询：&lt;select name=<span class="string">"sgender"</span>&gt;</span><br><span class="line">				&lt;option value=<span class="string">""</span>&gt;--请选择--</span><br><span class="line">				&lt;option value=<span class="string">"男"</span>&gt;男</span><br><span class="line">				&lt;option value=<span class="string">"女"</span>&gt;女</span><br><span class="line">				</span><br><span class="line">			&lt;/select&gt;</span><br><span class="line">&amp;nbsp;	&amp;nbsp;	&amp;nbsp;	</span><br><span class="line">&lt;input type=<span class="string">"submit"</span> value=<span class="string">"查询"</span>&gt;</span><br></pre></td></tr></table></figure>
 
-            &lt;/select&gt;
-&amp;nbsp;    &amp;nbsp;    &amp;nbsp;    
-&lt;input type=&quot;submit&quot; value=&quot;查询&quot;&gt;</code></pre></li>
-<li><p>servlet中调用service查询，并将结果返回至原网页</p>
-<pre><code>request.setCharacterEncoding(&quot;utf-8&quot;);
-try {
-    String sname=request.getParameter(&quot;sname&quot;);
-    String sgender=request.getParameter(&quot;sgender&quot;);
-    StudentService service=new StudentServiceImpl();
-    List&lt;Student&gt; list=service.searchStudent(sname, sgender);
-    request.setAttribute(&quot;list&quot;,list);
-    request.getRequestDispatcher(&quot;list.jsp&quot;).forward(request, response);
-} catch (SQLException e) {
+<p>2.servlet中调用service查询，并将结果返回至原网页</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	String sname=request.getParameter(<span class="string">"sname"</span>);</span><br><span class="line">	String sgender=request.getParameter(<span class="string">"sgender"</span>);</span><br><span class="line">	StudentService service=<span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">	List&lt;Student&gt; list=service.searchStudent(sname, sgender);</span><br><span class="line">	request.setAttribute(<span class="string">"list"</span>,list);</span><br><span class="line">	request.getRequestDispatcher(<span class="string">"list.jsp"</span>).forward(request, response);</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">	</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    e.printStackTrace();
-}</code></pre></li>
-<li><p>service调用dao实现具体的查询功能</p>
-<pre><code>@Override
-public List&lt;Student&gt; searchStudent(String sname, String sgender) throws SQLException {
-    QueryRunner runner=new QueryRunner(JDBCUtil02.getSource());
-    String sql=&quot;select * from stu where 1=1&quot;;
-    List&lt;String&gt; list=new ArrayList&lt;String&gt;();
+<p>3.service调用dao实现具体的查询功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">searchStudent</span><span class="params">(String sname, String sgender)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">	QueryRunner runner=<span class="keyword">new</span> QueryRunner(JDBCUtil02.getSource());</span><br><span class="line">	String sql=<span class="string">"select * from stu where 1=1"</span>;</span><br><span class="line">	List&lt;String&gt; list=<span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//判断是否有参数，如果有就拼装到sql语句中</span></span><br><span class="line">	<span class="keyword">if</span>(!TextUtil.isEmpty(sname)) &#123;</span><br><span class="line">		sql=sql+<span class="string">" and sname like ?"</span>;</span><br><span class="line">		list.add(<span class="string">"%"</span>+sname+<span class="string">"%"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(!TextUtil.isEmpty(sgender)) &#123;</span><br><span class="line">		sql=sql+<span class="string">" and gender=?"</span>;</span><br><span class="line">		list.add(sgender);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> runner.query(sql, <span class="keyword">new</span> BeanListHandler&lt;Student&gt;(Student.class),list.toArray());</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    //判断是否有参数，如果有就拼装到sql语句中
-    if(!TextUtil.isEmpty(sname)) {
-        sql=sql+&quot; and sname like ?&quot;;
-        list.add(&quot;%&quot;+sname+&quot;%&quot;);
-    }
-    if(!TextUtil.isEmpty(sgender)) {
-        sql=sql+&quot; and gender=?&quot;;
-        list.add(sgender);
-    }
-    return runner.query(sql, new BeanListHandler&lt;Student&gt;(Student.class),list.toArray());
-
-}</code></pre></li>
-</ol>
 <h3 id="分页功能"><a href="#分页功能" class="headerlink" title="分页功能"></a>分页功能</h3><ul>
 <li><p>物理分页 （真分页）</p>
 <blockquote>
@@ -512,111 +302,24 @@ public List&lt;Student&gt; searchStudent(String sname, String sgender) throws SQ
 <p>  优点： 访问速度快。<br>  缺点： 数据库量过大，内存溢出。</p>
 </li>
 </ul>
-<h3 id="分页的实现（使用物理分页）"><a href="#分页的实现（使用物理分页）" class="headerlink" title="分页的实现（使用物理分页）"></a>分页的实现（使用物理分页）</h3><ol>
-<li><p>主页中新建链接指向分页形式的jsp网页的servlet并设置当前页为首页</p>
-</li>
-<li><p>创建一个PageBean的类，此类中存储了分类的数据，包括当前页的学生集合数据，当前页数据，总页数数据，总记录数据以及每页显示的记录数</p>
-<pre><code>private int currentPage;
-private int totalPage;
-private int pageSize;
-private int totalSize;
-private List&lt;T&gt; list;</code></pre></li>
-<li><p>servlet获取当前页数据并调用service获取本页的PageBean数据，最后返回到jsp中</p>
-<pre><code>try {
-    int currentPage=Integer.parseInt(request.getParameter(&quot;currentPage&quot;));
+<h3 id="分页的实现（使用物理分页）"><a href="#分页的实现（使用物理分页）" class="headerlink" title="分页的实现（使用物理分页）"></a>分页的实现（使用物理分页）</h3><p>1.主页中新建链接指向分页形式的jsp网页的servlet并设置当前页为首页</p>
+<p>2.创建一个PageBean的类，此类中存储了分类的数据，包括当前页的学生集合数据，当前页数据，总页数数据，总记录数据以及每页显示的记录数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> currentPage;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> totalPage;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> pageSize;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> totalSize;</span><br><span class="line"><span class="keyword">private</span> List&lt;T&gt; list;</span><br></pre></td></tr></table></figure>
 
-    StudentService service=new StudentServiceImpl();
-    PageBean&lt;Student&gt; pageBean=service.findStudentByPage(currentPage);
-    request.setAttribute(&quot;pageBean&quot;, pageBean);
-    request.getRequestDispatcher(&quot;list_page.jsp&quot;).forward(request, response);
-} catch (NumberFormatException e) {
+<p>3.servlet获取当前页数据并调用service获取本页的PageBean数据，最后返回到jsp中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="keyword">int</span> currentPage=Integer.parseInt(request.getParameter(<span class="string">"currentPage"</span>));</span><br><span class="line">	</span><br><span class="line">	StudentService service=<span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">	PageBean&lt;Student&gt; pageBean=service.findStudentByPage(currentPage);</span><br><span class="line">	request.setAttribute(<span class="string">"pageBean"</span>, pageBean);</span><br><span class="line">	request.getRequestDispatcher(<span class="string">"list_page.jsp"</span>).forward(request, response);</span><br><span class="line">&#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">	</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">	</span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    e.printStackTrace();
-} catch (SQLException e) {
+<p>​    
+4.service调用Dao中的方法获取数据库中的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> PageBean <span class="title">findStudentByPage</span><span class="params">(<span class="keyword">int</span> currentPage)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line"></span><br><span class="line">	StudentDao dao=<span class="keyword">new</span> StudentDaoImpl();</span><br><span class="line">	PageBean&lt;Student&gt; pageBean=<span class="keyword">new</span> PageBean&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	pageBean.setCurrentPage(currentPage);<span class="comment">//设置当前页</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> pageSize=StudentDao.PAGE_SIZE;</span><br><span class="line">	pageBean.setPageSize(pageSize);<span class="comment">//设置每页显示记录数</span></span><br><span class="line"></span><br><span class="line">	List&lt;Student&gt; list=dao.findStudentByPage(currentPage);</span><br><span class="line">	pageBean.setList(list);<span class="comment">//设置当前页学生数据</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> count=dao.findAccnout();</span><br><span class="line">	pageBean.setTotalSize(count);<span class="comment">//总的记录数</span></span><br><span class="line"></span><br><span class="line">	pageBean.setTotalPage(count%pageSize==<span class="number">0</span>?count/pageSize:count/pageSize+<span class="number">1</span>);<span class="comment">//总页数</span></span><br><span class="line">			</span><br><span class="line">	<span class="keyword">return</span> pageBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    e.printStackTrace();
-}</code></pre><p>​    </p>
-</li>
-<li><p>service调用Dao中的方法获取数据库中的数据</p>
-<pre><code>@Override
-public PageBean findStudentByPage(int currentPage) throws SQLException {
+<p>5.Dao中方法获取数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findStudentByPage</span><span class="params">(<span class="keyword">int</span> currentPage)</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">	QueryRunner runner=<span class="keyword">new</span> QueryRunner(JDBCUtil02.getSource());</span><br><span class="line">	String sql=<span class="string">"select * from stu limit ? offset ?"</span>;</span><br><span class="line">	<span class="keyword">return</span> runner.query(sql, <span class="keyword">new</span> BeanListHandler&lt;Student&gt;(Student.class),PAGE_SIZE,(currentPage-<span class="number">1</span>)*PAGE_SIZE);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findAccnout</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">	QueryRunner runner=<span class="keyword">new</span> QueryRunner(JDBCUtil02.getSource());</span><br><span class="line">	String sql=<span class="string">"select count(*) from stu"</span>;</span><br><span class="line">	Long result=(Long) runner.query(sql, <span class="keyword">new</span> ScalarHandler());</span><br><span class="line">	<span class="keyword">return</span> result.intValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    StudentDao dao=new StudentDaoImpl();
-    PageBean&lt;Student&gt; pageBean=new PageBean&lt;&gt;();
-
-    pageBean.setCurrentPage(currentPage);//设置当前页
-
-    int pageSize=StudentDao.PAGE_SIZE;
-    pageBean.setPageSize(pageSize);//设置每页显示记录数
-
-    List&lt;Student&gt; list=dao.findStudentByPage(currentPage);
-    pageBean.setList(list);//设置当前页学生数据
-
-    int count=dao.findAccnout();
-    pageBean.setTotalSize(count);//总的记录数
-
-    pageBean.setTotalPage(count%pageSize==0?count/pageSize:count/pageSize+1);//总页数
-
-    return pageBean;
-}</code></pre></li>
+<ol start="6">
+<li>PageBean数据返回jsp中并显示</li>
 </ol>
-<ol start="5">
-<li><p>Dao中方法获取数据</p>
-<pre><code>@Override
-public List&lt;Student&gt; findStudentByPage(int currentPage) throws SQLException {
-    QueryRunner runner=new QueryRunner(JDBCUtil02.getSource());
-    String sql=&quot;select * from stu limit ? offset ?&quot;;
-    return runner.query(sql, new BeanListHandler&lt;Student&gt;(Student.class),PAGE_SIZE,(currentPage-1)*PAGE_SIZE);
-
-}
-
-@Override
-public int findAccnout() throws SQLException {
-    QueryRunner runner=new QueryRunner(JDBCUtil02.getSource());
-    String sql=&quot;select count(*) from stu&quot;;
-    Long result=(Long) runner.query(sql, new ScalarHandler());
-    return result.intValue();
-}</code></pre></li>
-<li><p>PageBean数据返回jsp中并显示</p>
-<pre><code>&lt;c:forEach items=&quot;${pageBean.list }&quot; var=&quot;stu&quot;&gt;
-&lt;tr align=&quot;center&quot;&gt;
-    &lt;td&gt;${stu.sid }&lt;/td&gt;
-    &lt;td&gt;${stu.sname }&lt;/td&gt;
-    &lt;td&gt;${stu.gender }&lt;/td&gt;
-    &lt;td&gt;${stu.phone }&lt;/td&gt;
-    &lt;td&gt;${stu.birthday }&lt;/td&gt;
-    &lt;td&gt;${stu.hobby }&lt;/td&gt;
-    &lt;td&gt;${stu.info }&lt;/td&gt;
-    &lt;td&gt;&lt;a href=&quot;EditServlet?sid=${stu.sid }&quot;&gt;更新&lt;/a&gt;  &lt;a href=&quot;#&quot; onclick=&quot;doDelete(${stu.sid})&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;            
-&lt;/tr&gt;
-&lt;/c:forEach&gt;
-&lt;tr&gt;
-    &lt;td colspan=&quot;8&quot;&gt;
-        第  ${pageBean.currentPage }/${pageBean.totalPage } 页 &amp;nbsp;&amp;nbsp;
-        每页显示 ${pageBean.pageSize }条&amp;nbsp;&amp;nbsp;
-        总记录数 ${pageBean.totalSize }&amp;nbsp;&amp;nbsp;
-        &lt;c:if test=&quot;${pageBean.currentPage!=1 }&quot;&gt;
-            &lt;a href=&quot;StudentListPageServlet?currentPage=1&quot;&gt;首页&lt;/a&gt; | 
-            &lt;a href=&quot;StudentListPageServlet?currentPage=${pageBean.currentPage-1 }&quot;&gt;上一页&lt;/a&gt;
-        &lt;/c:if&gt;
-
-        &lt;c:forEach begin=&quot;1&quot; end=&quot;${pageBean.totalPage }&quot; var=&quot;i&quot;&gt;
-            &lt;c:if test=&quot;${pageBean.currentPage==i }&quot;&gt;
-                ${i }
-            &lt;/c:if&gt;
-            &lt;c:if test=&quot;${pageBean.currentPage!=i }&quot;&gt;
-                &lt;a href=&quot;StudentListPageServlet?currentPage=${i }&quot;&gt;${i }&lt;/a&gt;
-            &lt;/c:if&gt;
-        &lt;/c:forEach&gt;
-
-        &lt;c:if test=&quot;${pageBean.currentPage!=pageBean.totalPage }&quot;&gt;
-            &lt;a href=&quot;StudentListPageServlet?currentPage=${pageBean.currentPage+1 }&quot;&gt;下一页&lt;/a&gt; | 
-            &lt;a href=&quot;StudentListPageServlet?currentPage=${pageBean.totalPage }&quot;&gt;尾页&lt;/a&gt;
-        &lt;/c:if&gt;
-    &lt;/td&gt;
-&lt;/tr&gt;</code></pre></li>
-</ol>
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">items</span>=<span class="string">"$&#123;pageBean.list &#125;"</span> <span class="attr">var</span>=<span class="string">"stu"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.sid &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.sname &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.gender &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.phone &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.birthday &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.hobby &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.info &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"EditServlet?sid=$&#123;stu.sid &#125;"</span>&gt;</span>更新<span class="tag">&lt;/<span class="name">a</span>&gt;</span>  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">onclick</span>=<span class="string">"doDelete($&#123;stu.sid&#125;)"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>			</span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"8"</span>&gt;</span></span><br><span class="line">		第  $&#123;pageBean.currentPage &#125;/$&#123;pageBean.totalPage &#125; 页 &amp;nbsp;&amp;nbsp;</span><br><span class="line">		每页显示 $&#123;pageBean.pageSize &#125;条&amp;nbsp;&amp;nbsp;</span><br><span class="line">		总记录数 $&#123;pageBean.totalSize &#125;&amp;nbsp;&amp;nbsp;</span><br><span class="line">		<span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;pageBean.currentPage!=1 &#125;"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"StudentListPageServlet?currentPage=1"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span> | </span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"StudentListPageServlet?currentPage=$&#123;pageBean.currentPage-1 &#125;"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">begin</span>=<span class="string">"1"</span> <span class="attr">end</span>=<span class="string">"$&#123;pageBean.totalPage &#125;"</span> <span class="attr">var</span>=<span class="string">"i"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;pageBean.currentPage==i &#125;"</span>&gt;</span></span><br><span class="line">				$&#123;i &#125;</span><br><span class="line">			<span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;pageBean.currentPage!=i &#125;"</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"StudentListPageServlet?currentPage=$&#123;i &#125;"</span>&gt;</span>$&#123;i &#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span><br><span class="line">		</span><br><span class="line">		<span class="tag">&lt;<span class="name">c:if</span> <span class="attr">test</span>=<span class="string">"$&#123;pageBean.currentPage!=pageBean.totalPage &#125;"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"StudentListPageServlet?currentPage=$&#123;pageBean.currentPage+1 &#125;"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span> | </span><br><span class="line">			<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"StudentListPageServlet?currentPage=$&#123;pageBean.totalPage &#125;"</span>&gt;</span>尾页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">c:if</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
       
 
       
@@ -902,18 +605,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -946,6 +637,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -962,11 +665,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -990,19 +693,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1011,6 +706,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

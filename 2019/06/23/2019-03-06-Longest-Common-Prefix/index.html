@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Blog for learning</title>
+  <title>【LeetCode】14. Longest Common Prefix | Blog for learning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:    - String    - Easy author: Chen问题描述Write a function to find the longest common prefix string amongst an array of">
-<meta name="keywords" content="code_blog">
+  <meta name="description" content="问题描述Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”. 举例Example 1: Input: [&amp;quot;flower&amp;quot;,&amp;quot;flow&amp;q">
+<meta name="keywords" content="String,Easy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog for learning">
+<meta property="og:title" content="【LeetCode】14. Longest Common Prefix">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/2019-03-06-Longest-Common-Prefix/index.html">
 <meta property="og:site_name" content="Blog for learning">
-<meta property="og:description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:    - String    - Easy author: Chen问题描述Write a function to find the longest common prefix string amongst an array of">
+<meta property="og:description" content="问题描述Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”. 举例Example 1: Input: [&amp;quot;flower&amp;quot;,&amp;quot;flow&amp;q">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T08:20:14.492Z">
+<meta property="og:updated_time" content="2019-06-23T09:23:08.944Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog for learning">
-<meta name="twitter:description" content="layout: posttitle:  “【LeetCode】14. Longest Common Prefix”categories: leetcodetags:    - String    - Easy author: Chen问题描述Write a function to find the longest common prefix string amongst an array of">
+<meta name="twitter:title" content="【LeetCode】14. Longest Common Prefix">
+<meta name="twitter:description" content="问题描述Write a function to find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string “”. 举例Example 1: Input: [&amp;quot;flower&amp;quot;,&amp;quot;flow&amp;q">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -178,11 +178,24 @@
             <article id="post-2019-03-06-Longest-Common-Prefix" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【LeetCode】14. Longest Common Prefix
+    </h1>
+  
+
+        
+        <a href="/2019/06/23/2019-03-06-Longest-Common-Prefix/" class="archive-article-date">
+  	<time datetime="2019-06-23T06:32:52.990Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>layout: post<br>title:  “【LeetCode】14. Longest Common Prefix”<br>categories: leetcode<br>tags:<br>    - String<br>    - Easy</p>
-<h2 id="author-Chen"><a href="#author-Chen" class="headerlink" title="author: Chen"></a>author: Chen</h2><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Write a function to find the longest common prefix string amongst an array of strings.</p>
 <p>If there is no common prefix, return an empty string “”.</p>
 <h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
 <pre><code>Input: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
@@ -198,28 +211,6 @@ Explanation: There is no common prefix among the input strings.</code></pre><p>N
 
 <p>引用：</p>
 <p><a href="https://leetcode.com/problems/longest-common-prefix/" target="_blank" rel="noopener">https://leetcode.com/problems/longest-common-prefix/</a></p>
-<ul>
-<li>content<br>{:toc}</li>
-</ul>
-<h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>
-<pre><code>P   A   H   N
-A P L S I I G
-Y   I   R</code></pre><p>And then read line by line: “PAHNAPLSIIGYIR”</p>
-<p>Write the code that will take a string and make this conversion given a number of rows:</p>
-<p>string convert(string s, int numRows);</p>
-<h2 id="举例-1"><a href="#举例-1" class="headerlink" title="举例"></a>举例</h2><p>Example 1:</p>
-<pre><code>Input: s = &quot;PAYPALISHIRING&quot;, numRows = 3
-Output: &quot;PAHNAPLSIIGYIR&quot;</code></pre><p>Example 2:</p>
-<pre><code>Input: s = &quot;PAYPALISHIRING&quot;, numRows = 4
-Output: &quot;PINALSIGYAHRPI&quot;</code></pre><p>Explanation:</p>
-<pre><code>P     I    N
-A   L S  I G
-Y A   H R
-P     I</code></pre><h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>将原字符串按照字符所在的行重新分为若干个StringBuilder，用list保存划分的StringBuilder，并遍历原字符串将字符保存到其所在的分组中，最后再组合成为新字符串。注意当行数只有1或行数大于字符串长度时可直接输出原字符串。</p>
-<h2 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convert</span><span class="params">(String s, <span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(numRows==<span class="number">1</span>)<span class="keyword">return</span> s;</span><br><span class="line">        List&lt;StringBuilder&gt; list=<span class="keyword">new</span> ArrayList&lt;StringBuilder&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.min(s.length(),numRows);i++)&#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> StringBuilder());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> curRow=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> step=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">boolean</span> goup=<span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">char</span> c=s.charAt(i);</span><br><span class="line">            list.get(curRow).append(c);</span><br><span class="line">            curRow+=step;</span><br><span class="line">            <span class="keyword">if</span>(curRow==<span class="number">0</span>||curRow==numRows-<span class="number">1</span>)goup=!goup;</span><br><span class="line">            step=(goup?-<span class="number">1</span>:<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder re=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.min(s.length(),numRows);i++)re.append(list.get(i));</span><br><span class="line">        <span class="keyword">return</span> re.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引用：</p>
-<p><a href="https://leetcode.com/problems/zigzag-conversion/" target="_blank" rel="noopener">https://leetcode.com/problems/zigzag-conversion/</a></p>
 
       
 
@@ -254,7 +245,33 @@ P     I</code></pre><h2 id="思路-1"><a href="#思路-1" class="headerlink" tit
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Easy</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/leetcode//" class="article-tag-list-link color4">leetcode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -356,7 +373,7 @@ P     I</code></pre><h2 id="思路-1"><a href="#思路-1" class="headerlink" tit
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#author-Chen"><span class="toc-number">1.</span> <span class="toc-text">author: Chen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">2.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例"><span class="toc-number">3.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">4.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">5.</span> <span class="toc-text">解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述-1"><span class="toc-number">6.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例-1"><span class="toc-number">7.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路-1"><span class="toc-number">8.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答-1"><span class="toc-number">9.</span> <span class="toc-text">解答</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例"><span class="toc-number">2.</span> <span class="toc-text">举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">3.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-number">4.</span> <span class="toc-text">解答</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -484,18 +501,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -528,6 +533,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -544,11 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,19 +589,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,6 +602,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

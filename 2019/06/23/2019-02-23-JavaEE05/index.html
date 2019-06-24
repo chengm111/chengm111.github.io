@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 JSP EL JSTL">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/ukuPnjR.png">
-<meta property="og:image" content="https://i.imgur.com/10YEUIY.png">
-<meta property="og:updated_time" content="2019-06-23T08:08:40.820Z">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/20.png">
+<meta property="og:image" content="http://yoursite.com/assets/img/EE/21.png">
+<meta property="og:updated_time" content="2019-06-24T05:08:57.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaEE】Cookie&amp;Session">
 <meta name="twitter:description" content="摘要 JSP EL JSTL">
-<meta name="twitter:image" content="https://i.imgur.com/ukuPnjR.png">
+<meta name="twitter:image" content="http://yoursite.com/assets/img/EE/20.png">
   
     <link rel="alternative" href="/atom.xml" title="Blog for learning" type="application/atom+xml">
   
@@ -291,7 +291,8 @@ prefix : 标签库的别名  </code></pre><h2 id="JSP动作标签"><a href="#JSP
 </blockquote>
 <ul>
 <li><p>jsp:forward</p>
-<pre><code>&lt;jsp:forward page=&quot;&quot;&gt;&lt;/jsp:forward&gt;</code></pre></li>
+<p>  &lt;jsp:forward page=””&gt;</p>
+</li>
 </ul>
 <blockquote>
 <p>前往哪一个页面。  </p>
@@ -305,9 +306,11 @@ prefix : 标签库的别名  </code></pre><h2 id="JSP动作标签"><a href="#JSP
 <blockquote>
 <p>意思是： 在包含某个页面的时候，或者在跳转某个页面的时候，加入这个参数。</p>
 </blockquote>
-<p>​        
-    &lt;jsp:forward page=”other02.jsp”&gt;<br>        &lt;jsp:param value=”beijing” name=”address”/&gt;<br>    </p>
-<pre><code>在other02.jsp中获取参数
+<pre><code>&lt;jsp:forward page=&quot;other02.jsp&quot;&gt;
+    &lt;jsp:param value=&quot;beijing&quot; name=&quot;address&quot;/&gt;
+&lt;/jsp:forward&gt;
+
+在other02.jsp中获取参数
 
 
 &lt;br&gt;收到的参数是：&lt;br&gt;
@@ -374,7 +377,7 @@ prefix : 标签库的别名  </code></pre><h2 id="JSP动作标签"><a href="#JSP
 <li>out         【JspWriter】</li>
 <li>response  【HttpServletResponse】</li>
 </ul>
-<p><img src="https://i.imgur.com/ukuPnjR.png" alt></p>
+<p><img src="/assets/img/EE/20.png" alt></p>
 <ul>
 <li>exception  【Throwable】</li>
 <li>page     【Object】 —就是这个jsp翻译成的java类的实例对象（this）</li>
@@ -390,9 +393,7 @@ prefix : 标签库的别名  </code></pre><h2 id="JSP动作标签"><a href="#JSP
 <blockquote>
 <p>如果从作用域中取值，会先从小的作用域开始取，如果没有，就往下一个作用域取。一直把四个作用域取完都没有，就没有显示。</p>
 </blockquote>
-<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><ol>
-<li>取出4个作用域中存放的值。</li>
-</ol>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>1.取出4个作用域中存放的值。</p>
 <pre><code>&lt;%
     pageContext.setAttribute(&quot;name&quot;, &quot;page&quot;);
     request.setAttribute(&quot;name&quot;, &quot;request&quot;);
@@ -412,8 +413,7 @@ prefix : 标签库的别名  </code></pre><h2 id="JSP动作标签"><a href="#JSP
 ${ pageScope.name }
 ${ requestScope.name }
 ${ sessionScope.name }
-${ applicationScope.name }</code></pre><ol start="2">
-<li><p>如果域中所存的是数组</p>
+${ applicationScope.name }</code></pre><p>2.如果域中所存的是数组</p>
 <pre><code>&lt;%
     String [] a = {&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;};
     pageContext.setAttribute(&quot;array&quot;, a);
@@ -421,10 +421,7 @@ ${ applicationScope.name }</code></pre><ol start="2">
 
 使用EL表达式取出作用域中数组的值&lt;br&gt;
 
-${array[0] } , ${array[1] },${array[2] },${array[3] }</code></pre></li>
-</ol>
-<ol start="3">
-<li><p>如果域中存的是集合</p>
+${array[0] } , ${array[1] },${array[2] },${array[3] }</code></pre><p>3.如果域中存的是集合</p>
 <pre><code>&lt;%
     List list = new ArrayList();
     list.add(&quot;11&quot;);
@@ -435,24 +432,21 @@ ${array[0] } , ${array[1] },${array[2] },${array[3] }</code></pre></li>
 %&gt;
 使用EL表达式取出作用域中集合的值&lt;br&gt;
 
-${li[0] } , ${li[1] },${li[2] },${li[3] }</code></pre></li>
-</ol>
-<ol start="4">
-<li><p>取出Map集合的值</p>
+${li[0] } , ${li[1] },${li[2] },${li[3] }</code></pre><p>4.取出Map集合的值</p>
 <pre><code>&lt;%
     Map map = new HashMap();
     map.put(&quot;name&quot;, &quot;zhangsna&quot;);
     map.put(&quot;age&quot;,18);
     map.put(&quot;address&quot;,&quot;北京..&quot;);
 
-    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);</code></pre></li>
-</ol>
-<pre><code>    pageContext.setAttribute(&quot;map&quot;, map);
+    map.put(&quot;address.aa&quot;,&quot;深圳..&quot;);
+
+
+    pageContext.setAttribute(&quot;map&quot;, map);
 %&gt;
 使用EL表达式取出作用域中Map的值&lt;br&gt;
 
-${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><ol>
-<li><p>从域中取值。得先存值。</p>
+${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }</code></pre><h3 id="取值细节："><a href="#取值细节：" class="headerlink" title="取值细节："></a>取值细节：</h3><p>1.从域中取值。得先存值。</p>
 <pre><code>&lt;%
 
     //pageContext.setAttribute(&quot;name&quot;, &quot;zhangsan&quot;);
@@ -460,14 +454,14 @@ ${map.name } , ${map.age } , ${map.address }  , ${map[&quot;address.aa&quot;] }<
 %&gt;
 
 &lt;br&gt;直接指定说了，到这个作用域里面去找这个name&lt;br&gt;
-${ pageScope.name } </code></pre></li>
-</ol>
-<pre><code>&lt;br&gt;//先从page里面找，没有去request找，去session，去application &lt;br&gt;
+${ pageScope.name } 
+
+
+&lt;br&gt;//先从page里面找，没有去request找，去session，去application &lt;br&gt;
 ${ name }
 
 &lt;br&gt;指定从session中取值&lt;br&gt;
-${ sessionScope.name }  </code></pre><ol start="2">
-<li><p>取值方式</p>
+${ sessionScope.name }  </code></pre><p>2.取值方式</p>
 <pre><code>如果这份值是有下标的，那么直接使用[]
 
     &lt;%
@@ -487,9 +481,7 @@ ${ sessionScope.name }  </code></pre><ol start="2">
     ${ u.name }  , ${ u.age } 
 
     ${ empty u }    //判断是否为空
-    ${ a &gt; b }        //逻辑判断</code></pre></li>
-</ol>
-<blockquote>
+    ${ a &gt; b }        //逻辑判断</code></pre><blockquote>
 <p>一般使用EL表达式，用的比较多的，都是从一个对象中取出它的属性值，比如取出某一个学生的姓名。</p>
 </blockquote>
 <h2 id="EL表达式的11个内置对象。"><a href="#EL表达式的11个内置对象。" class="headerlink" title="EL表达式的11个内置对象。"></a>EL表达式的11个内置对象。</h2><p>${ 对象名.成员 }</p>
@@ -526,14 +518,9 @@ ${ sessionScope.name }  </code></pre><ol start="2">
 <blockquote>
 <p>简化jsp的代码编写。 替换 &lt;%%&gt; 写法。 一般与EL表达式配合</p>
 </blockquote>
-<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><ol>
-<li><p>导入jar文件到工程的WebContent/Web-Inf/lib  jstl.jar standard.jar</p>
-</li>
-<li><p>在jsp页面上，使用taglib 指令，来引入标签库</p>
-</li>
-<li><p>注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</p>
-</li>
-</ol>
+<h3 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h3><p>1.导入jar文件到工程的WebContent/Web-Inf/lib  jstl.jar standard.jar</p>
+<p>2.在jsp页面上，使用taglib 指令，来引入标签库</p>
+<p>3.注意： 如果想支持 EL表达式，那么引入的标签库必须选择1.1的版本，1.0的版本不支持EL表达式。</p>
 <pre><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</code></pre><h3 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h3><p>&lt;c:set&gt;<br>&lt;c:if test=””&gt;<br>&lt;c:forEach&gt;</p>
 <ul>
 <li>c:set</li>
@@ -581,226 +568,62 @@ var: 遍历出来的每一个元素用user 去接收。 --&gt;
 &lt;/c:forEach&gt;</code></pre><h2 id="学生信息管理系统"><a href="#学生信息管理系统" class="headerlink" title="学生信息管理系统"></a>学生信息管理系统</h2><ul>
 <li>需求分析</li>
 </ul>
-<p><img src="https://i.imgur.com/10YEUIY.png" alt></p>
-<ol>
-<li><p>先写 login.jsp, 并且搭配一个LoginServlet去获取登录信息。</p>
-</li>
-<li><p>创建用户表，里面只要有id, username和password</p>
-</li>
-<li><p>创建UserDao, 定义登录的方法 </p>
-<pre><code>  /**
-  *该dao定义了对用户表的访问规则
- */
-public interface UserDao {
+<p><img src="/assets/img/EE/21.png" alt></p>
+<p>1.先写 login.jsp, 并且搭配一个LoginServlet去获取登录信息。</p>
+<p>2.创建用户表，里面只要有id, username和password</p>
+<p>3.创建UserDao, 定义登录的方法 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*该dao定义了对用户表的访问规则</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"> 	<span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这里简单就返回一个Boolean类型，成功或者失败即可。</span></span><br><span class="line"><span class="comment">    * ​</span></span><br><span class="line"><span class="comment">    * 但是开发的时候，登录的方法，一旦成功。这里应该返回该用户的个人信息</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> userName </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> password</span></span><br><span class="line"><span class="comment">    * ​</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> true : 登录成功， false : 登录失败。</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">      <span class="function"><span class="keyword">boolean</span> <span class="title">login</span><span class="params">(String userName , String password)</span></span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-    /**
-* 这里简单就返回一个Boolean类型，成功或者失败即可。
-   * ​
-   * 但是开发的时候，登录的方法，一旦成功。这里应该返回该用户的个人信息
-   * @param userName 
-   * @param password
-   * ​
-   * @return true : 登录成功， false : 登录失败。
-      */
-     boolean login(String userName , String password);
-     }</code></pre></li>
-</ol>
-<ol start="4">
-<li>创建UserDaoImpl , 实现刚才定义的登录方法。</li>
-</ol>
-<pre><code>public class UserDaoImpl implements UserDao {
+<p>4.创建UserDaoImpl , 实现刚才定义的登录方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">login</span><span class="params">(String userName , String password)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		Connection conn = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">		ResultSet rs   = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//1. 得到连接对象</span></span><br><span class="line">			conn = JDBCUtil.getConn();</span><br><span class="line">			</span><br><span class="line">			String sql = <span class="string">"select * from t_user where username=? and password=?"</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//2. 创建ps对象</span></span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			ps.setString(<span class="number">1</span>, userName);</span><br><span class="line">			ps.setString(<span class="number">2</span>, password);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			<span class="comment">//3. 开始执行。</span></span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//如果能够成功移到下一条记录，那么表明有这个用户。 </span></span><br><span class="line">			<span class="keyword">return</span> rs.next();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			JDBCUtil.release(conn, ps, rs);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    @Override
-    public boolean login(String userName , String password) {
+<p>5.在LoginServlet里面访问UserDao，判断登录结果。 以区分对待</p>
+<p>6.创建stu_list.jsp，让登录成功的时候跳转过去。</p>
+<p>7.创建学生表，里面字段随意。 </p>
+<p>8.定义学生的Dao：StuDao  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StuDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询出来所有的学生信息</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> List集合</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">List&lt;Student&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs   = null;
-        try {
-            //1. 得到连接对象
-            conn = JDBCUtil.getConn();
+<p>9.对上面定义的StuDao 做出实现 StuDaoImpl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StuDaoImpl</span> <span class="keyword">implements</span> <span class="title">StuDao</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">  		<span class="meta">@Override</span></span><br><span class="line">  		<span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  			List&lt;Student&gt; list = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</span><br><span class="line">  			Connection conn = <span class="keyword">null</span>;</span><br><span class="line">  			PreparedStatement ps = <span class="keyword">null</span>;</span><br><span class="line">  			ResultSet rs   = <span class="keyword">null</span>;</span><br><span class="line">  			<span class="keyword">try</span> &#123;</span><br><span class="line">  				<span class="comment">//1. 得到连接对象</span></span><br><span class="line">  				conn = JDBCUtil.getConn();</span><br><span class="line">  				</span><br><span class="line">  				String sql = <span class="string">"select * from t_stu"</span>;</span><br><span class="line">  				</span><br><span class="line">  				ps = conn.prepareStatement(sql);</span><br><span class="line">  				</span><br><span class="line">  				rs = ps.executeQuery();</span><br><span class="line">	</span><br><span class="line">			<span class="comment">//数据多了，用对象装， 对象也多了呢？ 用集合装。 </span></span><br><span class="line">			<span class="keyword">while</span>(rs.next())&#123; <span class="comment">//10 次 ，10个学生</span></span><br><span class="line">  					</span><br><span class="line">  					Student stu = <span class="keyword">new</span> Student();</span><br><span class="line">  					</span><br><span class="line">  					stu.setId(rs.getInt(<span class="string">"id"</span>));</span><br><span class="line">  					stu.setAge(rs.getInt(<span class="string">"age"</span>));</span><br><span class="line">  					stu.setName(rs.getString(<span class="string">"name"</span>));</span><br><span class="line">  					stu.setGender(rs.getString(<span class="string">"gender"</span>));</span><br><span class="line">  					stu.setAddress(rs.getString(<span class="string">"address"</span>));</span><br><span class="line">  					</span><br><span class="line">  					list.add(stu);</span><br><span class="line">  					</span><br><span class="line">  				&#125;</span><br><span class="line">  			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">  				e.printStackTrace();</span><br><span class="line">  			&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">  				JDBCUtil.release(conn, ps, rs);</span><br><span class="line">  			&#125;</span><br><span class="line">  			</span><br><span class="line">  			<span class="keyword">return</span> list;</span><br><span class="line">  		&#125;</span><br><span class="line">  	</span><br><span class="line">  	&#125;</span><br></pre></td></tr></table></figure>
 
-            String sql = &quot;select * from t_user where username=? and password=?&quot;;
+<p>10.在登录成功的时候，完成三件事情。</p>
+<pre><code>1.查询所有的学生
 
-            //2. 创建ps对象
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, userName);
-            ps.setString(2, password);
+2.把这个所有的学生集合存储到作用域中。
 
+3.跳转到stu_list.jsp
 
-            //3. 开始执行。
-            rs = ps.executeQuery();
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//提交的数据有可能有中文， 怎么处理。</span></span><br><span class="line">	request.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">	response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1. 获取客户端提交的信息</span></span><br><span class="line">	String userName = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">	String password = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//2. 去访问dao ， 看看是否满足登录。</span></span><br><span class="line">	UserDao dao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">	<span class="keyword">boolean</span> isSuccess = dao.login(userName, password);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//3. 针对dao的返回结果，做出响应</span></span><br><span class="line">	<span class="keyword">if</span>(isSuccess)&#123;</span><br><span class="line">		<span class="comment">//response.getWriter().write("登录成功.");</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//1. 查询出来所有的学生信息。</span></span><br><span class="line">		StuDao stuDao = <span class="keyword">new</span> StuDaoImpl();</span><br><span class="line">		List&lt;Student&gt; list = stuDao.findAll();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 先把这个集合存到作用域中。</span></span><br><span class="line">		request.getSession().setAttribute(<span class="string">"list"</span>, list);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//2. 重定向</span></span><br><span class="line">		response.sendRedirect(<span class="string">"stu_list.jsp"</span>);</span><br><span class="line">		</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		response.getWriter().write(<span class="string">"用户名或者密码错误！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>11.在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"700"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tr</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>编号<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>住址<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">td</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">items</span>=<span class="string">"$&#123;list &#125;"</span> <span class="attr">var</span>=<span class="string">"stu"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.id &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.name &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.age &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.gender &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>$&#123;stu.address &#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>更新<span class="tag">&lt;/<span class="name">a</span>&gt;</span>   <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-            //如果能够成功移到下一条记录，那么表明有这个用户。 
-            return rs.next();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            JDBCUtil.release(conn, ps, rs);
-        }
-        return false;
-    }
-
-}</code></pre><ol start="5">
-<li><p>在LoginServlet里面访问UserDao，判断登录结果。 以区分对待</p>
-</li>
-<li><p>创建stu_list.jsp，让登录成功的时候跳转过去。</p>
-</li>
-<li><p>创建学生表，里面字段随意。 </p>
-</li>
-<li><p>定义学生的Dao：StuDao  </p>
-</li>
-</ol>
-<pre><code>public interface StuDao {
-
-    /**
-     * 查询出来所有的学生信息
-     * @return List集合
-     */
-    List&lt;Student&gt; findAll();
-}</code></pre><ol start="9">
-<li><p>对上面定义的StuDao 做出实现 StuDaoImpl</p>
-<pre><code>public class StuDaoImpl implements StuDao {
-
-       @Override
-       public List&lt;Student&gt; findAll() {
-           List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
-           Connection conn = null;
-           PreparedStatement ps = null;
-           ResultSet rs   = null;
-           try {
-               //1. 得到连接对象
-               conn = JDBCUtil.getConn();
-
-               String sql = &quot;select * from t_stu&quot;;
-
-               ps = conn.prepareStatement(sql);
-
-               rs = ps.executeQuery();
-
-            //数据多了，用对象装， 对象也多了呢？ 用集合装。 
-            while(rs.next()){ //10 次 ，10个学生
-
-                   Student stu = new Student();
-
-                   stu.setId(rs.getInt(&quot;id&quot;));
-                   stu.setAge(rs.getInt(&quot;age&quot;));
-                   stu.setName(rs.getString(&quot;name&quot;));
-                   stu.setGender(rs.getString(&quot;gender&quot;));
-                   stu.setAddress(rs.getString(&quot;address&quot;));
-
-                   list.add(stu);
-
-               }
-           } catch (SQLException e) {
-               e.printStackTrace();
-           }finally {
-               JDBCUtil.release(conn, ps, rs);
-           }
-
-           return list;
-       }
-
-   }</code></pre></li>
-</ol>
-<ol start="10">
-<li><p>在登录成功的时候，完成三件事情。</p>
-<ol>
-<li><p>查询所有的学生</p>
-</li>
-<li><p>把这个所有的学生集合存储到作用域中。</p>
-</li>
-<li><p>跳转到stu_list.jsp</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code>    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    //提交的数据有可能有中文， 怎么处理。
-    request.setCharacterEncoding(&quot;UTF-8&quot;);
-    response.setContentType(&quot;text/html;charset=utf-8&quot;);
-
-    //1. 获取客户端提交的信息
-    String userName = request.getParameter(&quot;username&quot;);
-    String password = request.getParameter(&quot;password&quot;);
-
-    //2. 去访问dao ， 看看是否满足登录。
-    UserDao dao = new UserDaoImpl();
-    boolean isSuccess = dao.login(userName, password);
-
-    //3. 针对dao的返回结果，做出响应
-    if(isSuccess){
-        //response.getWriter().write(&quot;登录成功.&quot;);
-
-        //1. 查询出来所有的学生信息。
-        StuDao stuDao = new StuDaoImpl();
-        List&lt;Student&gt; list = stuDao.findAll();
-
-        //2. 先把这个集合存到作用域中。
-        request.getSession().setAttribute(&quot;list&quot;, list);
-
-        //2. 重定向
-        response.sendRedirect(&quot;stu_list.jsp&quot;);
-
-    }else{
-        response.getWriter().write(&quot;用户名或者密码错误！&quot;);
-    }
-}</code></pre><ol start="11">
-<li>在stu_list.jsp中，取出域中的集合，然后使用c标签 去遍历集合。 </li>
-</ol>
-<pre><code>    &lt;table border=&quot;1&quot; width=&quot;700&quot;&gt;
-    &lt;tr align=&quot;center&quot;&gt;
-        &lt;td&gt;编号&lt;/td&gt;
-        &lt;td&gt;姓名&lt;/td&gt;
-        &lt;td&gt;年龄&lt;/td&gt;
-        &lt;td&gt;性别&lt;/td&gt;
-        &lt;td&gt;住址&lt;/td&gt;
-        &lt;td&gt;操作&lt;/td&gt;
-    &lt;/tr&gt;
-
-    &lt;c:forEach items=&quot;${list }&quot; var=&quot;stu&quot;&gt;
-        &lt;tr align=&quot;center&quot;&gt;
-            &lt;td&gt;${stu.id }&lt;/td&gt;
-            &lt;td&gt;${stu.name }&lt;/td&gt;
-            &lt;td&gt;${stu.age }&lt;/td&gt;
-            &lt;td&gt;${stu.gender }&lt;/td&gt;
-            &lt;td&gt;${stu.address }&lt;/td&gt;
-            &lt;td&gt;&lt;a href=&quot;#&quot;&gt;更新&lt;/a&gt;   &lt;a href=&quot;#&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/c:forEach&gt;
-&lt;/table&gt;</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
-<li><p>JSP</p>
-<pre><code>三大指令
-
-    page
-    include
-    taglib
-
-三个动作标签
-    &lt;jsp:include&gt;
-    &lt;jsp:forward&gt;
-    &lt;jsp:param&gt;</code></pre></li>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
+<li>JSP</li>
 </ul>
-<pre><code>九个内置对象
+<p>三大指令</p>
+<pre><code>page
+include
+taglib</code></pre><p>三个动作标签</p>
+<pre><code>&lt;jsp:include&gt;
+&lt;jsp:forward&gt;
+&lt;jsp:param&gt;</code></pre><p>九个内置对象</p>
+<pre><code>四个作用域
+pageContext
+request
+session
+application
 
-    四个作用域
-        pageContext
-        request
-        session
-        application
-
-    out
-    exception
-    response
-    page
-    config</code></pre><p>​            </p>
+out
+exception
+response
+page
+config</code></pre><p>​            </p>
 <ul>
-<li><p>EL</p>
+<li>EL</li>
+</ul>
 <p>${ 表达式 }</p>
 <p>取4个作用域中的值</p>
-<pre><code>${ name }</code></pre><p>有11个内置对象。</p>
+<p>${ name }</p>
+<p>有11个内置对象。</p>
 <pre><code>pageContext
 
 pageScope
@@ -815,9 +638,8 @@ param
 paramValues
 
 cookie
-initParam</code></pre></li>
-<li><p>JSTL</p>
-</li>
+initParam</code></pre><ul>
+<li>JSTL</li>
 </ul>
 <blockquote>
 <p>使用1.1的版本， 支持EL表达式， 1.0不支持EL表达式</p>
@@ -1114,18 +936,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -1158,6 +968,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -1174,11 +996,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,19 +1024,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1223,6 +1037,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">

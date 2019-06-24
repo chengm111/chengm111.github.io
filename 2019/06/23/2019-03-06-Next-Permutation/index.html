@@ -17,7 +17,7 @@
 <meta property="og:description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/assets/img/LeetCode/3.png">
-<meta property="og:updated_time" content="2019-06-23T09:15:57.265Z">
+<meta property="og:updated_time" content="2019-06-23T09:21:33.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【LeetCode】31. Next Permutation">
 <meta name="twitter:description" content="问题描述Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest possibl">
@@ -211,21 +211,15 @@
 <p>考虑三个字符所组成的序列{a,b,c}。这个序列有六个可能的排列组合：abc，acb，bac，bca，cab，cba。这些排列组合根据less-than操作符做字典顺序(lexicographical)的排序。也就是说，abc名列第一，因为每一个元素都小于其后的元素。acb是次一个排列组合，因为它是固定了a(序列内最小元素)之后所做的新组合。同样道理，那些固定b(序列中次小元素)而做的排列组合，在次序上将先于那些固定c而做的排列组合。以bac和bca为例，bac在bca之前，因为次序ac小于序列ca。面对bca，我们可以说其前一个排列组合是bac，而其后一个排列组合是cab。序列abc没有“前一个”排列组合，cba没有“后一个”排列组合。</p>
 <p><img src="/assets/img/LeetCode/3.png" alt></p>
 <p>具体方法为：</p>
-<ol>
-<li><p>从后向前查找第一个相邻元素对(i,j)，并且满足A[i] &lt; A[j]。</p>
-<p> 易知，此时从j到end必然是降序。可以用反证法证明，请自行证明。</p>
-</li>
-<li><p>在[j,end)中寻找一个最小的k使其满足A[i]&lt;A[k]。</p>
-<p> 由于[j,end)是降序的，所以必然存在一个k满足上面条件；并且可以从后向前查找第一个满足A[i]&lt;A[k]关系的k，此时的k必是待找的k。</p>
-</li>
-<li><p>将i与k交换。</p>
-<p> 此时，i处变成比i大的最小元素，因为下一个全排列必须是与当前排列按照升序排序相邻的排列，故选择最小的元素替代i。</p>
-<p> 易知，交换后的[j,end)仍然满足降序排序。因为在(k,end)中必然小于i，在[j,k)中必然大于k，并且大于i。</p>
-</li>
-<li><p>逆置[j,end)</p>
-<p> 由于此时[j,end)是降序的，故将其逆置。最终获得下一全排序。</p>
-</li>
-</ol>
+<p>1.从后向前查找第一个相邻元素对(i,j)，并且满足A[i] &lt; A[j]。</p>
+<p>  易知，此时从j到end必然是降序。可以用反证法证明，请自行证明。</p>
+<p>2.在[j,end)中寻找一个最小的k使其满足A[i]&lt;A[k]。</p>
+<p>  由于[j,end)是降序的，所以必然存在一个k满足上面条件；并且可以从后向前查找第一个满足A[i]&lt;A[k]关系的k，此时的k必是待找的k。</p>
+<p>3.将i与k交换。</p>
+<p>  此时，i处变成比i大的最小元素，因为下一个全排列必须是与当前排列按照升序排序相邻的排列，故选择最小的元素替代i。</p>
+<p>  易知，交换后的[j,end)仍然满足降序排序。因为在(k,end)中必然小于i，在[j,k)中必然大于k，并且大于i。</p>
+<p>4.逆置[j,end)</p>
+<p>  由于此时[j,end)是降序的，故将其逆置。最终获得下一全排序。</p>
 <p>注意：如果在步骤a)找不到符合的相邻元素对，即此时i=begin，则说明当前[begin,end)为一个降序顺序，即无下一个全排列，将其逆置成升序。</p>
 <h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i=nums.length-<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=<span class="number">0</span> &amp;&amp; nums[i]&gt;=nums[i+<span class="number">1</span>])&#123;</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> j=nums.length-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(j&gt;i &amp;&amp; nums[j]&lt;=nums[i])j--;</span><br><span class="line">            swap(nums,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(nums,i+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tem=nums[i];</span><br><span class="line">        nums[i]=nums[j];</span><br><span class="line">        nums[j]=tem;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[]nums,<span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> end=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(start&lt;end)&#123;</span><br><span class="line">            swap(nums,start,end);</span><br><span class="line">            start++;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -521,18 +515,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
               </li>
              
@@ -565,6 +547,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
@@ -581,11 +575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
+                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Two-Points</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,19 +603,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,6 +616,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
