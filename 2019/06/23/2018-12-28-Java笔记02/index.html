@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Blog for learning">
 <meta property="og:description" content="摘要 进制表示 原码反码补码 变量和数据类型 运算符">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-23T07:48:50.962Z">
+<meta property="og:updated_time" content="2019-06-25T13:44:50.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【JavaSE】语言基础2">
 <meta name="twitter:description" content="摘要 进制表示 原码反码补码 变量和数据类型 运算符">
@@ -215,7 +215,8 @@
 <li>char 占两个字节 0~65535（2^16-1)  </li>
 <li>boolean 理论上八分之一，即一个比特位就可以确定，但是java中未明确指定大小<br>小数默认数据类型为double，整数为int，使用float时需要在后面加f，如1.23f，否则会报错可能损失精度。使用long类型时应在后面加l。（此条现在已不需要）<br>隐式类型转换：两种数据类型的数据运算时，结果自动转换为长度较大的那个的数据类型。<br>强制类型转换：超出数据类型限制的时候会产生意外的结果，此时需要砍掉一部分数据。产生的为补码，转换为原码可得到此意外的结果值。<br>两个byte或short类型相加时产生的结果默认为int,常数也默认为int类型，需要将其赋给byte或short时需要强制类型转换。<br>float共32个二进制位，1位代表符号位，8位表示指数位，23位代表尾数位。（IEEE 754规定）指数位为0~255，0代表0，255代表无穷大，1-254计算时须减去127获得实际指数值。<br>char c = 97 可以运算，其结果为ASCII码为97的字符<br>char同样可以储存单个汉字，因为Java使用Unicode编码，char占两个字节，可以容纳同样占两字节的汉字。  </li>
 </ul>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>+号三种作用：正号，加法，字符串连接；<br>取模运算符结果的符号只和左边有关，和右边无关<br>byte a;a=a+1会报错，而a++不会，a+=1也不会。  </p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>+号三种作用：正号，加法，字符串连接；<br>取余运算符结果的符号只和左边有关，和右边无关<br>byte a;a=a+1会报错，而a++不会，a+=1也不会。  </p>
+<p>​    </p>
 
       
 
@@ -502,10 +503,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tree</a>
               </li>
              
@@ -515,6 +512,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Medium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,19 +531,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">LinkedList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,10 +563,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hash-Table</a>
               </li>
              
@@ -574,11 +571,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
+                <a href="javascript:void(0)" class="js-tag color5">Easy</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Binary-Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Backtracking</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -598,11 +599,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color3">面经</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,7 +611,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,11 +627,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color5">JDBC</a>
               </li>
              
               <li class="article-tag-list-item">
